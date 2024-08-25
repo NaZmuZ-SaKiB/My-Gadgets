@@ -1,8 +1,7 @@
 "use server";
 
-import { authKey, backendUrl, USER_ROLE } from "@/constants";
+import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const signIn = async (payload: { email: string; password: string }) => {
   const response = await fetch(`${backendUrl}/api/auth/sign-in`, {
@@ -17,21 +16,16 @@ export const signIn = async (payload: { email: string; password: string }) => {
   const result = await response.json();
 
   if (!result.success) {
-    return null;
+    return result;
   }
 
-  const { token, user } = result?.data;
+  const { token } = result?.data;
 
   cookies().set(authKey, token, {
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
     path: "/",
-    sameSite: "none",
   });
 
-  if (user?.role === USER_ROLE.USER) {
-    redirect("/");
-  } else {
-    redirect("/admin");
-  }
+  return result;
 };
