@@ -1,4 +1,5 @@
 export * from "./assets";
+export * from "./adminSidebar";
 
 export const backendUrl = process.env.BACKEND_URL;
 export const authKey = "mg-jwt";
