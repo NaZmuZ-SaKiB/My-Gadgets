@@ -1,6 +1,7 @@
 "use server";
 
 import { authKey, backendUrl } from "@/constants";
+import { jwtHelpers } from "@/utils/jwtHelpers";
 import { cookies } from "next/headers";
 
 export const signIn = async (payload: { email: string; password: string }) => {
@@ -28,4 +29,26 @@ export const signIn = async (payload: { email: string; password: string }) => {
   });
 
   return result;
+};
+
+export const isUserLoggedIn = async (): Promise<{
+  _id: string;
+  email: string;
+  role: string;
+} | null> => {
+  try {
+    const jwt = cookies().get(authKey);
+    if (!jwt?.value) {
+      return null;
+    }
+
+    const decoded = (await jwtHelpers.verifyToken(
+      jwt.value,
+      process.env.JWT_SECRET as string
+    )) as unknown as { payload: any };
+
+    return decoded.payload;
+  } catch (error) {
+    return null;
+  }
 };
