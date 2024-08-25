@@ -1,3 +1,5 @@
+"use client";
+
 import { Resolver, useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import { ReactNode } from "react";
