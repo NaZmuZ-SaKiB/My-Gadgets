@@ -1,4 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
+@layer utilities {
+  .no-focus {
+    @apply !outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
+  }
+}
