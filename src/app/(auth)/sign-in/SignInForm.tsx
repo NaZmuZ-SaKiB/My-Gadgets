@@ -3,12 +3,16 @@
 import MGForm from "@/components/global/forms/MGForm";
 import MGInput from "@/components/global/forms/MGInput";
 import MGButton from "@/components/global/shared/MGButton";
+import { USER_ROLE } from "@/constants";
+import { useSignInMutation } from "@/lib/queries/auth.query";
 import { AuthValidation } from "@/lib/validations/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const defaultValues = {
@@ -19,11 +23,32 @@ const defaultValues = {
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const router = useRouter();
+
+  const { mutateAsync: signInFn, isPending } = useSignInMutation();
+
   const handleSignIn: SubmitHandler<
     z.infer<typeof AuthValidation.signIn>
   > = async (values) => {
-    console.log(values);
+    try {
+      const result = await signInFn(values);
+
+      if (result?.success) {
+        if (result?.data?.user?.role === USER_ROLE.USER) {
+          router.push("/");
+        } else {
+          router.push("/admin");
+        }
+
+        toast.success("Logged in successfully");
+      } else {
+        toast.error(result?.message || "A server error occurred");
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "A client error occurred");
+    }
   };
+
   return (
     <MGForm
       onSubmit={handleSignIn}
@@ -57,7 +82,9 @@ const SignInForm = () => {
         Forgot Password?
       </Link>
 
-      <MGButton className="h-auto p-4 mb-5">Login</MGButton>
+      <MGButton className="h-auto p-4 mb-5" disabled={isPending}>
+        {!isPending ? "Login" : "Logging in..."}
+      </MGButton>
 
       <p className="text-xs text-center">
         {"Don't"} have an account?{" "}
