@@ -23,6 +23,8 @@ import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import MGSwitch from "@/components/global/forms/MGSwitch";
+import FeaturedSwitch from "../_components/FeaturedSwitch";
+import ShowOnTopMenuSwitch from "../_components/ShowOnTopMenuSwitch";
 
 const SingleCategoryPage = () => {
   const { id } = useParams();
@@ -46,50 +48,6 @@ const SingleCategoryPage = () => {
         id: `${id}`,
         payload: values,
       });
-
-      if (result?.success) {
-        toast.success(result?.message);
-        queryClient.invalidateQueries({
-          queryKey: [AQTags.CATEGORY],
-          exact: false,
-        });
-      } else {
-        toast.error(result?.message || "A server error occurred.");
-      }
-    } catch (error: any) {
-      toast.error(error?.message || "A client error occurred.");
-    }
-  };
-
-  // Handle category featured toggle
-  const { mutateAsync: toggleFeatured, isPending: featuredToggleLoading } =
-    useCategoryToggleFeaturedMutation();
-
-  const handleFeaturedToggle = async () => {
-    try {
-      const result = await toggleFeatured(id as string);
-
-      if (result?.success) {
-        toast.success(result?.message);
-        queryClient.invalidateQueries({
-          queryKey: [AQTags.CATEGORY],
-          exact: false,
-        });
-      } else {
-        toast.error(result?.message || "A server error occurred.");
-      }
-    } catch (error: any) {
-      toast.error(error?.message || "A client error occurred.");
-    }
-  };
-
-  // Handle category show on top menu toggle
-  const { mutateAsync: toggleShowOnTopMenu, isPending: showOnTopMenuLoading } =
-    useCategoryToggleShowOnTopMenuMutation();
-
-  const handleShowOnTopMenuToggle = async () => {
-    try {
-      const result = await toggleShowOnTopMenu(id as string);
 
       if (result?.success) {
         toast.success(result?.message);
@@ -150,19 +108,17 @@ const SingleCategoryPage = () => {
               {isPending ? "Updating..." : "Update Category"}
             </MGButton>
 
-            <MGSwitch
+            <FeaturedSwitch
+              id={id as string}
               label="Featured"
               defaultValue={category?.featured}
-              loading={featuredToggleLoading}
-              handleChange={handleFeaturedToggle}
               className="justify-between max-w-52"
             />
 
-            <MGSwitch
+            <ShowOnTopMenuSwitch
+              id={id as string}
               label="Show on top menu"
               defaultValue={category?.showOnTopMenu}
-              loading={showOnTopMenuLoading}
-              handleChange={handleShowOnTopMenuToggle}
               className="justify-between max-w-52"
             />
           </MGForm>
