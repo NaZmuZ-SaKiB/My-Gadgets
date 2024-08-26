@@ -7,6 +7,8 @@ export type TCategory = {
   featured: boolean;
   showOnTopMenu: boolean;
   image: string;
+  parent?: string | TCategory;
+  subCategories: string[] | TCategory[];
 
   createdAt: Date;
   updatedAt: Date;
