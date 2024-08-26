@@ -8,6 +8,8 @@ import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import FeaturedSwitch from "./FeaturedSwitch";
+import ShowOnTopMenuSwitch from "./ShowOnTopMenuSwitch";
 
 type TProps = {
   selectedCategories: string[];
@@ -19,9 +21,7 @@ const CategoriesTable = ({
   setSelectedCategories,
 }: TProps) => {
   const searchParams = useSearchParams();
-  const { data, isLoading, isFetching, isRefetching } = useCategoryGetAllQuery(
-    searchParams.toString()
-  );
+  const { data, isLoading } = useCategoryGetAllQuery(searchParams.toString());
 
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +41,7 @@ const CategoriesTable = ({
   };
   // End Handle Select
 
-  if (isLoading || isFetching || isRefetching) {
+  if (isLoading) {
     return (
       <AFloatingBox className="flex-1 grid place-items-center">
         <Loader2 className="animate-spin mx-auto size-[50px] text-primary-hover" />
@@ -65,7 +65,8 @@ const CategoriesTable = ({
             </th>
             <th>Name</th>
             <th>Label</th>
-            <th>Products</th>
+            <th>Featured</th>
+            <th>Top Menu</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -84,7 +85,18 @@ const CategoriesTable = ({
 
               <td>{item.name}</td>
               <td className="capitalize">{item.label || item.name}</td>
-              <td>50+</td>
+              <td>
+                <FeaturedSwitch
+                  id={`${item._id}`}
+                  defaultValue={item.featured}
+                />
+              </td>
+              <td>
+                <ShowOnTopMenuSwitch
+                  id={`${item._id}`}
+                  defaultValue={item.showOnTopMenu}
+                />
+              </td>
               <td>
                 <div className="flex gap-1 justify-end">
                   <Button
