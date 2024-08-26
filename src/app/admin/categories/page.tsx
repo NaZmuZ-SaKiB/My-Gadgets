@@ -9,7 +9,7 @@ const CategoriesPage = () => {
     <APageContainer>
       <APageHeading title="Product Categories" />
       <AGrid>
-        <div>
+        <div className="mb-3">
           <CategoryCreateForm />
         </div>
         <div>
