@@ -17,7 +17,7 @@ const CategoriesData = () => {
   return (
     <div className="flex flex-col gap-3 h-full">
       <AFloatingBox className="flex flex-col gap-2">
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <SelectedItemsCount count={selectedCategories.length} />
 
           <CategoryDeleteDialog
@@ -25,8 +25,7 @@ const CategoriesData = () => {
             setCategories={setSelectedCategories}
           >
             <Button
-              size="sm"
-              className="h-full no-focus bg-transparent border border-red-300 text-red-500 hover:bg-red-500 hover:border-red-500 hover:text-white"
+              className="no-focus bg-transparent border border-red-300 text-red-500 hover:bg-red-500 hover:border-red-500 hover:text-white"
               disabled={selectedCategories.length === 0}
             >
               Delete
