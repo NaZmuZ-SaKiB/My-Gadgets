@@ -113,13 +113,14 @@ export const categoryToggleShowOnTopMenuAction = async (id: string) => {
   return result;
 };
 
-export const categoryRemoveAction = async (id: string) => {
-  const response = await fetch(`${backendUrl}/api/category/${id}`, {
+export const categoryRemoveAction = async (ids: string[]) => {
+  const response = await fetch(`${backendUrl}/api/category`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: cookies().get(authKey)?.value || "",
     },
+    body: JSON.stringify({ ids }),
     cache: "no-store",
   });
 
