@@ -7,6 +7,9 @@ import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
 import SelectedItemsCount from "@/components/admin/shared/SelectedItemsCount";
 import CategoryDeleteDialog from "./CategoryDeleteDialog";
 import { Button } from "@/components/ui/button";
+import DataSortBySelect from "@/components/admin/shared/filters/DataSortBySelect";
+import { categorySortOptions } from "@/constants";
+import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
 
 const CategoriesData = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -16,6 +19,7 @@ const CategoriesData = () => {
       <AFloatingBox className="flex flex-col gap-2">
         <div className="flex gap-2">
           <SelectedItemsCount count={selectedCategories.length} />
+
           <CategoryDeleteDialog
             categories={selectedCategories}
             setCategories={setSelectedCategories}
@@ -28,6 +32,10 @@ const CategoriesData = () => {
               Delete
             </Button>
           </CategoryDeleteDialog>
+
+          <DataSortBySelect options={categorySortOptions} />
+
+          <DataSortOrderSelect />
         </div>
 
         <DataSearchBox />
