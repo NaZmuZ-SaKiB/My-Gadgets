@@ -44,7 +44,7 @@ const MGForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(FSOnSubmit)}
-        className={cn("flex flex-col gap-3", className)}
+        className={cn("flex flex-col gap-4", className)}
       >
         {children}
       </form>
