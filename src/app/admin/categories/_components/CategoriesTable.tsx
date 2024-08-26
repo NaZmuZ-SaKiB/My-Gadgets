@@ -51,8 +51,8 @@ const CategoriesTable = ({
   }
 
   return (
-    <AFloatingBox>
-      <table className="table-auto admin-table">
+    <AFloatingBox className="overflow-x-auto">
+      <table className="table-auto admin-table min-w-[600px]">
         <thead className="text-left">
           <tr>
             <th>
@@ -66,6 +66,7 @@ const CategoriesTable = ({
             </th>
             <th>Name</th>
             <th>Label</th>
+            <th>Parent</th>
             <th>Featured</th>
             <th>Top Menu</th>
             <th>Actions</th>
@@ -86,6 +87,7 @@ const CategoriesTable = ({
 
               <td>{item.name}</td>
               <td className="capitalize">{item.label || item.name}</td>
+              <td>{(item?.parent as TCategory)?.name || "N/A"}</td>
               <td>
                 <FeaturedSwitch
                   id={`${item._id}`}
