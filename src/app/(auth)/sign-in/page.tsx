@@ -4,8 +4,8 @@ import SignInForm from "./SignInForm";
 
 const SignInPage = () => {
   return (
-    <main className="bg-slate-50 min-h-svh grid place-items-center">
-      <div className="w-full bg-white rounded-2xl px-4 py-10 shadow-2xl shadow-slate-300 max-w-[400px] mx-auto flex flex-col gap-4">
+    <main className="bg-white xs:bg-slate-50 min-h-svh grid place-items-center">
+      <div className="w-full bg-white xs:rounded-2xl px-4 py-10 xs:shadow-2xl shadow-slate-300 max-w-[400px] mx-auto flex flex-col gap-4">
         <div className="flex gap-3 items-center justify-center">
           <div className="p-2 rounded-full border border-primary">
             <Image src={images.logo} width={40} height={40} alt="My Gadgets" />
