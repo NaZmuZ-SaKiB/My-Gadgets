@@ -57,6 +57,8 @@ const CategoryDeleteDialog = ({
       }
     } catch (error: any) {
       toast.error(error?.message || "A client error occurred.");
+    } finally {
+      setOpen(false);
     }
   };
   return (
