@@ -8,7 +8,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="grid grid-cols-[220px_1fr] flex-1">
         <ASidebar />
 
-        <main className="h-[calc(100svh-60px)] bg-slate-100 rounded-tl-lg">
+        <main className="@container h-[calc(100svh-60px)] bg-slate-100 rounded-tl-lg">
           {children}
         </main>
       </div>
