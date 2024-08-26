@@ -23,10 +23,13 @@ export const categoryCreateAction = async (payload: {
   return result;
 };
 
-export const categoryUpdateAction = async (
-  id: string,
-  payload: Partial<TCategory>
-) => {
+export const categoryUpdateAction = async ({
+  id,
+  payload,
+}: {
+  id: string;
+  payload: Partial<TCategory>;
+}) => {
   const response = await fetch(`${backendUrl}/api/category/${id}`, {
     method: "PATCH",
     headers: {
