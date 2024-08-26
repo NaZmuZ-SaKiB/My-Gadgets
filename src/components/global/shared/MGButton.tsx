@@ -16,7 +16,7 @@ const MGButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           "rounded-xl bg-primary focus-visible:bg-primary-hover focus-visible:text-white hover:bg-primary-hover no-focus",
           {
-            "bg-transparent border-primbg-primary text-primbg-primary hover:bg-primary hover:text-white":
+            "bg-transparent border-primary text-primbg-primary hover:bg-primary hover:text-white":
               props.variant === "outline",
           },
           className
