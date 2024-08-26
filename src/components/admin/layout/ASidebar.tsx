@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const ASidebar = () => {
   return (
-    <div className="bg-slate-800 h-[calc(100svh-60px)] py-4 px-3 text-slate-50">
+    <div className="max-lg:hidden bg-slate-800 h-[calc(100svh-60px)] py-4 px-3 text-slate-50">
       <Accordion type="single" collapsible>
         {adminSideBar.map((item) => {
           if (item.hasSubMenu) {
