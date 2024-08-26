@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 export const categoryCreateAction = async (payload: {
   name: string;
   label: string;
+  parent?: string;
 }) => {
   const response = await fetch(`${backendUrl}/api/category`, {
     method: "POST",
@@ -50,6 +51,7 @@ export const categoryGetAllAction = async (params: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: cookies().get(authKey)?.value || "",
     },
     cache: "no-store",
   });
