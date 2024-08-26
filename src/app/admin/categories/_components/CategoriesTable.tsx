@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 import FeaturedSwitch from "./FeaturedSwitch";
 import ShowOnTopMenuSwitch from "./ShowOnTopMenuSwitch";
+import CategoryDeleteDialog from "./CategoryDeleteDialog";
 
 type TProps = {
   selectedCategories: string[];
@@ -116,12 +117,14 @@ const CategoriesTable = ({
                     </Button>
                   </Link>
 
-                  <Button
-                    size="icon"
-                    className="h-8 no-focus bg-transparent border border-red-300 text-red-500 hover:bg-red-500 hover:border-red-500 group"
-                  >
-                    <Trash2 className="size-4 group-hover:text-white" />
-                  </Button>
+                  <CategoryDeleteDialog categories={[`${item._id}`]}>
+                    <Button
+                      size="icon"
+                      className="h-8 no-focus bg-transparent border border-red-300 text-red-500 hover:bg-red-500 hover:border-red-500 group"
+                    >
+                      <Trash2 className="size-4 group-hover:text-white" />
+                    </Button>
+                  </CategoryDeleteDialog>
                 </div>
               </td>
             </tr>
