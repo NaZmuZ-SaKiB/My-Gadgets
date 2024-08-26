@@ -7,3 +7,26 @@
     @apply !outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
   }
 }
+
+@layer components {
+  .admin-table {
+    @apply w-full;
+  }
+
+  .admin-table tbody {
+    @apply text-gray-500 text-sm;
+  }
+
+  .admin-table th {
+    @apply bg-slate-800 text-white text-sm font-normal border-slate-800 last:text-right;
+  }
+
+  .admin-table td,
+  .admin-table th {
+    @apply px-3 py-2 border border-collapse;
+  }
+
+  .admin-table tr:nth-child(even) {
+    @apply bg-slate-100;
+  }
+}
