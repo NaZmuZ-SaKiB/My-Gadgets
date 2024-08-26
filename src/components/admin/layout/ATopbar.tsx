@@ -14,9 +14,6 @@ const ATopbar = () => {
           height={35}
         />
       </div>
-      <h1 className="font-bold text-3xl text-slate-50">
-        MY GADGETS ADMIN PANEL
-      </h1>
     </div>
   );
 };
