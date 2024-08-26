@@ -10,6 +10,8 @@ import MGButton from "@/components/global/shared/MGButton";
 import { AQTags } from "@/constants/tags";
 import {
   useCategoryGetByIdQuery,
+  useCategoryToggleFeaturedMutation,
+  useCategoryToggleShowOnTopMenuMutation,
   useCategoryUpdateMutation,
 } from "@/lib/queries/category.query";
 import { CategoryValidation } from "@/lib/validations/category.validation";
@@ -20,6 +22,7 @@ import { useParams } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import MGSwitch from "@/components/global/forms/MGSwitch";
 
 const SingleCategoryPage = () => {
   const { id } = useParams();
@@ -30,6 +33,7 @@ const SingleCategoryPage = () => {
     useCategoryGetByIdQuery(id as string);
   const category = categoryData?.data;
 
+  // Handle category update
   const { mutateAsync: updateCategoryFn, isPending } =
     useCategoryUpdateMutation();
 
@@ -57,6 +61,52 @@ const SingleCategoryPage = () => {
     }
   };
 
+  // Handle category featured toggle
+  const { mutateAsync: toggleFeatured, isPending: featuredToggleLoading } =
+    useCategoryToggleFeaturedMutation();
+
+  const handleFeaturedToggle = async () => {
+    try {
+      const result = await toggleFeatured(id as string);
+
+      if (result?.success) {
+        toast.success(result?.message);
+        queryClient.invalidateQueries({
+          queryKey: [AQTags.CATEGORY],
+          exact: false,
+        });
+      } else {
+        toast.error(result?.message || "A server error occurred.");
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "A client error occurred.");
+    }
+  };
+
+  // Handle category show on top menu toggle
+  const { mutateAsync: toggleShowOnTopMenu, isPending: showOnTopMenuLoading } =
+    useCategoryToggleShowOnTopMenuMutation();
+
+  const handleShowOnTopMenuToggle = async () => {
+    try {
+      const result = await toggleShowOnTopMenu(id as string);
+
+      if (result?.success) {
+        toast.success(result?.message);
+        queryClient.invalidateQueries({
+          queryKey: [AQTags.CATEGORY],
+          exact: false,
+        });
+      } else {
+        toast.error(result?.message || "A server error occurred.");
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "A client error occurred.");
+    }
+  };
+
+  // Loading
+
   if (categoryLoading) {
     return (
       <div className="h-full grid place-items-center">
@@ -82,8 +132,8 @@ const SingleCategoryPage = () => {
             defaultValues={defaultValues}
             reset={false}
           >
-            <h2 className="font-medium text-gray-700 text-lg mb-5">
-              Add Category
+            <h2 className="font-medium text-gray-700 text-lg mb-1">
+              Update Category
             </h2>
 
             <MGAInput name="name" label="Category Name*" />
@@ -99,6 +149,22 @@ const SingleCategoryPage = () => {
             >
               {isPending ? "Updating..." : "Update Category"}
             </MGButton>
+
+            <MGSwitch
+              label="Featured"
+              defaultValue={category?.featured}
+              loading={featuredToggleLoading}
+              handleChange={handleFeaturedToggle}
+              className="justify-between max-w-52"
+            />
+
+            <MGSwitch
+              label="Show on top menu"
+              defaultValue={category?.showOnTopMenu}
+              loading={showOnTopMenuLoading}
+              handleChange={handleShowOnTopMenuToggle}
+              className="justify-between max-w-52"
+            />
           </MGForm>
         </AFloatingBox>
       </AGrid>
