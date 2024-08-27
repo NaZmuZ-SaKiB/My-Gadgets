@@ -53,7 +53,7 @@ const MGASelect = ({
           {label && (
             <FormLabel className={"font-medium text-nowrap"}>{label}</FormLabel>
           )}
-          <Select defaultValue={field.value} onValueChange={field.onChange}>
+          <Select value={field.value} onValueChange={field.onChange}>
             <FormControl>
               <SelectTrigger
                 className={cn(
