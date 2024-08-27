@@ -24,7 +24,7 @@ const MGSwitch = ({
         disabled={loading}
         defaultChecked={defaultValue}
         onCheckedChange={handleChange}
-        className="data-[state=checked]:bg-primary disabled:!bg-yellow-500"
+        className="data-[state=checked]:bg-primary disabled:!bg-yellow-500 no-focus"
       />
     </div>
   );
