@@ -40,7 +40,7 @@ const SingleCategoryPage = () => {
 
   const { data: categoryData, isLoading: categoryLoading } =
     useCategoryGetByIdQuery(id as string);
-  const category = categoryData?.data;
+  const category: TCategory = categoryData?.data;
 
   // Handle category update
   const { mutateAsync: updateCategoryFn, isPending } =
@@ -83,7 +83,7 @@ const SingleCategoryPage = () => {
   const defaultValues = {
     name: category?.name || "",
     label: category?.label || "",
-    parent: category?.parent?._id?.toString() || "select",
+    parent: (category?.parent as TCategory)?._id?.toString() || "select",
   };
 
   console.log(category);
@@ -119,11 +119,13 @@ const SingleCategoryPage = () => {
               description="This will be visible in the menu"
             />
 
-            <MGASelect
-              name="parent"
-              label="Parent Category"
-              options={parentOptions}
-            />
+            {category?.subCategories.length === 0 && (
+              <MGASelect
+                name="parent"
+                label="Parent Category"
+                options={parentOptions}
+              />
+            )}
 
             <MGButton
               className="rounded-none self-start px-5 py-2 h-auto"
