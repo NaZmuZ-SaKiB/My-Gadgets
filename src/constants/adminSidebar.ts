@@ -44,8 +44,8 @@ export const adminSideBar: TAdminSideBar[] = [
         link: "/admin/categories",
       },
       {
-        name: "Filters",
-        link: "/admin/filters",
+        name: "Brands",
+        link: "/admin/brands",
       },
       {
         name: "Reviews",
