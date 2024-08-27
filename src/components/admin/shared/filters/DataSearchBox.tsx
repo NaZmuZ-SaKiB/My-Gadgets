@@ -15,6 +15,18 @@ const DataSearchBox = () => {
 
   const [search, setSearch] = useState<string>(params.get("searchTerm") || "");
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+
+    if (!e.target.value) {
+      params.delete("searchTerm");
+      params.delete("page");
+      params.append("page", "1");
+
+      router.replace(`${pathName}?${params}`);
+    }
+  };
+
   const handleSearch = () => {
     if (!search || search === params.get("searchTerm")) return;
 
@@ -48,7 +60,7 @@ const DataSearchBox = () => {
           value={search}
           placeholder="Search..."
           className=" w-full pr-8 focus-visible:border-primary no-focus"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={handleChange}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSearch();
