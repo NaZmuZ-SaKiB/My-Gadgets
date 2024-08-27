@@ -72,8 +72,8 @@ const CategoryDeleteDialog = ({
           </AlertDialogTitle>
 
           <AlertDialogDescription>
-            This will delete all the selected categories. You can not reverse
-            this. Do you understand that?
+            This will delete all the selected categories with its
+            sub-categories. You can not reverse this. Do you understand that?
           </AlertDialogDescription>
         </AlertDialogHeader>
 
