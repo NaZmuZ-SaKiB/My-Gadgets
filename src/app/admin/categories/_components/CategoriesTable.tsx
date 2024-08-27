@@ -11,6 +11,8 @@ import { ChangeEvent } from "react";
 import FeaturedSwitch from "./FeaturedSwitch";
 import ShowOnTopMenuSwitch from "./ShowOnTopMenuSwitch";
 import CategoryDeleteDialog from "./CategoryDeleteDialog";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+import APagination from "@/components/admin/shared/APagination";
 
 type TProps = {
   selectedCategories: string[];
@@ -136,6 +138,16 @@ const CategoriesTable = ({
           ))}
         </tbody>
       </table>
+      <div className="mt-5 flex justify-center items-center gap-3 sm:justify-between">
+        <div className="max-sm:hidden">
+          <DataLimitSelect />
+        </div>
+        <APagination
+          limit={data?.meta?.limit as number}
+          page={data?.meta?.page as number}
+          total={data?.meta?.total as number}
+        />
+      </div>
     </AFloatingBox>
   );
 };
