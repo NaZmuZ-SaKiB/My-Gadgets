@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import DataSortBySelect from "@/components/admin/shared/filters/DataSortBySelect";
 import { categorySortOptions } from "@/constants";
 import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 
 const CategoriesData = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -31,6 +32,10 @@ const CategoriesData = () => {
               Delete
             </Button>
           </CategoryDeleteDialog>
+
+          <div className="sm:hidden">
+            <DataLimitSelect />
+          </div>
 
           <DataSortBySelect options={categorySortOptions} />
 
