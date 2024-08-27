@@ -136,6 +136,14 @@ const CategoriesTable = ({
               </td>
             </tr>
           ))}
+
+          {data?.data?.length === 0 && (
+            <tr>
+              <td colSpan={7} className="text-center text-xl">
+                No data found
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
       <div className="mt-5 flex justify-center items-center gap-3 sm:justify-between">
