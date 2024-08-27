@@ -60,7 +60,7 @@ const CategoriesTable = ({
                 <input
                   type="checkbox"
                   onChange={selectAll}
-                  className="size-3.5"
+                  className="size-3.5 no-focus"
                 />
               </span>
             </th>
@@ -81,7 +81,7 @@ const CategoriesTable = ({
                   checked={selectedCategories.includes(item._id)}
                   type="checkbox"
                   onChange={(e) => handleSelect(e, item._id)}
-                  className="size-4"
+                  className="size-4 no-focus"
                 />
               </td>
 
@@ -110,7 +110,10 @@ const CategoriesTable = ({
                     <Eye className="size-4 text-gray-700 group-hover:text-white" />
                   </Button>
 
-                  <Link href={`/admin/categories/${item._id}`}>
+                  <Link
+                    href={`/admin/categories/${item._id}`}
+                    className="no-focus"
+                  >
                     <Button
                       size="icon"
                       className="h-8 no-focus bg-transparent border border-green-300 text-green-500 hover:bg-green-500 hover:border-green-500 group"
