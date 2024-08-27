@@ -9,9 +9,8 @@ import MGForm from "@/components/global/forms/MGForm";
 import MGButton from "@/components/global/shared/MGButton";
 import { AQTags } from "@/constants/tags";
 import {
+  useCategoryGetAllQuery,
   useCategoryGetByIdQuery,
-  useCategoryToggleFeaturedMutation,
-  useCategoryToggleShowOnTopMenuMutation,
   useCategoryUpdateMutation,
 } from "@/lib/queries/category.query";
 import { CategoryValidation } from "@/lib/validations/category.validation";
@@ -22,14 +21,22 @@ import { useParams } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import MGSwitch from "@/components/global/forms/MGSwitch";
 import FeaturedSwitch from "../_components/FeaturedSwitch";
 import ShowOnTopMenuSwitch from "../_components/ShowOnTopMenuSwitch";
+import { TCategory } from "@/types/category.type";
+import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
 
 const SingleCategoryPage = () => {
   const { id } = useParams();
 
   const queryClient = useQueryClient();
+
+  // Get parent categories
+  const params = new URLSearchParams();
+  params.append("onlyParent", "true");
+
+  const { data, isLoading } = useCategoryGetAllQuery(params.toString());
+  const parentCategories: TCategory[] = data?.data || [];
 
   const { data: categoryData, isLoading: categoryLoading } =
     useCategoryGetByIdQuery(id as string);
@@ -65,7 +72,7 @@ const SingleCategoryPage = () => {
 
   // Loading
 
-  if (categoryLoading) {
+  if (categoryLoading || isLoading) {
     return (
       <div className="h-full grid place-items-center">
         <Loader2 className="animate-spin mx-auto size-[100px] text-primary" />
@@ -76,7 +83,18 @@ const SingleCategoryPage = () => {
   const defaultValues = {
     name: category?.name || "",
     label: category?.label || "",
+    parent: category?.parent?._id?.toString() || "select",
   };
+
+  console.log(category);
+
+  const parentOptions: TSelectOption[] =
+    parentCategories.length > 0
+      ? parentCategories.map((cat: TCategory) => ({
+          label: cat?.label,
+          value: `${cat?._id}`,
+        }))
+      : [];
 
   return (
     <APageContainer>
@@ -99,6 +117,12 @@ const SingleCategoryPage = () => {
               name="label"
               label="Label*"
               description="This will be visible in the menu"
+            />
+
+            <MGASelect
+              name="parent"
+              label="Parent Category"
+              options={parentOptions}
             />
 
             <MGButton
