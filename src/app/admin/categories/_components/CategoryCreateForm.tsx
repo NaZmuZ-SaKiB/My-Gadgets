@@ -23,7 +23,6 @@ const defaultValues = {
   name: "",
   label: "",
   parent: "select",
-  image: "",
 };
 
 const CategoryCreateForm = () => {
