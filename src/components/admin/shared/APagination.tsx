@@ -106,11 +106,11 @@ const RenderPaginationItems = ({
         key={`pagination-${page}`}
         className={cn("bg-slate-100 rounded-full cursor-pointer", {
           "bg-primary text-white": currentPage === page,
-          "hover:bg-primary-hover": currentPage !== page,
+          "hover:bg-primary-hover hover:text-slate-50": currentPage !== page,
         })}
         onClick={() => handlePageChange(page)}
       >
-        <PaginationLink className="hover:bg-transparent hover:text-inherit">
+        <PaginationLink className="hover:bg-transparent hover:text-inherit duration-0">
           {page}
         </PaginationLink>
       </PaginationItem>
