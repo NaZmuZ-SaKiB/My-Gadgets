@@ -9,6 +9,39 @@
 }
 
 @layer components {
+  .mg-container {
+    @apply max-w-screen-2xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 2xl:px-0;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  /* -------------------------------------------- */
+
+  /* --------- Search Box --------- */
+  .search-box {
+    @apply flex gap-3 h-12 px-4;
+  }
+
+  .search-box-pc {
+    @apply border-2 border-primary/30 w-full rounded max-w-xl focus-within:border-primary;
+  }
+
+  .search-box-mobile {
+    @apply shadow-md shadow-gray-400 absolute w-full left-0 right-0 top-0 hidden;
+  }
+
+  #search-toggle:checked ~ .search-box-mobile {
+    @apply flex;
+  }
+
+  /* --------- Search Box End --------- */
+
+  /* -------------------------------------------- */
+
+  /* --------- Admin Table --------- */
+
   .admin-table {
     @apply w-full;
   }
@@ -29,4 +62,6 @@
   .admin-table tr:nth-child(even) {
     @apply bg-slate-100;
   }
+
+  /* --------- Admin Table End --------- */
 }
