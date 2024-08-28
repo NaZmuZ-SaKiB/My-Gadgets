@@ -22,7 +22,7 @@ const MGSwitch = ({
       <Switch
         type="button"
         disabled={loading}
-        defaultChecked={defaultValue}
+        checked={defaultValue}
         onCheckedChange={handleChange}
         className="data-[state=checked]:bg-primary disabled:!bg-yellow-500 no-focus"
       />
