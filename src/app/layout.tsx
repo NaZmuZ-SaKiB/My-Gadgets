@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import QueryProvider from "@/lib/providers/QueryProvider";
-import Header from "@/components/global/layout/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
-          <div className="min-h-svh">
-            <Header />
-            {children}
-          </div>
+          <div className="min-h-svh">{children}</div>
         </QueryProvider>
         <Toaster closeButton richColors />
       </body>
