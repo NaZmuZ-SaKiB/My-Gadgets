@@ -5,6 +5,7 @@ import { Permanent_Marker } from "next/font/google";
 import { cn } from "@/lib/utils";
 import SearchBox from "./SearchBox";
 import { Search } from "lucide-react";
+import Navbar from "./Navbar";
 
 const font = Permanent_Marker({
   weight: "400",
@@ -86,6 +87,7 @@ const Header = () => {
           </div>
         </header>
       </div>
+      <Navbar />
     </>
   );
 };
