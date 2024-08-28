@@ -39,7 +39,7 @@ const BannerSection = () => {
           {sliderImages.map((image, i) => (
             <CarouselItem
               key={`slider-img-${i}`}
-              className="pl-0 relative w-full aspect-[1000/350]"
+              className="pl-0 relative w-full aspect-[100/35]"
             >
               <Image src={image.src} alt={`slider-${i}`} fill className="" />
             </CarouselItem>
