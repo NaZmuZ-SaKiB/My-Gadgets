@@ -12,6 +12,8 @@ import FeaturedSwitch from "./FeaturedSwitch";
 import BrandDeleteDialog from "./BrandDeleteDialog";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import APagination from "@/components/admin/shared/APagination";
+import Image from "next/image";
+import { images } from "@/constants";
 
 type TProps = {
   selectedBrands: string[];
@@ -62,6 +64,7 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
                 />
               </span>
             </th>
+            <th>Img</th>
             <th>Name</th>
             <th>Featured</th>
             <th>Actions</th>
@@ -79,7 +82,15 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
                   className="size-4 no-focus"
                 />
               </td>
-
+              <td>
+                <Image
+                  src={item.image?.secureUrl || images.defaultImage}
+                  width={35}
+                  height={35}
+                  className="object-contain"
+                  alt={item.name}
+                />
+              </td>
               <td>{item.name}</td>
               <td>
                 <FeaturedSwitch
