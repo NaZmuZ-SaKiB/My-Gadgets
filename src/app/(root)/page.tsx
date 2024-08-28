@@ -1,7 +1,9 @@
+import BannerSection from "./_components/BannerSection";
+
 const HomePage = () => {
   return (
-    <div>
-      <h1>HomePage</h1>
+    <div className="mg-container">
+      <BannerSection />
     </div>
   );
 };
