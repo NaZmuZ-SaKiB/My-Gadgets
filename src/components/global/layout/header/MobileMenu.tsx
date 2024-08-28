@@ -17,7 +17,12 @@ const MobileMenu = () => {
   const { data, isLoading } = useCategoryGetAllWithSubCatQuery();
   const categories: TCategory[] = data?.data || [];
 
-  if (isLoading) return <div></div>;
+  if (isLoading)
+    return (
+      <div className={`nav-toggle-btn ${open ? "active" : ""}`}>
+        <span></span>
+      </div>
+    );
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="no-focus">
