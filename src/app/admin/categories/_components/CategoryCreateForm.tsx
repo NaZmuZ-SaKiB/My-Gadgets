@@ -1,6 +1,7 @@
 "use client";
 
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 import MGAInput from "@/components/admin/forms/MGAInput";
 import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
 import MGForm from "@/components/global/forms/MGForm";
@@ -22,6 +23,7 @@ const defaultValues = {
   name: "",
   label: "",
   parent: "select",
+  image: "",
 };
 
 const CategoryCreateForm = () => {
@@ -92,6 +94,8 @@ const CategoryCreateForm = () => {
           label="Parent Category"
           options={parentOptions}
         />
+
+        <MGAImageInput name="image" label="Image" />
 
         <MGButton
           className="rounded-none self-start px-5 py-2 h-auto"
