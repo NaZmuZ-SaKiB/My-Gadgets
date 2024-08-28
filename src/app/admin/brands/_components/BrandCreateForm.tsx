@@ -1,6 +1,7 @@
 "use client";
 
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 import MGAInput from "@/components/admin/forms/MGAInput";
 import MGForm from "@/components/global/forms/MGForm";
 import MGButton from "@/components/global/shared/MGButton";
@@ -52,6 +53,8 @@ const BrandCreateForm = () => {
         defaultValues={defaultValues}
       >
         <MGAInput name="name" label="Brand Name*" />
+
+        <MGAImageInput name="image" label="Image" />
 
         <MGButton
           className="rounded-none self-start px-5 py-2 h-auto"
