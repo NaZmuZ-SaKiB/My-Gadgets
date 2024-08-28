@@ -64,9 +64,15 @@ const CategoryCreateForm = () => {
 
   if (isLoading) return null;
 
+  const catSort = (a: TCategory, b: TCategory) => {
+    if (a?.name < b?.name) return -1;
+    if (a?.name > b?.name) return 1;
+    return 0;
+  };
+
   const parentOptions: TSelectOption[] =
     parentCategories.length > 0
-      ? parentCategories.map((cat: TCategory) => ({
+      ? parentCategories.sort(catSort).map((cat: TCategory) => ({
           label: cat?.label,
           value: `${cat?._id}`,
         }))
