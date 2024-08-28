@@ -22,7 +22,7 @@ const ImageGallery = () => {
   }
   return (
     <AFloatingBox>
-      <div className="flex gap-3 flex-wrap">
+      <div className="flex max-sm:justify-center gap-3 flex-wrap">
         <UploadImageButton />
         {data?.data?.map((image: TMedia) => (
           <div
