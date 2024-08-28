@@ -16,6 +16,7 @@ export const create = z.object({
     .min(3, "Label must be at least 3 characters long")
     .max(25, "Label must be at most 25 characters long"),
   parent: z.string().optional(),
+  image: z.string().optional(),
 });
 
 export const CategoryValidation = {
