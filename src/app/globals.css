@@ -19,6 +19,51 @@
 
   /* -------------------------------------------- */
 
+  /* --------- Navbar --------- */
+
+  .nav-toggle-btn {
+    @apply xl:hidden size-9 cursor-pointer;
+  }
+
+  .nav-toggle-btn span {
+    @apply relative inline-block rounded-full bg-primary cursor-pointer;
+  }
+
+  .nav-toggle-btn span,
+  .nav-toggle-btn span::before,
+  .nav-toggle-btn span::after {
+    @apply w-full h-[3px] inline-block cursor-pointer;
+  }
+
+  .nav-toggle-btn span::before,
+  .nav-toggle-btn span::after {
+    @apply absolute left-0 transition-transform duration-300 content-[""] inline-block bg-primary;
+  }
+
+  .nav-toggle-btn span::before {
+    @apply top-[-10px];
+  }
+
+  .nav-toggle-btn span::after {
+    @apply top-[10px];
+  }
+
+  .nav-toggle-btn.active span {
+    @apply bg-transparent;
+  }
+
+  .nav-toggle-btn.active span::before {
+    @apply top-0 transform rotate-[135deg];
+  }
+
+  .nav-toggle-btn.active span::after {
+    @apply top-0 transform -rotate-[135deg];
+  }
+
+  /* --------- Nav Bar End --------- */
+
+  /* -------------------------------------------- */
+
   /* --------- Search Box --------- */
   .search-box {
     @apply flex gap-3 h-12 px-4;
