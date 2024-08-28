@@ -10,11 +10,13 @@ import {
 } from "@/components/ui/form";
 import { TMedia } from "@/types/media.type";
 
-import { X } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import Image from "next/image";
 import { use, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import MediaModal from "../shared/MediaModal";
+import UploadImageButton from "@/app/admin/media/_components/UploadImageButton";
+import MGButton from "@/components/global/shared/MGButton";
 
 type TProps = {
   name: string;
@@ -47,7 +49,6 @@ const MGAImageInput = ({
     if (multiple) {
       setImageIds(ids);
     } else {
-      console.log("setting single image");
       setSingleImageId(ids[0]);
     }
   }, [images, multiple]);
@@ -103,12 +104,23 @@ const MGAImageInput = ({
                   ))}
                 </div>
               )}
-              <MediaModal
-                selectedImages={images}
-                setSelectedImages={setImages}
-                title={`Upload ${label}`}
-                multiple={multiple}
-              />
+              <div className="flex gap-2">
+                <MediaModal
+                  selectedImages={images}
+                  setSelectedImages={setImages}
+                  title={`Select ${label}`}
+                  multiple={multiple}
+                />
+                <UploadImageButton>
+                  <MGButton
+                    type="button"
+                    variant="outline"
+                    className="rounded-none self-start px-1 text-primary py-1 h-full aspect-square"
+                  >
+                    <Plus className="size-6" />
+                  </MGButton>
+                </UploadImageButton>
+              </div>
             </div>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
