@@ -2,6 +2,7 @@ import MGSwitch from "@/components/global/forms/MGSwitch";
 import { AQTags } from "@/constants/tags";
 import { useCategoryToggleShowOnTopMenuMutation } from "@/lib/queries/category.query";
 import { useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 import { toast } from "sonner";
 
 type TProps = {
@@ -17,6 +18,8 @@ const ShowOnTopMenuSwitch = ({
   label,
   className,
 }: TProps) => {
+  const [isShowOnTopMenu, setIsShowOnTopMenu] = useState(defaultValue);
+
   const queryClient = useQueryClient();
 
   const { mutateAsync: toggleShowOnTopMenu, isPending } =
@@ -28,21 +31,25 @@ const ShowOnTopMenuSwitch = ({
 
       if (result?.success) {
         toast.success(result?.message);
+        setIsShowOnTopMenu(!isShowOnTopMenu);
+
         queryClient.invalidateQueries({
           queryKey: [AQTags.CATEGORY],
           exact: false,
         });
       } else {
         toast.error(result?.message || "A server error occurred.");
+        setIsShowOnTopMenu(defaultValue);
       }
     } catch (error: any) {
       toast.error(error?.message || "A client error occurred.");
+      setIsShowOnTopMenu(defaultValue);
     }
   };
   return (
     <MGSwitch
       label={label}
-      defaultValue={defaultValue}
+      defaultValue={isShowOnTopMenu}
       handleChange={handleShowOnTopMenuToggle}
       loading={isPending}
       className={className}
