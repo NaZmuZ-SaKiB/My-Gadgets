@@ -1,7 +1,6 @@
 "use server";
 
 import { authKey, backendUrl } from "@/constants";
-import { TBrand } from "@/types/brand.type";
 import { cookies } from "next/headers";
 
 export const brandCreateAction = async (payload: { name: string }) => {
@@ -25,7 +24,10 @@ export const brandUpdateAction = async ({
   payload,
 }: {
   id: string;
-  payload: Partial<TBrand>;
+  payload: {
+    name?: string;
+    image?: string;
+  };
 }) => {
   const response = await fetch(`${backendUrl}/api/brand/${id}`, {
     method: "PATCH",
@@ -69,6 +71,7 @@ export const brandGetByIdAction = async (id: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: cookies().get(authKey)?.value || "",
     },
     cache: "no-store",
   });
