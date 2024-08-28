@@ -1,6 +1,5 @@
 "use client";
 
-import UploadImageButton from "@/app/admin/media/_components/UploadImageButton";
 import MGButton from "@/components/global/shared/MGButton";
 import {
   Dialog,
@@ -28,7 +27,7 @@ const MediaModal = ({
   selectedImages,
   setSelectedImages,
   multiple = false,
-  title = "Upload Image",
+  title = "Select Image",
 }: TProps) => {
   const params = new URLSearchParams();
   params.append("limit", "30");
@@ -67,17 +66,6 @@ const MediaModal = ({
         </DialogHeader>
 
         <div className="h-full">
-          <div className="mb-5">
-            <UploadImageButton>
-              <MGButton
-                variant="outline"
-                className="rounded-none self-start px-3 py-2 h-auto"
-              >
-                Upload Image
-              </MGButton>
-            </UploadImageButton>
-          </div>
-
           {isLoading && (
             <div className="grid place-items-center h-[400px]">
               <Loader2 className="animate-spin mx-auto size-[50px] text-primary" />
