@@ -5,6 +5,7 @@ import AGrid from "@/components/admin/admin-ui/AGrid";
 import APageContainer from "@/components/admin/admin-ui/APageContainer";
 import APageHeading from "@/components/admin/admin-ui/APageHeading";
 import MGAInput from "@/components/admin/forms/MGAInput";
+import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
 import MGForm from "@/components/global/forms/MGForm";
 import MGButton from "@/components/global/shared/MGButton";
 import { AQTags } from "@/constants/tags";
@@ -14,6 +15,7 @@ import {
   useCategoryUpdateMutation,
 } from "@/lib/queries/category.query";
 import { CategoryValidation } from "@/lib/validations/category.validation";
+import { TCategory } from "@/types/category.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
@@ -23,8 +25,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import FeaturedSwitch from "../_components/FeaturedSwitch";
 import ShowOnTopMenuSwitch from "../_components/ShowOnTopMenuSwitch";
-import { TCategory } from "@/types/category.type";
-import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 
 const SingleCategoryPage = () => {
   const { id } = useParams();
@@ -49,6 +50,8 @@ const SingleCategoryPage = () => {
   const handleCategoryUpdate: SubmitHandler<
     Partial<z.infer<typeof CategoryValidation.create>>
   > = async (values) => {
+    if (values.parent === "select") delete values.parent;
+
     if (values.name) values.name = values.name.toLowerCase();
     try {
       const result = await updateCategoryFn({
@@ -84,6 +87,7 @@ const SingleCategoryPage = () => {
     name: category?.name || "",
     label: category?.label || "",
     parent: (category?.parent as TCategory)?._id?.toString() || "select",
+    image: category?.image?._id.toString() || "",
   };
 
   console.log(category);
@@ -126,6 +130,12 @@ const SingleCategoryPage = () => {
                 options={parentOptions}
               />
             )}
+
+            <MGAImageInput
+              name="image"
+              label="Image"
+              defaultValue={category?.image ? [category?.image] : []}
+            />
 
             <MGButton
               className="rounded-none self-start px-5 py-2 h-auto"
