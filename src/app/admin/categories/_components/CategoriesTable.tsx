@@ -88,7 +88,7 @@ const CategoriesTable = ({
               </td>
 
               <td>{item.name}</td>
-              <td className="capitalize">{item.label || item.name}</td>
+              <td>{item.label || item.name}</td>
               <td>{(item?.parent as TCategory)?.name || "N/A"}</td>
               <td>
                 <FeaturedSwitch
