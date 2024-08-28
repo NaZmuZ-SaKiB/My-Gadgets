@@ -1,3 +1,4 @@
+import { TMedia } from "./media.type";
 import { TUser } from "./user.type";
 
 export type TCategory = {
@@ -6,7 +7,7 @@ export type TCategory = {
   label: string;
   featured: boolean;
   showOnTopMenu: boolean;
-  image: string;
+  image?: TMedia;
   parent?: string | TCategory;
   subCategories: string[] | TCategory[];
 
