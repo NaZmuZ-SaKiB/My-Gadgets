@@ -32,7 +32,7 @@ const BannerSection = () => {
           loop: true,
         }}
         plugins={[plugin.current]}
-        className="rounded-2xl overflow-hidden mb-4"
+        className="rounded-lg sm:rounded-2xl overflow-hidden mb-4"
       >
         {/* -ml-0 because used pl-0 in item */}
         <CarouselContent className="-ml-0">
@@ -49,26 +49,26 @@ const BannerSection = () => {
         <CarouselNext className="right-3 bg-opacity-70 border-gray-300 backdrop-blur-sm" />
       </Carousel>
 
-      <div className="flex max-sm:hidden gap-4">
+      <div className="flex gap-3">
         <div className="flex-1">
           <Image
             src={images.defaultBanner1}
             alt="banner 1"
-            className="rounded-2xl w-full"
+            className="rounded-lg sm:rounded-2xl w-full"
           />
         </div>
         <div className="flex-1">
           <Image
             src={images.defaultBanner2}
             alt="banner 2"
-            className="rounded-2xl w-full"
+            className="rounded-lg sm:rounded-2xl w-full"
           />
         </div>
         <div className="flex-1 max-md:hidden">
           <Image
             src={images.defaultBanner3}
             alt="banner 3"
-            className="rounded-2xl w-full"
+            className="rounded-lg sm:rounded-2xl w-full"
           />
         </div>
       </div>
