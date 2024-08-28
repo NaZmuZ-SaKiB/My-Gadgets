@@ -74,7 +74,7 @@
   }
 
   .search-box-mobile {
-    @apply shadow-md shadow-gray-400 absolute w-full left-0 right-0 top-0 hidden;
+    @apply shadow-md shadow-slate-400/30 absolute w-full left-0 right-0 top-0 hidden;
   }
 
   #search-toggle:checked ~ .search-box-mobile {
