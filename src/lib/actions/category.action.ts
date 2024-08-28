@@ -73,6 +73,26 @@ export const categoryGetAllAction = async (params: string) => {
   return result;
 };
 
+export const categoryGetAllWithSubCatsAction = async () => {
+  const response = await fetch(`${backendUrl}/api/category/with-sub-cat`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  if (!result?.success) {
+    return {
+      data: [],
+    };
+  }
+
+  return result;
+};
+
 export const categoryGetByIdAction = async (id: string) => {
   const response = await fetch(`${backendUrl}/api/category/${id}`, {
     method: "GET",
