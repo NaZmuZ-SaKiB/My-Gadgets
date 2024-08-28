@@ -1,6 +1,5 @@
 "use client";
 
-import MGButton from "@/components/global/shared/MGButton";
 import { AQTags } from "@/constants/tags";
 import { useMediaCreateMutation } from "@/lib/queries/media.query";
 import { useQueryClient } from "@tanstack/react-query";
@@ -8,7 +7,11 @@ import { Plus } from "lucide-react";
 import { CldUploadWidget } from "next-cloudinary";
 import { toast } from "sonner";
 
-const UploadImageButton = () => {
+type TProps = {
+  children?: React.ReactNode;
+};
+
+const UploadImageButton = ({ children }: TProps) => {
   const queryClient = useQueryClient();
 
   const { mutateAsync: createImageFn } = useMediaCreateMutation();
@@ -53,8 +56,14 @@ const UploadImageButton = () => {
       onClose={onClose}
     >
       {({ open }) => (
-        <div className="size-[128px] border border-gray-300 text-gray-300 rounded-lg hover:border-primary hover:text-primary cursor-pointer">
-          <Plus className="size-full" onClick={() => open()} />
+        <div onClick={() => open()}>
+          {children ? (
+            children
+          ) : (
+            <div className="size-[128px] border border-gray-300 text-gray-300 rounded-lg hover:border-primary hover:text-primary cursor-pointer">
+              <Plus className="size-full" />
+            </div>
+          )}
         </div>
       )}
     </CldUploadWidget>
