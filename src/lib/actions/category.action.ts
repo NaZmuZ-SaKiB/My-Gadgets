@@ -1,13 +1,13 @@
 "use server";
 
 import { authKey, backendUrl } from "@/constants";
-import { TCategory } from "@/types/category.type";
 import { cookies } from "next/headers";
 
 export const categoryCreateAction = async (payload: {
   name: string;
   label: string;
   parent?: string;
+  image?: string;
 }) => {
   const response = await fetch(`${backendUrl}/api/category`, {
     method: "POST",
@@ -29,7 +29,12 @@ export const categoryUpdateAction = async ({
   payload,
 }: {
   id: string;
-  payload: Partial<TCategory>;
+  payload: {
+    name?: string;
+    label?: string;
+    parent?: string;
+    image?: string;
+  };
 }) => {
   const response = await fetch(`${backendUrl}/api/category/${id}`, {
     method: "PATCH",
@@ -73,6 +78,7 @@ export const categoryGetByIdAction = async (id: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: cookies().get(authKey)?.value || "",
     },
     cache: "no-store",
   });
