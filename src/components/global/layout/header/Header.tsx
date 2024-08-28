@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import SearchBox from "./SearchBox";
 import { Search } from "lucide-react";
 import Navbar from "./Navbar";
+import MobileMenu from "./MobileMenu";
 
 const font = Permanent_Marker({
   weight: "400",
@@ -18,6 +19,8 @@ const Header = () => {
       <div className="bg-white border-b border-gray-300 header max-xl:sticky top-0 z-[100]">
         <header className="mg-container py-2 xl:py-3">
           <div className="flex gap-10 items-center justify-between">
+            <MobileMenu />
+
             <Link
               href="/"
               className="shrink-0 max-xl:absolute left-[50%] transform max-xl:-translate-x-[50%] flex items-center gap-2"
