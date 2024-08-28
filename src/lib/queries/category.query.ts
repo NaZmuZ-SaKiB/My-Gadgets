@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   categoryCreateAction,
   categoryGetAllAction,
+  categoryGetAllWithSubCatsAction,
   categoryGetByIdAction,
   categoryRemoveAction,
   categoryToggleFeaturedAction,
@@ -24,6 +25,12 @@ export const useCategoryGetAllQuery = (params: string) =>
   useQuery({
     queryKey: [AQTags.CATEGORY, AQTags.ALL, params],
     queryFn: () => categoryGetAllAction(params),
+  });
+
+export const useCategoryGetAllWithSubCatQuery = () =>
+  useQuery({
+    queryKey: [AQTags.CATEGORY, AQTags.ALL, "with-sub-cats"],
+    queryFn: () => categoryGetAllWithSubCatsAction(),
   });
 
 export const useCategoryGetByIdQuery = (id: string) =>
