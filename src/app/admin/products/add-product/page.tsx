@@ -19,6 +19,8 @@ import ProductSpecsForm from "../_components/ProductSpecsForm";
 import ProductFiltersForm from "../_components/ProductFiltersForm";
 import SelectCategories from "../_components/SelectCategories";
 import ProductImagesForm from "../_components/ProductImagesForm";
+import { toast } from "sonner";
+import { AQTags } from "@/constants/tags";
 
 const defaultValues = {
   name: "",
@@ -68,6 +70,22 @@ const AddProductPage = () => {
     // Generate slug
     if (!values.slug) {
       values.slug = generateSlug(values.name);
+    }
+
+    try {
+      const result = await createProductFn(values);
+
+      if (result?.success) {
+        toast.success(result?.message);
+        queryClient.invalidateQueries({
+          queryKey: [AQTags.PRODUCT, AQTags.ALL],
+          exact: false,
+        });
+      } else {
+        toast.error(result?.message || "A server error occurred.");
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "A client error occurred.");
     }
   };
 
