@@ -1,8 +1,13 @@
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import ProductsData from "./_components/ProductsData";
+
 const ProductsPage = () => {
   return (
-    <div>
-      <h1>ProductsPage</h1>
-    </div>
+    <APageContainer>
+      <APageHeading title="Products" />
+      <ProductsData />
+    </APageContainer>
   );
 };
 
