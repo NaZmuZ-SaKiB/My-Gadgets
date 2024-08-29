@@ -25,6 +25,8 @@ export const useCategoryGetAllQuery = (params: string) =>
   useQuery({
     queryKey: [AQTags.CATEGORY, AQTags.ALL, params],
     queryFn: () => categoryGetAllAction(params),
+    refetchOnWindowFocus: "always",
+    refetchOnMount: "always",
   });
 
 export const useCategoryGetAllWithSubCatQuery = () =>
