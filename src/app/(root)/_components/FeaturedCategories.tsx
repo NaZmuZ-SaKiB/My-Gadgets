@@ -1,6 +1,7 @@
 import { categoryGetAllAction } from "@/lib/actions/category.action";
 import { TCategory } from "@/types/category.type";
 import Image from "next/image";
+import Link from "next/link";
 
 const FeaturedCategories = async () => {
   const params = new URLSearchParams();
@@ -39,7 +40,8 @@ const FeaturedCategories = async () => {
 
       <div className="flex flex-wrap gap-3 md:gap-4 mt-5 md:mt-8">
         {categories.map((category, i) => (
-          <div
+          <Link
+            href={`/shop/${category.name}`}
             key={`featured-category-${category._id}`}
             className={`rounded-xl flex flex-col justify-center items-center p-4 gap-4 flex-1 basis-32 sm:basis-48 hover:shadow-lg transition-shadow duration-500 cursor-pointer`}
             style={{ backgroundColor: colors[i] }}
@@ -54,7 +56,7 @@ const FeaturedCategories = async () => {
             <span className="font-bold text-gray-700 text-center max-sm:text-sm">
               {category.name}
             </span>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
