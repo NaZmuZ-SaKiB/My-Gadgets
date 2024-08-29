@@ -17,6 +17,8 @@ import { z } from "zod";
 import ProductBasicInfoForm from "../_components/ProductBasicInfoForm";
 import ProductSpecsForm from "../_components/ProductSpecsForm";
 import ProductFiltersForm from "../_components/ProductFiltersForm";
+import SelectCategories from "../_components/SelectCategories";
+import ProductImagesForm from "../_components/ProductImagesForm";
 
 const defaultValues = {
   name: "",
@@ -37,7 +39,7 @@ const defaultValues = {
   connectivity: [],
   chargingPort: "",
   weight: 0,
-  powerSource: "",
+  powerSource: [],
   camera: 0,
   displaySize: 0,
   compatibility: [],
@@ -55,6 +57,8 @@ const AddProductPage = () => {
   const handleSubmit: SubmitHandler<
     z.infer<typeof ProductValidation.create>
   > = async (values) => {
+    console.log("submit");
+    console.log(values);
     values.categories = selectedCategories;
 
     if (values.weight === 0) delete values.weight;
@@ -65,8 +69,6 @@ const AddProductPage = () => {
     if (!values.slug) {
       values.slug = generateSlug(values.name);
     }
-
-    console.log(values);
   };
 
   return (
@@ -96,6 +98,16 @@ const AddProductPage = () => {
             <ProductSpecsForm />
 
             <ProductFiltersForm />
+          </div>
+
+          {/* Right Side */}
+          <div className="space-y-4">
+            <SelectCategories
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+            />
+
+            <ProductImagesForm />
           </div>
         </AGrid>
       </MGForm>
