@@ -65,7 +65,7 @@ const MGAInput = ({
               {description}
             </FormDescription>
           )}
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="font-normal !mt-0 col-span-2" />
         </FormItem>
       )}
     />
