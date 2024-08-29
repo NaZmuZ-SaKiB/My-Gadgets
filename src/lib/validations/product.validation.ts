@@ -18,7 +18,7 @@ const create = z.object({
     .number({
       required_error: "Quantity is required",
     })
-    .min(1, "Quantity must be at least 1"),
+    .min(0, "Quantity must be at least 0"),
   salePrice: z.coerce
     .number({
       required_error: "Sale price is required",
@@ -33,7 +33,7 @@ const create = z.object({
     .number({
       required_error: "Shipping cost is required",
     })
-    .min(1, "Shipping cost must be at least 1"),
+    .min(0, "Shipping cost must be at least 0"),
   badgeText: z.string().optional(),
   images: z.array(z.string()).min(1, "At least one image is required"),
   shortDescription: z.string({
