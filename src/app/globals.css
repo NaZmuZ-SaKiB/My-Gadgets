@@ -101,7 +101,7 @@
 
   .admin-table td,
   .admin-table th {
-    @apply px-3 py-2 border border-collapse;
+    @apply px-3 py-2 border border-collapse max-lg:text-xs;
   }
 
   .admin-table tr:nth-child(even) {
