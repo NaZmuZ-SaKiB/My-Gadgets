@@ -44,7 +44,10 @@ const create = z
       .refine((value) => value.length !== 0, {
         message: "Short description is required",
       }),
-    description: z.string(),
+    description: z
+      .string()
+      .trim()
+      .transform((value) => value.replace("<p><br></p>", "")),
     specifications: z
       .string({
         required_error: "Specifications is required",
