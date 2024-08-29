@@ -51,7 +51,9 @@ const MGASelect = ({
           })}
         >
           {label && (
-            <FormLabel className={"font-medium text-nowrap"}>{label}</FormLabel>
+            <FormLabel className={"font-medium text-nowrap text-xs"}>
+              {label}
+            </FormLabel>
           )}
           <Select value={field.value} onValueChange={field.onChange}>
             <FormControl>
