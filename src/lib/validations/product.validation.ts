@@ -14,18 +14,26 @@ const create = z.object({
   model: z.string({
     required_error: "Model is required",
   }),
-  quantity: z.number({
-    required_error: "Quantity is required",
-  }),
-  salePrice: z.number({
-    required_error: "Sale price is required",
-  }),
-  regularPrice: z.number({
-    required_error: "Regular price is required",
-  }),
-  shippingCost: z.number({
-    required_error: "Shipping cost is required",
-  }),
+  quantity: z.coerce
+    .number({
+      required_error: "Quantity is required",
+    })
+    .min(1, "Quantity must be at least 1"),
+  salePrice: z.coerce
+    .number({
+      required_error: "Sale price is required",
+    })
+    .min(1, "Sale price must be at least 1"),
+  regularPrice: z.coerce
+    .number({
+      required_error: "Regular price is required",
+    })
+    .min(1, "Regular price must be at least 1"),
+  shippingCost: z.coerce
+    .number({
+      required_error: "Shipping cost is required",
+    })
+    .min(1, "Shipping cost must be at least 1"),
   badgeText: z.string().optional(),
   images: z.array(z.string()).min(1, "At least one image is required"),
   shortDescription: z.string({
@@ -44,10 +52,10 @@ const create = z.object({
   operatingSystem: z.string().optional(),
   connectivity: z.array(z.string()).optional(),
   chargingPort: z.string().optional(),
-  weight: z.number().optional(),
+  weight: z.coerce.number().optional(),
   powerSource: z.string().optional(),
-  camera: z.number().optional(),
-  displaySize: z.number().optional(),
+  camera: z.coerce.number().optional(),
+  displaySize: z.coerce.number().optional(),
   compatibility: z.array(z.string()).optional(),
 });
 
