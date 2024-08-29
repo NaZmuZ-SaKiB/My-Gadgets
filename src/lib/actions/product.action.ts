@@ -3,8 +3,12 @@
 import { authKey, backendUrl } from "@/constants";
 import { TProduct } from "@/types/product.type";
 import { cookies } from "next/headers";
+import { z } from "zod";
+import { ProductValidation } from "../validations/product.validation";
 
-export const productCreateAction = async (payload: TProduct) => {
+export const productCreateAction = async (
+  payload: z.infer<typeof ProductValidation.create>
+) => {
   const response = await fetch(`${backendUrl}/api/product`, {
     method: "POST",
     headers: {
