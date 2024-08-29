@@ -22,7 +22,7 @@ const ProductSpecsForm = () => {
 
         <TabsContent value="shortSpecification">
           <MGARichInput
-            name="shortSpecification"
+            name="shortDescription"
             label="Short Specification*"
             height="200px"
           />
@@ -30,7 +30,7 @@ const ProductSpecsForm = () => {
 
         <TabsContent value="specification">
           <MGARichInput
-            name="specification"
+            name="specifications"
             label="Specification*"
             height="400px"
           />
