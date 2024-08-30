@@ -89,6 +89,24 @@
 
   /* -------------------------------------------- */
 
+  /* --------- Countdown Timer --------- */
+
+  .countdown-timer-item {
+    @apply bg-white flex-1 shadow-sm flex flex-col items-center justify-center py-3 px-2 rounded-lg hover:[&>span:first-child]:-translate-y-1;
+  }
+
+  .countdown-timer-item span:first-child {
+    @apply text-lg xs:text-xl text-primary relative transform transition-transform duration-300;
+  }
+
+  .countdown-timer-item span:last-child {
+    @apply max-xs:text-sm text-slate-500;
+  }
+
+  /* --------- Countdown Timer End --------- */
+
+  /* -------------------------------------------- */
+
   /* --------- Admin Table --------- */
 
   .admin-table {
