@@ -2,8 +2,6 @@
 
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import MGAImageInput from "@/components/admin/forms/MGAImageInput";
-import { TProduct } from "@/types/product.type";
-import { z } from "zod";
 
 const ProductImagesForm = ({ defaultValues }: { defaultValues?: any }) => {
   return (
@@ -16,6 +14,7 @@ const ProductImagesForm = ({ defaultValues }: { defaultValues?: any }) => {
           label="Gallery Images*"
           description="First selected image will be the featured image."
           defaultValue={defaultValues?.images || []}
+          reset={false}
           multiple
         />
       </div>
