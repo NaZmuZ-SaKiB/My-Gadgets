@@ -9,7 +9,7 @@ const SearchBox = () => {
         autoComplete="off"
       />
       <button className="flex shrink-0 items-center justify-center">
-        <Search className="h-6 text-primary-1" />
+        <Search className="h-6 text-primary" />
       </button>
     </div>
   );
