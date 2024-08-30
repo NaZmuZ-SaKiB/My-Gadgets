@@ -91,7 +91,7 @@ const MediaModal = ({
                       width={128}
                       height={128}
                       alt={image.name}
-                      className="size-full object-cover"
+                      className="size-full object-contain"
                     />
                   </div>
                   <div
