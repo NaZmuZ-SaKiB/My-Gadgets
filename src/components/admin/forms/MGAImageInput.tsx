@@ -12,7 +12,7 @@ import { TMedia } from "@/types/media.type";
 
 import { Plus, X } from "lucide-react";
 import Image from "next/image";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import MediaModal from "../shared/MediaModal";
 import UploadImageButton from "@/app/admin/media/_components/UploadImageButton";
@@ -24,6 +24,7 @@ type TProps = {
   defaultValue?: TMedia[];
   multiple?: boolean;
   description?: string;
+  reset?: boolean;
 };
 
 const MGAImageInput = ({
@@ -32,8 +33,9 @@ const MGAImageInput = ({
   defaultValue = [],
   multiple = false,
   description,
+  reset = true,
 }: TProps) => {
-  const { control, setValue } = useFormContext();
+  const { control, setValue, formState } = useFormContext();
 
   const [images, setImages] = useState<TMedia[]>(defaultValue);
   const [imageIds, setImageIds] = useState<string[]>(
@@ -60,6 +62,12 @@ const MGAImageInput = ({
       setValue(name, singleImageId);
     }
   }, [imageIds, singleImageId, setValue, name, multiple]);
+
+  useEffect(() => {
+    if (formState.isSubmitted && reset) {
+      setImages(defaultValue);
+    }
+  }, [formState, defaultValue, reset]);
 
   const handleRemoveImage = (id: string) => {
     if (multiple) {
