@@ -34,7 +34,7 @@ const FeaturedCategories = async () => {
 
   return (
     <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-2xl md:text-3xl text-gray-700">
+      <h2 className="font-bold text-2xl md:text-3xl text-slate-700">
         Featured Categories
       </h2>
 
