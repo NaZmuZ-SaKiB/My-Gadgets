@@ -14,6 +14,10 @@ import CartIcon from "@/assets/icons/icon-cart.svg";
 import HeartIcon from "@/assets/icons/icon-heart.svg";
 import CompareIcon from "@/assets/icons/icon-compare.svg";
 import UserIcon from "@/assets/icons/icon-user.svg";
+import ServiceImg1 from "@/assets/icons/service-1.svg";
+import ServiceImg2 from "@/assets/icons/service-2.svg";
+import ServiceImg3 from "@/assets/icons/service-3.svg";
+import ServiceImg4 from "@/assets/icons/service-4.svg";
 
 export const images = {
   defaultImage: DefaultImage,
@@ -33,4 +37,8 @@ export const icons = {
   heart: HeartIcon,
   compare: CompareIcon,
   user: UserIcon,
+  serviceImg1: ServiceImg1,
+  serviceImg2: ServiceImg2,
+  serviceImg3: ServiceImg3,
+  serviceImg4: ServiceImg4,
 };
