@@ -1,3 +1,4 @@
+import Footer from "@/components/global/layout/Footer/Footer";
 import Header from "@/components/global/layout/header/Header";
 
 const UserLayout = ({
@@ -9,6 +10,7 @@ const UserLayout = ({
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 };
