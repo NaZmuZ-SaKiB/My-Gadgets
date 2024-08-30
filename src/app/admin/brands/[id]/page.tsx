@@ -91,7 +91,7 @@ const SingleBrandPage = () => {
             defaultValues={defaultValues}
             reset={false}
           >
-            <h2 className="font-medium text-gray-700 text-lg mb-1">
+            <h2 className="font-medium text-slate-700 text-lg mb-1">
               Update Brand
             </h2>
 
