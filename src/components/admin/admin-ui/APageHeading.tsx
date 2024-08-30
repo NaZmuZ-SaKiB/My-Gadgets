@@ -28,7 +28,7 @@ const APageHeading = ({
             <ChevronLeft className="size-7" />
           </span>
         )}
-        <h1 className={cn("text-gray-700 font-bold text-xl", className)}>
+        <h1 className={cn("text-slate-700 font-bold text-xl", className)}>
           {title}
         </h1>
       </div>

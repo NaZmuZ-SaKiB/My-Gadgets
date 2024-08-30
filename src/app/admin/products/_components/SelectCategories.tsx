@@ -57,7 +57,7 @@ const SelectCategories = ({
   }
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-gray-700">Select Categories*</h2>
+      <h2 className="font-medium text-slate-700">Select Categories*</h2>
       <p className="mb-5 text-slate-500 text-sm">
         This Product will be available in the selected categories pages.
       </p>

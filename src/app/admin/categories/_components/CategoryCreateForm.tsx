@@ -80,7 +80,7 @@ const CategoryCreateForm = () => {
 
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-gray-700 text-lg mb-5">Add Category</h2>
+      <h2 className="font-medium text-slate-700 text-lg mb-5">Add Category</h2>
 
       <MGForm
         onSubmit={handleCategoryCreate}

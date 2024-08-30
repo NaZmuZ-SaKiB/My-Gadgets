@@ -11,7 +11,7 @@ const AFloatingBox = ({ children, className }: TProps) => {
   return (
     <div
       className={cn(
-        "p-2 xs:p-4 rounded-xl bg-white hover:shadow-xl hover:shadow-gray-200 transition-shadow duration-300",
+        "p-2 xs:p-4 rounded-xl bg-white hover:shadow-xl hover:shadow-slate-200 transition-shadow duration-300",
         className
       )}
     >

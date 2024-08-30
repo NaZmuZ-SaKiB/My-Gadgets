@@ -29,7 +29,7 @@ const DataLimitSelect = () => {
       defaultValue={params.get("limit") || "10"}
       onValueChange={(value) => handleChange(value)}
     >
-      <SelectTrigger className="no-focus gap-2 border-gray-200 w-[80px]">
+      <SelectTrigger className="no-focus gap-2 border-slate-200 w-[80px]">
         <SelectValue placeholder="Limit" />
       </SelectTrigger>
 

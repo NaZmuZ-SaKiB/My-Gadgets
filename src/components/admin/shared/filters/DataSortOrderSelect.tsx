@@ -26,7 +26,7 @@ const DataSortOrderSelect = () => {
   };
   return (
     <Select defaultValue="desc" onValueChange={(value) => handleChange(value)}>
-      <SelectTrigger className="no-focus gap-2 border-gray-200 w-[90px]">
+      <SelectTrigger className="no-focus gap-2 border-slate-200 w-[90px]">
         <SelectValue placeholder="Sort By" />
       </SelectTrigger>
 

@@ -6,7 +6,7 @@ import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 const ProductImagesForm = ({ defaultValues }: { defaultValues?: any }) => {
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-gray-700 text-lg mb-5">Images</h2>
+      <h2 className="font-medium text-slate-700 text-lg mb-5">Images</h2>
 
       <div className="space-y-3">
         <MGAImageInput

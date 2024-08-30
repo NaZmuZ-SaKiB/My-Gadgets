@@ -109,7 +109,7 @@ const CategoriesTable = ({
                     variant="outline"
                     className="h-8 no-focus bg-transparent border-slate-300 hover:bg-slate-600 hover:border-slate-600 group"
                   >
-                    <Eye className="size-4 text-gray-700 group-hover:text-white" />
+                    <Eye className="size-4 text-slate-700 group-hover:text-white" />
                   </Button>
 
                   <Link

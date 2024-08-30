@@ -30,7 +30,7 @@ const DataSortBySelect = ({ options }: { options: string[] }) => {
       defaultValue="createdAt"
       onValueChange={(value) => handleChange(value)}
     >
-      <SelectTrigger className="no-focus gap-2 border-gray-200 w-[150px]">
+      <SelectTrigger className="no-focus gap-2 border-slate-200 w-[150px]">
         <SelectValue placeholder="Sort By" />
       </SelectTrigger>
 

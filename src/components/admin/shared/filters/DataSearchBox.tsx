@@ -69,7 +69,7 @@ const DataSearchBox = () => {
         />
 
         <X
-          className="size-5 absolute right-2 top-2.5 text-gray-500 cursor-pointer"
+          className="size-5 absolute right-2 top-2.5 text-slate-500 cursor-pointer"
           onClick={handleClearSearch}
         />
       </div>

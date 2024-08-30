@@ -60,7 +60,7 @@ const UploadImageButton = ({ children }: TProps) => {
           {children ? (
             children
           ) : (
-            <div className="size-[128px] border border-gray-300 text-gray-300 rounded-lg hover:border-primary hover:text-primary cursor-pointer">
+            <div className="size-[128px] border border-slate-300 text-slate-300 rounded-lg hover:border-primary hover:text-primary cursor-pointer">
               <Plus className="size-full" />
             </div>
           )}
