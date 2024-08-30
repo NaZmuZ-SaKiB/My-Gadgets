@@ -13,6 +13,10 @@
     @apply max-w-screen-2xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 2xl:px-0;
   }
 
+  .ten-products-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 md:auto-rows-[0] md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 xl:grid-cols-5 gap-2 sm:gap-4 justify-between overflow-hidden;
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     @apply hidden;
   }
