@@ -45,8 +45,8 @@ const BannerSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-3 bg-opacity-70 border-gray-300 backdrop-blur-sm" />
-        <CarouselNext className="right-3 bg-opacity-70 border-gray-300 backdrop-blur-sm" />
+        <CarouselPrevious className="left-3 bg-opacity-70 border-slate-300 backdrop-blur-sm" />
+        <CarouselNext className="right-3 bg-opacity-70 border-slate-300 backdrop-blur-sm" />
       </Carousel>
 
       <div className="flex gap-3">
