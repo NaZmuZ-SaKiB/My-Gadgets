@@ -50,8 +50,8 @@ const ProductSlider = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-3 top-[40%] bg-opacity-60 border-gray-300 backdrop-blur-sm" />
-      <CarouselNext className="right-3 top-[40%] bg-opacity-60 border-gray-300 backdrop-blur-sm" />
+      <CarouselPrevious className="left-3 top-[40%] bg-opacity-60 border-slate-300 backdrop-blur-sm" />
+      <CarouselNext className="right-3 top-[40%] bg-opacity-60 border-slate-300 backdrop-blur-sm" />
     </Carousel>
   );
 };

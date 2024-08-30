@@ -16,7 +16,7 @@ const font = Permanent_Marker({
 const Header = () => {
   return (
     <>
-      <div className="bg-white border-b border-gray-300 header max-xl:sticky top-0 z-[100]">
+      <div className="bg-white border-b border-slate-300 header max-xl:sticky top-0 z-[100]">
         <header className="mg-container py-2 xl:py-3">
           <div className="flex gap-10 items-center justify-between">
             <MobileMenu />
@@ -45,7 +45,7 @@ const Header = () => {
             <div className="flex items-center gap-6">
               <Link
                 href="/compare"
-                className="hidden xl:block text-gray-600 hover:text-gray-800 cursor-pointer"
+                className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer"
               >
                 <Image
                   src={icons.compare}
@@ -57,7 +57,7 @@ const Header = () => {
 
               <Link
                 href="/wishlist"
-                className="hidden xl:block text-gray-600 hover:text-gray-800 cursor-pointer"
+                className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer"
               >
                 <Image
                   src={icons.heart}
@@ -73,12 +73,12 @@ const Header = () => {
                 </label>
               </div>
 
-              <div className="shrink-0 text-gray-600 hover:text-gray-800 cursor-pointer">
+              <div className="shrink-0 text-slate-600 hover:text-slate-800 cursor-pointer">
                 <Image src={icons.cart} alt="cart" className="size-6 mx-auto" />
                 <span className="hidden xl:block text-sm">Cart</span>
               </div>
 
-              <div className="hidden xl:block text-gray-600 hover:text-gray-800 cursor-pointer">
+              <div className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer">
                 <Image
                   src={icons.user}
                   alt="account"
