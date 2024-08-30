@@ -59,8 +59,6 @@ const AddProductPage = () => {
   const handleSubmit: SubmitHandler<
     z.infer<typeof ProductValidation.create>
   > = async (values) => {
-    console.log("submit");
-    console.log(values);
     values.categories = selectedCategories;
 
     if (values.weight === 0) delete values.weight;
@@ -68,9 +66,7 @@ const AddProductPage = () => {
     if (values.displaySize === 0) delete values.displaySize;
 
     // Generate slug
-    if (!values.slug) {
-      values.slug = generateSlug(values.name);
-    }
+    values.slug = generateSlug(values.name);
 
     try {
       const result = await createProductFn(values);
@@ -81,6 +77,7 @@ const AddProductPage = () => {
           queryKey: [AQTags.PRODUCT, AQTags.ALL],
           exact: false,
         });
+        router.push("/admin/products");
       } else {
         toast.error(result?.message || "A server error occurred.");
       }
