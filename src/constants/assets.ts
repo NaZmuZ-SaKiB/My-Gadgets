@@ -7,7 +7,7 @@ import DefaultSliderImage2 from "@/assets/images/slider2.webp";
 import DefaultBanner1 from "@/assets/images/banner1.webp";
 import DefaultBanner2 from "@/assets/images/banner2.webp";
 import DefaultBanner3 from "@/assets/images/banner3.webp";
-import DefaultBanner4 from "@/assets/images/banner4.jpg";
+import DefaultBanner4 from "@/assets/images/banner4.webp";
 
 // Import icons
 import CartIcon from "@/assets/icons/icon-cart.svg";
