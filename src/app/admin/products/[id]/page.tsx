@@ -58,6 +58,7 @@ const SingleProductPage = () => {
     if (values.camera === 0) delete values.camera;
     if (values.displaySize === 0) delete values.displaySize;
     if (!values.chargingPort) delete values.chargingPort;
+    if (!values.operatingSystem) delete values.operatingSystem;
 
     // Generate slug
     if (values.name) {
