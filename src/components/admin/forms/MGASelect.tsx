@@ -55,7 +55,13 @@ const MGASelect = ({
               {label}
             </FormLabel>
           )}
-          <Select value={field.value} onValueChange={field.onChange}>
+          <Select
+            value={field.value}
+            onValueChange={(value) => {
+              if (value === "select") return;
+              else field.onChange(value);
+            }}
+          >
             <FormControl>
               <SelectTrigger
                 className={cn(
