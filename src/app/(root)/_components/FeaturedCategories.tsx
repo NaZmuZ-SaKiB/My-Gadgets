@@ -53,7 +53,7 @@ const FeaturedCategories = async () => {
               width={64}
               className="object-contain"
             />
-            <span className="font-bold text-gray-700 text-center max-sm:text-sm">
+            <span className="font-bold text-slate-700 text-center max-sm:text-sm">
               {category.name}
             </span>
           </Link>
