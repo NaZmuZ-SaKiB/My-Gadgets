@@ -34,30 +34,30 @@ const branchesData = [
 
 const Footer = () => {
   return (
-    <div className="border-t border-slate-300 py-8">
+    <div className="border-t border-slate-300 pt-8">
       <footer className="container">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-3 gap-y-8 max-md:place-items-center">
           {/* Column 1 */}
           <div className="w-full">
-            <div className="mb-6">
+            <div className="mb-5">
               <Image
                 src={images.logo}
                 alt="logo"
-                width={200}
-                height={200}
+                width={100}
+                height={100}
                 className="max-sm:mx-auto max-w-[200px]"
               />
             </div>
-            <p className="text-slate-500 text-lg font-semibold mb-10 max-sm:text-center lg:max-w-[90%] xl:max-w-[70%]">
+            <p className="text-slate-500 text-lg font-semibold mb-5 max-sm:text-center lg:max-w-[90%] xl:max-w-[70%]">
               Awesome Gadgets store. We sell Official IT products.
             </p>
-            <p className="flex flex-wrap items-center gap-2 text-slate-500 max-sm:justify-center">
-              <Mail className="text-primary-1" />
+            <p className="flex flex-wrap items-center gap-2 text-slate-500 max-sm:justify-center text-sm">
+              <Mail className="size-5 text-primary" />
               <span className="font-semibold">Email:</span>
               <span>sakibnazmuz01@gmail.com</span>
             </p>
-            <p className="flex items-center gap-2 text-slate-500 mt-3 max-sm:justify-center">
-              <Clock className="text-primary-1" />
+            <p className="flex items-center gap-2 text-slate-500 mt-3 max-sm:justify-center text-sm">
+              <Clock className="size-5 text-primary" />
               <span className="font-semibold">Hours:</span>
               <span>10:00AM - 8:00PM</span>
             </p>
@@ -133,6 +133,12 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <div>
+        <hr className="border-slate-300 mt-8" />
+        <p className="text-slate-500 px-2 py-4 text-center text-sm">
+          © 2024 My Gadgets. All Rights Reserved.
+        </p>
+      </div>
     </div>
   );
 };
