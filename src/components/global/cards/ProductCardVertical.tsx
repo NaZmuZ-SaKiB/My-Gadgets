@@ -32,7 +32,7 @@ const ProductCardVertical = ({ product, size = "md" }: TProps) => {
           </h3>
         </Link>
         <div className="flex items-center gap-3">
-          <span className="font-bold text-primary-1 text-xl">
+          <span className="font-bold text-primary text-xl">
             {formatCurrency(product.salePrice)}
           </span>
           <span className="text-slate-400 line-through decoration-2 font-semibold text-sm">
