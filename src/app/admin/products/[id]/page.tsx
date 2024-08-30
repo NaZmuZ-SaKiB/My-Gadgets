@@ -57,6 +57,7 @@ const SingleProductPage = () => {
     if (values.weight === 0) delete values.weight;
     if (values.camera === 0) delete values.camera;
     if (values.displaySize === 0) delete values.displaySize;
+    if (!values.chargingPort) delete values.chargingPort;
 
     // Generate slug
     if (values.name) {
@@ -137,7 +138,7 @@ const SingleProductPage = () => {
         className="gap-4"
         reset={false}
       >
-        <APageHeading title="Product">
+        <APageHeading title="Product" backButton>
           <MGButton
             type="submit"
             className="rounded-none self-start px-5 py-2 h-auto"
