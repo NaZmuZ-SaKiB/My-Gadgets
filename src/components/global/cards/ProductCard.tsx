@@ -1,7 +1,9 @@
 import { TProduct } from "@/types/product.type";
+import { formatCurrency } from "@/utils/currencyFormat";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import MGButton from "../shared/MGButton";
 
 type TProps = {
   product: TProduct;
@@ -56,16 +58,16 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
         <div className="flex max-xs:flex-col max-xs:items-center justify-between gap-4 items-end">
           <div className="flex items-center gap-y-1 gap-x-3 flex-wrap">
             <span className="font-bold text-primary-1 text-xl">
-              {product.salePrice}৳
+              {formatCurrency(product.salePrice)}
             </span>
             <span className="text-slate-400 line-through decoration-2 font-semibold text-sm">
-              {product.regularPrice}৳
+              {formatCurrency(product.regularPrice)}
             </span>
           </div>
-          <button className="flex font-semibold justify-center max-xs:w-full items-center gap-2 rounded-md bg-primary-3 hover:bg-primary-1 text-primary-1 hover:text-primary-3 px-4 py-1.5 max-xs:text-sm transition-all duration-300 no-focus">
+          <MGButton className="rounded-lg gap-2">
             <ShoppingCart className="size-3 xs:size-4" />
             <span>Add</span>
-          </button>
+          </MGButton>
         </div>
       </div>
 
