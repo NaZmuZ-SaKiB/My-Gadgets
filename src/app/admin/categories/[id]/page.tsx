@@ -135,6 +135,7 @@ const SingleCategoryPage = () => {
               name="image"
               label="Image"
               defaultValue={category?.image ? [category?.image] : []}
+              reset={false}
             />
 
             <MGButton
