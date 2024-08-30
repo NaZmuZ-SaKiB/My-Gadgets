@@ -60,10 +60,7 @@ const mainValidation = z.object({
     .string({
       required_error: "Brand is required",
     })
-    .min(1, "Brand is required")
-    .refine((value) => value !== "select", {
-      message: "Please select a brand",
-    }),
+    .min(1, "Brand is required"),
   categories: z.array(z.string()).optional(),
   operatingSystem: z.string().optional(),
   connectivity: z
