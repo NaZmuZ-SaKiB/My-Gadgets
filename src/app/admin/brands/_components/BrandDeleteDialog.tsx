@@ -78,7 +78,7 @@ const BrandDeleteDialog = ({ brands, setBrands, children }: TProps) => {
             className="size-4"
             onChange={(e) => setDisabled(!e.target.checked)}
           />{" "}
-          <span className="text-gray-700">Yes, I understand.</span>
+          <span className="text-slate-700">Yes, I understand.</span>
         </label>
 
         <AlertDialogFooter>

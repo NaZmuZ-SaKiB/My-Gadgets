@@ -96,7 +96,7 @@
   }
 
   .admin-table tbody {
-    @apply text-gray-500 text-sm;
+    @apply text-slate-500 text-sm;
   }
 
   .admin-table th {

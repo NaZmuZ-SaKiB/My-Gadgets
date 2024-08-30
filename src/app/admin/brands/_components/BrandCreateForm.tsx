@@ -45,7 +45,7 @@ const BrandCreateForm = () => {
 
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-gray-700 text-lg mb-5">Add Brand</h2>
+      <h2 className="font-medium text-slate-700 text-lg mb-5">Add Brand</h2>
 
       <MGForm
         onSubmit={handleBrandCreate}
