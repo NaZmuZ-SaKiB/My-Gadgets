@@ -64,6 +64,7 @@ const AddProductPage = () => {
     if (values.weight === 0) delete values.weight;
     if (values.camera === 0) delete values.camera;
     if (values.displaySize === 0) delete values.displaySize;
+    if (!values.chargingPort) delete values.chargingPort;
 
     // Generate slug
     values.slug = generateSlug(values.name);
