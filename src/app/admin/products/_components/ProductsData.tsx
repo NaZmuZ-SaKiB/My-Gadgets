@@ -13,7 +13,7 @@ import { useState } from "react";
 const ProductsData = () => {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   return (
-    <div className="flex flex-col gap-3 h-full">
+    <div className="flex flex-col gap-3">
       <AFloatingBox className="flex flex-col gap-2">
         <div className="flex gap-2 flex-wrap">
           <SelectedItemsCount count={selectedProducts.length} />
