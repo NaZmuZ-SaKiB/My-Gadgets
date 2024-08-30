@@ -57,7 +57,7 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
         </div>
         <div className="flex max-xs:flex-col max-xs:items-center justify-between gap-4 items-end">
           <div className="flex items-center gap-y-1 gap-x-3 flex-wrap">
-            <span className="font-bold text-primary-1 text-xl">
+            <span className="font-bold text-primary text-xl">
               {formatCurrency(product.salePrice)}
             </span>
             <span className="text-slate-400 line-through decoration-2 font-semibold text-sm">
