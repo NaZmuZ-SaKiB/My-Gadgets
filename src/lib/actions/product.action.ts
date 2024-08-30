@@ -29,7 +29,7 @@ export const productUpdateAction = async ({
   payload,
 }: {
   id: string;
-  payload: Partial<TProduct>;
+  payload: Partial<z.infer<typeof ProductValidation.create>>;
 }) => {
   const response = await fetch(`${backendUrl}/api/product/${id}`, {
     method: "PATCH",
