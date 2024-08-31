@@ -9,7 +9,7 @@ import MGButton from "../shared/MGButton";
 const FlashSaleCard = ({ product }: { product: TProduct }) => {
   return (
     <div className="group">
-      <div className="border border-gray-300 rounded-2xl overflow-hidden relative cursor-pointer">
+      <div className="border border-slate-300 rounded-2xl overflow-hidden relative cursor-pointer">
         <div className="relative w-[90%] mx-auto aspect-square">
           <Image
             src={product.images[0].secureUrl}
@@ -18,7 +18,7 @@ const FlashSaleCard = ({ product }: { product: TProduct }) => {
             className="p-5 object-contain object-center"
           />
         </div>
-        <div className="absolute left-0 top-0 right-0 bottom-0 bg-gray-900 bg-opacity-10"></div>
+        <div className="absolute left-0 top-0 right-0 bottom-0 bg-slate-900 bg-opacity-10"></div>
       </div>
 
       <div className="w-[90%] mx-auto -mt-[8rem] relative group-hover:-mt-[8.5rem] transition-all duration-300 ease-in-out">
@@ -26,9 +26,9 @@ const FlashSaleCard = ({ product }: { product: TProduct }) => {
           <CountDownTimer />
         </div>
 
-        <div className="bg-white p-3 sm:p-5 flex h-[11rem] sm:h-[10rem] flex-col justify-between border border-gray-50 shadow-lg rounded-xl">
+        <div className="bg-white p-3 sm:p-5 flex h-[11rem] sm:h-[10rem] flex-col justify-between border border-slate-50 shadow-lg rounded-xl">
           <Link href={`/products/${product.slug}/${product._id}`}>
-            <h3 className="font-bold text-gray-700 mb-3 max-xs:text-center hover:underline underline-offset-2 cursor-pointer">
+            <h3 className="font-bold text-slate-700 mb-3 max-xs:text-center hover:underline underline-offset-2 cursor-pointer">
               {product.name.slice(0, 100)}
               {product.name.length > 100 && "..."}
             </h3>
@@ -39,7 +39,7 @@ const FlashSaleCard = ({ product }: { product: TProduct }) => {
               <span className="font-bold text-primary text-xl">
                 {formatCurrency(product.salePrice)}
               </span>
-              <span className="text-gray-500 line-through decoration-2 font-semibold text-sm">
+              <span className="text-slate-500 line-through decoration-2 font-semibold text-sm">
                 {formatCurrency(product.regularPrice)}
               </span>
             </div>
