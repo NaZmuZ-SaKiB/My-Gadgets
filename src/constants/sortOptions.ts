@@ -10,3 +10,5 @@ export const productSortOptions = [
   "createdAt",
   "updatedAt",
 ];
+
+export const branchSortOptions = ["name", "createdAt", "updatedAt"];
