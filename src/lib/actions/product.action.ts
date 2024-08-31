@@ -1,7 +1,6 @@
 "use server";
 
 import { authKey, backendUrl } from "@/constants";
-import { TProduct } from "@/types/product.type";
 import { cookies } from "next/headers";
 import { z } from "zod";
 import { ProductValidation } from "../validations/product.validation";
