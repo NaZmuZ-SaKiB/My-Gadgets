@@ -7,7 +7,7 @@ import DataSortBySelect from "@/components/admin/shared/filters/DataSortBySelect
 import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
 import SelectedItemsCount from "@/components/admin/shared/SelectedItemsCount";
 import { productSortOptions } from "@/constants";
-import ProductsDataTable from "./ProductsDataTable";
+import ProductsTable from "./ProductsTable";
 import { useState } from "react";
 
 const ProductsData = () => {
@@ -32,7 +32,7 @@ const ProductsData = () => {
         <DataSearchBox />
       </AFloatingBox>
 
-      <ProductsDataTable
+      <ProductsTable
         selectedProducts={selectedProducts}
         setSelectedProducts={setSelectedProducts}
       />
