@@ -4,4 +4,6 @@ export const AQTags = {
   BRAND: "brand",
   PRODUCT: "product",
   MEDIA: "media",
+  USER: "user",
+  BRANCH: "branch",
 };
