@@ -6,4 +6,5 @@ export const AQTags = {
   MEDIA: "media",
   USER: "user",
   BRANCH: "branch",
+  SETTINGS: "settings",
 };
