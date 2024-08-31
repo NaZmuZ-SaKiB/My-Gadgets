@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { adminSideBar } from "@/constants";
+import { Circle } from "lucide-react";
 import Link from "next/link";
 
 const ASidebar = () => {
@@ -26,7 +27,11 @@ const ASidebar = () => {
                       className="no-focus flex items-center"
                     >
                       <div className="mr-3">
-                        <item.icon className="size-5" />
+                        {item.icon ? (
+                          <item.icon className="size-5" />
+                        ) : (
+                          <Circle className="size-5" />
+                        )}
                       </div>
                       {item.name}
                     </Link>
