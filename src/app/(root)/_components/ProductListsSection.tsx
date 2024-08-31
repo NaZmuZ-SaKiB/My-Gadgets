@@ -22,7 +22,7 @@ const ProductList = ({
 };
 
 const ProductListsSection = async () => {
-  const productsData = await productGetAllAction("limit=12");
+  const productsData = await productGetAllAction("limit=16");
   const products: TProduct[] = productsData?.data || [];
 
   return (
@@ -47,6 +47,14 @@ const ProductListsSection = async () => {
             products={products.slice(4, 8)}
             title="trending-products"
           />
+        </div>
+
+        <div>
+          <h2 className="font-bold text-2xl text-slate-700">Top Rated</h2>
+          <div className="h-[3px] w-24 bg-primary mt-4 -mb-[1px]"></div>
+          <div className="h-[1px] w-full bg-slate-300"></div>
+
+          <ProductList products={products.slice(12, 16)} title="top-rated" />
         </div>
 
         <div>
