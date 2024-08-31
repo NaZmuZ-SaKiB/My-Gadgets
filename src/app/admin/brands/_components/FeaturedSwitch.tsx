@@ -1,5 +1,5 @@
 import MGSwitch from "@/components/global/forms/MGSwitch";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 import { useBrandToggleFeaturedMutation } from "@/lib/queries/brand.query";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";

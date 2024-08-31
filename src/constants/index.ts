@@ -1,6 +1,8 @@
 export * from "./assets";
 export * from "./adminSidebar";
 export * from "./sortOptions";
+export * from "./product";
+export * from "./tags";
 
 export const backendUrl = process.env.BACKEND_URL;
 export const authKey = "mg-jwt";

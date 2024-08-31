@@ -10,7 +10,7 @@ import {
   connectivityOptions,
   operatingSystemOptions,
   powerSourceOptions,
-} from "@/constants/product";
+} from "@/constants";
 
 const ProductFiltersForm = () => {
   return (

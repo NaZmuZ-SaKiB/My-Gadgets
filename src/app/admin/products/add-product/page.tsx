@@ -20,7 +20,7 @@ import ProductFiltersForm from "../_components/ProductFiltersForm";
 import SelectCategories from "../_components/SelectCategories";
 import ProductImagesForm from "../_components/ProductImagesForm";
 import { toast } from "sonner";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 
 const defaultValues = {
   name: "",

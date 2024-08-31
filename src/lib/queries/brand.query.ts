@@ -7,7 +7,7 @@ import {
   brandToggleFeaturedAction,
   brandUpdateAction,
 } from "../actions/brand.action";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 
 export const useBrandCreateMutation = () =>
   useMutation({

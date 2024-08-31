@@ -6,7 +6,7 @@ import {
   mediaRemoveAction,
   mediaUpdateAction,
 } from "../actions/media.action";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 
 export const useMediaCreateMutation = () =>
   useMutation({

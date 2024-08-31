@@ -1,6 +1,6 @@
 "use client";
 
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 import { useMediaCreateMutation } from "@/lib/queries/media.query";
 import { useQueryClient } from "@tanstack/react-query";
 import { Plus } from "lucide-react";

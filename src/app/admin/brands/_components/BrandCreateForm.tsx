@@ -5,7 +5,7 @@ import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 import MGAInput from "@/components/admin/forms/MGAInput";
 import MGForm from "@/components/global/forms/MGForm";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 import { useBrandCreateMutation } from "@/lib/queries/brand.query";
 import { BrandValidation } from "@/lib/validations/brand.validation";
 import { zodResolver } from "@hookform/resolvers/zod";

@@ -6,7 +6,7 @@ import {
   productRemoveAction,
   productUpdateAction,
 } from "../actions/product.action";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 
 export const useProductCreateMutation = () =>
   useMutation({

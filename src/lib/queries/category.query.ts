@@ -9,7 +9,7 @@ import {
   categoryToggleShowOnTopMenuAction,
   categoryUpdateAction,
 } from "../actions/category.action";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 
 export const useCategoryCreateMutation = () =>
   useMutation({

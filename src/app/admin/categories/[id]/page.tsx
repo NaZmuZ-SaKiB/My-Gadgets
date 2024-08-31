@@ -8,7 +8,7 @@ import MGAInput from "@/components/admin/forms/MGAInput";
 import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
 import MGForm from "@/components/global/forms/MGForm";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants/tags";
+import { AQTags } from "@/constants";
 import {
   useCategoryGetAllQuery,
   useCategoryGetByIdQuery,
