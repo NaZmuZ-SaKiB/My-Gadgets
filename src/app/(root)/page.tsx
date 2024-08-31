@@ -1,4 +1,5 @@
 import BannerSection from "./_components/BannerSection";
+import BranchesSection from "./_components/BranchesSection";
 import FeaturedCategories from "./_components/FeaturedCategories";
 import FeaturedProducts from "./_components/FeaturedProducts";
 import FlashSaleSection from "./_components/FlashSaleSection";
@@ -16,6 +17,7 @@ const HomePage = () => {
       <FlashSaleSection />
       <ProductListsSection />
       <Services />
+      <BranchesSection />
     </div>
   );
 };
