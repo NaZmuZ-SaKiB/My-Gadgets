@@ -1,6 +1,7 @@
 import {
   Images,
   LayoutDashboard,
+  Settings,
   ShoppingBag,
   ShoppingCart,
   Store,
@@ -95,6 +96,7 @@ export const adminSideBar: TAdminSideBar[] = [
     name: "Settings",
     link: "",
     hasSubMenu: true,
+    icon: Settings,
     subMenus: [
       {
         name: "Homepage",
