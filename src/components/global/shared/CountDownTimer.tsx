@@ -31,8 +31,6 @@ const CountDownTimer = () => {
     };
   };
 
-  if (window === undefined) return null;
-
   return (
     <div className="flex w-full gap-2 xs:gap-4 font-semibold">
       <div className="countdown-timer-item">
