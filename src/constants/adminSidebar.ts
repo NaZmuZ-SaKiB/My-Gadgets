@@ -3,6 +3,7 @@ import {
   LayoutDashboard,
   ShoppingBag,
   ShoppingCart,
+  Store,
   UsersRound,
 } from "lucide-react";
 
@@ -75,6 +76,18 @@ export const adminSideBar: TAdminSideBar[] = [
       {
         name: "Profile",
         link: "/admin/users/profile",
+      },
+    ],
+  },
+  {
+    name: "Store",
+    icon: Store,
+    link: "",
+    hasSubMenu: true,
+    subMenus: [
+      {
+        name: "Branches",
+        link: "/admin/branches",
       },
     ],
   },
