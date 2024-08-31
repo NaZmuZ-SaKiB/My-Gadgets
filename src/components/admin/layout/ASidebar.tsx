@@ -20,12 +20,24 @@ const ASidebar = () => {
                 className="border-none"
               >
                 <AccordionTrigger className="p-3 font-semibold no-focus flex justify-between items-center rounded-lg hover:bg-primary-hover hover:no-underline data-[state=open]:bg-slate-50 data-[state=open]:text-primary-hover">
-                  <Link href={item.link} className="no-focus flex items-center">
-                    <div className="mr-3">
-                      <item.icon className="size-5" />
-                    </div>
-                    {item.name}
-                  </Link>
+                  {item.link ? (
+                    <Link
+                      href={item.link}
+                      className="no-focus flex items-center"
+                    >
+                      <div className="mr-3">
+                        <item.icon className="size-5" />
+                      </div>
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <span className="no-focus flex items-center">
+                      <div className="mr-3">
+                        <item.icon className="size-5" />
+                      </div>
+                      {item.name}
+                    </span>
+                  )}
                 </AccordionTrigger>
 
                 <AccordionContent className="ml-5 border-l border-slate-500 text-base">
