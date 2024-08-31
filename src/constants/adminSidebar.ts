@@ -91,4 +91,19 @@ export const adminSideBar: TAdminSideBar[] = [
       },
     ],
   },
+  {
+    name: "Settings",
+    link: "",
+    hasSubMenu: true,
+    subMenus: [
+      {
+        name: "Homepage",
+        link: "/admin/settings/homepage",
+      },
+      {
+        name: "Footer",
+        link: "/admin/settings/footer",
+      },
+    ],
+  },
 ];
