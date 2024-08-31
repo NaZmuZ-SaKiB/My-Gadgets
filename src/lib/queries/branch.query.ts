@@ -8,29 +8,29 @@ import {
 } from "../actions/branch.action";
 import { AQTags } from "@/constants";
 
-export const useBrandCreateMutation = () =>
+export const useBranchCreateMutation = () =>
   useMutation({
     mutationFn: branchCreateAction,
   });
 
-export const useBrandUpdateMutation = () =>
+export const useBranchUpdateMutation = () =>
   useMutation({
     mutationFn: branchUpdateAction,
   });
 
-export const useBrandGetAllQuery = (params: string) =>
+export const useBranchGetAllQuery = (params: string) =>
   useQuery({
     queryKey: [AQTags.BRANCH, AQTags.ALL, params],
     queryFn: () => branchGetAllAction(params),
   });
 
-export const useBrandGetByIdQuery = (id: string) =>
+export const useBranchGetByIdQuery = (id: string) =>
   useQuery({
     queryKey: [AQTags.BRANCH, id],
     queryFn: () => branchGetByIdAction(id),
   });
 
-export const useBrandDeleteMutation = () =>
+export const useBranchDeleteMutation = () =>
   useMutation({
     mutationFn: branchRemoveAction,
   });
