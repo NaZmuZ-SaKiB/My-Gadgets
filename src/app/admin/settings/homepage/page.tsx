@@ -117,6 +117,13 @@ const HomepageSettingsPage = () => {
                 defaultValue={homeSettings.popularProducts || []}
                 multiple
               />
+
+              <ProductSelect
+                name="homepage.trendingProducts"
+                label="Trending Products"
+                defaultValue={homeSettings.trendingProducts || []}
+                multiple
+              />
             </AFloatingBox>
           </div>
 
