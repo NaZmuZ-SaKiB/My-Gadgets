@@ -17,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { SubmitHandler } from "react-hook-form";
 import { z } from "zod";
+import ProductSelect from "./_components/ProductSelect";
 
 const HomepageSettingsPage = () => {
   const { data, isLoading } = useSettingsGetQuery();
@@ -46,7 +47,7 @@ const HomepageSettingsPage = () => {
         reset={false}
       >
         <AGrid>
-          <div>
+          <div className="flex flex-col gap-4">
             <AFloatingBox className="flex flex-col gap-3">
               <MGAImageInput
                 name="homepage.sliderImages"
@@ -101,12 +102,30 @@ const HomepageSettingsPage = () => {
                 multiple
               />
             </AFloatingBox>
+
+            <AFloatingBox className="flex flex-col gap-3">
+              <ProductSelect
+                name="homepage.popularProducts"
+                label="Popular Products"
+                defaultValue={homeSettings.popularProducts || []}
+                multiple
+              />
+
+              <ProductSelect
+                name="homepage.topSellingProducts"
+                label="Top Selling Products"
+                defaultValue={homeSettings.popularProducts || []}
+                multiple
+              />
+            </AFloatingBox>
+          </div>
+
+          <div>
+            <AFloatingBox>
+              <MGARichInput name="description" label="Description" />
+            </AFloatingBox>
           </div>
         </AGrid>
-
-        <AFloatingBox>
-          <MGARichInput name="description" label="Description" />
-        </AFloatingBox>
       </MGForm>
     </APageContainer>
   );
