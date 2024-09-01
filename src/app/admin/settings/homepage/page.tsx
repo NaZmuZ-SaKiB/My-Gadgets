@@ -5,6 +5,7 @@ import AGrid from "@/components/admin/admin-ui/AGrid";
 import APageContainer from "@/components/admin/admin-ui/APageContainer";
 import APageHeading from "@/components/admin/admin-ui/APageHeading";
 import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import MGARichInput from "@/components/admin/forms/MGARichInput";
 import MGASearchSelectAsync from "@/components/admin/forms/MGASearchSelectAsync";
 import MGForm from "@/components/global/forms/MGForm";
 import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
@@ -39,14 +40,14 @@ const HomepageSettingsPage = () => {
     <APageContainer>
       <APageHeading title="Homepage Settings" />
 
-      <AGrid>
-        <div>
-          <AFloatingBox>
-            <MGForm
-              onSubmit={handleSubmit}
-              resolver={zodResolver(SettingsValidation.update)}
-              reset={false}
-            >
+      <MGForm
+        onSubmit={handleSubmit}
+        resolver={zodResolver(SettingsValidation.update)}
+        reset={false}
+      >
+        <AGrid>
+          <div>
+            <AFloatingBox className="flex flex-col gap-3">
               <MGAImageInput
                 name="homepage.sliderImages"
                 label="Slider Images"
@@ -99,10 +100,14 @@ const HomepageSettingsPage = () => {
                 fetchFunction={useBrandGetAllQuery}
                 multiple
               />
-            </MGForm>
-          </AFloatingBox>
-        </div>
-      </AGrid>
+            </AFloatingBox>
+          </div>
+        </AGrid>
+
+        <AFloatingBox>
+          <MGARichInput name="description" label="Description" />
+        </AFloatingBox>
+      </MGForm>
     </APageContainer>
   );
 };
