@@ -1,21 +1,26 @@
+import { TBrand } from "./brand.type";
+import { TCategory } from "./category.type";
+import { TMedia } from "./media.type";
+import { TProduct } from "./product.type";
+
 export type THomepageSettings = {
-  sliderImages: string[];
-  bannerImage1: string;
-  bannerImage2: string;
-  bannerImage3: string;
-  featuredCategories: string[];
-  featuredBrands: string[];
-  popularProducts: string[];
+  sliderImages: TMedia[];
+  bannerImage1: TMedia;
+  bannerImage2: TMedia;
+  bannerImage3: TMedia;
+  featuredCategories: TCategory[];
+  featuredBrands: TBrand[];
+  popularProducts: TProduct[];
   featuredProducts: {
-    banner?: string;
-    products: string[];
+    banner?: TMedia;
+    products: TProduct[];
   }[];
   flashSale: {
-    product: string;
+    product: TProduct;
     endDate: Date;
   }[];
-  topSellingProducts: string[];
-  trendingProducts: string[];
+  topSellingProducts: TProduct[];
+  trendingProducts: TProduct[];
   description: string;
 };
 
