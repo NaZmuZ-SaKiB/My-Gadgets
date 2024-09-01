@@ -162,7 +162,7 @@ const MGASearchSelectAsync = ({
                     }
                   )}
                 >
-                  <ScrollArea className="max-h-[150px] w-full">
+                  <ScrollArea className="max-h-[160px] w-full overflow-y-auto">
                     {isLoading || isFetching ? (
                       <div>Loading...</div>
                     ) : (
@@ -178,7 +178,7 @@ const MGASearchSelectAsync = ({
                           <div
                             key={`${option?._id}`}
                             className={cn(
-                              "px-3 py-1.5 text-slate-900 hover:bg-primary hover:text-slate-50 cursor-pointer flex items-center gap-2",
+                              "px-3 py-1.5 text-slate-900 hover:bg-primary hover:text-slate-50 cursor-pointer flex items-center gap-2 text-sm",
                               {
                                 "bg-slate-100 hover:bg-slate-100 hover:text-slate-900":
                                   active,
