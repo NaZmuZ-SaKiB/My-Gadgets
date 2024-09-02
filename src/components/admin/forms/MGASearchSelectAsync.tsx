@@ -72,6 +72,7 @@ const MGASearchSelectAsync = ({
       setSelectedValue({ value, title });
     }
     setSearch("");
+    setOpen(true);
   };
 
   useEffect(() => {
@@ -88,10 +89,10 @@ const MGASearchSelectAsync = ({
     if (multiple) {
       setValue(
         name,
-        multipleValues.map((item) => item._id)
+        multipleValues.map((item) => item.value)
       );
     } else {
-      setValue(name, selectedValue?._id);
+      setValue(name, selectedValue?.value);
     }
   }, [multipleValues, selectedValue, name, multiple, setValue]);
 
@@ -116,7 +117,7 @@ const MGASearchSelectAsync = ({
                   {multipleValues.length > 0 &&
                     multipleValues.map((item) => (
                       <div
-                        key={`${item?._id}`}
+                        key={`${item?.value}`}
                         className="bg-slate-100 px-2 py-0.5 flex gap-2 items-center"
                       >
                         <span
@@ -173,7 +174,6 @@ const MGASearchSelectAsync = ({
                             )
                           : !!selectedValue.value === option._id;
 
-                        console.log(active);
                         return (
                           <div
                             key={`${option?._id}`}
