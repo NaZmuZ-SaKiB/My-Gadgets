@@ -13,11 +13,12 @@ import { useCategoryGetAllQuery } from "@/lib/queries/category.query";
 import { useSettingsGetQuery } from "@/lib/queries/settings.query";
 import { SettingsValidation } from "@/lib/validations/settings.validation";
 import { THomepageSettings } from "@/types/settings.type";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import ProductSelect from "./_components/ProductSelect";
+import FeaturedProductsSelect from "./_components/FeaturedProductsSelect";
+import MGButton from "@/components/global/shared/MGButton";
 
 const HomepageSettingsPage = () => {
   const { data, isLoading } = useSettingsGetQuery();
@@ -39,16 +40,30 @@ const HomepageSettingsPage = () => {
 
   return (
     <APageContainer>
-      <APageHeading title="Homepage Settings" />
+      <MGForm onSubmit={handleSubmit} reset={false}>
+        <APageHeading title="Homepage Settings">
+          <MGButton
+            type="submit"
+            className="rounded-none self-start px-5 py-2 h-auto"
+            disabled={false}
+          >
+            Save Changes
+          </MGButton>
+        </APageHeading>
 
-      <MGForm
-        onSubmit={handleSubmit}
-        resolver={zodResolver(SettingsValidation.update)}
-        reset={false}
-      >
-        <AGrid>
+        <AGrid reverse>
           <div className="flex flex-col gap-4">
-            <AFloatingBox className="flex flex-col gap-3">
+            <AFloatingBox>
+              <MGARichInput name="homepage.description" label="Description" />
+            </AFloatingBox>
+
+            <AFloatingBox>
+              <FeaturedProductsSelect />
+            </AFloatingBox>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <AFloatingBox className="flex flex-col gap-5">
               <MGAImageInput
                 name="homepage.sliderImages"
                 label="Slider Images"
@@ -103,7 +118,7 @@ const HomepageSettingsPage = () => {
               />
             </AFloatingBox>
 
-            <AFloatingBox className="flex flex-col gap-3">
+            <AFloatingBox className="flex flex-col gap-5">
               <ProductSelect
                 name="homepage.popularProducts"
                 label="Popular Products"
@@ -124,12 +139,6 @@ const HomepageSettingsPage = () => {
                 defaultValue={homeSettings.trendingProducts || []}
                 multiple
               />
-            </AFloatingBox>
-          </div>
-
-          <div>
-            <AFloatingBox>
-              <MGARichInput name="description" label="Description" />
             </AFloatingBox>
           </div>
         </AGrid>
