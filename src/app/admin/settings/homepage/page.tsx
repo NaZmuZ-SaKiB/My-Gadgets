@@ -84,12 +84,26 @@ const HomepageSettingsPage = () => {
     );
   }
 
+  const defaultValues = {
+    homepage: {
+      featuredProducts: homeSettings?.featuredProducts?.map((item) => ({
+        banner: item?.banner?._id,
+        products: item.products.map((product: any) => product?._id),
+      })),
+      flashSale: homeSettings?.flashSale?.map((item) => ({
+        endDate: item.endDate,
+        product: item.product?._id,
+      })),
+    },
+  };
+
   return (
     <APageContainer>
       <MGForm
         onSubmit={handleSubmit}
         reset={false}
         resolver={zodResolver(SettingsValidation.update)}
+        defaultValues={defaultValues}
       >
         <APageHeading title="Homepage Settings">
           <MGButton
@@ -108,11 +122,13 @@ const HomepageSettingsPage = () => {
             </AFloatingBox>
 
             <AFloatingBox>
-              <FeaturedProductsSelect />
+              <FeaturedProductsSelect
+                defaultValue={homeSettings.featuredProducts}
+              />
             </AFloatingBox>
 
             <AFloatingBox>
-              <FlashSaleInput />
+              <FlashSaleInput defaultValue={homeSettings.flashSale} />
             </AFloatingBox>
           </div>
 
