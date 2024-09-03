@@ -111,11 +111,10 @@ const MGADateTimePicker = ({
                     field.onChange(selectedDate);
                   }}
                   onDayClick={() => setIsOpen(false)}
-                  fromYear={2000}
-                  toYear={new Date().getFullYear()}
+                  fromYear={new Date().getFullYear() - 10}
+                  toYear={new Date().getFullYear() + 5}
                   disabled={(date) =>
-                    Number(date) < Date.now() - 1000 * 60 * 60 * 24 ||
-                    Number(date) > Date.now() + 1000 * 60 * 60 * 24 * 30
+                    Number(date) < Date.now() - 1000 * 60 * 60 * 24
                   }
                 />
 
