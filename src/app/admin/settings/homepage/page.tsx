@@ -10,7 +10,10 @@ import MGASearchSelectAsync from "@/components/admin/forms/MGASearchSelectAsync"
 import MGForm from "@/components/global/forms/MGForm";
 import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
 import { useCategoryGetAllQuery } from "@/lib/queries/category.query";
-import { useSettingsGetQuery } from "@/lib/queries/settings.query";
+import {
+  useSettingsGetQuery,
+  useSettingsUpdateMutation,
+} from "@/lib/queries/settings.query";
 import { SettingsValidation } from "@/lib/validations/settings.validation";
 import { THomepageSettings } from "@/types/settings.type";
 import { Loader2 } from "lucide-react";
@@ -20,16 +23,58 @@ import ProductSelect from "./_components/ProductSelect";
 import FeaturedProductsSelect from "./_components/FeaturedProductsSelect";
 import MGButton from "@/components/global/shared/MGButton";
 import FlashSaleInput from "./_components/FlashSaleInput";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+import { AQTags } from "@/constants";
 
 const HomepageSettingsPage = () => {
   const { data, isLoading } = useSettingsGetQuery();
   const homeSettings: THomepageSettings = data?.data?.homepage;
 
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: updateSettingsFn, isPending } =
+    useSettingsUpdateMutation();
+
   const handleSubmit: SubmitHandler<
     z.infer<typeof SettingsValidation.update>
-  > = (values) => {
+  > = async (values) => {
+    if (values?.homepage?.featuredProducts?.length) {
+      values.homepage.featuredProducts = values.homepage.featuredProducts.map(
+        (item) => ({
+          banner: item?.banner,
+          products: item.products,
+        })
+      );
+    }
+
+    if (values?.homepage?.flashSale?.length) {
+      values.homepage.flashSale = values.homepage.flashSale.map((item) => ({
+        endDate: item.endDate,
+        product: item.product,
+      }));
+    }
+
     console.log(values);
+
+    try {
+      const result = await updateSettingsFn(values);
+
+      if (result?.success) {
+        toast.success(result?.message);
+        queryClient.invalidateQueries({
+          queryKey: [AQTags.SETTINGS],
+        });
+      } else {
+        toast.error(result?.message || "A server error occurred.");
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "A client error occurred.");
+    }
   };
+
+  console.log(homeSettings);
 
   if (isLoading) {
     return (
@@ -41,12 +86,16 @@ const HomepageSettingsPage = () => {
 
   return (
     <APageContainer>
-      <MGForm onSubmit={handleSubmit} reset={false}>
+      <MGForm
+        onSubmit={handleSubmit}
+        reset={false}
+        resolver={zodResolver(SettingsValidation.update)}
+      >
         <APageHeading title="Homepage Settings">
           <MGButton
             type="submit"
             className="rounded-none self-start px-5 py-2 h-auto"
-            disabled={false}
+            disabled={isPending}
           >
             Save Changes
           </MGButton>
@@ -105,8 +154,10 @@ const HomepageSettingsPage = () => {
                 label="Featured Categories"
                 optionLabelField="name"
                 defaultValue={
-                  homeSettings?.featuredCategories?.map((item) => item._id) ||
-                  []
+                  homeSettings?.featuredCategories?.map((item) => ({
+                    value: item._id,
+                    title: item.name,
+                  })) || []
                 }
                 fetchFunction={useCategoryGetAllQuery}
                 multiple
@@ -116,7 +167,10 @@ const HomepageSettingsPage = () => {
                 label="Featured Brands"
                 optionLabelField="name"
                 defaultValue={
-                  homeSettings?.featuredBrands?.map((item) => item._id) || []
+                  homeSettings?.featuredBrands?.map((item) => ({
+                    value: item._id,
+                    title: item.name,
+                  })) || []
                 }
                 fetchFunction={useBrandGetAllQuery}
                 multiple
@@ -134,7 +188,7 @@ const HomepageSettingsPage = () => {
               <ProductSelect
                 name="homepage.topSellingProducts"
                 label="Top Selling Products"
-                defaultValue={homeSettings.popularProducts || []}
+                defaultValue={homeSettings.topSellingProducts || []}
                 multiple
               />
 
