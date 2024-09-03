@@ -19,6 +19,7 @@ import { z } from "zod";
 import ProductSelect from "./_components/ProductSelect";
 import FeaturedProductsSelect from "./_components/FeaturedProductsSelect";
 import MGButton from "@/components/global/shared/MGButton";
+import FlashSaleInput from "./_components/FlashSaleInput";
 
 const HomepageSettingsPage = () => {
   const { data, isLoading } = useSettingsGetQuery();
@@ -52,13 +53,17 @@ const HomepageSettingsPage = () => {
         </APageHeading>
 
         <AGrid reverse>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 mb-4">
             <AFloatingBox>
               <MGARichInput name="homepage.description" label="Description" />
             </AFloatingBox>
 
             <AFloatingBox>
               <FeaturedProductsSelect />
+            </AFloatingBox>
+
+            <AFloatingBox>
+              <FlashSaleInput />
             </AFloatingBox>
           </div>
 
