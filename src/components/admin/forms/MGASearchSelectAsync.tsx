@@ -21,7 +21,7 @@ type TProps = {
   label: string;
   description?: string;
   optionLabelField: string;
-  defaultValue?: string[];
+  defaultValue?: any[];
   multiple?: boolean;
   fetchFunction: (filters: any) => UseQueryResult<{
     statusCode: number;
@@ -86,10 +86,10 @@ const MGASearchSelectAsync = ({
   }, [search]);
 
   useEffect(() => {
-    if (multiple) {
+    if (multiple && multipleValues.length > 0) {
       setValue(
         name,
-        multipleValues.map((item) => item.value)
+        multipleValues.map((item) => item?.value)
       );
     } else {
       setValue(name, selectedValue?.value);
