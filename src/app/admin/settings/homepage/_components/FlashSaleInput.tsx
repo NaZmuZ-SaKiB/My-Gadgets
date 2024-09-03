@@ -28,6 +28,7 @@ const FlashSaleInput = ({ defaultValue }: TProps) => {
             <MGADateTimePicker
               name={`homepage.flashSale.${i}.endDate`}
               label="End Date and Time"
+              defaultValue={defaultValue?.[i]?.endDate}
               vertical
             />
           </div>
@@ -35,6 +36,7 @@ const FlashSaleInput = ({ defaultValue }: TProps) => {
           <ProductSelect
             name={`homepage.flashSale.${i}.product`}
             label="Product"
+            defaultValue={[defaultValue?.[i]?.product]}
           />
 
           <span
