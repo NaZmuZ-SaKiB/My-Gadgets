@@ -129,11 +129,17 @@ const ProductSelect = ({
                       </div>
                     ))}
                   {!!selectedValue && (
-                    <div className="bg-slate-100 px-2 py-0.5 flex gap-2 items-center">
+                    <div className="bg-slate-100 p-2 flex gap-2 items-center">
+                      <Image
+                        src={selectedValue.images[0].secureUrl}
+                        alt={selectedValue.model}
+                        width={25}
+                        height={25}
+                      />
+                      <span>{selectedValue?.name}</span>
                       <span onClick={() => selectValue(selectedValue)}>
                         <X className="size-4 cursor-pointer hover:text-primary" />
                       </span>
-                      <span>{selectedValue?.name}</span>
                     </div>
                   )}
                 </div>
