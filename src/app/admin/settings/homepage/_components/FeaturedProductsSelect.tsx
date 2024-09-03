@@ -1,7 +1,7 @@
 "use client";
 
 import MGAImageInput from "@/components/admin/forms/MGAImageInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductSelect from "./ProductSelect";
 import MGButton from "@/components/global/shared/MGButton";
 import { Plus } from "lucide-react";
@@ -12,12 +12,24 @@ type TProps = {
 };
 
 const FeaturedProductsSelect = ({ defaultValue }: TProps) => {
-  const { control } = useFormContext();
+  const { control, setValue } = useFormContext();
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: "homepage.featuredProducts",
   });
+
+  useEffect(() => {
+    if (defaultValue?.length) {
+      setValue(
+        "homepage.featuredProducts",
+        defaultValue.map((item) => ({
+          banner: item.banner?._id,
+          products: item.products.map((product: any) => product?._id),
+        }))
+      );
+    }
+  }, [defaultValue, setValue]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -30,6 +42,7 @@ const FeaturedProductsSelect = ({ defaultValue }: TProps) => {
           <MGAImageInput
             name={`homepage.featuredProducts.${i}.banner`}
             label="Banner"
+            defaultValue={[defaultValue?.[i]?.banner]}
             reset={false}
           />
 
@@ -37,6 +50,7 @@ const FeaturedProductsSelect = ({ defaultValue }: TProps) => {
             name={`homepage.featuredProducts.${i}.products`}
             label="Products"
             multiple
+            defaultValue={defaultValue?.[i]?.products}
           />
 
           <span
