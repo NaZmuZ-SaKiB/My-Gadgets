@@ -13,7 +13,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useProductGetAllQuery } from "@/lib/queries/product.query";
 import { cn } from "@/lib/utils";
 import { TProduct } from "@/types/product.type";
-import { UseQueryResult } from "@tanstack/react-query";
 import { Check, X } from "lucide-react";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -40,10 +39,11 @@ const ProductSelect = ({
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
-  const [multipleValues, setMultipleValues] =
-    useState<TProduct[]>(defaultValue);
-  const [selectedValue, setSelectedValue] = useState<TProduct>(
-    defaultValue[0] || null
+  const [multipleValues, setMultipleValues] = useState<TProduct[]>(
+    multiple ? defaultValue : []
+  );
+  const [selectedValue, setSelectedValue] = useState<TProduct | null>(
+    !multiple ? defaultValue[0] : null
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
