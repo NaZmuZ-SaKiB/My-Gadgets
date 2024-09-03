@@ -52,7 +52,7 @@ const FeaturedProductsSelect = ({ defaultValue }: TProps) => {
         className="rounded-none self-start gap-2"
         onClick={append}
       >
-        <Plus className="size-5" /> Add new
+        <Plus className="size-5" /> Add new Featured Products
       </MGButton>
     </div>
   );
