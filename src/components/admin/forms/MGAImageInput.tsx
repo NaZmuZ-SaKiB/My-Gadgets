@@ -35,6 +35,7 @@ const MGAImageInput = ({
   description,
   reset = true,
 }: TProps) => {
+  console.log(defaultValue);
   const { control, setValue, formState } = useFormContext();
 
   const [images, setImages] = useState<TMedia[]>(defaultValue);
