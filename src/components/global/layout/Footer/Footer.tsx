@@ -1,8 +1,13 @@
 import { images } from "@/constants";
+import { settingsGetAction } from "@/lib/actions/settings.action";
+import { TFooterSettings } from "@/types/settings.type";
 import { Clock, Mail } from "lucide-react";
 import Image from "next/image";
 
-const Footer = () => {
+const Footer = async () => {
+  const settings = await settingsGetAction();
+  const footerData: TFooterSettings = settings?.data?.footer;
+
   return (
     <div className="border-t border-slate-300 pt-8 mt-4">
       <footer className="container">
@@ -19,17 +24,17 @@ const Footer = () => {
               />
             </div>
             <p className="text-slate-500 text-lg font-semibold mb-5 max-md:text-center lg:max-w-[90%] xl:max-w-[70%]">
-              Awesome Gadgets store. We sell Official IT products.
+              {footerData.slogan}
             </p>
             <p className="flex flex-wrap items-center gap-2 text-slate-500 max-md:justify-center text-sm">
               <Mail className="size-5 text-primary" />
               <span className="font-semibold">Email:</span>
-              <span>sakibnazmuz01@gmail.com</span>
+              <span>{footerData.email}</span>
             </p>
             <p className="flex items-center gap-2 text-slate-500 mt-3 max-md:justify-center text-sm">
               <Clock className="size-5 text-primary" />
               <span className="font-semibold">Hours:</span>
-              <span>10:00AM - 8:00PM</span>
+              <span>{footerData.hours}</span>
             </p>
           </div>
 
@@ -49,33 +54,10 @@ const Footer = () => {
           {/* Column 3 */}
           <div className="w-full max-md:text-center">
             <h3 className="text-xl font-bold text-slate-700">For Query</h3>
-            <p className="mt-3 md:mt-6 text-slate-500">
-              <span className="font-semibold text-slate-700">Laptop:</span>{" "}
-              <br className="xs:hidden" />
-              <span>+8801324472632, +8801763548393</span>
-            </p>
-            <p className="mt-2 text-slate-500">
-              <span className="font-semibold text-slate-700">Desktop:</span>{" "}
-              <br className="xs:hidden" />
-              <span>+880187362798, +8801763873625</span>
-            </p>
-            <p className="mt-2 text-slate-500">
-              <span className="font-semibold text-slate-700">Accessories:</span>{" "}
-              <br className="xs:hidden" />
-              <span>+8801884736273, +8801738746254</span>
-            </p>
-            <p className="mt-2 text-slate-500">
-              <span className="font-semibold text-slate-700">Warranty:</span>{" "}
-              <br className="xs:hidden" />
-              <span>+8801372837463</span>
-            </p>
-            <p className="mt-2 text-slate-500">
-              <span className="font-semibold text-slate-700">
-                EMI, Refund, Return:
-              </span>{" "}
-              <br className="xs:hidden" />
-              <span>+8801362740983</span>
-            </p>
+            <div
+              dangerouslySetInnerHTML={{ __html: footerData.contact }}
+              className="mt-3 flex flex-col text-sm gap-2 text-slate-700 leading-6"
+            />
           </div>
         </div>
       </footer>
