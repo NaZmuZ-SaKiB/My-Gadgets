@@ -21,7 +21,9 @@ const HomePage = async () => {
         bannerImage2={homePageSettings.bannerImage2}
         bannerImage3={homePageSettings.bannerImage3}
       />
-      <FeaturedCategories />
+      <FeaturedCategories
+        featuredCategories={homePageSettings.featuredCategories || []}
+      />
       <PopularProducts />
       <FeaturedProducts />
       <FlashSaleSection />
