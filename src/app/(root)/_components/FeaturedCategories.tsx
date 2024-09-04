@@ -3,13 +3,17 @@ import { TCategory } from "@/types/category.type";
 import Image from "next/image";
 import Link from "next/link";
 
-const FeaturedCategories = async () => {
+type TProps = {
+  featuredCategories: TCategory[];
+};
+
+const FeaturedCategories = ({ featuredCategories }: TProps) => {
   const params = new URLSearchParams();
   params.append("featured", "true");
   params.append("limit", "12");
 
-  const categoryData = await categoryGetAllAction(params.toString());
-  const categories: TCategory[] = categoryData.data || [];
+  // const categoryData = await categoryGetAllAction(params.toString());
+  // const categories: TCategory[] = categoryData.data || [];
 
   const colors: string[] = [
     "#fffceb",
@@ -39,7 +43,7 @@ const FeaturedCategories = async () => {
       </h2>
 
       <div className="flex flex-wrap gap-3 md:gap-4 mt-5 md:mt-8">
-        {categories.map((category, i) => (
+        {featuredCategories.map((category, i) => (
           <Link
             href={`/shop/${category.name}`}
             key={`featured-category-${category._id}`}
