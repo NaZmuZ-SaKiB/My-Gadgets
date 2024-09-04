@@ -86,6 +86,7 @@ const HomepageSettingsPage = () => {
 
   const defaultValues = {
     homepage: {
+      description: homeSettings?.description || "",
       featuredProducts: homeSettings?.featuredProducts?.map((item) => ({
         banner: item?.banner?._id,
         products: item.products.map((product: any) => product?._id),
