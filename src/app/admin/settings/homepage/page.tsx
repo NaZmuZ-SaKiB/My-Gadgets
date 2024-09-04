@@ -74,8 +74,6 @@ const HomepageSettingsPage = () => {
     }
   };
 
-  console.log(homeSettings);
-
   if (isLoading) {
     return (
       <div className="h-full grid place-items-center">
