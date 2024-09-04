@@ -1,5 +1,5 @@
 import { images } from "@/constants";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail } from "lucide-react";
 import Image from "next/image";
 
 const Footer = () => {
