@@ -27,7 +27,10 @@ const HomePage = async () => {
       <PopularProducts popularProducts={homePageSettings.popularProducts} />
       <FeaturedProducts featuredProducts={homePageSettings.featuredProducts} />
       <FlashSaleSection flashSales={homePageSettings.flashSale || []} />
-      <ProductListsSection />
+      <ProductListsSection
+        topSelling={homePageSettings.topSellingProducts}
+        trendingProducts={homePageSettings.trendingProducts}
+      />
       <Services />
       <BranchesSection />
     </div>
