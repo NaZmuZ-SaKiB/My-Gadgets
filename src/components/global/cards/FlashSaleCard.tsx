@@ -6,7 +6,13 @@ import Link from "next/link";
 import { formatCurrency } from "@/utils/currencyFormat";
 import MGButton from "../shared/MGButton";
 
-const FlashSaleCard = ({ product }: { product: TProduct }) => {
+const FlashSaleCard = ({
+  product,
+  endDate,
+}: {
+  product: TProduct;
+  endDate: string | Date;
+}) => {
   return (
     <div className="group">
       <div className="border border-slate-300 rounded-2xl overflow-hidden relative cursor-pointer">
@@ -23,7 +29,7 @@ const FlashSaleCard = ({ product }: { product: TProduct }) => {
 
       <div className="w-[90%] mx-auto -mt-[8rem] relative group-hover:-mt-[8.5rem] transition-all duration-300 ease-in-out">
         <div className="relative z-10 px-4 mb-4">
-          <CountDownTimer />
+          <CountDownTimer endTime={endDate} />
         </div>
 
         <div className="bg-white p-3 sm:p-5 flex h-[11rem] sm:h-[10rem] flex-col justify-between border border-slate-50 shadow-lg rounded-xl">
