@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-const CountDownTimer = () => {
+const CountDownTimer = ({ endTime }: { endTime: string | Date }) => {
   const [time, setTime] = useState<number>(
-    new Date("2026-12-01").getTime() - Date.now()
+    new Date(endTime).getTime() - Date.now()
   );
 
   useEffect(() => {
