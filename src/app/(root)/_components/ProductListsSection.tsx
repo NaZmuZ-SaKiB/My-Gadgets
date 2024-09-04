@@ -21,8 +21,16 @@ const ProductList = ({
   );
 };
 
-const ProductListsSection = async () => {
-  const productsData = await productGetAllAction("limit=16");
+type TProps = {
+  topSelling: TProduct[];
+  trendingProducts: TProduct[];
+};
+
+const ProductListsSection = async ({
+  topSelling,
+  trendingProducts,
+}: TProps) => {
+  const productsData = await productGetAllAction("limit=8");
   const products: TProduct[] = productsData?.data || [];
 
   return (
@@ -33,7 +41,7 @@ const ProductListsSection = async () => {
           <div className="h-[3px] w-24 bg-primary mt-4 -mb-[1px]"></div>
           <div className="h-[1px] w-full bg-slate-300"></div>
 
-          <ProductList products={products.slice(8, 12)} title="top-selling" />
+          <ProductList products={topSelling} title="top-selling" />
         </div>
 
         <div>
@@ -43,10 +51,7 @@ const ProductListsSection = async () => {
           <div className="h-[3px] w-24 bg-primary mt-4 -mb-[1px]"></div>
           <div className="h-[1px] w-full bg-slate-300"></div>
 
-          <ProductList
-            products={products.slice(4, 8)}
-            title="trending-products"
-          />
+          <ProductList products={trendingProducts} title="trending-products" />
         </div>
 
         <div>
@@ -54,7 +59,7 @@ const ProductListsSection = async () => {
           <div className="h-[3px] w-24 bg-primary mt-4 -mb-[1px]"></div>
           <div className="h-[1px] w-full bg-slate-300"></div>
 
-          <ProductList products={products.slice(12, 16)} title="top-rated" />
+          <ProductList products={products.slice(4, 8)} title="top-rated" />
         </div>
 
         <div>
