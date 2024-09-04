@@ -10,9 +10,13 @@ import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 import { Zap } from "lucide-react";
 
-const FlashSaleSection = async () => {
-  const productsData = await productGetAllAction("limit=5");
-  const products: TProduct[] = productsData?.data || [];
+type TProps = {
+  flashSales: { endDate: string | Date; product: TProduct }[];
+};
+
+const FlashSaleSection = ({ flashSales }: TProps) => {
+  // const productsData = await productGetAllAction("limit=5");
+  // const products: TProduct[] = productsData?.data || [];
 
   return (
     <section className="pt-4 md:pt-6 pb-4">
@@ -29,12 +33,12 @@ const FlashSaleSection = async () => {
         className="overflow-hidden mt-8"
       >
         <CarouselContent className="pb-7">
-          {products.map((product: TProduct) => (
+          {flashSales.map((item) => (
             <CarouselItem
-              key={`flash-sale-${product._id}`}
+              key={`flash-sale-${item.product._id}`}
               className="basis-full md:basis-1/2 lg:basis-1/3 2xl:basis-1/4"
             >
-              <FlashSaleCard product={product} />
+              <FlashSaleCard product={item.product} endDate={item.endDate} />
             </CarouselItem>
           ))}
         </CarouselContent>
