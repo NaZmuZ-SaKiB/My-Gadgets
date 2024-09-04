@@ -40,8 +40,12 @@ const update = z.object({
       slogan: z.string().optional(),
       email: z.string().optional(),
       hours: z.string().optional(),
-      contact: z.string().optional(),
-      copyright: z.string().optional(),
+      contact: z
+        .string()
+        .trim()
+        .transform((value) => value.replace("<p><br></p>", ""))
+        .optional(),
+      copyright: z.string().trim().optional(),
     })
     .optional(),
 });
