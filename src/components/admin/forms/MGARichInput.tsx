@@ -33,7 +33,7 @@ const MGARichInput = ({
       name={name}
       render={({ field, field: { ref } }) => (
         <FormItem className="flex flex-col gap-1 w-full">
-          <FormLabel className="font-medium">{label}</FormLabel>
+          <FormLabel className="font-medium text-xs">{label}</FormLabel>
           <FormControl>
             <SunEditor
               {...field}
