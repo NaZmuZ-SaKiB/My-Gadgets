@@ -2,6 +2,7 @@ import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import { productGetByIdAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 import ProductImages from "../../_components/ProductImages";
+import ProductShortSpec from "../../_components/ProductShortSpec";
 
 type TProps = {
   params: { id: string };
@@ -38,6 +39,7 @@ const SingleProductPage = async ({ params }: TProps) => {
             images={product.images}
             alt={product.model}
           />
+          <ProductShortSpec product={product} />
         </div>
       </section>
     </div>
