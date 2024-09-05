@@ -105,6 +105,35 @@
 
   /* --------- Countdown Timer End --------- */
 
+  /* ------------ Specification Table ----------- */
+
+  .specification-table table {
+    @apply border-collapse w-full table-auto;
+  }
+
+  .specification-table thead tr {
+    @apply text-primary font-semibold bg-green-50/50 border-0 rounded;
+  }
+
+  .specification-table tbody tr {
+    @apply text-sm;
+  }
+
+  .specification-table tr {
+    @apply grid md:grid-cols-[250px_1fr] bg-white border-b border-slate-200 [&:last-child]:border-0;
+  }
+
+  .specification-table td,
+  .specification-table th {
+    @apply text-left px-3 py-2;
+  }
+
+  .specification-table th {
+    @apply max-md:pb-0 max-md:text-sm md:text-slate-500 font-semibold;
+  }
+
+  /* ---------- Specification Table End --------- */
+
   /* -------------------------------------------- */
 
   /* --------- Admin Table --------- */
