@@ -3,6 +3,8 @@ import { productGetByIdAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 import ProductImages from "../../_components/ProductImages";
 import ProductShortSpec from "../../_components/ProductShortSpec";
+import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
+import ProductSpecification from "../../_components/ProductSpecification";
 
 type TProps = {
   params: { id: string };
@@ -42,6 +44,14 @@ const SingleProductPage = async ({ params }: TProps) => {
           <ProductShortSpec product={product} />
         </div>
       </section>
+
+      {/* Product Details */}
+      <div className="grid grid-cols-4 gap-3 mt-8">
+        <div className="col-span-4 lg:col-span-3">
+          <ProductDetailsMunu />
+          <ProductSpecification product={product} />
+        </div>
+      </div>
     </div>
   );
 };
