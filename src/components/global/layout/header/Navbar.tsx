@@ -40,7 +40,7 @@ const Navbar = async () => {
         <div className="py-0.5">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <MGButton className="rounded h-auto gap-2 items-center px-8 py-1.5">
+              <MGButton className="rounded h-auto gap-5 items-center px-5 py-1.5">
                 <AlignJustify /> All Category
               </MGButton>
             </DropdownMenuTrigger>
