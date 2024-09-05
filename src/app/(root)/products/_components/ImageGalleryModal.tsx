@@ -57,7 +57,7 @@ const ImageGalleryModal = ({ images, alt, name }: TProps) => {
         </div>
       </DialogTrigger>
 
-      <DialogContent className="w-full max-w-full sm:max-w-[500px] overflow-hidden gap-0 p-0 border-0 [&>button]:bg-white">
+      <DialogContent className="w-full max-w-full sm:max-w-[500px] overflow-hidden gap-0 p-0 border-0 [&>button]:bg-white [&>button]:no-focus">
         <div className="relative">
           <div
             className={cn(
