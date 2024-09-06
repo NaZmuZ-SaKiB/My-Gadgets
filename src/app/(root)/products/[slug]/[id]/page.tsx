@@ -5,6 +5,7 @@ import ProductImages from "../../_components/ProductImages";
 import ProductShortSpec from "../../_components/ProductShortSpec";
 import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
 import ProductSpecification from "../../_components/ProductSpecification";
+import ProductDescription from "../../_components/ProductDescription";
 
 type TProps = {
   params: { id: string };
@@ -46,10 +47,11 @@ const SingleProductPage = async ({ params }: TProps) => {
       </section>
 
       {/* Product Details */}
-      <div className="grid grid-cols-4 gap-3 mt-8">
-        <div className="col-span-4 lg:col-span-3">
+      <div className="grid grid-cols-3 gap-3 mt-8">
+        <div className="col-span-3 lg:col-span-2">
           <ProductDetailsMunu />
           <ProductSpecification product={product} />
+          <ProductDescription description={product.description} />
         </div>
       </div>
     </div>
