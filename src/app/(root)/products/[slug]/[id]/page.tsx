@@ -6,6 +6,7 @@ import ProductShortSpec from "../../_components/ProductShortSpec";
 import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
 import ProductSpecification from "../../_components/ProductSpecification";
 import ProductDescription from "../../_components/ProductDescription";
+import RelatedProducts from "../../_components/RelatedProducts";
 
 type TProps = {
   params: { id: string };
@@ -53,6 +54,7 @@ const SingleProductPage = async ({ params }: TProps) => {
           <ProductSpecification product={product} />
           <ProductDescription description={product.description} />
         </div>
+        <RelatedProducts category={product.categories[0].name} />
       </div>
     </div>
   );
