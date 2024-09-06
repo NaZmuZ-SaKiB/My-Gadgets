@@ -21,20 +21,22 @@ const QuantityInput = () => {
 
   return (
     <div className="flex gap-2 flex-wrap">
-      <div className="border border-primary rounded-lg inline-flex items-center">
+      <div className="cursor-pointer border border-primary rounded-lg inline-flex items-center">
         <button
           type="button"
-          className="cursor-pointer p-2 outline-none focus-visible:bg-gray-100"
+          className="p-2 outline-none focus-visible:bg-gray-100"
+          onClick={handleDecrement}
         >
-          <Minus onClick={handleDecrement} className="size-5 text-primary" />
+          <Minus className="size-5 text-primary" />
         </button>
         <div className="w-12 text-xl text-center p-2">{quantity}</div>
 
         <button
           type="button"
           className="cursor-pointer p-2 outline-none focus-visible:bg-gray-100"
+          onClick={handleIncrement}
         >
-          <Plus onClick={handleIncrement} className="size-5 text-primary" />
+          <Plus className="size-5 text-primary" />
         </button>
       </div>
 
