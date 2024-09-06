@@ -26,7 +26,7 @@ const ProductCardVertical = ({ product, size = "md" }: TProps) => {
 
       <div className="flex-1 flex flex-col justify-between py-2">
         <Link href={`/products/${product.slug}/${product._id}`}>
-          <h3 className="font-bold text-slate-700 hover:underline underline-offset-2 cursor-pointer mb-2">
+          <h3 className="font-semibold text-slate-700 hover:underline underline-offset-2 cursor-pointer mb-2">
             {product.name.slice(0, 100)}
             {product.name.length > 100 && "..."}
           </h3>
