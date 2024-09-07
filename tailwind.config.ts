@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        inherit: "inherit",
+      },
       screens: {
         xs: "480px",
       },
