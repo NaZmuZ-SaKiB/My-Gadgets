@@ -4,6 +4,7 @@ import { TProduct } from "@/types/product.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import { Heart, Shuffle } from "lucide-react";
 import QuantityInput from "./QuantityInput";
+import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
 
 type TProps = {
   product: TProduct;
@@ -21,6 +22,10 @@ const ProductShortSpec = ({ product }: TProps) => {
       <h1 className="text-3xl font-semibold text-slate-700 leading-10">
         {product.name}
       </h1>
+
+      <div className="mt-3 w-[100px]">
+        <StarRatingComponent readonly value={4.5} />
+      </div>
 
       {/* Price section  */}
       <div className="mt-5 flex items-end gap-5">
