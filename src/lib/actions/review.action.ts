@@ -68,6 +68,29 @@ export const reviewGetAllAction = async (params: string) => {
   return result;
 };
 
+export const reviewGetAllByProductIdAction = async (productId: string) => {
+  const response = await fetch(
+    `${backendUrl}/api/review/product/${productId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    }
+  );
+
+  const result = await response.json();
+
+  if (!result?.success) {
+    return {
+      data: [],
+    };
+  }
+
+  return result;
+};
+
 export const reviewGetByIdAction = async (id: string) => {
   const response = await fetch(`${backendUrl}/api/review/${id}`, {
     method: "GET",
