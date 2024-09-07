@@ -24,17 +24,17 @@ const Footer = async () => {
               />
             </div>
             <p className="text-slate-500 text-lg font-semibold mb-5 max-md:text-center lg:max-w-[90%] xl:max-w-[70%]">
-              {footerData.slogan}
+              {footerData?.slogan}
             </p>
             <p className="flex flex-wrap items-center gap-2 text-slate-500 max-md:justify-center text-sm">
               <Mail className="size-5 text-primary" />
               <span className="font-semibold">Email:</span>
-              <span>{footerData.email}</span>
+              <span>{footerData?.email}</span>
             </p>
             <p className="flex items-center gap-2 text-slate-500 mt-3 max-md:justify-center text-sm">
               <Clock className="size-5 text-primary" />
               <span className="font-semibold">Hours:</span>
-              <span>{footerData.hours}</span>
+              <span>{footerData?.hours}</span>
             </p>
           </div>
 
@@ -55,7 +55,7 @@ const Footer = async () => {
           <div className="w-full max-md:text-center">
             <h3 className="text-xl font-bold text-slate-700">For Query</h3>
             <div
-              dangerouslySetInnerHTML={{ __html: footerData.contact }}
+              dangerouslySetInnerHTML={{ __html: footerData?.contact }}
               className="mt-3 flex flex-col text-sm gap-2 text-slate-700 leading-6"
             />
           </div>
