@@ -8,6 +8,10 @@ import ProductSpecification from "../../_components/ProductSpecification";
 import ProductDescription from "../../_components/ProductDescription";
 import RelatedProducts from "../../_components/RelatedProducts";
 import ReviewCreateForm from "../../_components/ReviewCreateForm";
+import ProductReviews from "../../_components/ProductReviews";
+import { reviewGetAllByProductIdAction } from "@/lib/actions/review.action";
+import { TReview } from "@/types/review.type";
+import { isUserLoggedIn } from "@/lib/actions/auth.action";
 
 type TProps = {
   params: { id: string };
@@ -15,8 +19,14 @@ type TProps = {
 
 const SingleProductPage = async ({ params }: TProps) => {
   const { id } = params;
+
+  const user = await isUserLoggedIn();
+
   const productData = await productGetByIdAction(id);
   const product: TProduct = productData.data;
+
+  const reviewsData = await reviewGetAllByProductIdAction(id);
+  const reviews: TReview[] = reviewsData.data;
 
   const breadcrumbItems = [
     {
@@ -44,7 +54,7 @@ const SingleProductPage = async ({ params }: TProps) => {
             images={product.images}
             alt={product.model}
           />
-          <ProductShortSpec product={product} />
+          <ProductShortSpec product={product} reviews={reviews} />
         </div>
       </section>
 
@@ -55,10 +65,14 @@ const SingleProductPage = async ({ params }: TProps) => {
           <ProductSpecification product={product} />
           <ProductDescription description={product.description} />
 
-          <div className="border border-gray-300 rounded-2xl p-3 xs:p-6 my-4 max-lg:mb-0">
-            <div className="text-xl font-bold mb-3">Leave a review</div>
-            <ReviewCreateForm product={product._id.toString()} />
-          </div>
+          <ProductReviews reviews={reviews} />
+
+          {!!user && (
+            <div className="border border-slate-300 rounded-2xl p-3 xs:p-6 my-4 max-lg:mb-0">
+              <div className="text-xl font-bold mb-3">Leave a review</div>
+              <ReviewCreateForm product={product._id.toString()} />
+            </div>
+          )}
         </div>
         <RelatedProducts category={product.categories[0].name} />
       </div>
