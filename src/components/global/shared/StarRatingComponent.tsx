@@ -36,11 +36,13 @@ const StarRatingComponent = ({
       </div>
     );
   } else {
+    const percentage = (value / maxStars) * 100;
+
     return (
       <div
         className="inline-block"
         style={{
-          backgroundImage: `linear-gradient(90deg, #FDAF07  ${value}%, #D8D9DB  ${value}%)`,
+          backgroundImage: `linear-gradient(90deg, #FDAF07  ${percentage}%, #D8D9DB  ${percentage}%)`,
           display: "flex",
         }}
       >
