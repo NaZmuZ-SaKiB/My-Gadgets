@@ -5,17 +5,22 @@ import { formatCurrency } from "@/utils/currencyFormat";
 import { Heart, Shuffle } from "lucide-react";
 import QuantityInput from "./QuantityInput";
 import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
+import { TReview } from "@/types/review.type";
 
 type TProps = {
   product: TProduct;
+  reviews: TReview[];
 };
 
-const ProductShortSpec = ({ product }: TProps) => {
+const ProductShortSpec = ({ product, reviews }: TProps) => {
   const discount = Math.floor(
     ((Number(product.regularPrice) - Number(product.salePrice)) /
       Number(product.regularPrice)) *
       100
   );
+
+  const avgRating =
+    reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
 
   return (
     <div>
@@ -23,8 +28,12 @@ const ProductShortSpec = ({ product }: TProps) => {
         {product.name}
       </h1>
 
-      <div className="mt-3 w-[100px]">
-        <StarRatingComponent readonly value={4.5} />
+      <div
+        className={cn("mt-3 w-[100px]", {
+          hidden: !reviews.length,
+        })}
+      >
+        <StarRatingComponent readonly value={avgRating} />
       </div>
 
       {/* Price section  */}
@@ -41,7 +50,7 @@ const ProductShortSpec = ({ product }: TProps) => {
       </div>
 
       {/* Stock Status  */}
-      <div className="mt-5 px-4 py-2 rounded-lg bg-slate-100 text-slate-500 font-semibold inline-flex gap-2">
+      <div className="mt-8 px-4 py-2 rounded-lg bg-slate-100 text-slate-500 font-semibold inline-flex gap-2">
         <span>Availability:</span>
         <span
           className={cn("text-slate-700 font-bold", {
@@ -71,7 +80,7 @@ const ProductShortSpec = ({ product }: TProps) => {
           <div>
             <Button
               variant="outline"
-              className="focus-visible:ring-primary-1 h-full border-gray-300 text-gray-500 hover:bg-primary-1 hover:text-primary-3 px-3"
+              className="focus-visible:ring-primary-1 h-full border-slate-300 text-slate-500 hover:bg-primary-1 hover:text-primary-3 px-3"
             >
               <Heart />
             </Button>
@@ -80,7 +89,7 @@ const ProductShortSpec = ({ product }: TProps) => {
           <div>
             <Button
               variant="outline"
-              className="focus-visible:ring-primary-1 h-full border-gray-300 text-gray-500 hover:bg-primary-1 hover:text-primary-3 px-3"
+              className="focus-visible:ring-primary-1 h-full border-slate-300 text-slate-500 hover:bg-primary-1 hover:text-primary-3 px-3"
             >
               <Shuffle />
             </Button>
