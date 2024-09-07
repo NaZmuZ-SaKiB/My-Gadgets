@@ -24,7 +24,7 @@ const QuantityInput = () => {
       <div className="cursor-pointer border border-primary rounded-lg inline-flex items-center">
         <button
           type="button"
-          className="p-2 outline-none focus-visible:bg-gray-100"
+          className="p-2 outline-none focus-visible:bg-slate-100"
           onClick={handleDecrement}
         >
           <Minus className="size-5 text-primary" />
@@ -33,7 +33,7 @@ const QuantityInput = () => {
 
         <button
           type="button"
-          className="cursor-pointer p-2 outline-none focus-visible:bg-gray-100"
+          className="cursor-pointer p-2 outline-none focus-visible:bg-slate-100"
           onClick={handleIncrement}
         >
           <Plus className="size-5 text-primary" />
