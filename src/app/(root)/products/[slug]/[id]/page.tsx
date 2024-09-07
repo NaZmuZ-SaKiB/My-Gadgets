@@ -7,6 +7,7 @@ import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
 import ProductSpecification from "../../_components/ProductSpecification";
 import ProductDescription from "../../_components/ProductDescription";
 import RelatedProducts from "../../_components/RelatedProducts";
+import ReviewCreateForm from "../../_components/ReviewCreateForm";
 
 type TProps = {
   params: { id: string };
@@ -53,6 +54,11 @@ const SingleProductPage = async ({ params }: TProps) => {
           <ProductDetailsMunu />
           <ProductSpecification product={product} />
           <ProductDescription description={product.description} />
+
+          <div className="border border-gray-300 rounded-2xl p-3 xs:p-6 my-4 max-lg:mb-0">
+            <div className="text-xl font-bold mb-3">Leave a review</div>
+            <ReviewCreateForm product={product._id.toString()} />
+          </div>
         </div>
         <RelatedProducts category={product.categories[0].name} />
       </div>
