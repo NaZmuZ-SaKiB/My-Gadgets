@@ -8,6 +8,7 @@ import DefaultBanner1 from "@/assets/images/banner1.webp";
 import DefaultBanner2 from "@/assets/images/banner2.webp";
 import DefaultBanner3 from "@/assets/images/banner3.webp";
 import DefaultBanner4 from "@/assets/images/banner4.webp";
+import FullStar from "@/assets/images/full-star.png";
 
 // Import icons
 import CartIcon from "@/assets/icons/icon-cart.svg";
@@ -30,6 +31,8 @@ export const images = {
   defaultBanner2: DefaultBanner2,
   defaultBanner3: DefaultBanner3,
   defaultBanner4: DefaultBanner4,
+
+  fullStar: FullStar,
 };
 
 export const icons = {
