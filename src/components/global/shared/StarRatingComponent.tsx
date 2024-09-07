@@ -17,7 +17,7 @@ const StarRatingComponent = ({
 }: TProps) => {
   if (!readonly) {
     return (
-      <div className="flex gap-1 items-end">
+      <div className="flex gap-1 items-center">
         {Array(maxStars)
           .fill(0)
           .map((_, i) => (
@@ -27,8 +27,8 @@ const StarRatingComponent = ({
               className="cursor-pointer"
             >
               <Star
-                fill={i + 1 <= value ? "orange" : "lightgray"}
-                color={i + 1 <= value ? "orange" : "lightgray"}
+                fill={i + 1 <= value ? "orange" : "#cbd5e1"}
+                color={i + 1 <= value ? "orange" : "#cbd5e1"}
               />
             </span>
           ))}
