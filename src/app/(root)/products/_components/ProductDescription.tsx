@@ -4,7 +4,7 @@ type TProps = {
 
 const ProductDescription = ({ description }: TProps) => {
   return (
-    <section className="mt-4 p-2 xs:p-6 bg-gray-50 rounded-2xl">
+    <section className="mt-4 p-2 xs:p-6 bg-slate-50 rounded-2xl">
       <h2 className="text-xl text-slate-700 font-semibold">Description</h2>
 
       <div
