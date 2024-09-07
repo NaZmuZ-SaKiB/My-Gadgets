@@ -1,8 +1,14 @@
+"use server";
+
 import { authKey, backendUrl } from "@/constants";
 import { TReview } from "@/types/review.type";
 import { cookies } from "next/headers";
+import { z } from "zod";
+import { ReviewValidation } from "../validations/review.validation";
 
-export const reviewCreateAction = async (payload: Partial<TReview>) => {
+export const reviewCreateAction = async (
+  payload: z.infer<typeof ReviewValidation.create>
+) => {
   const response = await fetch(`${backendUrl}/api/review`, {
     method: "POST",
     headers: {
