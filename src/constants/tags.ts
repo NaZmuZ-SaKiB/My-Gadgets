@@ -7,4 +7,5 @@ export const AQTags = {
   USER: "user",
   BRANCH: "branch",
   SETTINGS: "settings",
+  REVIEW: "review",
 };
