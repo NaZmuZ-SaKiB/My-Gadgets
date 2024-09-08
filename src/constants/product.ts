@@ -5,6 +5,7 @@ import {
   TOperatingSystem,
   TPowerSource,
 } from "@/types/product.type";
+import { TReviewStatus } from "@/types/review.type";
 
 export const operatingSystems: TOperatingSystem[] = [
   "android",
@@ -56,3 +57,9 @@ export const compatibilityOptions = compatibilities.map((compatibility) => ({
   label: compatibility,
   value: compatibility,
 }));
+
+export const productReviewStatusOptions: TReviewStatus[] = [
+  "approved",
+  "pending",
+  "rejected",
+];
