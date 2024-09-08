@@ -8,6 +8,7 @@ import { Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import ReviewStatusSelect from "./ReviewStatusSelect";
 
 type TProps = {
   selectedReviews: string[];
@@ -82,7 +83,7 @@ const ReviewsTable = ({ selectedReviews, setSelectedReviews }: TProps) => {
               <td>
                 <Link
                   href={`/admin/products/${item._id}`}
-                  className="hover:underline"
+                  className="hover:underline no-focus"
                 >
                   {item.product.name}
                 </Link>
@@ -90,7 +91,9 @@ const ReviewsTable = ({ selectedReviews, setSelectedReviews }: TProps) => {
               <td>
                 {item.rating} star{item.rating > 1 && "s"}
               </td>
-              <td>{item.status}</td>
+              <td>
+                <ReviewStatusSelect defaultValue={item.status} id={item._id} />
+              </td>
               <td>
                 <div className="flex gap-1 justify-end max-md:flex-wrap">
                   <Button
