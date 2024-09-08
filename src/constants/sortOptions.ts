@@ -12,3 +12,5 @@ export const productSortOptions = [
 ];
 
 export const branchSortOptions = ["name", "createdAt", "updatedAt"];
+
+export const reviewSortOptions = ["rating", "createdAt", "updatedAt"];
