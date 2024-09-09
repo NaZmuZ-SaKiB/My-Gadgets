@@ -36,7 +36,6 @@ const ReviewCreateForm = ({ product }: TProps) => {
         setRating(3);
       } else {
         toast.error(result?.message || "A Server Error Occurred.");
-        console.log(result);
       }
     } catch (error: any) {
       toast.error(error?.message || "A Client Error Occurred.");
