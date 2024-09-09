@@ -90,8 +90,6 @@ const SingleCategoryPage = () => {
     image: category?.image?._id.toString() || "",
   };
 
-  console.log(category);
-
   const parentOptions: TSelectOption[] =
     parentCategories.length > 0
       ? parentCategories.map((cat: TCategory) => ({
