@@ -51,7 +51,6 @@ const SingleProductPage = () => {
   const handleSubmit: SubmitHandler<
     Partial<z.infer<typeof ProductValidation.create>>
   > = async (values) => {
-    console.log(values);
     values.categories = selectedCategories;
 
     if (values.weight === 0) delete values.weight;
