@@ -15,7 +15,7 @@ const FeaturedProducts = ({ featuredProducts }: TProps) => {
 
   // const productsData = await productGetAllAction(params.toString());
   // const products: TProduct[] = productsData.data || [];
-  console.log(featuredProducts[0].banner);
+
   return (
     <section className="pt-4 md:pt-6 pb-4">
       <h2 className="font-bold text-3xl text-slate-700">Featured Products</h2>
