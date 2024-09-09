@@ -56,8 +56,6 @@ const HomepageSettingsPage = () => {
       }));
     }
 
-    console.log(values);
-
     try {
       const result = await updateSettingsFn(values);
 
