@@ -7,8 +7,8 @@ const PriceFilter = () => {
   const [values, setValues] = useState<number[]>([0, 300000]);
 
   return (
-    <div className="rounded-xl border border-gray-300">
-      <h3 className="font-bold text-lg px-3 py-2 border-b border-gray-300">
+    <div className="rounded-xl border border-slate-300">
+      <h3 className="font-bold text-lg px-3 py-2 border-b border-slate-300">
         Price
       </h3>
 
