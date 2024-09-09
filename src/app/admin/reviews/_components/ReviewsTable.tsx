@@ -19,7 +19,6 @@ const ReviewsTable = ({ selectedReviews, setSelectedReviews }: TProps) => {
   const searchParams = useSearchParams();
   const { data, isLoading } = useReviewGetAllQuery(searchParams.toString());
 
-  console.log(data);
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
