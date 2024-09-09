@@ -77,8 +77,6 @@ const SingleBrandPage = () => {
     image: brand?.image?._id.toString() || "",
   };
 
-  console.log(brand);
-
   return (
     <APageContainer>
       <APageHeading title={`Brand - ${brand?.name}`} backButton />
