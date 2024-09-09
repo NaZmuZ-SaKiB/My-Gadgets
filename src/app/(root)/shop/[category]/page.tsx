@@ -1,5 +1,6 @@
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import { productGetAllAction } from "@/lib/actions/product.action";
+import Filters from "../_components/Filters";
 
 type TProps = {
   params: {
@@ -26,7 +27,9 @@ const ShopPage = async ({ params, searchParams }: TProps) => {
       <BreadcrumbBar items={breadcrumbItems} />
 
       <div className="lg:grid grid-cols-[250px_1fr] gap-3 mt-5">
-        <div className="bg-white max-lg:hidden"></div>
+        <div className="bg-white max-lg:hidden">
+          <Filters />
+        </div>
       </div>
     </div>
   );
