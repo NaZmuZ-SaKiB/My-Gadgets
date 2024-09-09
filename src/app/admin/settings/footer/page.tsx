@@ -34,8 +34,6 @@ const FooterSettingsPage = () => {
   const handleSubmit: SubmitHandler<
     z.infer<typeof SettingsValidation.update>
   > = async (values) => {
-    console.log(values);
-
     try {
       const result = await updateSettingsFn(values);
 
