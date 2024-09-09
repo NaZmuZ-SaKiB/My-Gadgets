@@ -18,7 +18,7 @@ type TProps = {
 
 const BreadcrumbBar = ({ items }: TProps) => {
   return (
-    <Breadcrumb className="sm:p-4 sm:border sm:border-slate-300 sm:rounded-xl overflow-hidden">
+    <Breadcrumb className="sm:p-3 sm:border sm:border-slate-300 sm:rounded-xl overflow-hidden">
       <BreadcrumbList className="flex-nowrap">
         <BreadcrumbItem className="text-primary">
           <Link href="/">
