@@ -11,7 +11,7 @@ type TProps = {
 const ProductImages = ({ alt, images, name }: TProps) => {
   return (
     <div>
-      <div className="border border-slate-300 rounded-2xl overflow-hidden">
+      <div className="border border-slate-200 rounded-2xl overflow-hidden">
         <Image
           src={images[0].secureUrl}
           alt={alt}
