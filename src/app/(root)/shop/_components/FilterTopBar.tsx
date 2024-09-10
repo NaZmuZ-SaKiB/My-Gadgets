@@ -8,7 +8,7 @@ import {
 
 const FilterTopBar = () => {
   return (
-    <div className="flex justify-center md:justify-end flex-wrap gap-2 border border-slate-300 rounded-xl px-3 py-1.5">
+    <div className="flex justify-center md:justify-end flex-wrap gap-2 border border-slate-200 rounded-xl px-3 py-1.5">
       {/* <FilterSidebar /> */}
 
       <div className="max-xs:hidden inline-flex items-center py-1.5 text-slate-500">
