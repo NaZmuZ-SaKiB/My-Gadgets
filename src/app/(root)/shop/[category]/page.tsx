@@ -13,8 +13,13 @@ type TProps = {
 };
 
 const ShopPage = async ({ params, searchParams }: TProps) => {
+  const limit = searchParams?.limit ?? 35;
+  if (searchParams?.limit) delete searchParams.limit;
+
+  const queries = new URLSearchParams(searchParams);
+
   const productsData = await productGetAllAction(
-    `limit=35&category=${params.category}&${searchParams.toString()}`
+    `limit=${limit}&category=${params.category}&${queries.toString()}`
   );
   const products: TProduct[] = productsData.data || [];
 
