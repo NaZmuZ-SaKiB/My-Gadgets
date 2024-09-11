@@ -12,10 +12,13 @@ type TProps = {
 };
 
 const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
-  const [values, setValues] = useState<number[]>([min, max]);
-
   const pathName = usePathname();
   const searchParams = useSearchParams();
+
+  const [values, setValues] = useState<number[]>([
+    Number(searchParams.get(`min${field}`)) || min,
+    Number(searchParams.get(`max${field}`)) || max,
+  ]);
 
   const router = useRouter();
 
