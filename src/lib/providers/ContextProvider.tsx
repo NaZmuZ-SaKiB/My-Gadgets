@@ -29,7 +29,7 @@ const GlobalContext = createContext<TGlobalContext>({
 export const useGlobalContext = () => {
   const { cart, setGlobalContext } = useContext(GlobalContext);
 
-  const addToCart = (product: TProduct) => {
+  const addToCart = (product: TProduct, quantity: number = 1) => {
     const isAdded = cart.findIndex((item) => item._id === product._id);
 
     if (isAdded === -1) {
@@ -37,7 +37,7 @@ export const useGlobalContext = () => {
         _id: product._id,
         name: product.name,
         price: product.salePrice,
-        quantity: 1,
+        quantity: quantity,
         image: product.images[0].secureUrl,
         slug: product.slug,
       };
@@ -50,6 +50,23 @@ export const useGlobalContext = () => {
       newItem.quantity += 1;
 
       const newCart = [...cart];
+      newCart[isAdded] = newItem;
+
+      setGlobalContext((prev: TGlobalContext) => ({
+        ...prev,
+        cart: newCart,
+      }));
+    }
+  };
+
+  const plusToCart = (productId: string) => {
+    const isAdded = cart.findIndex((item) => item._id === productId);
+    let newCart: TCartItem[] = [];
+
+    if (isAdded !== -1) {
+      const newItem = cart[isAdded];
+      newItem.quantity += 1;
+      newCart = [...cart];
       newCart[isAdded] = newItem;
 
       setGlobalContext((prev: TGlobalContext) => ({
@@ -88,7 +105,7 @@ export const useGlobalContext = () => {
     }));
   };
 
-  return { cart, addToCart, minusFromCart, clearCart };
+  return { cart, addToCart, plusToCart, minusFromCart, clearCart };
 };
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
