@@ -1,6 +1,7 @@
 "use client";
 
 import { RangeSlider } from "@/components/ui/range-slider";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 type TProps = {
@@ -12,6 +13,25 @@ type TProps = {
 
 const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
   const [values, setValues] = useState<number[]>([min, max]);
+
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
+
+  const router = useRouter();
+
+  const handleChange = (values: number[]) => {
+    setValues(values);
+
+    const params = new URLSearchParams(searchParams);
+    params.delete(`min${field}`);
+    params.delete(`max${field}`);
+
+    params.append(`min${field}`, values[0].toString());
+    params.append(`max${field}`, values[1].toString());
+    setTimeout(() => {
+      router.replace(`${pathName}?${params}`);
+    }, 500);
+  };
 
   return (
     <div className="rounded-xl border border-slate-200">
@@ -27,7 +47,7 @@ const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
       <div className="pt-5 pb-5 px-3 w-full">
         <RangeSlider
           value={values}
-          onValueChange={setValues}
+          onValueChange={handleChange}
           min={min}
           max={max}
           step={step}
