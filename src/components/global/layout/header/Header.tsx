@@ -7,6 +7,7 @@ import SearchBox from "./SearchBox";
 import { Search } from "lucide-react";
 import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
+import Cart from "./Cart";
 
 const font = Permanent_Marker({
   weight: "400",
@@ -74,8 +75,7 @@ const Header = () => {
               </div>
 
               <div className="shrink-0 text-slate-600 hover:text-slate-800 cursor-pointer">
-                <Image src={icons.cart} alt="cart" className="size-6 mx-auto" />
-                <span className="hidden xl:block text-sm">Cart</span>
+                <Cart />
               </div>
 
               <div className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer">
