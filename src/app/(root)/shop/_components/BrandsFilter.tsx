@@ -29,10 +29,10 @@ const BrandsFilter = ({ brands }: TProps) => {
   };
 
   return (
-    <div className="mt-3 flex justify-center gap-2 overflow-y-auto">
+    <div className="mt-3 flex justify-start gap-2 overflow-y-auto">
       <div
         className={cn(
-          "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center",
+          "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center shrink-0",
           {
             "border-primary": !searchParams.get("brand"),
           }
@@ -46,7 +46,7 @@ const BrandsFilter = ({ brands }: TProps) => {
         <div
           key={`${brand._id}`}
           className={cn(
-            "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center",
+            "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center shrink-0",
             {
               "border-2 border-primary":
                 searchParams.get("brand") === brand.name,
