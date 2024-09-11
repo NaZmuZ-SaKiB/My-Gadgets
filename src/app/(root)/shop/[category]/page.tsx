@@ -4,6 +4,9 @@ import Filters from "../_components/Filters";
 import FilterTopBar from "../_components/FilterTopBar";
 import ProductCard from "@/components/global/cards/ProductCard";
 import { TProduct } from "@/types/product.type";
+import BrandsFilter from "../_components/BrandsFilter";
+import { brandGetAllAction } from "@/lib/actions/brand.action";
+import { TBrand } from "@/types/brand.type";
 
 type TProps = {
   params: {
@@ -23,6 +26,11 @@ const ShopPage = async ({ params, searchParams }: TProps) => {
   );
   const products: TProduct[] = productsData.data || [];
 
+  const brandsData = await brandGetAllAction(
+    "limit=100&sortBy=name&sortOrder=asc"
+  );
+  const brands: TBrand[] = brandsData.data || [];
+
   const breadcrumbItems = [
     {
       label: params.category as string,
@@ -33,6 +41,8 @@ const ShopPage = async ({ params, searchParams }: TProps) => {
   return (
     <div className="mg-container py-4">
       <BreadcrumbBar items={breadcrumbItems} />
+
+      <BrandsFilter brands={brands} />
 
       <div className="lg:grid grid-cols-[250px_1fr] gap-3 mt-3">
         <div className="bg-white max-lg:hidden">
