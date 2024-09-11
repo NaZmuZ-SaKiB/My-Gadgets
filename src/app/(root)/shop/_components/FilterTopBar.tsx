@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import FilterSidebar from "./FilterSidebar";
 
 const FilterTopBar = () => {
   const pathName = usePathname();
@@ -62,7 +63,7 @@ const FilterTopBar = () => {
   };
   return (
     <div className="flex justify-center md:justify-end flex-wrap gap-2 border border-slate-200 rounded-xl px-3 py-1.5">
-      {/* <FilterSidebar /> */}
+      <FilterSidebar />
 
       <div className="max-xs:hidden inline-flex items-center py-1.5 text-slate-500">
         <span className="font-semibold text-sm">Show:</span>
