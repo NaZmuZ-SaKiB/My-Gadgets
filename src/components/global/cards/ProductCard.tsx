@@ -1,10 +1,9 @@
 import { TProduct } from "@/types/product.type";
 import { formatCurrency } from "@/utils/currencyFormat";
-import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import MGButton from "../shared/MGButton";
 import { cn } from "@/lib/utils";
+import AddToCartButton from "../shared/ProductCardAddToCart";
 
 type TProps = {
   product: TProduct;
@@ -68,10 +67,7 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
                 {formatCurrency(product.regularPrice)}
               </span>
             </div>
-            <MGButton className="rounded-lg gap-2">
-              <ShoppingCart className="size-3 xs:size-4" />
-              <span>Add</span>
-            </MGButton>
+            <AddToCartButton product={product} quantity={1} />
           </div>
         </div>
       </div>
