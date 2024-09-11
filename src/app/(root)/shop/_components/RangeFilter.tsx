@@ -26,9 +26,11 @@ const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
     setValues(values);
 
     const params = new URLSearchParams(searchParams);
+    params.delete("page");
     params.delete(`min${field}`);
     params.delete(`max${field}`);
 
+    params.append("page", "1");
     params.append(`min${field}`, values[0].toString());
     params.append(`max${field}`, values[1].toString());
     setTimeout(() => {
