@@ -48,8 +48,7 @@ const BrandsFilter = ({ brands }: TProps) => {
           className={cn(
             "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center shrink-0",
             {
-              "border-2 border-primary":
-                searchParams.get("brand") === brand.name,
+              "border-primary": searchParams.get("brand") === brand.name,
             }
           )}
           onClick={() => handleChange(brand.name)}
