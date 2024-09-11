@@ -16,7 +16,7 @@ const FilterSidebar = () => {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="no-focus lg:hidden">
+      <SheetTrigger asChild className="no-focus lg:hidden">
         <Button
           variant="secondary"
           size="sm"
