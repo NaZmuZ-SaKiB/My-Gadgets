@@ -4,7 +4,7 @@
 
 @layer utilities {
   .no-focus {
-    @apply !outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
+    @apply !outline-none focus-visible:!ring-0 focus-visible:ring-transparent focus-visible:!ring-offset-0 focus:!ring-0 focus:ring-transparent focus:!ring-offset-0;
   }
 }
 
