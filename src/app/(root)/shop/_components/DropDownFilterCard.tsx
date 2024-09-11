@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Select,
   SelectContent,
@@ -10,14 +12,36 @@ import {
   operatingSystemOptions,
   powerSourceOptions,
 } from "@/constants";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const DropDownFilterCard = () => {
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
+
+  const router = useRouter();
+
+  const handleChange = (value: string, field: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("page");
+    params.delete(field);
+
+    params.append("page", "1");
+    if (value !== "all") {
+      params.append(field, value);
+    }
+
+    router.replace(`${pathName}?${params}`);
+  };
+
   return (
     <div className="rounded-xl border border-slate-200 p-3">
       <p className="text-sm mb-2 font-semibold text-slate-700">
         Operating System
       </p>
-      <Select>
+      <Select
+        defaultValue={searchParams.get("os") || "all"}
+        onValueChange={(value) => handleChange(value, "os")}
+      >
         <SelectTrigger className="no-focus">
           <SelectValue placeholder="Operating System" />
         </SelectTrigger>
@@ -35,7 +59,10 @@ const DropDownFilterCard = () => {
       <p className="text-sm mt-3 mb-2 font-semibold text-slate-700">
         Power Source
       </p>
-      <Select>
+      <Select
+        defaultValue={searchParams.get("powerSource") || "all"}
+        onValueChange={(value) => handleChange(value, "powerSource")}
+      >
         <SelectTrigger className="no-focus">
           <SelectValue placeholder="Power Source" />
         </SelectTrigger>
@@ -53,7 +80,10 @@ const DropDownFilterCard = () => {
       <p className="text-sm mt-3 mb-2 font-semibold text-slate-700">
         Charging Port
       </p>
-      <Select>
+      <Select
+        defaultValue={searchParams.get("chargingPort") || "all"}
+        onValueChange={(value) => handleChange(value, "chargingPort")}
+      >
         <SelectTrigger className="no-focus">
           <SelectValue placeholder="Power Source" />
         </SelectTrigger>
