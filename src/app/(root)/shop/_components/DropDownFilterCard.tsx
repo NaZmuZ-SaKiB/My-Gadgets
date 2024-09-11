@@ -46,7 +46,7 @@ const DropDownFilterCard = () => {
           <SelectValue placeholder="Operating System" />
         </SelectTrigger>
 
-        <SelectContent>
+        <SelectContent className="z-[120]">
           <SelectItem value="all">All</SelectItem>
           {operatingSystemOptions.map((os) => (
             <SelectItem key={`filter-os-${os}`} value={os.value}>
@@ -67,7 +67,7 @@ const DropDownFilterCard = () => {
           <SelectValue placeholder="Power Source" />
         </SelectTrigger>
 
-        <SelectContent>
+        <SelectContent className="z-[120]">
           <SelectItem value="all">All</SelectItem>
           {powerSourceOptions.map((ps) => (
             <SelectItem key={`filter-ps-${ps}`} value={ps.label}>
@@ -88,7 +88,7 @@ const DropDownFilterCard = () => {
           <SelectValue placeholder="Power Source" />
         </SelectTrigger>
 
-        <SelectContent>
+        <SelectContent className="z-[120]">
           <SelectItem value="all">All</SelectItem>
           {chargingPortOptions.map((cp) => (
             <SelectItem key={`filter-cp-${cp}`} value={cp.label}>
