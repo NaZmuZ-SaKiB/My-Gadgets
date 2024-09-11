@@ -1,7 +1,7 @@
 "use client";
 
 import { TProduct } from "@/types/product.type";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export type TCartItem = {
   _id: string;
@@ -109,11 +109,18 @@ export const useGlobalContext = () => {
 };
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [globalContext, setGlobalContext] = useState({
-    cart: [],
-    wishList: [],
-    compare: [],
-  });
+  const [globalContext, setGlobalContext] = useState(
+    JSON.parse(localStorage.getItem("mg-context") || "") || {
+      cart: [],
+      wishList: [],
+      compare: [],
+    }
+  );
+
+  useEffect(() => {
+    localStorage.setItem("mg-context", JSON.stringify(globalContext));
+  }, [globalContext]);
+
   return (
     <GlobalContext.Provider
       value={{ ...globalContext, setGlobalContext: setGlobalContext }}
