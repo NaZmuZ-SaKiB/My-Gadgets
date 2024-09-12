@@ -38,8 +38,8 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
       </div>
 
       <div
-        className={cn("p-2 sm:p-5 flex-1 flex flex-col", {
-          "justify-between": !showDescription,
+        className={cn("p-2 sm:p-5 sm:pt-2 flex-1 flex flex-col", {
+          "justify-between gap-3": !showDescription,
         })}
       >
         <Link href={`/products/${product.slug}/${product._id}`}>
@@ -48,7 +48,11 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
           </h3>
         </Link>
 
-        <div className="flex-1 flex flex-col justify-between">
+        <div
+          className={cn({
+            "flex-1 flex flex-col justify-between": showDescription,
+          })}
+        >
           {showDescription && (
             <div
               dangerouslySetInnerHTML={{
