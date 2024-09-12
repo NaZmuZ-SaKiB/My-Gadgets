@@ -34,7 +34,7 @@ const BreadcrumbBar = ({ items }: TProps) => {
             <Fragment key={`breadcrumb-item-${item.label}-${i}`}>
               <BreadcrumbItem
                 className={cn("text-primary font-semibold overflow-hidden", {
-                  "text-slate-500": i === items.length - 1,
+                  "text-slate-500": !item.link,
                   "shrink-0": i < items.length - 1,
                 })}
               >
