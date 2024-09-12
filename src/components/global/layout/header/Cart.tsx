@@ -23,7 +23,8 @@ const Cart = () => {
   const { cart, removeFromCart } = useCart();
 
   const total = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity + item.shippingCost,
+    (acc, item) =>
+      acc + item.price * item.quantity + item.shippingCost * item.quantity,
     0
   );
   return (
