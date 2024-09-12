@@ -1,6 +1,6 @@
 "use client";
 
-import { useGlobalContext } from "@/lib/providers/ContextProvider";
+import { useCart } from "@/lib/providers/ContextProvider";
 import { cn } from "@/lib/utils";
 import { TProduct } from "@/types/product.type";
 import { ClassValue } from "clsx";
@@ -14,7 +14,7 @@ type TProps = {
 };
 
 const ProductCardAddToCart = ({ product, quantity = 1, className }: TProps) => {
-  const { cart, addToCart } = useGlobalContext();
+  const { cart, addToCart } = useCart();
   const isAdded = !!cart.find((item) => item._id === product._id);
 
   const handleClick = () => {
