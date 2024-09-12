@@ -10,6 +10,7 @@ export type TCartItem = {
   quantity: number;
   image: string;
   slug: string;
+  shippingCost: number;
 };
 
 type TGlobalContext = {
@@ -26,7 +27,7 @@ const GlobalContext = createContext<TGlobalContext>({
   setGlobalContext: () => {},
 });
 
-export const useGlobalContext = () => {
+export const useCart = () => {
   const { cart, setGlobalContext } = useContext(GlobalContext);
 
   const addToCart = (product: TProduct, quantity: number = 1) => {
@@ -40,6 +41,7 @@ export const useGlobalContext = () => {
         quantity: quantity,
         image: product.images[0].secureUrl,
         slug: product.slug,
+        shippingCost: product.shippingCost,
       };
       setGlobalContext((prev: TGlobalContext) => ({
         ...prev,
@@ -98,6 +100,15 @@ export const useGlobalContext = () => {
     }
   };
 
+  const removeFromCart = (productId: string) => {
+    const newCart = cart.filter((item) => item._id !== productId);
+
+    setGlobalContext((prev: TGlobalContext) => ({
+      ...prev,
+      cart: newCart,
+    }));
+  };
+
   const clearCart = () => {
     setGlobalContext((prev: TGlobalContext) => ({
       ...prev,
@@ -105,7 +116,14 @@ export const useGlobalContext = () => {
     }));
   };
 
-  return { cart, addToCart, plusToCart, minusFromCart, clearCart };
+  return {
+    cart,
+    addToCart,
+    removeFromCart,
+    plusToCart,
+    minusFromCart,
+    clearCart,
+  };
 };
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
