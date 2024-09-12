@@ -15,8 +15,11 @@ import { formatCurrency } from "@/utils/currencyFormat";
 import { Trash2, X } from "lucide-react";
 import Image from "next/image";
 import MGButton from "../../shared/MGButton";
+import Link from "next/link";
+import { useState } from "react";
 
 const Cart = () => {
+  const [open, setOpen] = useState(false);
   const { cart, removeFromCart } = useCart();
 
   const total = cart.reduce(
@@ -24,7 +27,7 @@ const Cart = () => {
     0
   );
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <div className="h-full relative">
           <Image src={icons.cart} alt="cart" className="size-6 mx-auto" />
@@ -78,10 +81,22 @@ const Cart = () => {
           </div>
 
           <div className="!ml-0 flex gap-2 justify-between mt-3">
-            <MGButton className="flex-1 rounded-md" variant="outline">
-              View Cart
-            </MGButton>
-            <MGButton className="flex-1 rounded-md">Checkout</MGButton>
+            <Link
+              href="/cart"
+              className="flex-1"
+              onClick={() => setOpen(false)}
+            >
+              <MGButton className="w-full rounded-md" variant="outline">
+                View Cart
+              </MGButton>
+            </Link>
+            <Link
+              href="/checkout"
+              className="flex-1"
+              onClick={() => setOpen(false)}
+            >
+              <MGButton className="w-full rounded-md">Checkout</MGButton>
+            </Link>
           </div>
         </SheetFooter>
       </SheetContent>
