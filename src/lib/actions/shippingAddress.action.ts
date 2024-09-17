@@ -58,7 +58,7 @@ export const shippingAddressGetAllAction = async (params: string) => {
   if (!result?.success) {
     return {
       data: [],
-      total: 0,
+      meta: {},
     };
   }
 
