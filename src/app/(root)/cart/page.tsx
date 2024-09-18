@@ -18,17 +18,7 @@ const CartPage = () => {
     setMounted(true);
   }, []);
 
-  const subTotal = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-
-  const totalShipping = cart.reduce(
-    (acc, item) => acc + item.shippingCost * item.quantity,
-    0
-  );
-
-  const total = subTotal + totalShipping;
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   if (!mounted) return null;
 
@@ -69,7 +59,6 @@ const CartPage = () => {
                   <th>Name</th>
                   <th>Quantity</th>
                   <th className="max-md:hidden">Unit Price</th>
-                  <th className="max-md:hidden">Shipping</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -96,9 +85,6 @@ const CartPage = () => {
                     <td className="max-md:hidden">
                       {formatCurrency(item.price)}
                     </td>
-                    <td className="max-md:hidden">
-                      {formatCurrency(item.shippingCost * item.quantity)}
-                    </td>
                     <td>
                       {formatCurrency(
                         item.price * item.quantity +
@@ -118,27 +104,9 @@ const CartPage = () => {
           )}
 
           {cart.length > 0 && (
-            <div className="mt-6 flex justify-end">
+            <div className="mt-5 flex justify-end">
               <div className="flex flex-col gap-2">
-                <p className="text-right grid grid-cols-3 py-2 items-end border-b border-slate-200">
-                  <span className="md:text-lg font-semibold text-slate-700">
-                    Sub-Total:
-                  </span>
-                  <span className="col-span-2 text-xl md:text-2xl font-semibold text-primary">
-                    {formatCurrency(subTotal)}
-                  </span>
-                </p>
-
-                <p className="text-right grid grid-cols-3 py-2 items-end border-b border-slate-200">
-                  <span className="md:text-lg font-semibold text-slate-700">
-                    Shipping:
-                  </span>
-                  <span className="col-span-2 text-xl md:text-2xl font-semibold text-primary">
-                    {formatCurrency(totalShipping)}
-                  </span>
-                </p>
-
-                <p className="text-right grid grid-cols-3 py-2 items-end border-b border-slate-200">
+                <p className="flex gap-5 items-end">
                   <span className="md:text-lg font-semibold text-slate-700">
                     Total:
                   </span>
