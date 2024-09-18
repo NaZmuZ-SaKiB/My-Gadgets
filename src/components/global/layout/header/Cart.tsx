@@ -16,11 +16,16 @@ import { Trash2, X } from "lucide-react";
 import Image from "next/image";
 import MGButton from "../../shared/MGButton";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
   const [open, setOpen] = useState(false);
   const { cart, removeFromCart } = useCart();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const total = cart.reduce(
     (acc, item) =>
@@ -34,9 +39,11 @@ const Cart = () => {
           <Image src={icons.cart} alt="cart" className="size-6 mx-auto" />
           <span className="hidden xl:block text-sm">Cart</span>
 
-          <span className="absolute size-[22px] text-[11px] text-white bg-slate-600 rounded-full grid place-items-center -top-2 -right-3">
-            {cart.length}
-          </span>
+          {mounted && (
+            <span className="absolute size-[22px] text-[11px] text-white bg-slate-600 rounded-full grid place-items-center -top-2 -right-3">
+              {cart.length}
+            </span>
+          )}
         </div>
       </SheetTrigger>
       <SheetContent className="px-3 py-4 z-[110] flex flex-col gap-4">
