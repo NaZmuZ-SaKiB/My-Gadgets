@@ -8,9 +8,15 @@ import Quantity from "./_components/Quantity";
 import { Trash2 } from "lucide-react";
 import Link from "next/link";
 import MGButton from "@/components/global/shared/MGButton";
+import { useEffect, useState } from "react";
 
 const CartPage = () => {
+  const [mounted, setMounted] = useState(false);
   const { cart, clearCart } = useCart();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const subTotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -24,18 +30,20 @@ const CartPage = () => {
 
   const total = subTotal + totalShipping;
 
+  if (!mounted) return null;
+
   return (
     <div className="mg-container p-4">
       <BreadcrumbBar items={[{ label: "Shop" }, { label: "Cart" }]} />
 
-      <div className="mt-3 rounded-xl border border-slate-200 p-4">
+      <div className="mt-5 sm:mt-3 sm:rounded-xl sm:border sm:border-slate-200 sm:p-4">
         {cart.length > 0 && (
           <div className="flex items-end gap-3 justify-between">
             <div>
               <h1 className="text-3xl font-semibold text-slate-700">
                 Your Cart
               </h1>
-              <p className="text-slate-500 font-semibold mt-1">
+              <p className="text-slate-500 font-semibold mt-1 text-sm sm:text-base">
                 You have <span className="text-primary">{cart.length}</span>{" "}
                 product
                 {cart.length > 1 ? "s" : ""} in the cart
@@ -43,7 +51,7 @@ const CartPage = () => {
             </div>
 
             <div
-              className="flex items-center gap-1 text-slate-500 border border-slate-500 rounded-lg px-2 py-1 cursor-pointer"
+              className="shrink-0 flex items-center gap-1 text-sm text-slate-500 border border-slate-500 rounded-lg px-2 py-1 cursor-pointer"
               onClick={clearCart}
             >
               <Trash2 className="size-4" />
