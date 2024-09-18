@@ -1,3 +1,5 @@
+"use server";
+
 import { z } from "zod";
 import { OrderValidation } from "../validations/order.validation";
 import { authKey, backendUrl } from "@/constants";
