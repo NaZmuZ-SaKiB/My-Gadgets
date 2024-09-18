@@ -1,3 +1,5 @@
+"use server";
+
 import { z } from "zod";
 import { ShippingAddressValidation } from "../validations/shippingAddress.validation";
 import { authKey, backendUrl } from "@/constants";
