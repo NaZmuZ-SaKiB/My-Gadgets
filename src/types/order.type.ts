@@ -19,6 +19,8 @@ export type TOrderStatus =
   | "completed"
   | "cancelled";
 
+export type TDeliveryOption = "pickup" | "delivery";
+
 export type TOrder = {
   _id: string;
   user: TUser;
@@ -34,6 +36,7 @@ export type TOrder = {
   completedAt: Date;
   status: TOrderStatus;
   cancelRequested?: boolean;
+  deliveryOption: TDeliveryOption;
 
   createdAt: Date;
   updatedAt: Date;
