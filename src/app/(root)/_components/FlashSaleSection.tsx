@@ -6,7 +6,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 import { Zap } from "lucide-react";
 
