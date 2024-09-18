@@ -22,7 +22,10 @@ const AddShippingAddressModal = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <MGButton className="rounded-md gap-2">
+        <MGButton
+          className="rounded-md gap-2 text-primary-hover"
+          variant="outline"
+        >
           <Plus className="size-5" />
           <span>Add New</span>
         </MGButton>
