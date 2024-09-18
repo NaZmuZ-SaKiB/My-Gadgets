@@ -4,7 +4,7 @@ import { useShippingAddressGetAllQuery } from "@/lib/queries/shippingAddress.que
 import { TShippingAddress } from "@/types/shippingAddress.type";
 import AddShippingAddressModal from "./AddShippingAddressModal";
 import { RefreshCcw } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 type TProps = {
@@ -32,7 +32,7 @@ const ShippingAddressSection = ({
     }
   }, [data, setSelectedAddress]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <div className="row-span-2">Loading...</div>;
   return (
     <div className="sm:rounded-xl sm:border sm:border-slate-200 sm:p-4 row-span-2">
       <div className="flex items-center justify-between gap-3 mb-3">
