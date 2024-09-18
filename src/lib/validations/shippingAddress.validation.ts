@@ -8,7 +8,6 @@ const create = z.object({
   division: z.string().min(1, { message: "Division is required." }),
   zipCode: z.string().min(1, { message: "Zip code is required." }),
   phone: z.string().min(1, { message: "Phone number is required." }),
-  default: z.boolean().optional(),
 });
 
 export const ShippingAddressValidation = {
