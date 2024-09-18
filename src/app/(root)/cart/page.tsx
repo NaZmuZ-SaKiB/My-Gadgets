@@ -85,12 +85,7 @@ const CartPage = () => {
                     <td className="max-md:hidden">
                       {formatCurrency(item.price)}
                     </td>
-                    <td>
-                      {formatCurrency(
-                        item.price * item.quantity +
-                          item.shippingCost * item.quantity
-                      )}
-                    </td>
+                    <td>{formatCurrency(item.price * item.quantity)}</td>
                   </tr>
                 ))}
               </tbody>
