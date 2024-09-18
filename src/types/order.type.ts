@@ -20,6 +20,7 @@ export type TOrderStatus =
   | "cancelled";
 
 export type TOrder = {
+  _id: string;
   user: TUser;
   orderItems: TOrderItem[];
   shippingAddress: TShippingAddress;
