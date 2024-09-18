@@ -20,6 +20,7 @@ const CheckoutPage = () => {
     useState<TDeliveryOption>("pickup");
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [transactionId, setTransactionId] = useState<string>("");
 
   const { data, isLoading } = useIsUserLoggedInQuery();
 
@@ -47,6 +48,7 @@ const CheckoutPage = () => {
         <PaymentMethodSection
           selectedPaymentMethod={selectedPaymentMethod}
           setSelectedPaymentMethod={setSelectedPaymentMethod}
+          setTransactionId={setTransactionId}
         />
 
         <DeliveryMethodSection
