@@ -1,4 +1,4 @@
-import { TPaymentMethod } from "@/types/order.type";
+import { TDeliveryOption, TPaymentMethod } from "@/types/order.type";
 
 export * from "./assets";
 export * from "./adminSidebar";
@@ -19,3 +19,5 @@ export const paymentMethods: TPaymentMethod[] = [
   "bank-transfer",
   "stripe",
 ];
+
+export const deliveryOptions: TDeliveryOption[] = ["pickup", "delivery"];
