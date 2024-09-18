@@ -27,11 +27,7 @@ const Cart = () => {
     setMounted(true);
   }, []);
 
-  const total = cart.reduce(
-    (acc, item) =>
-      acc + item.price * item.quantity + item.shippingCost * item.quantity,
-    0
-  );
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
