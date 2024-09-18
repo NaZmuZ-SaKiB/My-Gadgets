@@ -3,15 +3,17 @@
 import { useEffect, useState } from "react";
 
 const CountDownTimer = ({ endTime }: { endTime: string | Date }) => {
-  const [time, setTime] = useState<number>(
-    new Date(endTime).getTime() - Date.now()
-  );
+  const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTime(time - 1000);
+    setTime(new Date(endTime).getTime() - Date.now());
+
+    const interval = setInterval(() => {
+      setTime((prevTime) => prevTime - 1000);
     }, 1000);
-  }, [time]);
+
+    return () => clearInterval(interval);
+  }, [endTime]);
 
   const getTime = () => {
     const total_seconds = Math.floor(time / 1000);
