@@ -1,3 +1,5 @@
+import { TPaymentMethod } from "@/types/order.type";
+
 export * from "./assets";
 export * from "./adminSidebar";
 export * from "./sortOptions";
@@ -11,3 +13,9 @@ export const USER_ROLE = {
   ADMIN: "admin",
   USER: "user",
 } as const;
+
+export const paymentMethods: TPaymentMethod[] = [
+  "cash-on-delivery",
+  "bank-transfer",
+  "stripe",
+];
