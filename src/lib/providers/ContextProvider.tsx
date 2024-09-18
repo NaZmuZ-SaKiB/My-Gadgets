@@ -127,16 +127,21 @@ export const useCart = () => {
 };
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [globalContext, setGlobalContext] = useState(
-    JSON.parse(localStorage.getItem("mg-context") || "") || {
-      cart: [],
-      wishList: [],
-      compare: [],
+  const [globalContext, setGlobalContext] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedContext = localStorage.getItem("mg-context");
+      return storedContext
+        ? JSON.parse(storedContext)
+        : { cart: [], wishList: [], compare: [] };
+    } else {
+      return { cart: [], wishList: [], compare: [] };
     }
-  );
+  });
 
   useEffect(() => {
-    localStorage.setItem("mg-context", JSON.stringify(globalContext));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("mg-context", JSON.stringify(globalContext));
+    }
   }, [globalContext]);
 
   return (
