@@ -9,11 +9,15 @@ import { cn } from "@/lib/utils";
 
 type TProps = {
   userId: string;
+  selectedAddress: string | null;
+  setSelectedAddress: (address: string | null) => void;
 };
 
-const ShippingAddressSection = ({ userId }: TProps) => {
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
-
+const ShippingAddressSection = ({
+  userId,
+  selectedAddress,
+  setSelectedAddress,
+}: TProps) => {
   const { data, isLoading, refetch } = useShippingAddressGetAllQuery(
     `user=${userId}`
   );
@@ -26,7 +30,7 @@ const ShippingAddressSection = ({ userId }: TProps) => {
       );
       setSelectedAddress(defaultAddress!._id?.toString());
     }
-  }, [data]);
+  }, [data, setSelectedAddress]);
 
   if (isLoading) return <p>Loading...</p>;
   return (
