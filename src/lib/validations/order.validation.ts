@@ -29,20 +29,21 @@ const create = z.object({
   orderItems: z.array(orderItem).min(1, {
     message: "Order items must have at least one item",
   }),
-  shippingAddress: z.string({
-    required_error: "Shipping address is required",
+  shippingAddress: z.string().min(1, {
+    message: "Shipping address is required",
   }),
-  paymentMethod: z.string(),
-  shippingCharge: z.number({
-    required_error: "Shipping charge is required",
+  paymentMethod: z.string().min(1, {
+    message: "Payment method is required",
   }),
-  totalPrice: z.number({
-    required_error: "Total price is required",
-  }),
+  shippingCharge: z.number(),
+  totalPrice: z.number(),
   paymentResult: z.string().optional(),
   transactionId: z.string().optional(),
   isPaid: z.boolean().optional(),
   paidAt: z.date().optional(),
+  deliveryOption: z.string().min(1, {
+    message: "Delivery option is required",
+  }),
 });
 
 const update = z.object({
