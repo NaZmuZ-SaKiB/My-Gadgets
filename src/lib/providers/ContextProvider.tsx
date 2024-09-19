@@ -18,6 +18,7 @@ type TGlobalContext = {
   wishList: TProduct[];
   compare: TProduct[];
   amount: number;
+  orderId: string;
   setGlobalContext: (value: any) => void;
 };
 
@@ -26,11 +27,12 @@ const GlobalContext = createContext<TGlobalContext>({
   wishList: [],
   compare: [],
   amount: 0,
+  orderId: "",
   setGlobalContext: () => {},
 });
 
 export const useCart = () => {
-  const { cart, setGlobalContext } = useContext(GlobalContext);
+  const { cart, amount, orderId, setGlobalContext } = useContext(GlobalContext);
 
   const addToCart = (product: TProduct, quantity: number = 1) => {
     const isAdded = cart.findIndex((item) => item._id === product._id);
@@ -125,30 +127,41 @@ export const useCart = () => {
     }));
   };
 
+  const setOrderId = (orderId: string) => {
+    setGlobalContext((prev: TGlobalContext) => ({
+      ...prev,
+      orderId,
+    }));
+  };
+
   return {
     cart,
+    amount,
+    orderId,
     addToCart,
     removeFromCart,
     plusToCart,
     minusFromCart,
     clearCart,
+    setAmount,
+    setOrderId,
   };
 };
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [globalContext, setGlobalContext] = useState(() => {
+  const [globalContext, setGlobalContext] = useState<TGlobalContext>(() => {
     if (typeof window !== "undefined") {
       const storedContext = localStorage.getItem("mg-context");
       return storedContext
         ? JSON.parse(storedContext)
-        : { cart: [], wishList: [], compare: [] };
+        : { cart: [], amount: 0, wishList: [], compare: [], orderId: "" };
     } else {
-      return { cart: [], wishList: [], compare: [] };
+      return { cart: [], amount: 0, wishList: [], compare: [], orderId: "" };
     }
   });
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !localStorage.getItem("mg-context")) {
+    if (typeof window !== "undefined") {
       localStorage.setItem("mg-context", JSON.stringify(globalContext));
     }
   }, [globalContext]);
