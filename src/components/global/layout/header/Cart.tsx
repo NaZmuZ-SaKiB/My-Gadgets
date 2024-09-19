@@ -32,7 +32,11 @@ const Cart = () => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <div className="h-full relative">
-          <Image src={icons.cart} alt="cart" className="size-6 mx-auto" />
+          <Image
+            src={icons.cart}
+            alt="cart"
+            className="size-6 mx-auto max-xl:relative max-xl:top-1"
+          />
           <span className="hidden xl:block text-sm">Cart</span>
 
           {mounted && (
