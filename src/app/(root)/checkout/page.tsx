@@ -19,6 +19,7 @@ import { OrderValidation } from "@/lib/validations/order.validation";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { AQTags } from "@/constants";
+import { useRouter } from "next/navigation";
 
 const CheckoutPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
@@ -30,27 +31,25 @@ const CheckoutPage = () => {
   const [transactionId, setTransactionId] = useState<string>("");
 
   const queryClient = useQueryClient();
+  const router = useRouter();
 
-  const { cart } = useCart();
+  const { cart, setAmount, setOrderId } = useCart();
 
   const { data, isLoading } = useIsUserLoggedInQuery();
 
   const { mutateAsync: createOrderFn, isPending } = useOrderCreateMutation();
 
+  const shippingCharge =
+    selectedDeliveryOption === "pickup"
+      ? 0
+      : cart.reduce((acc, item) => acc + item.shippingCost * item.quantity, 0);
+
+  const subTotal = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
   const handleCreateOrder = async (paymentResult?: string) => {
-    const shippingCharge =
-      selectedDeliveryOption === "pickup"
-        ? 0
-        : cart.reduce(
-            (acc, item) => acc + item.shippingCost * item.quantity,
-            0
-          );
-
-    const subTotal = cart.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
-
     const order: z.infer<typeof OrderValidation.create> = {
       orderItems: cart.map((item) => ({
         name: item.name,
@@ -74,11 +73,7 @@ const CheckoutPage = () => {
       order.paidAt = new Date();
     }
 
-    if (paymentResult) {
-      order.paymentResult = paymentResult;
-      order.isPaid = true;
-      order.paidAt = new Date();
-    }
+    if (selectedPaymentMethod === "stripe") order.isPaid = false;
 
     try {
       const result = await createOrderFn(order);
@@ -88,11 +83,11 @@ const CheckoutPage = () => {
           queryKey: [AQTags.ORDER, AQTags.ALL],
           exact: false,
         });
-
-        toast.success(result?.message);
       } else {
         toast.error(result?.message || "A server error occurred.");
       }
+
+      return result?.data?._id;
     } catch (error: any) {
       toast.error(error?.message || "A client error occurred.");
     }
@@ -109,9 +104,14 @@ const CheckoutPage = () => {
       return;
     }
 
+    const order = await handleCreateOrder();
+
     if (selectedPaymentMethod !== "stripe") {
-      await handleCreateOrder();
+      router.push("/payment-success");
     } else {
+      setAmount(subTotal + shippingCharge);
+      setOrderId(order);
+      router.push("/payment");
     }
   };
 
@@ -182,7 +182,7 @@ const CheckoutPage = () => {
 
         <MGButton
           type="button"
-          className="rounded-lg gap-2"
+          className="rounded-lg gap-2 cursor-pointer"
           disabled={isPending}
           onClick={handlePlaceOrder}
         >
