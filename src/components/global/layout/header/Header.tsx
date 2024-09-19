@@ -28,10 +28,15 @@ const Header = () => {
             >
               <Image
                 src={images.logo}
-                className="max-xl:h-10 max-w-10"
+                className="max-sm:size-8 max-xl:h-10 max-w-10"
                 alt="logo"
               />
-              <span className={cn(font.className, "font-semibold text-2xl")}>
+              <span
+                className={cn(
+                  font.className,
+                  "font-semibold text-xl sm:text-2xl"
+                )}
+              >
                 My Gadgets
               </span>
             </Link>
