@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 type TProps = {
   userId: string;
   selectedAddress: string | null;
-  setSelectedAddress: (address: string | null) => void;
+  setSelectedAddress: (address: string) => void;
 };
 
 const ShippingAddressSection = ({
