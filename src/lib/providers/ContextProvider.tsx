@@ -17,6 +17,7 @@ type TGlobalContext = {
   cart: TCartItem[];
   wishList: TProduct[];
   compare: TProduct[];
+  amount: number;
   setGlobalContext: (value: any) => void;
 };
 
@@ -24,6 +25,7 @@ const GlobalContext = createContext<TGlobalContext>({
   cart: [],
   wishList: [],
   compare: [],
+  amount: 0,
   setGlobalContext: () => {},
 });
 
@@ -116,6 +118,13 @@ export const useCart = () => {
     }));
   };
 
+  const setAmount = (amount: number) => {
+    setGlobalContext((prev: TGlobalContext) => ({
+      ...prev,
+      amount,
+    }));
+  };
+
   return {
     cart,
     addToCart,
@@ -139,7 +148,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && !localStorage.getItem("mg-context")) {
       localStorage.setItem("mg-context", JSON.stringify(globalContext));
     }
   }, [globalContext]);
