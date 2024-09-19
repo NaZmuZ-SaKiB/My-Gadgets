@@ -6,7 +6,7 @@ export * from "./sortOptions";
 export * from "./product";
 export * from "./tags";
 
-export const frontendUrl = process.env.FRONTEND_URL;
+export const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
 export const backendUrl = process.env.BACKEND_URL;
 export const authKey = "mg-jwt";
 export const USER_ROLE = {
