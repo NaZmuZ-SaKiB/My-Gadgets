@@ -7,9 +7,10 @@ import { useState } from "react";
 type TProps = {
   defaultValue: number;
   productId: string;
+  maxQuantity: number;
 };
 
-const Quantity = ({ defaultValue, productId }: TProps) => {
+const Quantity = ({ defaultValue, productId, maxQuantity }: TProps) => {
   const [quantity, setQuantity] = useState(defaultValue);
 
   const { plusToCart, minusFromCart, removeFromCart } = useCart();
