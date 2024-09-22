@@ -5,11 +5,15 @@ import { ShoppingCart } from "lucide-react";
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 
-const QuantityInput = () => {
+type TProps = {
+  max: number;
+};
+
+const QuantityInput = ({ max }: TProps) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => {
-    if (quantity > 4) return;
+    if (quantity > max || quantity > 4) return;
     setQuantity((prev) => prev + 1);
   };
 
