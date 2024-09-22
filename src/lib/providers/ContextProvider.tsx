@@ -11,6 +11,7 @@ export type TCartItem = {
   image: string;
   slug: string;
   shippingCost: number;
+  maxQuantity: number;
 };
 
 type TGlobalContext = {
@@ -45,6 +46,7 @@ export const useCart = () => {
         quantity: quantity,
         image: product.images[0].secureUrl,
         slug: product.slug,
+        maxQuantity: product.quantity,
         shippingCost: product.shippingCost,
       };
       setGlobalContext((prev: TGlobalContext) => ({
@@ -53,15 +55,20 @@ export const useCart = () => {
       }));
     } else {
       const newItem = cart[isAdded];
-      newItem.quantity += 1;
 
-      const newCart = [...cart];
-      newCart[isAdded] = newItem;
+      if (newItem.quantity === newItem.maxQuantity) {
+        return;
+      } else {
+        newItem.quantity += 1;
 
-      setGlobalContext((prev: TGlobalContext) => ({
-        ...prev,
-        cart: newCart,
-      }));
+        const newCart = [...cart];
+        newCart[isAdded] = newItem;
+
+        setGlobalContext((prev: TGlobalContext) => ({
+          ...prev,
+          cart: newCart,
+        }));
+      }
     }
   };
 
@@ -71,14 +78,19 @@ export const useCart = () => {
 
     if (isAdded !== -1) {
       const newItem = cart[isAdded];
-      newItem.quantity += 1;
-      newCart = [...cart];
-      newCart[isAdded] = newItem;
 
-      setGlobalContext((prev: TGlobalContext) => ({
-        ...prev,
-        cart: newCart,
-      }));
+      if (newItem.quantity === newItem.maxQuantity) {
+        return;
+      } else {
+        newItem.quantity += 1;
+        newCart = [...cart];
+        newCart[isAdded] = newItem;
+
+        setGlobalContext((prev: TGlobalContext) => ({
+          ...prev,
+          cart: newCart,
+        }));
+      }
     }
   };
 
