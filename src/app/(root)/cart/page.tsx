@@ -80,6 +80,7 @@ const CartPage = () => {
                       <Quantity
                         defaultValue={item.quantity}
                         productId={item._id.toString()}
+                        maxQuantity={item.maxQuantity}
                       />
                     </td>
                     <td className="max-md:hidden">
