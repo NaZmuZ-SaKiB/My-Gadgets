@@ -9,6 +9,7 @@ import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import OrderStatusSelect from "./OrderStatusSelect";
 
 type TProps = {
   selectedOrders: string[];
@@ -86,7 +87,12 @@ const OrdersTable = ({ selectedOrders, setSelectedOrders }: TProps) => {
               <td>{item.orderItems.length}</td>
               <td>{formatCurrency(item.totalPrice)}</td>
               <td>{item.isPaid ? "Paid" : "Not Paid"}</td>
-              <td className="capitalize">{item.status}</td>
+              <td>
+                <OrderStatusSelect
+                  orderId={`${item?._id}`}
+                  currentStatus={item.status}
+                />
+              </td>
               <td>{item.cancelRequested ? "Yes" : "No"}</td>
               <td>
                 <div className="flex gap-1 justify-end max-md:flex-wrap">
