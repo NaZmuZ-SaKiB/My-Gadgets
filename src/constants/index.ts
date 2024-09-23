@@ -1,4 +1,8 @@
-import { TDeliveryOption, TPaymentMethod } from "@/types/order.type";
+import {
+  TDeliveryOption,
+  TOrderStatus,
+  TPaymentMethod,
+} from "@/types/order.type";
 
 export * from "./assets";
 export * from "./adminSidebar";
@@ -22,3 +26,11 @@ export const paymentMethods: TPaymentMethod[] = [
 ];
 
 export const deliveryOptions: TDeliveryOption[] = ["pickup", "delivery"];
+
+export const orderStatuses: TOrderStatus[] = [
+  "pending",
+  "processing",
+  "shipped",
+  "completed",
+  "cancelled",
+];
