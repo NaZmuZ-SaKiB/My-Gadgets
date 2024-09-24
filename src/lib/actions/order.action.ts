@@ -28,7 +28,7 @@ export const orderUpdateAction = async ({
   payload,
 }: {
   id: string;
-  payload: Partial<z.infer<typeof OrderValidation.create>>;
+  payload: Partial<z.infer<typeof OrderValidation.update>>;
 }) => {
   const response = await fetch(`${backendUrl}/api/order/${id}`, {
     method: "PATCH",
