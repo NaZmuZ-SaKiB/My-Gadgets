@@ -7,7 +7,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { orderStatuses } from "@/constants";
+import { AQTags, orderStatuses } from "@/constants";
+import { useOrderUpdateMutation } from "@/lib/queries/order.query";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 type TProps = {
   orderId: string;
@@ -15,8 +18,40 @@ type TProps = {
 };
 
 const OrderStatusSelect = ({ orderId, currentStatus }: TProps) => {
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: updateOrder, isPending } = useOrderUpdateMutation();
+
+  const handleChange = async (value: string) => {
+    try {
+      const result = await updateOrder({
+        id: orderId,
+        payload: {
+          status: value,
+        },
+      });
+
+      if (result?.success) {
+        queryClient.invalidateQueries({
+          queryKey: [AQTags.ORDER],
+          exact: false,
+        });
+
+        toast.success(result?.message);
+      } else {
+        toast.error(result?.message || "A server error occured.");
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "A client error occured.");
+    }
+  };
+
   return (
-    <Select defaultValue={currentStatus}>
+    <Select
+      defaultValue={currentStatus}
+      disabled={isPending}
+      onValueChange={handleChange}
+    >
       <SelectTrigger className="no-focus">
         <SelectValue />
       </SelectTrigger>
