@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 import OrderStatusSelect from "./OrderStatusSelect";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   selectedOrders: string[];
@@ -19,6 +20,8 @@ type TProps = {
 const OrdersTable = ({ selectedOrders, setSelectedOrders }: TProps) => {
   const searchParams = useSearchParams();
   const { data, isLoading } = useOrderGetAllQuery(searchParams.toString());
+
+  const orders = data?.data || [];
 
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -66,13 +69,13 @@ const OrdersTable = ({ selectedOrders, setSelectedOrders }: TProps) => {
             <th>Price</th>
             <th>Paid</th>
             <th>Status</th>
-            <th>Cancel Requested</th>
+            <th>Cancel Req</th>
             <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          {data?.data?.map((item: TOrder) => (
+          {orders?.map((item: TOrder) => (
             <tr key={`${item._id}`}>
               <td>
                 <input
@@ -86,7 +89,14 @@ const OrdersTable = ({ selectedOrders, setSelectedOrders }: TProps) => {
               <td>{item?.shippingAddress?.phone}</td>
               <td>{item.orderItems.length}</td>
               <td>{formatCurrency(item.totalPrice)}</td>
-              <td>{item.isPaid ? "Paid" : "Not Paid"}</td>
+              <td
+                className={cn({
+                  "text-green-500 font-semibold": item.isPaid,
+                  "text-red-500": !item.isPaid,
+                })}
+              >
+                {item.isPaid ? "Paid" : "Not Paid"}
+              </td>
               <td>
                 <OrderStatusSelect
                   orderId={`${item?._id}`}
@@ -127,7 +137,7 @@ const OrdersTable = ({ selectedOrders, setSelectedOrders }: TProps) => {
             </tr>
           ))}
 
-          {data?.data?.length === 0 && (
+          {orders?.length === 0 && (
             <tr>
               <td colSpan={9} className="text-center text-xl">
                 No data found
