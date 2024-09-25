@@ -8,6 +8,7 @@ import { Search } from "lucide-react";
 import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
 import Cart from "./Cart";
+import Account from "./Account";
 
 const font = Permanent_Marker({
   weight: "400",
@@ -84,12 +85,7 @@ const Header = () => {
               </div>
 
               <div className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer">
-                <Image
-                  src={icons.user}
-                  alt="account"
-                  className="size-6 mx-auto"
-                />
-                <span className="text-sm">Account</span>
+                <Account />
               </div>
             </div>
           </div>
