@@ -1,6 +1,7 @@
 "use server";
 
 import { authKey, backendUrl } from "@/constants";
+import { TUser } from "@/types/user.type";
 import { jwtHelpers } from "@/utils/jwtHelpers";
 import { cookies } from "next/headers";
 
@@ -29,6 +30,30 @@ export const signIn = async (payload: { email: string; password: string }) => {
   });
 
   return result;
+};
+
+export const currentUser = async (): Promise<TUser | null> => {
+  try {
+    const jwt = cookies().get(authKey);
+    if (!jwt?.value) {
+      return null;
+    }
+
+    const response = await fetch(`${backendUrl}/api/auth/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: cookies().get(authKey)?.value || "",
+      },
+      cache: "no-store",
+    });
+
+    const result = await response.json();
+
+    return result.data;
+  } catch (error) {
+    return null;
+  }
 };
 
 export const isUserLoggedIn = async (): Promise<{
