@@ -8,7 +8,7 @@ const AccountLayout = ({ children }: { children: React.ReactNode }) => {
 
       <div className="grid lg:grid-cols-[220px_1fr] mt-5">
         <AccountSidebar />
-        <div></div>
+        <div className="p-2 sm:p-4">{children}</div>
       </div>
     </div>
   );
