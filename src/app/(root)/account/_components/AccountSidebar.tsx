@@ -9,7 +9,7 @@ const AccountSidebar = () => {
   const pathName = usePathname();
 
   return (
-    <div className="space-y-3">
+    <div className="flex flex-col gap-3 justify-center">
       {accountSideBar.map((item) => (
         <Link
           key={item.link}
