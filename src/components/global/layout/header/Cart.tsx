@@ -30,7 +30,7 @@ const Cart = () => {
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger>
+      <SheetTrigger className="cursor-pointer">
         <div className="h-full relative">
           <Image
             src={icons.cart}
