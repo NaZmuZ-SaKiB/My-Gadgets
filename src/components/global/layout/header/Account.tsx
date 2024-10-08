@@ -19,7 +19,7 @@ const Account = () => {
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
-      <DropdownMenuTrigger className="no-focus">
+      <DropdownMenuTrigger className="no-focus cursor-pointer">
         <Image src={icons.user} alt="account" className="size-6 mx-auto" />
         <span className="text-sm">Account</span>
       </DropdownMenuTrigger>
