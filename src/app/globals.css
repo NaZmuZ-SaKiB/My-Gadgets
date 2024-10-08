@@ -163,6 +163,29 @@
 
   /* -------------------------------------------- */
 
+  /* --------- Primary Table --------- */
+
+  .primary-table {
+    @apply w-full;
+  }
+
+  .primary-table tbody {
+    @apply text-slate-500 text-sm;
+  }
+
+  .primary-table th {
+    @apply bg-white text-slate-900 text-sm font-normal;
+  }
+
+  .primary-table td,
+  .primary-table th {
+    @apply px-3 py-2 border border-collapse max-lg:text-xs;
+  }
+
+  /* --------- Primary Table End --------- */
+
+  /* -------------------------------------------- */
+
   /* --------- Admin Table --------- */
 
   .admin-table {
