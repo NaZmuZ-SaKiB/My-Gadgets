@@ -39,7 +39,7 @@ const BreadcrumbBar = ({ items }: TProps) => {
                 })}
               >
                 <DinamicTag
-                  href={item?.link ?? ""}
+                  href={item.link as string}
                   className={cn({
                     "whitespace-nowrap overflow-hidden text-ellipsis md:max-w-[300px]":
                       i === items.length - 1,
