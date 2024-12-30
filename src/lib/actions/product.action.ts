@@ -12,7 +12,7 @@ export const productCreateAction = async (
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -34,7 +34,7 @@ export const productUpdateAction = async ({
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -85,7 +85,7 @@ export const productRemoveAction = async (ids: string[]) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify({ ids }),
     cache: "no-store",

@@ -23,7 +23,7 @@ export const signIn = async (payload: { email: string; password: string }) => {
 
   const { token } = result?.data;
 
-  cookies().set(authKey, token, {
+  (await cookies()).set(authKey, token, {
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
     path: "/",
@@ -34,7 +34,7 @@ export const signIn = async (payload: { email: string; password: string }) => {
 
 export const currentUser = async (): Promise<TUser | null> => {
   try {
-    const jwt = cookies().get(authKey);
+    const jwt = (await cookies()).get(authKey);
     if (!jwt?.value) {
       return null;
     }
@@ -43,7 +43,7 @@ export const currentUser = async (): Promise<TUser | null> => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: cookies().get(authKey)?.value || "",
+        Authorization: (await cookies()).get(authKey)?.value || "",
       },
       cache: "no-store",
     });
@@ -62,7 +62,7 @@ export const isUserLoggedIn = async (): Promise<{
   role: string;
 } | null> => {
   try {
-    const jwt = cookies().get(authKey);
+    const jwt = (await cookies()).get(authKey);
     if (!jwt?.value) {
       return null;
     }

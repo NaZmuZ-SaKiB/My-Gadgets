@@ -12,7 +12,7 @@ export const shippingAddressCreateAction = async (
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -34,7 +34,7 @@ export const shippingAddressUpdateAction = async ({
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -50,7 +50,7 @@ export const shippingAddressGetAllAction = async (params: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -72,7 +72,7 @@ export const shippingAddressGetByIdAction = async (id: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -87,7 +87,7 @@ export const shippingAddressDeleteAction = async (id: string) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });

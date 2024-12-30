@@ -14,10 +14,11 @@ import { TReview } from "@/types/review.type";
 import { isUserLoggedIn } from "@/lib/actions/auth.action";
 
 type TProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-const SingleProductPage = async ({ params }: TProps) => {
+const SingleProductPage = async (props: TProps) => {
+  const params = await props.params;
   const { id } = params;
 
   const user = await isUserLoggedIn();

@@ -9,7 +9,7 @@ export const mediaCreateAction = async (payload: Partial<TMedia>) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -31,7 +31,7 @@ export const mediaUpdateAction = async ({
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -47,7 +47,7 @@ export const mediaGetAllAction = async (params: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -83,7 +83,7 @@ export const mediaRemoveAction = async (ids: string[]) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify({ ids }),
     cache: "no-store",

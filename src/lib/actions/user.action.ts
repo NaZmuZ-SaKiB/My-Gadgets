@@ -9,7 +9,7 @@ export const myProfileUpdateAction = async (payload: Partial<TUser>) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",

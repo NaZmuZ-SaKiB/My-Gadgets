@@ -9,13 +9,15 @@ import { brandGetAllAction } from "@/lib/actions/brand.action";
 import { TBrand } from "@/types/brand.type";
 
 type TProps = {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
   searchParams: any;
 };
 
-const ShopPage = async ({ params, searchParams }: TProps) => {
+const ShopPage = async (props: TProps) => {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const limit = searchParams?.limit ?? 35;
   if (searchParams?.limit) delete searchParams.limit;
 

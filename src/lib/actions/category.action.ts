@@ -13,7 +13,7 @@ export const categoryCreateAction = async (payload: {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -40,7 +40,7 @@ export const categoryUpdateAction = async ({
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -56,7 +56,7 @@ export const categoryGetAllAction = async (params: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -98,7 +98,7 @@ export const categoryGetByIdAction = async (id: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -113,7 +113,7 @@ export const categoryToggleFeaturedAction = async (id: string) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -130,7 +130,7 @@ export const categoryToggleShowOnTopMenuAction = async (id: string) => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: cookies().get(authKey)?.value || "",
+        Authorization: (await cookies()).get(authKey)?.value || "",
       },
       cache: "no-store",
     }
@@ -146,7 +146,7 @@ export const categoryRemoveAction = async (ids: string[]) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify({ ids }),
     cache: "no-store",

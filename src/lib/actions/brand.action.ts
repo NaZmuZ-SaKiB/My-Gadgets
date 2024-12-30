@@ -8,7 +8,7 @@ export const brandCreateAction = async (payload: { name: string }) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -33,7 +33,7 @@ export const brandUpdateAction = async ({
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify(payload),
     cache: "no-store",
@@ -49,7 +49,7 @@ export const brandGetAllAction = async (params: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -71,7 +71,7 @@ export const brandGetByIdAction = async (id: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -86,7 +86,7 @@ export const brandToggleFeaturedAction = async (id: string) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     cache: "no-store",
   });
@@ -101,7 +101,7 @@ export const brandRemoveAction = async (ids: string[]) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: cookies().get(authKey)?.value || "",
+      Authorization: (await cookies()).get(authKey)?.value || "",
     },
     body: JSON.stringify({ ids }),
     cache: "no-store",
