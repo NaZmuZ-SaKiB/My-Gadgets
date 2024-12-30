@@ -6,9 +6,9 @@ const AccountLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="mg-container p-4">
       <BreadcrumbBar items={[{ label: "My Account" }]} />
 
-      <div className="grid lg:grid-cols-[220px_1fr] mt-5">
+      <div className="grid gap-4 lg:grid-cols-[220px_1fr] mt-5">
         <AccountSidebar />
-        <div className="p-2 sm:p-4">{children}</div>
+        <div className="overflow-x-auto">{children}</div>
       </div>
     </div>
   );
