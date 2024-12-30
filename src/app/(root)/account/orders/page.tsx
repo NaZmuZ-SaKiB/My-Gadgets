@@ -11,7 +11,7 @@ const MyOrdersPage = async () => {
   const orders: TOrder[] = ordersData?.data || [];
 
   return (
-    <div className="mg-container">
+    <div className="lg:mg-container">
       {orders?.length > 0 ? (
         <table className="table table-auto primary-table">
           <thead>
