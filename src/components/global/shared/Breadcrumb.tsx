@@ -12,7 +12,7 @@ import { Fragment } from "react/jsx-runtime";
 type TProps = {
   items: {
     label: string;
-    link?: string;
+    link?: string | null;
   }[];
 };
 
