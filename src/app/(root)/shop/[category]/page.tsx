@@ -36,7 +36,7 @@ const ShopPage = async (props: TProps) => {
   const breadcrumbItems = [
     {
       label: params.category as string,
-      link: "",
+      link: null,
     },
   ];
 
