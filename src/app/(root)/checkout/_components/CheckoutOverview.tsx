@@ -31,7 +31,7 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
   const total = subTotal + shippingCharge;
 
   return (
-    <div className="sm:rounded-xl sm:border sm:border-slate-200 sm:p-4 col-span-2">
+    <div className="sm:rounded-xl max-sm:border-t max-sm:pt-3 sm:border border-slate-200 sm:p-4 col-span-2">
       <h2 className="text-lg font-semibold text-slate-700">Overview</h2>
 
       {mounted && (
@@ -41,7 +41,7 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
               <th className="!bg-slate-100 !border-slate-200 !text-slate-700">
                 Name
               </th>
-              <th className="max-md:hidden !bg-slate-100 !border-slate-200 !text-slate-700">
+              <th className="!bg-slate-100 !border-slate-200 !text-slate-700">
                 Price
               </th>
               <th className="!bg-slate-100 !border-slate-200 !text-slate-700">
@@ -55,7 +55,7 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
               <tr key={`cart-page-item-${item._id}`}>
                 <td>{item.name}</td>
 
-                <td className="max-md:hidden">
+                <td className="">
                   {item.quantity} x {formatCurrency(item.price)}
                 </td>
                 <td>{formatCurrency(item.price * item.quantity)}</td>
