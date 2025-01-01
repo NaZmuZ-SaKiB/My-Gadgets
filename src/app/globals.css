@@ -4,13 +4,13 @@
 
 @layer utilities {
   .no-focus {
-    @apply !outline-none focus-visible:!ring-0 focus-visible:ring-transparent focus-visible:!ring-offset-0 focus:!ring-0 focus:ring-transparent focus:!ring-offset-0;
+    @apply !outline-none focus:!ring-0 focus:ring-transparent focus:!ring-offset-0 focus-visible:!ring-0 focus-visible:ring-transparent focus-visible:!ring-offset-0;
   }
 }
 
 @layer components {
   .mg-container {
-    @apply max-w-screen-2xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 2xl:px-0;
+    @apply mx-auto max-w-screen-2xl px-3 xs:px-4 sm:px-6 lg:px-8 2xl:px-0;
   }
 
   .mg-shop-grid {
@@ -18,7 +18,7 @@
   }
 
   .ten-products-grid {
-    @apply grid grid-cols-2 md:grid-cols-3 md:auto-rows-[0] md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 xl:grid-cols-5 gap-2 sm:gap-4 justify-between overflow-hidden;
+    @apply grid grid-cols-2 justify-between gap-2 overflow-hidden sm:gap-4 md:auto-rows-[0] md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 xl:grid-cols-5;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -30,22 +30,22 @@
   /* --------- Navbar --------- */
 
   .nav-toggle-btn {
-    @apply xl:hidden size-9 cursor-pointer;
+    @apply size-9 cursor-pointer xl:hidden;
   }
 
   .nav-toggle-btn span {
-    @apply relative inline-block rounded-full bg-primary cursor-pointer;
+    @apply relative inline-block cursor-pointer rounded-full bg-primary;
   }
 
   .nav-toggle-btn span,
   .nav-toggle-btn span::before,
   .nav-toggle-btn span::after {
-    @apply w-full h-[3px] inline-block cursor-pointer;
+    @apply inline-block h-[3px] w-full cursor-pointer;
   }
 
   .nav-toggle-btn span::before,
   .nav-toggle-btn span::after {
-    @apply absolute left-0 transition-transform duration-300 content-[""] inline-block bg-primary;
+    @apply absolute left-0 inline-block bg-primary transition-transform duration-300 content-[""];
   }
 
   .nav-toggle-btn span::before {
@@ -61,11 +61,11 @@
   }
 
   .nav-toggle-btn.active span::before {
-    @apply top-0 transform rotate-[135deg];
+    @apply top-0 rotate-[135deg] transform;
   }
 
   .nav-toggle-btn.active span::after {
-    @apply top-0 transform -rotate-[135deg];
+    @apply top-0 -rotate-[135deg] transform;
   }
 
   /* --------- Nav Bar End --------- */
@@ -74,15 +74,15 @@
 
   /* --------- Search Box --------- */
   .search-box {
-    @apply flex gap-3 h-12 px-4;
+    @apply flex h-12 gap-3 px-4;
   }
 
   .search-box-pc {
-    @apply border-2 border-primary/30 w-full rounded max-w-xl focus-within:border-primary;
+    @apply w-full max-w-xl rounded border-2 border-primary/30 focus-within:border-primary;
   }
 
   .search-box-mobile {
-    @apply shadow-md shadow-slate-400/30 absolute w-full left-0 right-0 top-0 hidden;
+    @apply absolute left-0 right-0 top-0 hidden w-full shadow-md shadow-slate-400/30;
   }
 
   #search-toggle:checked ~ .search-box-mobile {
@@ -96,15 +96,15 @@
   /* --------- Countdown Timer --------- */
 
   .countdown-timer-item {
-    @apply bg-white flex-1 shadow-sm flex flex-col items-center justify-center py-3 px-2 rounded-lg hover:[&>span:first-child]:-translate-y-1;
+    @apply flex flex-1 flex-col items-center justify-center rounded-lg bg-white px-2 py-3 shadow-sm hover:[&>span:first-child]:-translate-y-1;
   }
 
   .countdown-timer-item span:first-child {
-    @apply text-lg xs:text-xl text-primary relative transform transition-transform duration-300;
+    @apply relative transform text-lg text-primary transition-transform duration-300 xs:text-xl;
   }
 
   .countdown-timer-item span:last-child {
-    @apply max-xs:text-sm text-slate-500;
+    @apply text-slate-500 max-xs:text-sm;
   }
 
   /* --------- Countdown Timer End --------- */
@@ -114,11 +114,11 @@
   /* ------------ Specification Table ----------- */
 
   .specification-table table {
-    @apply border-collapse w-full table-auto;
+    @apply w-full table-auto border-collapse;
   }
 
   .specification-table thead tr {
-    @apply text-primary font-semibold bg-slate-50 border-0 rounded;
+    @apply rounded border-0 bg-slate-50 font-semibold text-primary;
   }
 
   .specification-table tbody tr {
@@ -126,16 +126,16 @@
   }
 
   .specification-table tr {
-    @apply grid md:grid-cols-[250px_1fr] bg-white border-b border-slate-200 [&:last-child]:border-0;
+    @apply grid border-b border-slate-200 bg-white md:grid-cols-[250px_1fr] [&:last-child]:border-0;
   }
 
   .specification-table td,
   .specification-table th {
-    @apply text-left px-3 py-2;
+    @apply px-3 py-2 text-left;
   }
 
   .specification-table th {
-    @apply max-md:pb-0 max-md:text-sm md:text-slate-500 font-semibold;
+    @apply font-semibold max-md:pb-0 max-md:text-sm md:text-slate-500;
   }
 
   /* ---------- Specification Table End --------- */
@@ -149,7 +149,7 @@
   .product-description h4,
   .product-description h5,
   .product-description h6 {
-    @apply text-lg font-semibold text-slate-800 mb-2;
+    @apply mb-2 text-lg font-semibold text-slate-800;
   }
 
   .product-description h2 {
@@ -157,7 +157,7 @@
   }
 
   .product-description p {
-    @apply text-slate-700 mb-3 text-sm;
+    @apply mb-3 text-sm text-slate-700;
   }
   /* ---------- Product Description End --------- */
 
@@ -170,16 +170,16 @@
   }
 
   .primary-table tbody {
-    @apply text-slate-500 text-sm;
+    @apply text-sm text-slate-500;
   }
 
   .primary-table th {
-    @apply bg-white text-slate-900 text-sm font-normal;
+    @apply bg-white text-sm font-normal text-slate-900;
   }
 
   .primary-table td,
   .primary-table th {
-    @apply px-3 py-2 border border-collapse max-lg:text-xs;
+    @apply border-collapse border px-3 py-2 max-lg:text-xs;
   }
 
   /* --------- Primary Table End --------- */
@@ -193,16 +193,16 @@
   }
 
   .admin-table tbody {
-    @apply text-slate-500 text-sm;
+    @apply text-sm text-slate-500;
   }
 
   .admin-table th {
-    @apply bg-slate-800 text-white text-sm font-normal border-slate-800 last:text-right;
+    @apply border-slate-800 bg-slate-800 text-sm font-normal text-white last:text-right;
   }
 
   .admin-table td,
   .admin-table th {
-    @apply px-3 py-2 border border-collapse max-lg:text-xs;
+    @apply border-collapse border px-3 py-2 max-lg:text-xs;
   }
 
   .admin-table tr:nth-child(even) {
