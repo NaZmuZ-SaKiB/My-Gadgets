@@ -1,0 +1,159 @@
+import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
+import MGButton from "@/components/global/shared/MGButton";
+import { orderGetByIdAction } from "@/lib/actions/order.action";
+import { cn } from "@/lib/utils";
+import { TOrder } from "@/types/order.type";
+import { formatCurrency } from "@/utils/currencyFormat";
+import Image from "next/image";
+import Link from "next/link";
+
+type TProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+const breadcrumbItems = [
+  {
+    label: "Orders",
+    link: "/account/orders",
+  },
+  {
+    label: "Order Details",
+  },
+];
+
+const SingleOrderPage = async (props: TProps) => {
+  const params = await props.params;
+  const { id } = params;
+
+  const orderData = await orderGetByIdAction(id);
+  const order: TOrder = orderData.data;
+
+  return (
+    <div className="mg-container pt-4">
+      <BreadcrumbBar items={breadcrumbItems} />
+
+      <div className="mt-5 sm:mt-3 sm:rounded-xl sm:border sm:border-slate-200 sm:p-4">
+        <div className="flex items-end gap-3 justify-between">
+          <div>
+            <h1 className="text-3xl font-semibold text-slate-700">
+              Order Details
+            </h1>
+            <p className="text-slate-500 font-semibold mt-1 text-sm sm:text-base">
+              You have ordered{" "}
+              <span className="text-primary">{order.orderItems.length}</span>{" "}
+              product
+              {order.orderItems.length > 1 ? "s" : ""}
+            </p>
+          </div>
+
+          <MGButton variant="destructive" size="sm" className="rounded-md">
+            Cancel Order
+          </MGButton>
+        </div>
+
+        {/* -----Order Details---------  */}
+
+        <ul className="mt-4 py-4 text-slate-700 text-sm max-sm:border-y">
+          <li>
+            <span className="font-semibold">Order ID:</span>{" "}
+            <span className="uppercase">{order._id}</span>
+          </li>
+          <li>
+            <span className="font-semibold">Payment:</span>{" "}
+            <span
+              className={cn(
+                "uppercase font-bold",
+                order.isPaid ? "text-green-600" : "text-red-600"
+              )}
+            >
+              {order.isPaid ? "Paid" : "Not Paid"}
+            </span>
+          </li>
+          <li>
+            <span className="font-semibold">Payment Method:</span>{" "}
+            <span className="capitalize">{order.paymentMethod}</span>
+          </li>
+          <li>
+            <span className="font-semibold">Receive Option:</span>{" "}
+            <span className="capitalize">{order.deliveryOption}</span>
+          </li>
+          <li>
+            <span className="font-semibold">Shipping Address:</span>{" "}
+            <span className="capitalize">
+              {order.shippingAddress.addressLine1}
+            </span>
+          </li>
+          <li>
+            <span className="font-semibold">Phone:</span>{" "}
+            <span className="capitalize">{order.shippingAddress.phone}</span>
+          </li>
+          <li>
+            <span className="font-semibold">Status:</span>{" "}
+            <span className="capitalize">{order.status}</span>
+          </li>
+        </ul>
+
+        {/* -----Order Table---------  */}
+
+        <div className="mt-6">
+          <table className="table-auto admin-table rounded-md overflow-hidden">
+            <thead className="text-left">
+              <tr>
+                <th className="max-md:hidden">Image</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th className="max-md:hidden">Unit Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {order.orderItems.map((item) => (
+                <tr key={`cart-page-item-${item.name}`}>
+                  <td className="max-md:hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={50}
+                      height={50}
+                      className="object-contain"
+                    />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.quantity}</td>
+                  <td className="max-md:hidden">
+                    {formatCurrency(item.price)}
+                  </td>
+                  <td>{formatCurrency(item.price * item.quantity)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="mt-5 flex justify-end">
+            <div className="flex flex-col gap-2">
+              <p className="flex gap-5 items-end">
+                <span className="md:text-lg font-semibold text-slate-700">
+                  Total:
+                </span>
+                <span className="col-span-2 text-xl md:text-2xl font-semibold text-primary">
+                  {formatCurrency(order.totalPrice)}
+                </span>
+              </p>
+
+              <Link href="/#" className="mt-3 self-end w-full">
+                <MGButton className="w-full rounded-md">
+                  Download Invoice
+                </MGButton>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SingleOrderPage;
