@@ -34,3 +34,11 @@ export const orderStatuses: TOrderStatus[] = [
   "completed",
   "cancelled",
 ];
+
+export const ORDER_STATUS = {
+  PENDING: "pending",
+  PROCESSING: "processing",
+  SHIPPED: "shipped",
+  COMPLETED: "completed",
+  CANCELLED: "cancelled",
+} as const;
