@@ -46,7 +46,7 @@ const CheckoutPage = () => {
 
   const subTotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
 
   const handleCreateOrder = async (paymentResult?: string) => {
@@ -125,7 +125,7 @@ const CheckoutPage = () => {
         <Heading />
       </div>
 
-      <div className="mt-8 grid grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
         {isLoading ? (
           <div className="row-span-2">Loading...</div>
         ) : (
@@ -150,7 +150,7 @@ const CheckoutPage = () => {
         <CheckoutOverview deliveryOption={selectedDeliveryOption} />
       </div>
 
-      <div className="border-t-2 border-slate-100 mt-5 py-3 flex max-lg:flex-col items-center lg:justify-between gap-x-3 gap-y-4">
+      <div className="mt-5 flex items-center gap-x-3 gap-y-4 border-t-2 border-slate-100 py-3 max-lg:flex-col lg:justify-between">
         <p className="text-sm">
           <input
             type="checkbox"
@@ -159,21 +159,21 @@ const CheckoutPage = () => {
           />{" "}
           &nbsp; I have read and accepted the{" "}
           <Link
-            className="text-primary-hover font-medium"
+            className="font-medium text-primary-hover"
             href="/terms-conditions"
           >
             Terms & Conditions
           </Link>
           ,{" "}
           <Link
-            className="text-primary-hover font-medium"
+            className="font-medium text-primary-hover"
             href="/privacy-policy"
           >
             Privacy Policy
           </Link>{" "}
           and{" "}
           <Link
-            className="text-primary-hover font-medium"
+            className="font-medium text-primary-hover"
             href="/refund-return-policy"
           >
             Refund & Return Policy
@@ -182,7 +182,7 @@ const CheckoutPage = () => {
 
         <MGButton
           type="button"
-          className="rounded-lg gap-2 cursor-pointer"
+          className="cursor-pointer gap-2 rounded-lg"
           disabled={isPending}
           onClick={handlePlaceOrder}
         >

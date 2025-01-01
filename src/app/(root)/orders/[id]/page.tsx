@@ -35,12 +35,12 @@ const SingleOrderPage = async (props: TProps) => {
       <BreadcrumbBar items={breadcrumbItems} />
 
       <div className="mt-5 sm:mt-3 sm:rounded-xl sm:border sm:border-slate-200 sm:p-4">
-        <div className="flex items-end gap-3 justify-between">
+        <div className="flex items-end justify-between gap-3">
           <div>
             <h1 className="text-3xl font-semibold text-slate-700">
               Order Details
             </h1>
-            <p className="text-slate-500 font-semibold mt-1 text-sm sm:text-base">
+            <p className="mt-1 text-sm font-semibold text-slate-500 sm:text-base">
               You have ordered{" "}
               <span className="text-primary">{order.orderItems.length}</span>{" "}
               product
@@ -55,7 +55,7 @@ const SingleOrderPage = async (props: TProps) => {
 
         {/* -----Order Details---------  */}
 
-        <ul className="mt-4 py-4 text-slate-700 text-sm max-sm:border-y">
+        <ul className="mt-4 py-4 text-sm text-slate-700 max-sm:border-y">
           <li>
             <span className="font-semibold">Order ID:</span>{" "}
             <span className="uppercase">{order._id}</span>
@@ -64,8 +64,8 @@ const SingleOrderPage = async (props: TProps) => {
             <span className="font-semibold">Payment:</span>{" "}
             <span
               className={cn(
-                "uppercase font-bold",
-                order.isPaid ? "text-green-600" : "text-red-600"
+                "font-bold uppercase",
+                order.isPaid ? "text-green-600" : "text-red-600",
               )}
             >
               {order.isPaid ? "Paid" : "Not Paid"}
@@ -98,7 +98,7 @@ const SingleOrderPage = async (props: TProps) => {
         {/* -----Order Table---------  */}
 
         <div className="mt-6">
-          <table className="table-auto admin-table rounded-md overflow-hidden">
+          <table className="admin-table table-auto overflow-hidden rounded-md">
             <thead className="text-left">
               <tr>
                 <th className="max-md:hidden">Image</th>
@@ -134,16 +134,16 @@ const SingleOrderPage = async (props: TProps) => {
 
           <div className="mt-5 flex justify-end">
             <div className="flex flex-col gap-2">
-              <p className="flex gap-5 items-end">
-                <span className="md:text-lg font-semibold text-slate-700">
+              <p className="flex items-end gap-5">
+                <span className="font-semibold text-slate-700 md:text-lg">
                   Total:
                 </span>
-                <span className="col-span-2 text-xl md:text-2xl font-semibold text-primary">
+                <span className="col-span-2 text-xl font-semibold text-primary md:text-2xl">
                   {formatCurrency(order.totalPrice)}
                 </span>
               </p>
 
-              <Link href="/#" className="mt-3 self-end w-full">
+              <Link href="/#" className="mt-3 w-full self-end">
                 <MGButton className="w-full rounded-md">
                   Download Invoice
                 </MGButton>
