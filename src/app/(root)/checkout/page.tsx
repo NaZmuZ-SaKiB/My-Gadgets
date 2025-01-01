@@ -116,7 +116,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="mg-container p-4">
+    <div className="mg-container pt-4">
       <BreadcrumbBar
         items={[{ label: "Cart", link: "/cart" }, { label: "Checkout" }]}
       />
