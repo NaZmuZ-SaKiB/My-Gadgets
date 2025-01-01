@@ -18,7 +18,7 @@ const font = Permanent_Marker({
 const Header = () => {
   return (
     <>
-      <div className="bg-white border-b border-slate-300 header max-xl:sticky top-0 z-[100]">
+      <div className="bg-white border-b header max-xl:sticky top-0 z-[100]">
         <header className="mg-container py-2 xl:py-3">
           <div className="flex gap-10 items-center justify-between">
             <MobileMenu />
