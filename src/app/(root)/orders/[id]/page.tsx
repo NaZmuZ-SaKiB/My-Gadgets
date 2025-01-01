@@ -6,6 +6,7 @@ import { TOrder } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import Image from "next/image";
 import Link from "next/link";
+import CancelRequestButton from "../_components/CancelRequestButton";
 
 type TProps = {
   params: Promise<{
@@ -48,9 +49,10 @@ const SingleOrderPage = async (props: TProps) => {
             </p>
           </div>
 
-          <MGButton variant="destructive" size="sm" className="rounded-md">
-            Cancel Order
-          </MGButton>
+          <CancelRequestButton
+            orderId={`${order._id}`}
+            isRequested={Boolean(order.cancelRequested)}
+          />
         </div>
 
         {/* -----Order Details---------  */}
