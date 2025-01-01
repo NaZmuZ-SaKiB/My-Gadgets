@@ -23,7 +23,7 @@ const CartPage = () => {
   if (!mounted) return null;
 
   return (
-    <div className="mg-container p-4">
+    <div className="mg-container pt-4">
       <BreadcrumbBar items={[{ label: "Shop" }, { label: "Cart" }]} />
 
       <div className="mt-5 sm:mt-3 sm:rounded-xl sm:border sm:border-slate-200 sm:p-4">
