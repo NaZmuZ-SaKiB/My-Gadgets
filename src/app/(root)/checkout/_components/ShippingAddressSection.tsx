@@ -34,7 +34,7 @@ const ShippingAddressSection = ({
 
   if (isLoading) return <div className="row-span-2">Loading...</div>;
   return (
-    <div className="sm:rounded-xl sm:border sm:border-slate-200 sm:p-4 row-span-2">
+    <div className="sm:rounded-xl sm:border sm:border-slate-200 sm:p-4 lg:row-span-2 max-lg:col-span-2 max-lg:border-b max-lg:pb-4">
       <div className="flex items-center justify-between gap-3 mb-3">
         <h2 className="text-lg font-semibold text-slate-700">
           Shipping Address
