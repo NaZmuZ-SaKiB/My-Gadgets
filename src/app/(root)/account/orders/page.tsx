@@ -36,7 +36,7 @@ const MyOrdersPage = async () => {
                   {formatCurrency(order.totalPrice)}
                 </td>
                 <td className="text-center text-primary">
-                  <Link href={`/account/orders/${order._id}`}>View</Link>
+                  <Link href={`/orders/${order._id}`}>View</Link>
                 </td>
               </tr>
             ))}
