@@ -52,6 +52,7 @@ const SingleOrderPage = async (props: TProps) => {
           <CancelRequestButton
             orderId={`${order._id}`}
             isRequested={Boolean(order.cancelRequested)}
+            status={order.status}
           />
         </div>
 
@@ -145,7 +146,10 @@ const SingleOrderPage = async (props: TProps) => {
                 </span>
               </p>
 
-              <Link href="/#" className="mt-3 w-full self-end">
+              <Link
+                href={`/orders/${order._id}/invoice`}
+                className="mt-3 w-full self-end"
+              >
                 <MGButton className="w-full rounded-md">
                   Download Invoice
                 </MGButton>
