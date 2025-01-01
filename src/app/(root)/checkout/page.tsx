@@ -125,7 +125,7 @@ const CheckoutPage = () => {
         <Heading />
       </div>
 
-      <div className="mt-8 grid grid-cols-3 gap-3">
+      <div className="mt-8 grid grid-cols-2 lg:grid-cols-3 gap-3">
         {isLoading ? (
           <div className="row-span-2">Loading...</div>
         ) : (
@@ -150,7 +150,7 @@ const CheckoutPage = () => {
         <CheckoutOverview deliveryOption={selectedDeliveryOption} />
       </div>
 
-      <div className="border-t-2 border-slate-100 mt-5 p-3 flex items-center justify-between gap-3 flex-wrap">
+      <div className="border-t-2 border-slate-100 mt-5 py-3 flex max-lg:flex-col items-center lg:justify-between gap-x-3 gap-y-4">
         <p className="text-sm">
           <input
             type="checkbox"
