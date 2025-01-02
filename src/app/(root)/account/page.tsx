@@ -15,7 +15,7 @@ const AccountPage = () => {
     useMyProfileUpdateMutation();
 
   const handleUpdate: SubmitHandler<{ name: string; email: string }> = async (
-    values
+    values,
   ) => {
     if (user?.name === values.name && user?.email === values.email) {
       return;
@@ -45,7 +45,11 @@ const AccountPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="mx-auto max-w-md">
+      <h1 className="mb-4 text-3xl font-semibold text-slate-700">
+        Your Account
+      </h1>
+
       <MGForm
         onSubmit={handleUpdate}
         defaultValues={defaultValues}
