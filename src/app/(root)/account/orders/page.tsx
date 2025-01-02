@@ -12,8 +12,12 @@ const MyOrdersPage = async () => {
 
   return (
     <div className="lg:mg-container">
+      <h1 className="mb-4 text-3xl font-semibold text-slate-700">
+        Your Orders
+      </h1>
+
       {orders?.length > 0 ? (
-        <table className="table table-auto primary-table">
+        <table className="primary-table table table-auto">
           <thead>
             <tr>
               <th className="text-left">Order</th>
@@ -44,7 +48,7 @@ const MyOrdersPage = async () => {
         </table>
       ) : (
         <div className="rounded-xl border border-slate-200 px-5 py-10">
-          <p className="text-3xl text-slate-400 font-bold text-center">
+          <p className="text-center text-3xl font-bold text-slate-400">
             No orders found
           </p>
         </div>
