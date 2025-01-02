@@ -4,9 +4,10 @@ import { z } from "zod";
 import { OrderValidation } from "../validations/order.validation";
 import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 export const orderCreateAction = async (
-  payload: z.infer<typeof OrderValidation.create>
+  payload: z.infer<typeof OrderValidation.create>,
 ) => {
   const response = await fetch(`${backendUrl}/api/order`, {
     method: "POST",
@@ -19,6 +20,8 @@ export const orderCreateAction = async (
   });
 
   const result = await response.json();
+
+  revalidatePath("account/orders");
 
   return result;
 };
