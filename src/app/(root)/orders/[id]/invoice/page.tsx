@@ -31,8 +31,6 @@ const InvoicePage = async (props: TProps) => {
 
   return (
     <div className="mt-4">
-      <InvoiceDownloadButton />
-
       <div
         id="invoice"
         className="mx-auto mt-4 min-h-[800px] max-w-screen-sm p-5 shadow-[0px_0px_15px_3px_rgba(0,_0,_0,_0.1)]"
@@ -185,6 +183,7 @@ const InvoicePage = async (props: TProps) => {
           </li>
         </ol>
       </div>
+      <InvoiceDownloadButton />
     </div>
   );
 };
