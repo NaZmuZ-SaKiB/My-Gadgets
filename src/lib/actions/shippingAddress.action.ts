@@ -4,9 +4,10 @@ import { z } from "zod";
 import { ShippingAddressValidation } from "../validations/shippingAddress.validation";
 import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 export const shippingAddressCreateAction = async (
-  payload: z.infer<typeof ShippingAddressValidation.create>
+  payload: z.infer<typeof ShippingAddressValidation.create>,
 ) => {
   const response = await fetch(`${backendUrl}/api/shipping-address`, {
     method: "POST",
@@ -19,6 +20,8 @@ export const shippingAddressCreateAction = async (
   });
 
   const result = await response.json();
+
+  revalidatePath("/account/addresses");
 
   return result;
 };
