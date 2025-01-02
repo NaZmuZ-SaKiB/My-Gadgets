@@ -30,11 +30,13 @@ const ProductCardAddToCart = ({ product, quantity = 1, className }: TProps) => {
     }
   };
 
+  if (!mounted) return null;
+
   return (
     <div className={cn(className)} onClick={handleClick}>
       <MGButton
-        className={cn("rounded-lg gap-2", {
-          "opacity-50 cursor-not-allowed": isAdded,
+        className={cn("gap-2 rounded-lg", {
+          "cursor-not-allowed opacity-50": isAdded,
         })}
       >
         {mounted && !isAdded ? (
