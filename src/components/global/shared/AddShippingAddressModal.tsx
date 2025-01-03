@@ -1,7 +1,7 @@
 "use client";
 
 import MGButton from "@/components/global/shared/MGButton";
-import ShippingAddressForm from "@/components/global/shared/ShippingAddressForm";
+import CreateShippingAddressForm from "@/components/global/shared/CreateShippingAddressForm";
 import {
   Dialog,
   DialogContent,
@@ -23,7 +23,7 @@ const AddShippingAddressModal = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <MGButton
-          className="rounded-md gap-2 text-primary-hover"
+          className="gap-2 rounded-md text-primary-hover"
           variant="outline"
         >
           <Plus className="size-5" />
@@ -31,14 +31,14 @@ const AddShippingAddressModal = () => {
         </MGButton>
       </DialogTrigger>
 
-      <DialogContent className="p-4 !rounded-2xl">
+      <DialogContent className="!rounded-2xl p-4">
         <DialogHeader>
           <DialogTitle className="text-lg font-semibold text-slate-700">
             New Shipping Address
           </DialogTitle>
         </DialogHeader>
 
-        <ShippingAddressForm closeModal={closeModal} />
+        <CreateShippingAddressForm closeModal={closeModal} />
       </DialogContent>
     </Dialog>
   );
