@@ -26,7 +26,7 @@ const defaultValues = {
   phone: "",
 };
 
-const ShippingAddressForm = ({ closeModal }: TProps) => {
+const CreateShippingAddressForm = ({ closeModal }: TProps) => {
   const queryClient = useQueryClient();
 
   const { mutateAsync: createShippingAddress, isPending } =
@@ -71,11 +71,11 @@ const ShippingAddressForm = ({ closeModal }: TProps) => {
       <MGInput name="zipCode" label="Zip Code" showLabel={false} />
       <MGInput name="phone" label="Phone" showLabel={false} />
 
-      <MGButton className="py-3 h-auto" disabled={isPending}>
+      <MGButton className="h-auto py-3" disabled={isPending}>
         {isPending ? "Saving..." : "Save"}
       </MGButton>
     </MGForm>
   );
 };
 
-export default ShippingAddressForm;
+export default CreateShippingAddressForm;
