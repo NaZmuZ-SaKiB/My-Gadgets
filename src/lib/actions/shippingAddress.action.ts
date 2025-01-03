@@ -43,6 +43,8 @@ export const shippingAddressUpdateAction = async ({
     cache: "no-store",
   });
 
+  revalidatePath("/account/addresses");
+
   const result = await response.json();
 
   return result;
