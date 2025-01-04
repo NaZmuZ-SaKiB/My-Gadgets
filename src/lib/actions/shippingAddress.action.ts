@@ -5,6 +5,7 @@ import { ShippingAddressValidation } from "../validations/shippingAddress.valida
 import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { TShippingAddress } from "@/types/shippingAddress.type";
 
 export const shippingAddressCreateAction = async (
   payload: z.infer<typeof ShippingAddressValidation.create>,
@@ -31,7 +32,7 @@ export const shippingAddressUpdateAction = async ({
   payload,
 }: {
   id: string;
-  payload: Partial<z.infer<typeof ShippingAddressValidation.create>>;
+  payload: Partial<TShippingAddress>;
 }) => {
   const response = await fetch(`${backendUrl}/api/shipping-address/${id}`, {
     method: "PATCH",
