@@ -1,8 +1,9 @@
 import AddShippingAddressModal from "@/components/global/shared/AddShippingAddressModal";
-import { currentUser, isUserLoggedIn } from "@/lib/actions/auth.action";
+import { isUserLoggedIn } from "@/lib/actions/auth.action";
 import { shippingAddressGetAllAction } from "@/lib/actions/shippingAddress.action";
 import { TShippingAddress } from "@/types/shippingAddress.type";
 import EditShippingAddressModal from "./_components/EditShippingAddressModal";
+import ShippingAddressSetDefaultButton from "./_components/ShippingAddressSetDefaultButton";
 
 const MyAddressesPage = async () => {
   const user = await isUserLoggedIn();
@@ -26,7 +27,12 @@ const MyAddressesPage = async () => {
                 }
               >
                 <div>
-                  <p>{address?.addressLine1}</p>
+                  <p>
+                    {address?.addressLine1}{" "}
+                    {address?.default && (
+                      <span className="text-orange-500">(Default Address)</span>
+                    )}
+                  </p>
                   {address?.addressLine2 && <p>{address?.addressLine2}</p>}
                   <p>
                     <span>City: {address.city}</span>
@@ -41,7 +47,11 @@ const MyAddressesPage = async () => {
                   <p>Phone: {address.phone}</p>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 flex items-center gap-1">
+                  <ShippingAddressSetDefaultButton
+                    id={address._id}
+                    isDefault={address.default}
+                  />
                   <EditShippingAddressModal currentAddress={address} />
                 </div>
               </div>
