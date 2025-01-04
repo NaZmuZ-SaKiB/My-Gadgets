@@ -2,7 +2,7 @@
 
 import MGButton from "@/components/global/shared/MGButton";
 import { ORDER_STATUS } from "@/constants";
-import { orderUpdateAction } from "@/lib/actions/order.action";
+import { useOrderUpdateMutation } from "@/lib/queries/order.query";
 import { TOrderStatus } from "@/types/order.type";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -15,15 +15,14 @@ type TProps = {
 
 const CancelRequestButton = ({ orderId, isRequested, status }: TProps) => {
   const [requested, setRequested] = useState(isRequested);
-  const [loading, setLoading] = useState(false);
+
+  const { mutateAsync: updateOrder, isPending } = useOrderUpdateMutation();
 
   const handleCancelRequest = async () => {
-    if (loading) return;
     if (requested || status === ORDER_STATUS.CANCELLED) return;
-    setLoading(true);
 
     try {
-      const result = await orderUpdateAction({
+      const result = await updateOrder({
         id: orderId,
         payload: {
           cancelRequested: true,
@@ -38,8 +37,6 @@ const CancelRequestButton = ({ orderId, isRequested, status }: TProps) => {
       }
     } catch (error: any) {
       toast.error(error?.message || "A client error occurred.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -55,9 +52,9 @@ const CancelRequestButton = ({ orderId, isRequested, status }: TProps) => {
           size="sm"
           className="rounded-md"
           onClick={handleCancelRequest}
-          disabled={loading}
+          disabled={isPending}
         >
-          {loading ? "Requesting..." : "Cancel Order"}
+          {isPending ? "Requesting..." : "Cancel Order"}
         </MGButton>
       )}
     </>
