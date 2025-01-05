@@ -9,16 +9,28 @@ import SelectedItemsCount from "@/components/admin/shared/SelectedItemsCount";
 import { productSortOptions } from "@/constants";
 import ProductsTable from "./ProductsTable";
 import { useState } from "react";
+import ProductDeleteDialog from "./ProductDeleteDialog";
+import { Button } from "@/components/ui/button";
 
 const ProductsData = () => {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   return (
     <div className="flex flex-col gap-3">
       <AFloatingBox className="flex flex-col gap-2">
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex flex-wrap gap-2">
           <SelectedItemsCount count={selectedProducts.length} />
 
-          {/* Product Delete Dialog  */}
+          <ProductDeleteDialog
+            products={selectedProducts}
+            setProducts={setSelectedProducts}
+          >
+            <Button
+              className="no-focus border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-500 hover:text-white"
+              disabled={selectedProducts.length === 0}
+            >
+              Delete
+            </Button>
+          </ProductDeleteDialog>
 
           <div className="sm:hidden">
             <DataLimitSelect />
