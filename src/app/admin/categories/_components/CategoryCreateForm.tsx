@@ -13,6 +13,7 @@ import {
 } from "@/lib/queries/category.query";
 import { CategoryValidation } from "@/lib/validations/category.validation";
 import { TCategory } from "@/types/category.type";
+import generateSlug from "@/utils/generateSlug";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
 import { SubmitHandler } from "react-hook-form";
@@ -45,7 +46,7 @@ const CategoryCreateForm = () => {
     try {
       const result = await createCategoryFn({
         ...values,
-        name: values.name.toLowerCase(),
+        name: generateSlug(values.name),
       });
 
       if (result?.success) {
@@ -80,7 +81,7 @@ const CategoryCreateForm = () => {
 
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-slate-700 text-lg mb-5">Add Category</h2>
+      <h2 className="mb-5 text-lg font-medium text-slate-700">Add Category</h2>
 
       <MGForm
         onSubmit={handleCategoryCreate}
@@ -103,7 +104,7 @@ const CategoryCreateForm = () => {
         <MGAImageInput name="image" label="Image" />
 
         <MGButton
-          className="rounded-none self-start px-5 py-2 h-auto"
+          className="h-auto self-start rounded-none px-5 py-2"
           disabled={isPending}
         >
           {isPending ? "Creating..." : "Create Category"}
