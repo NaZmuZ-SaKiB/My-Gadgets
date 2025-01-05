@@ -25,7 +25,7 @@ const MobileMenu = () => {
     );
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="no-focus">
+      <SheetTrigger className="no-focus xl:hidden">
         <div className={`nav-toggle-btn ${open ? "active" : ""}`}>
           <span></span>
         </div>
@@ -33,7 +33,7 @@ const MobileMenu = () => {
 
       <SheetContent
         side={"left"}
-        className="p-0 pb-20 w-[min(300px,100%)] top-[53px] overflow-y-auto"
+        className="top-[53px] w-[min(300px,100%)] overflow-y-auto p-0 pb-20"
       >
         <Accordion type="single" collapsible className="w-full">
           {categories.map((category: TCategory) => (
@@ -42,9 +42,9 @@ const MobileMenu = () => {
               value={category.name}
               className="border-none p-0"
             >
-              <div className="flex justify-between items-center border-b border-t -mt-[1px] border-slate-300">
+              <div className="-mt-[1px] flex items-center justify-between border-b border-t border-slate-300">
                 <span className="px-3">{category.label}</span>
-                <AccordionTrigger className="p-3 border-l border-slate-300 no-focus"></AccordionTrigger>
+                <AccordionTrigger className="no-focus border-l border-slate-300 p-3"></AccordionTrigger>
               </div>
 
               <AccordionContent className="pb-0 ps-4">
@@ -52,11 +52,11 @@ const MobileMenu = () => {
                   (subCategory) => (
                     <div
                       key={`${subCategory._id}`}
-                      className="w-full py-1.5 px-3 text-base border-l border-b border-slate-300"
+                      className="w-full border-b border-l border-slate-300 px-3 py-1.5 text-base"
                     >
                       {subCategory.label}
                     </div>
-                  )
+                  ),
                 )}
               </AccordionContent>
             </AccordionItem>

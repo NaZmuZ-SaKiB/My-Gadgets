@@ -18,24 +18,24 @@ const font = Permanent_Marker({
 const Header = () => {
   return (
     <>
-      <div className="bg-white border-b header max-xl:sticky top-0 z-[100]">
+      <div className="header top-0 z-[100] border-b bg-white max-xl:sticky">
         <header className="mg-container py-2 xl:py-3">
-          <div className="flex gap-10 items-center justify-between">
+          <div className="flex items-center justify-between gap-10">
             <MobileMenu />
 
             <Link
               href="/"
-              className="shrink-0 max-xl:absolute left-[50%] transform max-xl:-translate-x-[50%] flex items-center gap-2"
+              className="left-[50%] flex shrink-0 transform items-center gap-2 max-xl:absolute max-xl:-translate-x-[50%]"
             >
               <Image
                 src={images.logo}
-                className="max-sm:size-8 max-xl:h-10 max-w-10"
+                className="max-w-10 max-xl:h-10 max-sm:size-8"
                 alt="logo"
               />
               <span
                 className={cn(
                   font.className,
-                  "font-semibold text-xl sm:text-2xl"
+                  "text-xl font-semibold sm:text-2xl",
                 )}
               >
                 My Gadgets
@@ -43,7 +43,7 @@ const Header = () => {
             </Link>
 
             {/* search box */}
-            <div className="xl:flex xl:justify-center xl:flex-1 max-xl:absolute z-50 left-0 right-0 top-[53px] xl:static">
+            <div className="left-0 right-0 top-[53px] z-50 max-xl:absolute xl:static xl:flex xl:flex-1 xl:justify-center">
               <input hidden type="checkbox" id="search-toggle" />
               <SearchBox />
             </div>
@@ -52,24 +52,24 @@ const Header = () => {
             <div className="flex items-center gap-6">
               <Link
                 href="/compare"
-                className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer"
+                className="hidden cursor-pointer text-slate-600 hover:text-slate-800 xl:block"
               >
                 <Image
                   src={icons.compare}
                   alt="compare"
-                  className="size-6 mx-auto"
+                  className="mx-auto size-6"
                 />
                 <span className="text-sm">Compare</span>
               </Link>
 
               <Link
                 href="/wishlist"
-                className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer"
+                className="hidden cursor-pointer text-slate-600 hover:text-slate-800 xl:block"
               >
                 <Image
                   src={icons.heart}
                   alt="wishlist"
-                  className="size-6 mx-auto"
+                  className="mx-auto size-6"
                 />
                 <span className="text-sm">Wishlist</span>
               </Link>
@@ -80,11 +80,11 @@ const Header = () => {
                 </label>
               </div>
 
-              <div className="shrink-0 text-slate-600 hover:text-slate-800 cursor-pointer">
+              <div className="shrink-0 cursor-pointer text-slate-600 hover:text-slate-800">
                 <Cart />
               </div>
 
-              <div className="hidden xl:block text-slate-600 hover:text-slate-800 cursor-pointer">
+              <div className="hidden cursor-pointer text-slate-600 hover:text-slate-800 xl:block">
                 <Account />
               </div>
             </div>
