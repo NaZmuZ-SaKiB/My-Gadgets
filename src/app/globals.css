@@ -30,7 +30,7 @@
   /* --------- Navbar --------- */
 
   .nav-toggle-btn {
-    @apply size-9 cursor-pointer xl:hidden;
+    @apply size-9 cursor-pointer;
   }
 
   .nav-toggle-btn span {
