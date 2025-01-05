@@ -109,13 +109,18 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
               <td>{formatCurrency(item.salePrice)}</td>
               <td>
                 <div className="flex justify-end gap-1 max-md:flex-wrap">
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="no-focus group h-8 border-slate-300 bg-transparent hover:border-slate-600 hover:bg-slate-600"
+                  <Link
+                    href={`/products/${item.slug}/${item._id}`}
+                    className="no-focus"
                   >
-                    <Eye className="size-4 text-slate-700 group-hover:text-white" />
-                  </Button>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="no-focus group h-8 border-slate-300 bg-transparent hover:border-slate-600 hover:bg-slate-600"
+                    >
+                      <Eye className="size-4 text-slate-700 group-hover:text-white" />
+                    </Button>
+                  </Link>
 
                   <Link
                     href={`/admin/products/${item._id}`}
