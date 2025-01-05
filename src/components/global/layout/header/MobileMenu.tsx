@@ -43,7 +43,7 @@ const MobileMenu = () => {
               className="border-none p-0"
             >
               <div className="-mt-[1px] flex items-center justify-between border-b border-t border-slate-300">
-                <span className="px-3">{category.label}</span>
+                <span className="px-3 capitalize">{category.label}</span>
                 <AccordionTrigger className="no-focus border-l border-slate-300 p-3"></AccordionTrigger>
               </div>
 
@@ -52,7 +52,7 @@ const MobileMenu = () => {
                   (subCategory) => (
                     <div
                       key={`${subCategory._id}`}
-                      className="w-full border-b border-l border-slate-300 px-3 py-1.5 text-base"
+                      className="w-full border-b border-l border-slate-300 px-3 py-1.5 text-base capitalize"
                     >
                       {subCategory.label}
                     </div>

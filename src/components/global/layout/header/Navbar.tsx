@@ -35,12 +35,12 @@ const Navbar = async () => {
   });
 
   return (
-    <div className="bg-white drop-shadow max-xl:hidden sticky top-0 z-50">
+    <div className="sticky top-0 z-50 bg-white drop-shadow max-xl:hidden">
       <div className="mg-container flex gap-3">
         <div className="py-0.5">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <MGButton className="rounded h-auto gap-5 items-center px-5 py-1.5">
+              <MGButton className="h-auto items-center gap-5 rounded px-5 py-1.5">
                 <AlignJustify /> All Category
               </MGButton>
             </DropdownMenuTrigger>
@@ -57,14 +57,14 @@ const Navbar = async () => {
                   <DropdownMenuSub key={`${cat._id}`}>
                     <DropdownMenuSubTrigger className="py-0">
                       <Link
-                        className="w-full py-1.5"
+                        className="w-full py-1.5 capitalize"
                         href={`/shop/${cat.name}`}
                       >
                         {cat.label}
                       </Link>
                     </DropdownMenuSubTrigger>
                     <DropdownMenuPortal>
-                      <DropdownMenuSubContent className="p-0 rounded">
+                      <DropdownMenuSubContent className="rounded p-0">
                         {(cat.subCategories as TCategory[]).map((subCat) => (
                           <DropdownMenuItem
                             key={`${subCat._id}`}
@@ -93,28 +93,28 @@ const Navbar = async () => {
           </DropdownMenu>
         </div>
 
-        <div className="flex justify-start items-center">
+        <div className="flex items-center justify-start">
           {showOnTopCategories.map((cat) => {
             const hasSubCat = cat.subCategories.length > 0;
             return (
               <div key={`${cat._id}`} className="relative">
                 <Link
                   href={`/shop/${cat.name}`}
-                  className="block px-3 py-2 rounded cursor-pointer hover:bg-primary-hover hover:text-white peer"
+                  className="peer block cursor-pointer rounded px-3 py-2 hover:bg-primary-hover hover:text-white"
                 >
-                  <span className="flex gap-1 items-center text-sm">
+                  <span className="flex items-center gap-1 text-sm">
                     {cat.label}{" "}
                     {hasSubCat && <ChevronDown className="size-4" />}
                   </span>
                 </Link>
                 {hasSubCat && (
-                  <div className="flex-col w-[150px] rounded-md border shadow bg-white z-10 absolute top-full hidden peer-hover:flex hover:flex">
+                  <div className="absolute top-full z-10 hidden w-[150px] flex-col rounded-md border bg-white shadow hover:flex peer-hover:flex">
                     {(cat.subCategories as TCategory[]).map((subCat) => {
                       return (
                         <Link
                           href={`/shop/${subCat.name}`}
                           key={`${subCat._id}`}
-                          className="p-2 hover:bg-slate-100 text-sm cursor-pointer"
+                          className="cursor-pointer p-2 text-sm hover:bg-slate-100"
                         >
                           {subCat.label}
                         </Link>
