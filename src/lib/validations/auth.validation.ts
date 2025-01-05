@@ -40,7 +40,37 @@ const signIn = z.object({
     .min(6, "Password must be at least 6 characters long"),
 });
 
+const changePassword = z
+  .object({
+    oldPassword: z
+      .string({
+        required_error: "Password is required",
+        invalid_type_error: "Password must be a string",
+      })
+      .min(1, "Old password is required"),
+    newPassword: z
+      .string({
+        required_error: "Password is required",
+        invalid_type_error: "Password must be a string",
+      })
+      .min(6, "Password must be at least 6 characters long"),
+    confirmPassword: z.string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be a string",
+    }),
+  })
+  .refine(
+    (data) => {
+      return data.newPassword === data.confirmPassword;
+    },
+    {
+      message: "Passwords do not match",
+      path: ["confirmPassword"],
+    },
+  );
+
 export const AuthValidation = {
   signUp,
   signIn,
+  changePassword,
 };
