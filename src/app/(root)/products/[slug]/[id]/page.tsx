@@ -40,7 +40,7 @@ const SingleProductPage = async (props: TProps) => {
     },
     {
       label: product.name,
-      link: "",
+      link: null,
     },
   ];
 
@@ -49,7 +49,7 @@ const SingleProductPage = async (props: TProps) => {
       <BreadcrumbBar items={breadcrumbItems} />
 
       <section className="py-4">
-        <div className="grid md:grid-cols-[40%_1fr] gap-8">
+        <div className="grid gap-8 md:grid-cols-[40%_1fr]">
           <ProductImages
             name={product.name}
             images={product.images}
@@ -60,7 +60,7 @@ const SingleProductPage = async (props: TProps) => {
       </section>
 
       {/* Product Details */}
-      <div className="grid grid-cols-3 gap-3 mt-8">
+      <div className="mt-8 grid grid-cols-3 gap-3">
         <div className="col-span-3 lg:col-span-2">
           <ProductDetailsMunu />
           <ProductSpecification product={product} />
@@ -69,8 +69,8 @@ const SingleProductPage = async (props: TProps) => {
           <ProductReviews reviews={reviews} />
 
           {!!user && (
-            <div className="border border-slate-300 rounded-2xl p-3 xs:p-6 my-4 max-lg:mb-0">
-              <div className="text-xl font-bold mb-3">Leave a review</div>
+            <div className="my-4 rounded-2xl border border-slate-300 p-3 max-lg:mb-0 xs:p-6">
+              <div className="mb-3 text-xl font-bold">Leave a review</div>
               <ReviewCreateForm product={product._id.toString()} />
             </div>
           )}
