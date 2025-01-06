@@ -6,6 +6,7 @@ import {
 
 export * from "./assets";
 export * from "./adminSidebar";
+export * from "./accountSidebar";
 export * from "./sortOptions";
 export * from "./product";
 export * from "./tags";
