@@ -15,7 +15,7 @@ const update = z.object({
           z.object({
             banner: z.string().optional(),
             products: z.array(z.string()),
-          })
+          }),
         )
         .optional(),
       flashSale: z
@@ -25,13 +25,20 @@ const update = z.object({
             endDate: z.any({
               required_error: "End Date is required",
             }),
-          })
+          }),
         )
         .optional(),
 
       topSellingProducts: z.array(z.string()).optional(),
       trendingProducts: z.array(z.string()).optional(),
       description: z.string().optional(),
+    })
+    .optional(),
+
+  category: z
+    .object({
+      showOnTopMenu: z.array(z.string()).optional(),
+      featured: z.array(z.string()).optional(),
     })
     .optional(),
 
