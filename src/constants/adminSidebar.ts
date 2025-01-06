@@ -103,6 +103,10 @@ export const adminSideBar: TAdminSideBar[] = [
         link: "/admin/settings/homepage",
       },
       {
+        name: "Category",
+        link: "/admin/settings/category",
+      },
+      {
         name: "Footer",
         link: "/admin/settings/footer",
       },
