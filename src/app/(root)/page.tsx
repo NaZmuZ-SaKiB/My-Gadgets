@@ -10,7 +10,7 @@ import Services from "./_components/Services";
 import { THomepageSettings } from "@/types/settings.type";
 
 const HomePage = async () => {
-  const settingsData = await settingsGetAction();
+  const settingsData = await settingsGetAction("homepage");
   const homePageSettings: THomepageSettings = settingsData?.data?.homepage;
 
   return (
