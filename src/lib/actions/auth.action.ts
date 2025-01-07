@@ -7,6 +7,37 @@ import { cookies } from "next/headers";
 import { z } from "zod";
 import { AuthValidation } from "../validations/auth.validation";
 
+export const signUp = async (payload: {
+  email: string;
+  password: string;
+  name: string;
+}) => {
+  const response = await fetch(`${backendUrl}/api/auth/sign-up`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  if (!result.success) {
+    return result;
+  }
+
+  const { token } = result?.data;
+
+  (await cookies()).set(authKey, token, {
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true,
+    path: "/",
+  });
+
+  return result;
+};
+
 export const signIn = async (payload: { email: string; password: string }) => {
   const response = await fetch(`${backendUrl}/api/auth/sign-in`, {
     method: "POST",
