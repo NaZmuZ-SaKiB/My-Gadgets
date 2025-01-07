@@ -15,6 +15,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { Check, X } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { toast } from "sonner";
 
 type TProps = {
   name: string;
@@ -23,6 +24,8 @@ type TProps = {
   optionLabelField: string;
   defaultValue?: any[];
   multiple?: boolean;
+  imageRequired?: boolean;
+  max?: number;
   fetchFunction: (filters: any) => UseQueryResult<{
     statusCode: number;
     success: boolean;
@@ -38,6 +41,8 @@ const MGASearchSelectAsync = ({
   optionLabelField,
   multiple = false,
   defaultValue = [],
+  imageRequired = false,
+  max,
   fetchFunction,
 }: TProps) => {
   const { control, setValue } = useFormContext();
@@ -48,7 +53,7 @@ const MGASearchSelectAsync = ({
 
   const [multipleValues, setMultipleValues] = useState<any[]>(defaultValue);
   const [selectedValue, setSelectedValue] = useState<any>(
-    defaultValue[0] || null
+    !multiple ? defaultValue[0] : null,
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,9 +68,14 @@ const MGASearchSelectAsync = ({
 
       if (isActive) {
         setMultipleValues((prev) =>
-          prev.filter((item) => item.value !== value)
+          prev.filter((item) => item.value !== value),
         );
       } else {
+        if (max && multipleValues.length === max) {
+          toast.warning(`You can only select up to ${max} items.`);
+          return;
+        }
+
         setMultipleValues((prev) => [...prev, { value, title }]);
       }
     } else {
@@ -86,10 +96,10 @@ const MGASearchSelectAsync = ({
   }, [search]);
 
   useEffect(() => {
-    if (multiple && multipleValues.length > 0) {
+    if (multiple) {
       setValue(
         name,
-        multipleValues.map((item) => item?.value)
+        multipleValues.map((item) => item?.value),
       );
     } else {
       setValue(name, selectedValue?.value);
@@ -97,7 +107,7 @@ const MGASearchSelectAsync = ({
   }, [multipleValues, selectedValue, name, multiple, setValue]);
 
   const { data, isLoading, isFetching } = fetchFunction(
-    `limit=5&searchTerm=${debouncedSearch}`
+    `limit=5&searchTerm=${debouncedSearch}`,
   );
 
   const options = data?.data || [];
@@ -107,18 +117,18 @@ const MGASearchSelectAsync = ({
       control={control}
       name={name}
       render={() => (
-        <FormItem className="flex flex-col gap-1 w-full">
-          <FormLabel className={"font-medium text-nowrap"}>{label}</FormLabel>
+        <FormItem className="flex w-full flex-col gap-1">
+          <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
 
           <FormControl>
             <>
               {(multipleValues.length > 0 || !!selectedValue) && (
-                <div className="flex flex-wrap text-sm gap-1 border border-slate-300 p-1 max-h-[200px] overflow-y-auto">
+                <div className="flex max-h-[200px] flex-wrap gap-1 overflow-y-auto border border-slate-300 p-1 text-sm">
                   {multipleValues.length > 0 &&
                     multipleValues.map((item) => (
                       <div
                         key={`${item?.value}`}
-                        className="bg-slate-100 px-2 py-0.5 flex gap-2 items-center"
+                        className="flex items-center gap-2 bg-slate-100 px-2 py-0.5"
                       >
                         <span
                           onClick={() => selectValue(item?.value, item?.title)}
@@ -129,12 +139,12 @@ const MGASearchSelectAsync = ({
                       </div>
                     ))}
                   {!!selectedValue && (
-                    <div className="bg-slate-100 px-2 py-0.5 flex gap-2 items-center">
+                    <div className="flex items-center gap-2 bg-slate-100 px-2 py-0.5">
                       <span
                         onClick={() =>
                           selectValue(
                             selectedValue?.value,
-                            selectedValue?.title
+                            selectedValue?.title,
                           )
                         }
                       >
@@ -149,7 +159,7 @@ const MGASearchSelectAsync = ({
                 <Input
                   type="text"
                   placeholder={label.replace("*", "")}
-                  className="rounded-none bg-slate-50 focus-visible:bg-white focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary"
+                  className="rounded-none bg-slate-50 focus-visible:border-primary focus-visible:bg-white focus-visible:ring-0 focus-visible:ring-offset-0"
                   value={search}
                   onFocus={() => setOpen(true)}
                   onBlur={() => setOpen(false)}
@@ -157,10 +167,10 @@ const MGASearchSelectAsync = ({
                 />
                 <div
                   className={cn(
-                    "absolute z-50 top-[100%] bg-white border border-t-0 border-slate-200 w-full",
+                    "absolute top-[100%] z-50 w-full border border-t-0 border-slate-200 bg-white",
                     {
                       hidden: !open,
-                    }
+                    },
                   )}
                 >
                   <ScrollArea className="max-h-[160px] w-full overflow-y-auto">
@@ -170,7 +180,7 @@ const MGASearchSelectAsync = ({
                       options.map((option: any) => {
                         const active = multiple
                           ? !!multipleValues.find(
-                              (item) => item?.value === option?._id
+                              (item) => item?.value === option?._id,
                             )
                           : !!selectedValue.value === option._id;
 
@@ -178,16 +188,18 @@ const MGASearchSelectAsync = ({
                           <div
                             key={`${option?._id}`}
                             className={cn(
-                              "px-3 py-1.5 text-slate-900 hover:bg-primary hover:text-slate-50 cursor-pointer flex items-center gap-2 text-sm",
+                              "flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm text-slate-900 hover:bg-primary hover:text-slate-50",
                               {
                                 "bg-slate-100 hover:bg-slate-100 hover:text-slate-900":
                                   active,
-                              }
+                                "pointer-events-none bg-slate-200":
+                                  imageRequired && !option?.image,
+                              },
                             )}
                             onMouseDown={() =>
                               selectValue(
                                 option?._id,
-                                option?.[optionLabelField]
+                                option?.[optionLabelField],
                               )
                             }
                           >
@@ -196,7 +208,15 @@ const MGASearchSelectAsync = ({
                                 <Check className="size-4" />
                               </span>
                             )}
-                            <span>{option?.[optionLabelField]}</span>
+                            <span>
+                              {option?.[optionLabelField]}
+                              {imageRequired && !option?.image && (
+                                <span className="text-xs text-red-500">
+                                  {" "}
+                                  - Image Required
+                                </span>
+                              )}
+                            </span>
                           </div>
                         );
                       })
@@ -211,7 +231,7 @@ const MGASearchSelectAsync = ({
               {description}
             </FormDescription>
           )}
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />
