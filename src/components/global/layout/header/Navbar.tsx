@@ -14,19 +14,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MGButton from "../../shared/MGButton";
+import { settingsGetAction } from "@/lib/actions/settings.action";
 
 const Navbar = async () => {
   const categoriesData = await categoryGetAllWithSubCatsAction();
   const categories: TCategory[] = categoriesData?.data;
-  const showOnTopCategories: TCategory[] = [];
 
-  categories.forEach((cat) => {
-    if (cat.showOnTopMenu) showOnTopCategories.push(cat);
-
-    (cat.subCategories as TCategory[]).forEach((subCat) => {
-      if (subCat.showOnTopMenu) showOnTopCategories.push(subCat);
-    });
-  });
+  const categorySettings = await settingsGetAction("category");
+  const showOnTopCategories: TCategory[] =
+    categorySettings?.data?.category?.showOnTopMenu;
 
   showOnTopCategories.sort((a, b) => {
     if (a.subCategories.length > 0) return -1;
