@@ -45,7 +45,7 @@ const HomepageSettingsPage = () => {
         (item) => ({
           banner: item?.banner,
           products: item.products,
-        })
+        }),
       );
     }
 
@@ -74,8 +74,8 @@ const HomepageSettingsPage = () => {
 
   if (isLoading) {
     return (
-      <div className="h-full grid place-items-center">
-        <Loader2 className="animate-spin mx-auto size-[100px] text-primary" />
+      <div className="grid h-full place-items-center">
+        <Loader2 className="mx-auto size-[100px] animate-spin text-primary" />
       </div>
     );
   }
@@ -105,7 +105,7 @@ const HomepageSettingsPage = () => {
         <APageHeading title="Homepage Settings">
           <MGButton
             type="submit"
-            className="rounded-none self-start px-5 py-2 h-auto"
+            className="h-auto self-start rounded-none px-5 py-2"
             disabled={isPending}
           >
             Save Changes
@@ -113,7 +113,7 @@ const HomepageSettingsPage = () => {
         </APageHeading>
 
         <AGrid reverse>
-          <div className="flex flex-col gap-4 mb-4">
+          <div className="mb-4 flex flex-col gap-4">
             <AFloatingBox>
               <MGARichInput name="homepage.description" label="Description" />
             </AFloatingBox>
