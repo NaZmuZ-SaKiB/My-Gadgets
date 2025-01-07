@@ -65,6 +65,10 @@ export const signIn = async (payload: { email: string; password: string }) => {
   return result;
 };
 
+export const signOut = async () => {
+  (await cookies()).delete(authKey);
+};
+
 export const changePassword = async (
   payload: z.infer<typeof AuthValidation.changePassword>,
 ) => {
