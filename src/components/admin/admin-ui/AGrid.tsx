@@ -7,6 +7,7 @@ type TProps = {
   className?: ClassValue;
   reverse?: boolean;
   small?: boolean;
+  equal?: boolean;
 };
 
 const AGrid = ({
@@ -14,17 +15,19 @@ const AGrid = ({
   className,
   reverse = false,
   small = false,
+  equal = false,
 }: TProps) => {
   return (
     <div
       className={cn(
-        "@5xl:grid grid-cols-[40%_1fr] gap-4",
+        "grid-cols-[40%_1fr] gap-4 @5xl:grid",
         {
+          "grid-cols-[1fr_1fr]": equal,
           "grid-cols-[1fr_40%]": reverse,
           "grid-cols-[30%_1fr]": small,
           "grid-cols-[1fr_30%]": reverse && small,
         },
-        className
+        className,
       )}
     >
       {children}
