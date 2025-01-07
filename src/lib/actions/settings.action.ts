@@ -4,15 +4,19 @@ import { authKey, backendUrl } from "@/constants";
 import { z } from "zod";
 import { SettingsValidation } from "../validations/settings.validation";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
-export const settingsGetAction = async () => {
-  const response = await fetch(`${backendUrl}/api/settings`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
+export const settingsGetAction = async (type?: string) => {
+  const response = await fetch(
+    `${backendUrl}/api/settings?type=${type || "all"}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
     },
-    cache: "no-store",
-  });
+  );
 
   const result = await response.json();
 
@@ -20,7 +24,7 @@ export const settingsGetAction = async () => {
 };
 
 export const settingsUpdateAction = async (
-  payload: z.infer<typeof SettingsValidation.update>
+  payload: z.infer<typeof SettingsValidation.update>,
 ) => {
   const response = await fetch(`${backendUrl}/api/settings`, {
     method: "PATCH",
@@ -33,6 +37,8 @@ export const settingsUpdateAction = async (
   });
 
   const result = await response.json();
+
+  revalidatePath("/");
 
   return result;
 };
