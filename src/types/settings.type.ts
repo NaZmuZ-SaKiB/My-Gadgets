@@ -24,6 +24,11 @@ export type THomepageSettings = {
   description: string;
 };
 
+export type TCategorySettings = {
+  showOnTopMenu: TCategory[];
+  featured: TCategory[];
+};
+
 export type TFooterSettings = {
   slogan: string;
   email: string;
@@ -35,5 +40,6 @@ export type TFooterSettings = {
 export type TSettings = {
   _id: string;
   homepage: THomepageSettings;
+  category: TCategorySettings;
   footer: TFooterSettings;
 };
