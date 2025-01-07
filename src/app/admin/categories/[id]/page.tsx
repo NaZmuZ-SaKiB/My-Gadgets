@@ -23,8 +23,6 @@ import { useParams } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import FeaturedSwitch from "../_components/FeaturedSwitch";
-import ShowOnTopMenuSwitch from "../_components/ShowOnTopMenuSwitch";
 import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 
 const SingleCategoryPage = () => {
@@ -77,8 +75,8 @@ const SingleCategoryPage = () => {
 
   if (categoryLoading || isLoading) {
     return (
-      <div className="h-full grid place-items-center">
-        <Loader2 className="animate-spin mx-auto size-[100px] text-primary" />
+      <div className="grid h-full place-items-center">
+        <Loader2 className="mx-auto size-[100px] animate-spin text-primary" />
       </div>
     );
   }
@@ -110,7 +108,7 @@ const SingleCategoryPage = () => {
             defaultValues={defaultValues}
             reset={false}
           >
-            <h2 className="font-medium text-slate-700 text-lg mb-1">
+            <h2 className="mb-1 text-lg font-medium text-slate-700">
               Update Category
             </h2>
 
@@ -137,25 +135,11 @@ const SingleCategoryPage = () => {
             />
 
             <MGButton
-              className="rounded-none self-start px-5 py-2 h-auto"
+              className="h-auto self-start rounded-none px-5 py-2"
               disabled={isPending}
             >
               {isPending ? "Updating..." : "Update Category"}
             </MGButton>
-
-            <FeaturedSwitch
-              id={id as string}
-              label="Featured"
-              defaultValue={category?.featured}
-              className="justify-between max-w-52"
-            />
-
-            <ShowOnTopMenuSwitch
-              id={id as string}
-              label="Show on top menu"
-              defaultValue={category?.showOnTopMenu}
-              className="justify-between max-w-52"
-            />
           </MGForm>
         </AFloatingBox>
       </AGrid>
