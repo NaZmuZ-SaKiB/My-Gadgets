@@ -5,10 +5,10 @@ import {
   settingsUpdateAction,
 } from "../actions/settings.action";
 
-export const useSettingsGetQuery = () =>
+export const useSettingsGetQuery = (type?: string) =>
   useQuery({
     queryKey: [AQTags.SETTINGS],
-    queryFn: () => settingsGetAction(),
+    queryFn: () => settingsGetAction(type),
   });
 
 export const useSettingsUpdateMutation = () =>
