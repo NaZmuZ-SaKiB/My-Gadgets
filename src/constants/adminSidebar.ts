@@ -71,8 +71,8 @@ export const adminSideBar: TAdminSideBar[] = [
         link: "/admin/users",
       },
       {
-        name: "Add User",
-        link: "/admin/users/add-user",
+        name: "Add Admin",
+        link: "/admin/users/add-admin",
       },
       {
         name: "Profile",
