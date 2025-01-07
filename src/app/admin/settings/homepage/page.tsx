@@ -174,6 +174,8 @@ const HomepageSettingsPage = () => {
                 }
                 fetchFunction={useCategoryGetAllQuery}
                 multiple
+                max={12}
+                imageRequired
               />
               <MGASearchSelectAsync
                 name="homepage.featuredBrands"
@@ -187,6 +189,7 @@ const HomepageSettingsPage = () => {
                 }
                 fetchFunction={useBrandGetAllQuery}
                 multiple
+                max={8}
               />
             </AFloatingBox>
 
