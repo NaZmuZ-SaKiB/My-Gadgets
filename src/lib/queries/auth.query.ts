@@ -4,6 +4,7 @@ import {
   currentUser,
   isUserLoggedIn,
   signIn,
+  signOut,
   signUp,
 } from "../actions/auth.action";
 
@@ -15,6 +16,11 @@ export const useSignUpMutation = () =>
 export const useSignInMutation = () =>
   useMutation({
     mutationFn: signIn,
+  });
+
+export const useSignOutMutation = () =>
+  useMutation({
+    mutationFn: signOut,
   });
 
 export const useChangePasswordMutation = () =>
