@@ -8,8 +8,6 @@ import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
-import FeaturedSwitch from "./FeaturedSwitch";
-import ShowOnTopMenuSwitch from "./ShowOnTopMenuSwitch";
 import CategoryDeleteDialog from "./CategoryDeleteDialog";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import APagination from "@/components/admin/shared/APagination";
@@ -69,8 +67,6 @@ const CategoriesTable = ({
             <th>Name</th>
             <th>Label</th>
             <th>Parent</th>
-            <th>Featured</th>
-            <th>Top Menu</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -90,18 +86,6 @@ const CategoriesTable = ({
               <td>{item.name}</td>
               <td>{item.label || item.name}</td>
               <td>{(item?.parent as TCategory)?.name || "N/A"}</td>
-              <td>
-                <FeaturedSwitch
-                  id={`${item._id}`}
-                  defaultValue={item.featured}
-                />
-              </td>
-              <td>
-                <ShowOnTopMenuSwitch
-                  id={`${item._id}`}
-                  defaultValue={item.showOnTopMenu}
-                />
-              </td>
               <td>
                 <div className="flex justify-end gap-1">
                   <Link href={`/shop/${item.name}`} className="no-focus">

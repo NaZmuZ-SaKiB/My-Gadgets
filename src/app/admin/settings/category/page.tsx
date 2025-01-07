@@ -6,25 +6,19 @@ import APageContainer from "@/components/admin/admin-ui/APageContainer";
 import APageHeading from "@/components/admin/admin-ui/APageHeading";
 import MGButton from "@/components/global/shared/MGButton";
 import { AQTags } from "@/constants";
-import { useCategoryGetAllWithSubCatQuery } from "@/lib/queries/category.query";
 import {
   useSettingsGetQuery,
   useSettingsUpdateMutation,
 } from "@/lib/queries/settings.query";
-import { SettingsValidation } from "@/lib/validations/settings.validation";
-import { TCategory } from "@/types/category.type";
 import { TCategorySettings } from "@/types/settings.type";
 import { useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
 import CategorySelect from "./_components/CategorySelect";
 
 const CategorySettingsPage = () => {
   const [topMenuCats, setTopMenuCats] = useState<string[]>([]);
-  const [featuredCats, setFeturedCats] = useState<string[]>([]);
 
   const { data: settingsData, isLoading: settingsLoading } =
     useSettingsGetQuery();
@@ -34,7 +28,6 @@ const CategorySettingsPage = () => {
     setTopMenuCats(
       categorySettings?.showOnTopMenu?.map((item) => item._id) || [],
     );
-    setFeturedCats(categorySettings?.featured?.map((item) => item._id) || []);
   }, [categorySettings]);
 
   const queryClient = useQueryClient();
@@ -46,7 +39,6 @@ const CategorySettingsPage = () => {
     const values = {
       category: {
         showOnTopMenu: topMenuCats,
-        featured: featuredCats,
       },
     };
 
@@ -85,7 +77,7 @@ const CategorySettingsPage = () => {
         </MGButton>
       </APageHeading>
 
-      <AGrid equal>
+      <AGrid>
         <AFloatingBox>
           <h2 className="font-medium text-slate-700">Top Menu Categories*</h2>
           <p className="mb-5 text-sm text-slate-500">
@@ -97,20 +89,6 @@ const CategorySettingsPage = () => {
             selectedCategories={topMenuCats}
             setSelectedCategories={setTopMenuCats}
             maxCategories={8}
-          />
-        </AFloatingBox>
-        <AFloatingBox>
-          <h2 className="font-medium text-slate-700">Featured Categories*</h2>
-          <p className="mb-5 text-sm text-slate-500">
-            Featured Categories will be visible in the homepage after banner
-            section. Maximum 12 categories can be selected.
-          </p>
-
-          <CategorySelect
-            selectedCategories={featuredCats}
-            setSelectedCategories={setFeturedCats}
-            maxCategories={12}
-            imageRequired
           />
         </AFloatingBox>
       </AGrid>

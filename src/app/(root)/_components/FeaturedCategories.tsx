@@ -1,4 +1,3 @@
-import { categoryGetAllAction } from "@/lib/actions/category.action";
 import { TCategory } from "@/types/category.type";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,17 +36,17 @@ const FeaturedCategories = ({ featuredCategories }: TProps) => {
   ];
 
   return (
-    <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-2xl md:text-3xl text-slate-700">
+    <section className="pb-4 pt-4 md:pt-6">
+      <h2 className="text-2xl font-bold text-slate-700 md:text-3xl">
         Featured Categories
       </h2>
 
-      <div className="flex flex-wrap gap-3 md:gap-4 mt-5 md:mt-8">
+      <div className="mt-5 flex flex-wrap gap-3 md:mt-8 md:gap-4">
         {featuredCategories.map((category, i) => (
           <Link
             href={`/shop/${category.name}`}
             key={`featured-category-${category._id}`}
-            className={`rounded-xl flex flex-col justify-center items-center p-4 gap-4 flex-1 basis-32 sm:basis-48 hover:shadow-lg transition-shadow duration-500 cursor-pointer`}
+            className={`flex flex-1 basis-32 cursor-pointer flex-col items-center justify-center gap-4 rounded-xl p-4 transition-shadow duration-500 hover:shadow-lg sm:basis-48`}
             style={{ backgroundColor: colors[i] }}
           >
             <Image
@@ -57,7 +56,7 @@ const FeaturedCategories = ({ featuredCategories }: TProps) => {
               width={64}
               className="object-contain"
             />
-            <span className="font-bold text-slate-700 text-center max-sm:text-sm">
+            <span className="text-center font-bold text-slate-700 max-sm:text-sm">
               {category.name}
             </span>
           </Link>

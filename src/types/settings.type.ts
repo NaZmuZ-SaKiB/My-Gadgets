@@ -26,7 +26,6 @@ export type THomepageSettings = {
 
 export type TCategorySettings = {
   showOnTopMenu: TCategory[];
-  featured: TCategory[];
 };
 
 export type TFooterSettings = {
