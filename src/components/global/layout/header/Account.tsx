@@ -22,14 +22,16 @@ import { useState } from "react";
 const Account = () => {
   const [open, setOpen] = useState(false);
 
-  const { data: user } = useCurrentUserQuery();
+  const { data: user, refetch } = useCurrentUserQuery();
 
-  const { mutateAsync: logoutFn, isPending } = useSignOutMutation();
+  const { mutateAsync: logoutFn } = useSignOutMutation();
 
   const router = useRouter();
 
   const logout = async () => {
     await logoutFn();
+
+    refetch();
 
     router.push("/");
   };
@@ -44,7 +46,7 @@ const Account = () => {
       <DropdownMenuContent>
         {user ? (
           <>
-            <DropdownMenuLabel>Nazmuz Sakib</DropdownMenuLabel>
+            <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
             <DropdownMenuItem className="gap-2">
               <span>
                 <User className="size-4" />
