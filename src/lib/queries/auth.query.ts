@@ -30,12 +30,12 @@ export const useChangePasswordMutation = () =>
 
 export const useCurrentUserQuery = () =>
   useQuery({
-    queryKey: [],
+    queryKey: ["current_user"],
     queryFn: () => currentUser(),
   });
 
 export const useIsUserLoggedInQuery = () =>
   useQuery({
-    queryKey: [],
+    queryKey: ["is_user_logged_in"],
     queryFn: () => isUserLoggedIn(),
   });
