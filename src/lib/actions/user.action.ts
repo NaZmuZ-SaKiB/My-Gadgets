@@ -39,3 +39,25 @@ export const myProfileUpdateAction = async (payload: Partial<TUser>) => {
 
   return result;
 };
+
+export const userGetAllAction = async (params: string) => {
+  const response = await fetch(`${backendUrl}/api/user?${params}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: (await cookies()).get(authKey)?.value || "",
+    },
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  if (!result?.success) {
+    return {
+      data: [],
+      meta: {},
+    };
+  }
+
+  return result;
+};
