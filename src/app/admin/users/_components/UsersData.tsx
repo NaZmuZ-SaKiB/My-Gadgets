@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { userSortOptions } from "@/constants";
 import { useState } from "react";
 import UsersTable from "./UsersTable";
+import UserRoleFilter from "./UserRoleFilter";
 
 const UsersData = () => {
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
@@ -26,6 +27,8 @@ const UsersData = () => {
           >
             Delete
           </Button>
+
+          <UserRoleFilter />
 
           <div className="sm:hidden">
             <DataLimitSelect />
