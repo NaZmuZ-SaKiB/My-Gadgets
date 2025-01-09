@@ -61,3 +61,19 @@ export const userGetAllAction = async (params: string) => {
 
   return result;
 };
+
+export const userRoleToggleAction = async (payload: Partial<TUser>) => {
+  const response = await fetch(`${backendUrl}/api/user/role-toggle`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: (await cookies()).get(authKey)?.value || "",
+    },
+    body: JSON.stringify(payload),
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  return result;
+};
