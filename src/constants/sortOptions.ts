@@ -16,3 +16,5 @@ export const branchSortOptions = ["name", "createdAt", "updatedAt"];
 export const reviewSortOptions = ["rating", "createdAt", "updatedAt"];
 
 export const orderSortOptions = ["status", "createdAt", "updatedAt"];
+
+export const userSortOptions = ["name", "createdAt", "updatedAt"];
