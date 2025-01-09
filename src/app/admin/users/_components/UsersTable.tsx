@@ -10,6 +10,8 @@ import { Loader2, ReceiptText, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import UserRoleToggleButton from "./UserRoleToggleButton";
+import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
 
 type TProps = {
   selectedUsers: string[];
@@ -18,6 +20,8 @@ type TProps = {
 
 const UsersTable = ({ selectedUsers, setSelectedUsers }: TProps) => {
   const searchParams = useSearchParams();
+
+  const { data: user, isLoading: userLoading } = useIsUserLoggedInQuery();
   const { data, isLoading } = useUserGetAllQuery(searchParams.toString());
 
   // Handle Select
@@ -38,7 +42,7 @@ const UsersTable = ({ selectedUsers, setSelectedUsers }: TProps) => {
   };
   // End Handle Select
 
-  if (isLoading) {
+  if (isLoading || userLoading) {
     return (
       <AFloatingBox className="grid flex-1 place-items-center">
         <Loader2 className="mx-auto size-[50px] animate-spin text-primary-hover" />
@@ -69,13 +73,17 @@ const UsersTable = ({ selectedUsers, setSelectedUsers }: TProps) => {
 
         <tbody>
           {data?.data?.map((item: TUser) => (
-            <tr key={`${item._id}`}>
+            <tr
+              key={`${item._id}`}
+              className={user?._id === item._id ? "bg-green-100" : ""}
+            >
               <td>
                 <input
                   checked={selectedUsers.includes(item._id)}
                   type="checkbox"
                   onChange={(e) => handleSelect(e, item._id)}
                   className="no-focus size-4"
+                  disabled={user?._id === item._id}
                 />
               </td>
 
@@ -100,6 +108,10 @@ const UsersTable = ({ selectedUsers, setSelectedUsers }: TProps) => {
                   >
                     <Trash2 className="size-4 group-hover:text-white" />
                   </Button>
+
+                  {user?._id !== item._id && (
+                    <UserRoleToggleButton user={item} />
+                  )}
                 </div>
               </td>
             </tr>
