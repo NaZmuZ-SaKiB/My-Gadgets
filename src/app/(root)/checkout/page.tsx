@@ -49,23 +49,26 @@ const CheckoutPage = () => {
     0,
   );
 
-  const handleCreateOrder = async (paymentResult?: string) => {
-    const order: z.infer<typeof OrderValidation.create> = {
-      orderItems: cart.map((item) => ({
-        name: item.name,
-        slug: item.slug,
-        image: item.image,
-        price: item.price,
-        quantity: item.quantity,
-        product: item._id,
-      })),
+  const handleCreateOrder = async () => {
+    const order: z.infer<typeof OrderValidation.create> & { orderId: string } =
+      {
+        orderItems: cart.map((item) => ({
+          name: item.name,
+          slug: item.slug,
+          image: item.image,
+          price: item.price,
+          quantity: item.quantity,
+          product: item._id,
+        })),
 
-      shippingAddress: selectedAddress,
-      paymentMethod: selectedPaymentMethod,
-      deliveryOption: selectedDeliveryOption,
-      shippingCharge: selectedDeliveryOption === "pickup" ? 0 : shippingCharge,
-      totalPrice: subTotal + shippingCharge,
-    };
+        orderId: generateOrderId(),
+        shippingAddress: selectedAddress,
+        paymentMethod: selectedPaymentMethod,
+        deliveryOption: selectedDeliveryOption,
+        shippingCharge:
+          selectedDeliveryOption === "pickup" ? 0 : shippingCharge,
+        totalPrice: subTotal + shippingCharge,
+      };
 
     if (selectedPaymentMethod === "bank-transfer") {
       order.transactionId = transactionId;
@@ -200,5 +203,8 @@ const CheckoutPage = () => {
     </div>
   );
 };
+
+const generateOrderId = () =>
+  Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
 
 export default CheckoutPage;
