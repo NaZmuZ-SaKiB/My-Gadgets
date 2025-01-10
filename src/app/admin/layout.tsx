@@ -5,12 +5,12 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-svh bg-slate-800">
       <ATopbar />
-      <div className="grid lg:grid-cols-[220px_1fr] flex-1">
+      <div className="grid flex-1 lg:grid-cols-[220px_1fr]">
         <div className="max-lg:hidden">
           <ASidebar />
         </div>
 
-        <main className="@container h-[calc(100svh-60px)] bg-slate-100 lg:rounded-tl-lg">
+        <main className="h-[calc(100svh-60px)] bg-slate-100 @container lg:rounded-tl-xl">
           {children}
         </main>
       </div>
