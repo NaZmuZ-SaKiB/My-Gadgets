@@ -40,11 +40,27 @@ const CancelRequestButton = ({ orderId, isRequested, status }: TProps) => {
     }
   };
 
+  if (status === ORDER_STATUS.COMPLETED) {
+    return (
+      <span className="rounded-md bg-green-50 px-3 py-1 font-semibold text-green-500">
+        Completed
+      </span>
+    );
+  }
+
+  if (status === ORDER_STATUS.CANCELLED) {
+    return (
+      <span className="rounded-md bg-red-50 px-3 py-1 font-semibold text-red-500">
+        Canceled
+      </span>
+    );
+  }
+
   return (
     <>
       {requested ? (
         <MGButton disabled className="bg-slate-200 text-slate-900">
-          {status === ORDER_STATUS.CANCELLED ? "Canceled" : "Cancel Requested"}
+          Cancel Requested
         </MGButton>
       ) : (
         <MGButton
