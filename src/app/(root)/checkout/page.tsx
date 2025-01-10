@@ -5,7 +5,7 @@ import ShippingAddressSection from "./_components/ShippingAddressSection";
 import Heading from "./_components/Heading";
 import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
 import { useState } from "react";
-import { TDeliveryOption, TOrder, TPaymentMethod } from "@/types/order.type";
+import { TDeliveryOption, TPaymentMethod } from "@/types/order.type";
 import PaymentMethodSection from "./_components/PaymentMethodSection";
 import DeliveryMethodSection from "./_components/DeliveryMethodSection";
 import CheckoutOverview from "./_components/CheckoutOverview";
@@ -77,6 +77,7 @@ const CheckoutPage = () => {
 
     try {
       const result = await createOrderFn(order);
+      console.log(result);
 
       if (result?.success) {
         queryClient.invalidateQueries({
@@ -87,31 +88,38 @@ const CheckoutPage = () => {
         toast.error(result?.message || "A server error occurred.");
       }
 
-      return result?.data?._id;
+      return { id: result?.data?._id, success: result?.success };
     } catch (error: any) {
       toast.error(error?.message || "A client error occurred.");
     }
   };
 
   const handlePlaceOrder = async () => {
+    if (!selectedAddress) {
+      toast.message("Please select a shipping address.");
+      return;
+    }
+
     if (!termsAccepted) {
-      toast.error("Please accept the terms and conditions.");
+      toast.message("Please accept the terms and conditions.");
       return;
     }
 
     if (selectedPaymentMethod === "bank-transfer" && !transactionId) {
-      toast.error("Transaction ID is required.");
+      toast.message("Transaction ID is required.");
       return;
     }
 
     const order = await handleCreateOrder();
 
-    if (selectedPaymentMethod !== "stripe") {
-      router.push("/payment-success");
-    } else {
-      setAmount(subTotal + shippingCharge);
-      setOrderId(order);
-      router.push("/payment");
+    if (order?.success) {
+      if (selectedPaymentMethod !== "stripe") {
+        router.push("/payment-success");
+      } else {
+        setAmount(subTotal + shippingCharge);
+        setOrderId(order?.id);
+        router.push("/payment");
+      }
     }
   };
 
