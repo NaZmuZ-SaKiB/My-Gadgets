@@ -23,6 +23,7 @@ export type TDeliveryOption = "pickup" | "delivery";
 
 export type TOrder = {
   _id: string;
+  orderId: string;
   user: TUser;
   orderItems: TOrderItem[];
   shippingAddress: TShippingAddress;
