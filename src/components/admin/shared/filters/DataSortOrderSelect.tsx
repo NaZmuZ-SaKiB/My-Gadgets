@@ -25,8 +25,11 @@ const DataSortOrderSelect = () => {
     router.replace(`${pathName}?${params}`);
   };
   return (
-    <Select defaultValue="desc" onValueChange={(value) => handleChange(value)}>
-      <SelectTrigger className="no-focus gap-2 border-slate-200 w-[90px]">
+    <Select
+      defaultValue={searchParams?.get("sortOrder") || "desc"}
+      onValueChange={(value) => handleChange(value)}
+    >
+      <SelectTrigger className="no-focus w-[90px] gap-2 border-slate-200">
         <SelectValue placeholder="Sort By" />
       </SelectTrigger>
 
