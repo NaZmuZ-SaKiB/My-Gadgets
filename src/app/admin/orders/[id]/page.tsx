@@ -23,9 +23,11 @@ const SingleOrderPage = () => {
 
   if (isLoading) {
     return (
-      <AFloatingBox className="grid flex-1 place-items-center">
-        <Loader2 className="mx-auto size-[50px] animate-spin text-primary-hover" />
-      </AFloatingBox>
+      <APageContainer>
+        <div className="grid flex-1 place-items-center">
+          <Loader2 className="mx-auto size-[50px] animate-spin text-primary-hover" />
+        </div>
+      </APageContainer>
     );
   }
   return (
@@ -37,7 +39,7 @@ const SingleOrderPage = () => {
           <ul className="text-sm leading-7 text-slate-700 max-sm:border-y">
             <li>
               <span className="font-semibold">Order ID:</span>{" "}
-              <span className="uppercase">{order._id}</span>
+              <span className="uppercase">{order.orderId}</span>
             </li>
             <li>
               <span className="font-semibold">Payment Method:</span>{" "}
