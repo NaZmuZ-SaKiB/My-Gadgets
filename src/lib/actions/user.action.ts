@@ -40,6 +40,21 @@ export const myProfileUpdateAction = async (payload: Partial<TUser>) => {
   return result;
 };
 
+export const userGetByIdAction = async (userId: string) => {
+  const response = await fetch(`${backendUrl}/api/user/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: (await cookies()).get(authKey)?.value || "",
+    },
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  return result;
+};
+
 export const userGetAllAction = async (params: string) => {
   const response = await fetch(`${backendUrl}/api/user?${params}`, {
     method: "GET",
