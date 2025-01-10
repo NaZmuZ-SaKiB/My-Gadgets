@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 import CategoryDeleteDialog from "./CategoryDeleteDialog";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
-import APagination from "@/components/admin/shared/APagination";
+import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   selectedCategories: string[];
@@ -136,7 +136,8 @@ const CategoriesTable = ({
         <div className="max-sm:hidden">
           <DataLimitSelect />
         </div>
-        <APagination
+        <MGPagination
+          admin
           limit={data?.meta?.limit as number}
           page={data?.meta?.page as number}
           total={data?.meta?.total as number}

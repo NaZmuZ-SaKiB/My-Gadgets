@@ -1,7 +1,6 @@
 "use client";
 
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import APagination from "@/components/admin/shared/APagination";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import { Button } from "@/components/ui/button";
 import { images } from "@/constants";
@@ -14,6 +13,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 import ProductDeleteDialog from "./ProductDeleteDialog";
+import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   selectedProducts: string[];
@@ -160,7 +160,8 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
         <div className="max-sm:hidden">
           <DataLimitSelect />
         </div>
-        <APagination
+        <MGPagination
+          admin
           limit={data?.meta?.limit as number}
           page={data?.meta?.page as number}
           total={data?.meta?.total as number}

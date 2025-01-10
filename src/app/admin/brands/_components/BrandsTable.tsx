@@ -11,9 +11,9 @@ import { ChangeEvent } from "react";
 import FeaturedSwitch from "./FeaturedSwitch";
 import BrandDeleteDialog from "./BrandDeleteDialog";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
-import APagination from "@/components/admin/shared/APagination";
 import Image from "next/image";
 import { images } from "@/constants";
+import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   selectedBrands: string[];
@@ -44,23 +44,23 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
 
   if (isLoading) {
     return (
-      <AFloatingBox className="flex-1 grid place-items-center">
-        <Loader2 className="animate-spin mx-auto size-[50px] text-primary-hover" />
+      <AFloatingBox className="grid flex-1 place-items-center">
+        <Loader2 className="mx-auto size-[50px] animate-spin text-primary-hover" />
       </AFloatingBox>
     );
   }
 
   return (
     <AFloatingBox className="overflow-x-auto">
-      <table className="table-auto admin-table min-w-[500px]">
+      <table className="admin-table min-w-[500px] table-auto">
         <thead className="text-left">
           <tr>
             <th>
-              <span className="bg-white inline-flex p-[2px] rounded">
+              <span className="inline-flex rounded bg-white p-[2px]">
                 <input
                   type="checkbox"
                   onChange={selectAll}
-                  className="size-3.5 no-focus"
+                  className="no-focus size-3.5"
                 />
               </span>
             </th>
@@ -79,7 +79,7 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
                   checked={selectedBrands.includes(item._id)}
                   type="checkbox"
                   onChange={(e) => handleSelect(e, item._id)}
-                  className="size-4 no-focus"
+                  className="no-focus size-4"
                 />
               </td>
               <td>
@@ -100,11 +100,11 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
               </td>
 
               <td>
-                <div className="flex gap-1 justify-end">
+                <div className="flex justify-end gap-1">
                   <Button
                     size="icon"
                     variant="outline"
-                    className="h-8 no-focus bg-transparent border-slate-300 hover:bg-slate-600 hover:border-slate-600 group"
+                    className="no-focus group h-8 border-slate-300 bg-transparent hover:border-slate-600 hover:bg-slate-600"
                   >
                     <Eye className="size-4 text-slate-700 group-hover:text-white" />
                   </Button>
@@ -112,7 +112,7 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
                   <Link href={`/admin/brands/${item._id}`} className="no-focus">
                     <Button
                       size="icon"
-                      className="h-8 no-focus bg-transparent border border-green-300 text-green-500 hover:bg-green-500 hover:border-green-500 group"
+                      className="no-focus group h-8 border border-green-300 bg-transparent text-green-500 hover:border-green-500 hover:bg-green-500"
                     >
                       <Edit className="size-4 group-hover:text-white" />
                     </Button>
@@ -121,7 +121,7 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
                   <BrandDeleteDialog brands={[`${item._id}`]}>
                     <Button
                       size="icon"
-                      className="h-8 no-focus bg-transparent border border-red-300 text-red-500 hover:bg-red-500 hover:border-red-500 group"
+                      className="no-focus group h-8 border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-500"
                     >
                       <Trash2 className="size-4 group-hover:text-white" />
                     </Button>
@@ -140,11 +140,12 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
           )}
         </tbody>
       </table>
-      <div className="mt-5 flex justify-center items-center gap-3 sm:justify-between">
+      <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
         <div className="max-sm:hidden">
           <DataLimitSelect />
         </div>
-        <APagination
+        <MGPagination
+          admin
           limit={data?.meta?.limit as number}
           page={data?.meta?.page as number}
           total={data?.meta?.total as number}
