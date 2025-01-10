@@ -1,13 +1,24 @@
+import MGPagination from "@/components/global/shared/MGPagination";
 import { currentUser } from "@/lib/actions/auth.action";
 import { orderGetAllAction } from "@/lib/actions/order.action";
 import { TOrder } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import Link from "next/link";
 
-const MyOrdersPage = async () => {
+type TProps = {
+  searchParams: any;
+};
+
+const MyOrdersPage = async (props: TProps) => {
+  const searchParams = await props.searchParams;
+
   const user = await currentUser();
 
-  const ordersData = await orderGetAllAction(`user=${user?._id}`);
+  const queries = new URLSearchParams(searchParams);
+
+  const ordersData = await orderGetAllAction(
+    `user=${user?._id}&${queries.toString()}`,
+  );
   const orders: TOrder[] = ordersData?.data || [];
 
   return (
@@ -53,6 +64,14 @@ const MyOrdersPage = async () => {
           </p>
         </div>
       )}
+
+      <div className="mt-5">
+        <MGPagination
+          limit={ordersData?.meta?.limit as number}
+          page={ordersData?.meta?.page as number}
+          total={ordersData?.meta?.total as number}
+        />
+      </div>
     </div>
   );
 };
