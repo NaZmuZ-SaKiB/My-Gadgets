@@ -61,7 +61,7 @@ const SingleOrderPage = async (props: TProps) => {
         <ul className="mt-4 py-4 text-sm text-slate-700 max-sm:border-y">
           <li>
             <span className="font-semibold">Order ID:</span>{" "}
-            <span className="uppercase">{order._id}</span>
+            <span className="uppercase">{order.orderId}</span>
           </li>
           <li>
             <span className="font-semibold">Payment:</span>{" "}
