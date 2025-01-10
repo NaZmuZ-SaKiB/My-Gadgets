@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { useOrderGetAllQuery } from "@/lib/queries/order.query";
 import OrderStatusFilter from "@/components/admin/shared/filters/OrderStatusFilter";
 import OrderIsPaidFilter from "@/components/admin/shared/filters/OrderIsPaidFilter";
+import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
 
 const OrdersData = () => {
   const searchParams = useSearchParams();
@@ -33,7 +34,7 @@ const OrdersData = () => {
           <DataSortOrderSelect />
         </div>
 
-        {/* //todo Order Search Box */}
+        <DataSearchBox />
       </AFloatingBox>
 
       <OrdersTable orders={orders} isLoading={isLoading} />
