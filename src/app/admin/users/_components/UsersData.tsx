@@ -13,21 +13,10 @@ import UsersTable from "./UsersTable";
 import UserRoleFilter from "./UserRoleFilter";
 
 const UsersData = () => {
-  const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
-
   return (
     <div className="flex flex-col gap-3">
       <AFloatingBox className="flex flex-col gap-2">
         <div className="flex flex-wrap gap-2">
-          <SelectedItemsCount count={selectedUsers.length} />
-
-          <Button
-            className="no-focus border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-500 hover:text-white"
-            disabled={selectedUsers.length === 0}
-          >
-            Delete
-          </Button>
-
           <UserRoleFilter />
 
           <div className="sm:hidden">
@@ -42,10 +31,7 @@ const UsersData = () => {
         <DataSearchBox />
       </AFloatingBox>
 
-      <UsersTable
-        selectedUsers={selectedUsers}
-        setSelectedUsers={setSelectedUsers}
-      />
+      <UsersTable />
     </div>
   );
 };
