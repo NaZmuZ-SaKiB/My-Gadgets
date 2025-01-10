@@ -101,7 +101,9 @@ const OrdersTable = ({
                   currentStatus={item.status}
                 />
               </td>
-              <td>{item.cancelRequested ? "Yes" : "No"}</td>
+              <td className={item.cancelRequested ? "text-red-500" : ""}>
+                {item.cancelRequested ? "Yes" : "No"}
+              </td>
               <td>
                 <div className="flex justify-end gap-1 max-md:flex-wrap">
                   <Link href={`/admin/orders/${item._id}`}>
