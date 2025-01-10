@@ -12,8 +12,6 @@ import { useSearchParams } from "next/navigation";
 import { useOrderGetAllQuery } from "@/lib/queries/order.query";
 
 const OrdersData = () => {
-  const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
-
   const searchParams = useSearchParams();
   const { data, isLoading } = useOrderGetAllQuery(searchParams.toString());
 
@@ -23,10 +21,6 @@ const OrdersData = () => {
     <div className="flex flex-col gap-3">
       <AFloatingBox className="flex flex-col gap-2">
         <div className="flex flex-wrap gap-2">
-          <SelectedItemsCount count={selectedOrders.length} />
-
-          {/* Order Bulk Actions  */}
-
           <div className="sm:hidden">
             <DataLimitSelect />
           </div>
@@ -39,12 +33,7 @@ const OrdersData = () => {
         {/* Order Search Box */}
       </AFloatingBox>
 
-      <OrdersTable
-        selectedOrders={selectedOrders}
-        setSelectedOrders={setSelectedOrders}
-        orders={orders}
-        isLoading={isLoading}
-      />
+      <OrdersTable orders={orders} isLoading={isLoading} />
     </div>
   );
 };
