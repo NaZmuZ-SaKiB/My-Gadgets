@@ -27,10 +27,10 @@ const DataSortBySelect = ({ options }: { options: string[] }) => {
 
   return (
     <Select
-      defaultValue="createdAt"
+      defaultValue={searchParams.get("sortBy") || "createdAt"}
       onValueChange={(value) => handleChange(value)}
     >
-      <SelectTrigger className="no-focus gap-2 border-slate-200 w-[150px]">
+      <SelectTrigger className="no-focus w-[150px] gap-2 border-slate-200">
         <SelectValue placeholder="Sort By" />
       </SelectTrigger>
 
