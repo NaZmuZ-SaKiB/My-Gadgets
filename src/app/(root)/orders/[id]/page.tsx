@@ -101,7 +101,7 @@ const SingleOrderPage = async (props: TProps) => {
         {/* -----Order Table---------  */}
 
         <div className="mt-6">
-          <table className="admin-table table-auto overflow-hidden rounded-md">
+          <table className="primary-table table-auto overflow-hidden rounded-md">
             <thead className="text-left">
               <tr>
                 <th className="max-md:hidden">Image</th>
@@ -114,7 +114,7 @@ const SingleOrderPage = async (props: TProps) => {
 
             <tbody>
               {order.orderItems.map((item) => (
-                <tr key={`cart-page-item-${item.name}`}>
+                <tr key={`my-order-page-item-${item.name}`}>
                   <td className="max-md:hidden">
                     <Image
                       src={item.image}
