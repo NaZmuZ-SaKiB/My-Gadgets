@@ -11,36 +11,11 @@ import OrderIsPaidSelect from "./OrderIsPaidSelect";
 import Link from "next/link";
 
 type TProps = {
-  selectedOrders: string[];
-  setSelectedOrders: (value: string[]) => void;
   orders: TOrder[];
   isLoading: boolean;
 };
 
-const OrdersTable = ({
-  selectedOrders,
-  setSelectedOrders,
-  orders,
-  isLoading,
-}: TProps) => {
-  // Handle Select
-  const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedOrders(orders.map((item: any) => item._id) || []);
-    } else {
-      setSelectedOrders([]);
-    }
-  };
-
-  const handleSelect = (e: ChangeEvent<HTMLInputElement>, id: string) => {
-    if (e.target.checked) {
-      setSelectedOrders([...selectedOrders, id]);
-    } else {
-      setSelectedOrders(selectedOrders.filter((item) => item !== id));
-    }
-  };
-  // End Handle Select
-
+const OrdersTable = ({ orders, isLoading }: TProps) => {
   if (isLoading) {
     return (
       <AFloatingBox className="grid flex-1 place-items-center">
@@ -54,15 +29,6 @@ const OrdersTable = ({
       <table className="admin-table min-w-[800px] table-auto">
         <thead className="text-left">
           <tr>
-            <th>
-              <span className="inline-flex rounded bg-white p-[2px]">
-                <input
-                  type="checkbox"
-                  onChange={selectAll}
-                  className="no-focus size-3.5"
-                />
-              </span>
-            </th>
             <th>Customer</th>
             <th>Phone</th>
             <th>Items</th>
@@ -77,14 +43,6 @@ const OrdersTable = ({
         <tbody>
           {orders?.map((item: TOrder) => (
             <tr key={`${item._id}`}>
-              <td>
-                <input
-                  checked={selectedOrders.includes(item._id)}
-                  type="checkbox"
-                  onChange={(e) => handleSelect(e, item._id)}
-                  className="no-focus size-4"
-                />
-              </td>
               <td>{item.user?.name}</td>
               <td>{item?.shippingAddress?.phone}</td>
               <td>{item.orderItems.length}</td>
