@@ -5,8 +5,8 @@ import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
 import { LayoutDashboard, Plus, Settings, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import ProductDeleteDialog from "../../shared/ProductDeleteDialog";
-import ProductEditDropDown from "./ProductEditDropDown";
+import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
+import ProductQuickEditModal from "./ProductQuickEditModal";
 
 const AdminTopbar = () => {
   const pathName = usePathname();
@@ -49,7 +49,7 @@ const AdminTopbar = () => {
               <span>Add Product</span>
             </Link>
 
-            <ProductEditDropDown />
+            <ProductQuickEditModal />
 
             <ProductDeleteDialog products={[`${params?._id}`]}>
               <div className="flex cursor-pointer items-center gap-1 px-3 py-1.5 text-slate-50 hover:bg-slate-600">
