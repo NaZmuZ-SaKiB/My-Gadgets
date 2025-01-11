@@ -86,11 +86,23 @@ const create = mainValidation.refine(
   {
     message: "Sale price must be less than regular price",
     path: ["salePrice"],
-  }
+  },
 );
 
+const quickEdit = mainValidation.pick({
+  name: true,
+  model: true,
+  salePrice: true,
+  regularPrice: true,
+  quantity: true,
+  badgeText: true,
+  slug: true,
+});
+
 const update = mainValidation.partial();
+
 export const ProductValidation = {
   create,
   update,
+  quickEdit,
 };
