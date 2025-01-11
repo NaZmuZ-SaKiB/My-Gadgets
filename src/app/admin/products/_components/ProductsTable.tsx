@@ -12,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
-import ProductDeleteDialog from "./ProductDeleteDialog";
+import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
 import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {

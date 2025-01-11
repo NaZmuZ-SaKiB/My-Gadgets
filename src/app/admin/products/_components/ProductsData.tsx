@@ -9,7 +9,7 @@ import SelectedItemsCount from "@/components/admin/shared/SelectedItemsCount";
 import { productSortOptions } from "@/constants";
 import ProductsTable from "./ProductsTable";
 import { useState } from "react";
-import ProductDeleteDialog from "./ProductDeleteDialog";
+import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
 import { Button } from "@/components/ui/button";
 
 const ProductsData = () => {
