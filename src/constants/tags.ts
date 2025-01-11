@@ -5,6 +5,8 @@ export const AQTags = {
   PRODUCT: "product",
   MEDIA: "media",
   USER: "user",
+  CURRENT_USER: "current-user",
+  IS_USER_LOGGED_IN: "is-user-logged-in",
   BRANCH: "branch",
   SETTINGS: "settings",
   REVIEW: "review",
