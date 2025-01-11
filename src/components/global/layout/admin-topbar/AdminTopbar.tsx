@@ -21,7 +21,7 @@ const AdminTopbar = () => {
     return null;
 
   return (
-    <div className="mg-container bg-slate-700 text-sm max-xl:hidden">
+    <div className="mg-container bg-slate-700 text-sm max-md:hidden">
       <div className="flex">
         <Link
           href="/admin"
