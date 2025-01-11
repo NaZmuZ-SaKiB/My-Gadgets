@@ -7,6 +7,7 @@ import {
   signOut,
   signUp,
 } from "../actions/auth.action";
+import { AQTags } from "@/constants";
 
 export const useSignUpMutation = () =>
   useMutation({
@@ -30,12 +31,12 @@ export const useChangePasswordMutation = () =>
 
 export const useCurrentUserQuery = () =>
   useQuery({
-    queryKey: ["current_user"],
+    queryKey: [AQTags.CURRENT_USER],
     queryFn: () => currentUser(),
   });
 
 export const useIsUserLoggedInQuery = () =>
   useQuery({
-    queryKey: ["is_user_logged_in"],
+    queryKey: [AQTags.IS_USER_LOGGED_IN],
     queryFn: () => isUserLoggedIn(),
   });
