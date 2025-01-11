@@ -25,7 +25,7 @@ const ProductBasicInfoForm = () => {
     <AFloatingBox className="flex flex-col gap-3">
       <MGAInput name="name" label="Product Name*" />
 
-      <div className="max-w-md space-y-3 mt-3">
+      <div className="mt-3 max-w-md space-y-3">
         <MGAInput name="model" label="Model Name*" vertical />
         <MGAInput name="quantity" label="Quantity*" type="number" vertical />
         <MGAInput
