@@ -1,12 +1,13 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
+import { AQTags, authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
 import { z } from "zod";
 import { ProductValidation } from "../validations/product.validation";
+import { revalidateTag } from "next/cache";
 
 export const productCreateAction = async (
-  payload: z.infer<typeof ProductValidation.create>
+  payload: z.infer<typeof ProductValidation.create>,
 ) => {
   const response = await fetch(`${backendUrl}/api/product`, {
     method: "POST",
@@ -19,6 +20,7 @@ export const productCreateAction = async (
   });
 
   const result = await response.json();
+  revalidateTag(AQTags.PRODUCT + AQTags.ALL);
 
   return result;
 };
@@ -41,6 +43,8 @@ export const productUpdateAction = async ({
   });
 
   const result = await response.json();
+  revalidateTag(AQTags.PRODUCT + id);
+  revalidateTag(AQTags.PRODUCT + AQTags.ALL);
 
   return result;
 };
@@ -52,6 +56,9 @@ export const productGetAllAction = async (params: string) => {
       "Content-Type": "application/json",
     },
     cache: "no-store",
+    next: {
+      tags: [AQTags.PRODUCT + AQTags.ALL + params, AQTags.PRODUCT + AQTags.ALL],
+    },
   });
 
   const result = await response.json();
@@ -73,6 +80,9 @@ export const productGetByIdAction = async (id: string) => {
       "Content-Type": "application/json",
     },
     cache: "no-store",
+    next: {
+      tags: [AQTags.PRODUCT + id],
+    },
   });
 
   const result = await response.json();
@@ -92,6 +102,8 @@ export const productRemoveAction = async (ids: string[]) => {
   });
 
   const result = await response.json();
+
+  revalidateTag(AQTags.PRODUCT + AQTags.ALL);
 
   return result;
 };
