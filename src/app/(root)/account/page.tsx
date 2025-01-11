@@ -1,8 +1,13 @@
 import { currentUser } from "@/lib/actions/auth.action";
 import AccountForm from "./_components/AccountForm";
+import { redirect } from "next/navigation";
 
 const AccountPage = async () => {
   const user = await currentUser();
+
+  if (!user) {
+    redirect("/sign-in");
+  }
 
   const defaultValues = {
     name: user?.name || "",
