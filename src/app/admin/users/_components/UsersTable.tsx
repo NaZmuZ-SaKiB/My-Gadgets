@@ -69,7 +69,7 @@ const UsersTable = () => {
 
           {data?.data?.length === 0 && (
             <tr>
-              <td colSpan={5} className="text-center text-xl">
+              <td colSpan={4} className="text-center text-xl">
                 No data found
               </td>
             </tr>
