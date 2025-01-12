@@ -11,9 +11,17 @@ import ProductsTable from "./ProductsTable";
 import { useState } from "react";
 import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
+import { useProductGetAllQuery } from "@/lib/queries/product.query";
+import { TProduct } from "@/types/product.type";
 
 const ProductsData = () => {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+
+  const searchParams = useSearchParams();
+  const { data, isLoading } = useProductGetAllQuery(searchParams.toString());
+  const products: TProduct[] = data?.data || [];
+
   return (
     <div className="flex flex-col gap-3">
       <AFloatingBox className="flex flex-col gap-2">
@@ -47,6 +55,9 @@ const ProductsData = () => {
       <ProductsTable
         selectedProducts={selectedProducts}
         setSelectedProducts={setSelectedProducts}
+        products={products}
+        isLoading={isLoading}
+        meta={data?.meta}
       />
     </div>
   );
