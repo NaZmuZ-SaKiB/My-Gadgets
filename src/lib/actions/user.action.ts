@@ -92,3 +92,18 @@ export const userRoleToggleAction = async (payload: Partial<TUser>) => {
 
   return result;
 };
+
+export const dashboardAction = async () => {
+  const response = await fetch(`${backendUrl}/api/user/dashboard`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: (await cookies()).get(authKey)?.value || "",
+    },
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  return result;
+};
