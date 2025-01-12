@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   createAdminAction,
+  dashboardAction,
   myProfileUpdateAction,
   userGetAllAction,
   userGetByIdAction,
@@ -35,4 +36,10 @@ export const useUserGetAllQuery = (params: string) =>
     queryFn: () => userGetAllAction(params),
     refetchOnWindowFocus: "always",
     refetchOnMount: "always",
+  });
+
+export const useDashboardQuery = () =>
+  useQuery({
+    queryKey: [AQTags.DASHBOARD],
+    queryFn: () => dashboardAction(),
   });
