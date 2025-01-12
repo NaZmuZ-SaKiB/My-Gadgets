@@ -4,6 +4,7 @@ import {
   productGetAllAction,
   productGetByIdAction,
   productRemoveAction,
+  productTopSellingAction,
   productUpdateAction,
 } from "../actions/product.action";
 import { AQTags } from "@/constants";
@@ -22,6 +23,12 @@ export const useProductGetAllQuery = (params: string) =>
   useQuery({
     queryKey: [AQTags.PRODUCT, AQTags.ALL, params],
     queryFn: () => productGetAllAction(params),
+  });
+
+export const useProductTopSellingQuery = () =>
+  useQuery({
+    queryKey: [AQTags.PRODUCT],
+    queryFn: () => productTopSellingAction(),
   });
 
 export const useProductGetByIdQuery = (id: string) =>
