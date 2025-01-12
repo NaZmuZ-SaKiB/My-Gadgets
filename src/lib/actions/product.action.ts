@@ -107,3 +107,17 @@ export const productRemoveAction = async (ids: string[]) => {
 
   return result;
 };
+
+export const productTopSellingAction = async () => {
+  const response = await fetch(`${backendUrl}/api/product/top-selling`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
+
+  const result = await response.json();
+
+  return result;
+};
