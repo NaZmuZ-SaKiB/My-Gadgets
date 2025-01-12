@@ -39,23 +39,23 @@ const ReviewsTable = ({ selectedReviews, setSelectedReviews }: TProps) => {
 
   if (isLoading) {
     return (
-      <AFloatingBox className="flex-1 grid place-items-center">
-        <Loader2 className="animate-spin mx-auto size-[50px] text-primary-hover" />
+      <AFloatingBox className="grid flex-1 place-items-center">
+        <Loader2 className="mx-auto size-[50px] animate-spin text-primary-hover" />
       </AFloatingBox>
     );
   }
 
   return (
     <AFloatingBox className="overflow-x-auto">
-      <table className="table-auto admin-table min-w-[600px]">
+      <table className="admin-table min-w-[600px] table-auto">
         <thead className="text-left">
           <tr>
             <th>
-              <span className="bg-white inline-flex p-[2px] rounded">
+              <span className="inline-flex rounded bg-white p-[2px]">
                 <input
                   type="checkbox"
                   onChange={selectAll}
-                  className="size-3.5 no-focus"
+                  className="no-focus size-3.5"
                 />
               </span>
             </th>
@@ -75,14 +75,14 @@ const ReviewsTable = ({ selectedReviews, setSelectedReviews }: TProps) => {
                   checked={selectedReviews.includes(item._id)}
                   type="checkbox"
                   onChange={(e) => handleSelect(e, item._id)}
-                  className="size-4 no-focus"
+                  className="no-focus size-4"
                 />
               </td>
               <td>{item.user.name}</td>
               <td>
                 <Link
-                  href={`/admin/products/${item._id}`}
-                  className="hover:underline no-focus"
+                  href={`/admin/products/${item.product._id}`}
+                  className="no-focus hover:underline"
                 >
                   {item.product.name}
                 </Link>
@@ -94,10 +94,10 @@ const ReviewsTable = ({ selectedReviews, setSelectedReviews }: TProps) => {
                 <ReviewStatusSelect defaultValue={item.status} id={item._id} />
               </td>
               <td>
-                <div className="flex gap-1 justify-end max-md:flex-wrap">
+                <div className="flex justify-end gap-1 max-md:flex-wrap">
                   <Button
                     size="icon"
-                    className="h-8 no-focus bg-transparent border border-red-300 text-red-500 hover:bg-red-500 hover:border-red-500 group"
+                    className="no-focus group h-8 border border-red-300 bg-transparent text-red-500 hover:border-red-500 hover:bg-red-500"
                   >
                     <Trash2 className="size-4 group-hover:text-white" />
                   </Button>
