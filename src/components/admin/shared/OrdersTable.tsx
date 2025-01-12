@@ -80,7 +80,7 @@ const OrdersTable = ({ orders, isLoading }: TProps) => {
 
           {orders?.length === 0 && (
             <tr>
-              <td colSpan={9} className="text-center text-xl">
+              <td colSpan={8} className="text-center text-xl">
                 No data found
               </td>
             </tr>
