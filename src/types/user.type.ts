@@ -11,3 +11,17 @@ export type TUser = {
   createdAt?: Date;
   updatedAt?: Date;
 };
+
+export type TDashboard = {
+  totalUsers: number;
+  totalOrders: number;
+  pendingOrders: number;
+  processingOrders: number;
+  shippedOrders: number;
+  completedOrders: number;
+  canceledOrders: number;
+  totalSale: number;
+  totalProducts: number;
+  totalReviews: number;
+  [key: string]: number;
+};
