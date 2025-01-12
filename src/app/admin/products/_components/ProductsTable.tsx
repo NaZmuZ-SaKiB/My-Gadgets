@@ -4,40 +4,51 @@ import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import { Button } from "@/components/ui/button";
 import { images } from "@/constants";
-import { useProductGetAllQuery } from "@/lib/queries/product.query";
 import { TProduct } from "@/types/product.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
 import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
-  selectedProducts: string[];
-  setSelectedProducts: (value: string[]) => void;
+  selectedProducts?: string[];
+  setSelectedProducts?: (value: string[]) => void;
+  products: TProduct[];
+  isLoading: boolean;
+  meta?: any;
+  title?: string;
 };
 
-const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
-  const searchParams = useSearchParams();
-  const { data, isLoading } = useProductGetAllQuery(searchParams.toString());
-
+const ProductsTable = ({
+  selectedProducts,
+  setSelectedProducts,
+  products,
+  isLoading,
+  meta,
+  title,
+}: TProps) => {
   // Handle Select
   const selectAll = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setSelectedProducts(data?.data?.map((item: any) => item._id) || []);
+      setSelectedProducts &&
+        setSelectedProducts(products?.map((item: any) => item._id) || []);
     } else {
-      setSelectedProducts([]);
+      setSelectedProducts && setSelectedProducts([]);
     }
   };
 
   const handleSelect = (e: ChangeEvent<HTMLInputElement>, id: string) => {
     if (e.target.checked) {
-      setSelectedProducts([...selectedProducts, id]);
+      setSelectedProducts &&
+        selectedProducts &&
+        setSelectedProducts([...selectedProducts, id]);
     } else {
-      setSelectedProducts(selectedProducts.filter((item) => item !== id));
+      setSelectedProducts &&
+        selectedProducts &&
+        setSelectedProducts(selectedProducts.filter((item) => item !== id));
     }
   };
   // End Handle Select
@@ -51,23 +62,37 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
   }
   return (
     <AFloatingBox className="overflow-x-auto">
+      {title && (
+        <h2 className="mb-5 text-lg font-medium text-slate-700">{title}</h2>
+      )}
       <table className="admin-table min-w-[800px] table-auto">
         <thead className="text-left">
           <tr>
-            <th>
-              <span className="inline-flex rounded bg-white p-[2px]">
-                <input
-                  type="checkbox"
-                  onChange={selectAll}
-                  className="no-focus size-3.5"
-                />
-              </span>
-            </th>
+            {selectedProducts && (
+              <th>
+                <span className="inline-flex rounded bg-white p-[2px]">
+                  <input
+                    type="checkbox"
+                    onChange={selectAll}
+                    className="no-focus size-3.5"
+                  />
+                </span>
+              </th>
+            )}
             <th>Img</th>
             <th>Name</th>
-            <th>Model</th>
-            <th>Brand</th>
-            <th>Categories</th>
+            {!(products[0] as any).totalSold && (
+              <>
+                <th>Model</th>
+                <th>Brand</th>
+                <th>Categories</th>
+              </>
+            )}
+            {(products[0] as any).totalSold && (
+              <>
+                <th>Total Sold</th>
+              </>
+            )}
             <th>Quantity</th>
             <th>Price</th>
             <th>Actions</th>
@@ -75,16 +100,18 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
         </thead>
 
         <tbody>
-          {data?.data?.map((item: TProduct) => (
+          {products?.map((item: TProduct) => (
             <tr key={`${item._id}`}>
-              <td>
-                <input
-                  checked={selectedProducts.includes(item._id)}
-                  type="checkbox"
-                  onChange={(e) => handleSelect(e, item._id)}
-                  className="no-focus size-4"
-                />
-              </td>
+              {selectedProducts && (
+                <td>
+                  <input
+                    checked={selectedProducts.includes(item._id)}
+                    type="checkbox"
+                    onChange={(e) => handleSelect(e, item._id)}
+                    className="no-focus size-4"
+                  />
+                </td>
+              )}
               <td>
                 <Image
                   src={item.images[0]?.secureUrl || images.defaultImage}
@@ -102,9 +129,18 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
                   {item.name}
                 </Link>
               </td>
-              <td>{item.model}</td>
-              <td>{item.brand?.name}</td>
-              <td>{item.categories.map((cat) => cat.name).join(", ")}</td>
+              {!(products[0] as any).totalSold && (
+                <>
+                  <td>{item.model}</td>
+                  <td>{item.brand?.name}</td>
+                  <td>{item.categories.map((cat) => cat.name).join(", ")}</td>
+                </>
+              )}
+              {(products[0] as any).totalSold && (
+                <>
+                  <td>{(item as any).totalSold}</td>
+                </>
+              )}
               <td>{item.quantity}</td>
               <td>{formatCurrency(item.salePrice)}</td>
               <td>
@@ -147,7 +183,7 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
             </tr>
           ))}
 
-          {data?.data?.length === 0 && (
+          {products?.length === 0 && (
             <tr>
               <td colSpan={9} className="text-center text-xl">
                 No data found
@@ -156,17 +192,19 @@ const ProductsTable = ({ selectedProducts, setSelectedProducts }: TProps) => {
           )}
         </tbody>
       </table>
-      <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
-        <div className="max-sm:hidden">
-          <DataLimitSelect />
+      {meta && (
+        <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
+          <div className="max-sm:hidden">
+            <DataLimitSelect />
+          </div>
+          <MGPagination
+            admin
+            limit={meta?.limit as number}
+            page={meta?.page as number}
+            total={meta?.total as number}
+          />
         </div>
-        <MGPagination
-          admin
-          limit={data?.meta?.limit as number}
-          page={data?.meta?.page as number}
-          total={data?.meta?.total as number}
-        />
-      </div>
+      )}
     </AFloatingBox>
   );
 };
