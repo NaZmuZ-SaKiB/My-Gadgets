@@ -5,17 +5,19 @@ import { Button } from "@/components/ui/button";
 import { TOrder } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import { Eye, Loader2 } from "lucide-react";
-import { ChangeEvent } from "react";
 import OrderStatusSelect from "@/components/admin/shared/OrderStatusSelect";
 import OrderIsPaidSelect from "./OrderIsPaidSelect";
 import Link from "next/link";
+import DataLimitSelect from "./filters/DataLimitSelect";
+import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   orders: TOrder[];
   isLoading: boolean;
+  meta?: any;
 };
 
-const OrdersTable = ({ orders, isLoading }: TProps) => {
+const OrdersTable = ({ orders, isLoading, meta }: TProps) => {
   if (isLoading) {
     return (
       <AFloatingBox className="grid flex-1 place-items-center">
@@ -87,6 +89,20 @@ const OrdersTable = ({ orders, isLoading }: TProps) => {
           )}
         </tbody>
       </table>
+
+      {meta && (
+        <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
+          <div className="max-sm:hidden">
+            <DataLimitSelect />
+          </div>
+          <MGPagination
+            admin
+            limit={meta?.limit as number}
+            page={meta?.page as number}
+            total={meta?.total as number}
+          />
+        </div>
+      )}
     </AFloatingBox>
   );
 };
