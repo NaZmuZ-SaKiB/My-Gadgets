@@ -6,6 +6,8 @@ import AGrid from "@/components/admin/admin-ui/AGrid";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import SalesChart from "./_components/SalesChart";
 import OrdersPieChart from "./_components/OrdersPieChart";
+import RecentOrders from "./_components/RecentOrders";
+import RecentlyAddedProducts from "./_components/RecentlyAddedProducts";
 
 const AdminDashboardPage = () => {
   return (
@@ -22,10 +24,9 @@ const AdminDashboardPage = () => {
         <OrdersPieChart />
       </AGrid>
 
-      <AGrid equal>
-        <AFloatingBox></AFloatingBox>
-        <AFloatingBox></AFloatingBox>
-      </AGrid>
+      <RecentOrders />
+
+      <RecentlyAddedProducts />
     </APageContainer>
   );
 };
