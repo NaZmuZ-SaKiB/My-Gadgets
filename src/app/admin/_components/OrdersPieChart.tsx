@@ -20,6 +20,7 @@ import {
 import { useDashboardQuery } from "@/lib/queries/user.query";
 import { TDashboard } from "@/types/user.type";
 import { cn } from "@/lib/utils";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 const chartData = [
   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
@@ -91,7 +92,9 @@ const OrdersPieChart = () => {
   ];
 
   return (
-    <div>
+    <AFloatingBox>
+      <h2 className="text-lg font-medium text-slate-700">Orders Overview</h2>
+
       <ChartContainer
         config={chartConfig}
         className="mx-auto aspect-square max-h-[220px]"
@@ -129,7 +132,7 @@ const OrdersPieChart = () => {
           </div>
         ))}
       </div>
-    </div>
+    </AFloatingBox>
   );
 };
 
