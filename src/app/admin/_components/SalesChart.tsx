@@ -17,6 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 const chartData = [
   { month: "January", sales: 15438923, profit: 8894753, expense: 1834092 },
   { month: "February", sales: 24321045, profit: 10721093, expense: 2291854 },
@@ -49,7 +50,11 @@ const chartConfig = {
 
 const SalesChart = () => {
   return (
-    <div>
+    <AFloatingBox>
+      <h2 className="mb-5 text-lg font-medium text-slate-700">
+        Revenue Report
+      </h2>
+
       <ChartContainer config={chartConfig}>
         <AreaChart
           accessibilityLayer
@@ -114,7 +119,7 @@ const SalesChart = () => {
           January - December 2024
         </div>
       </div>
-    </div>
+    </AFloatingBox>
   );
 };
 
