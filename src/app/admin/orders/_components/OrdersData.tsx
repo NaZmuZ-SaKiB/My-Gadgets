@@ -37,7 +37,7 @@ const OrdersData = () => {
         <DataSearchBox />
       </AFloatingBox>
 
-      <OrdersTable orders={orders} isLoading={isLoading} />
+      <OrdersTable orders={orders} isLoading={isLoading} meta={data?.meta} />
     </div>
   );
 };
