@@ -17,20 +17,14 @@ const AdminDashboardPage = () => {
       <TopSellingProducts />
 
       <AGrid reverse>
-        <AFloatingBox>
-          <h2 className="mb-5 text-lg font-medium text-slate-700">
-            Revenue Report
-          </h2>
+        <SalesChart />
 
-          <SalesChart />
-        </AFloatingBox>
-        <AFloatingBox>
-          <h2 className="text-lg font-medium text-slate-700">
-            Orders Overview
-          </h2>
+        <OrdersPieChart />
+      </AGrid>
 
-          <OrdersPieChart />
-        </AFloatingBox>
+      <AGrid equal>
+        <AFloatingBox></AFloatingBox>
+        <AFloatingBox></AFloatingBox>
       </AGrid>
     </APageContainer>
   );
