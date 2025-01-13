@@ -18,33 +18,40 @@ const dashboardCardsData = [
     field: "totalUsers",
     label: "Total Users",
     icon: User,
-    bgStyle: "bg-gradient-to-br from-green-600 to-green-300",
+    bgStyle: "bg-gradient-to-r from-green-600 to-green-400",
+    color: "text-green-600",
   },
   {
     field: "totalOrders",
     label: "Total Orders",
     icon: ShoppingCart,
-    bgStyle: "bg-gradient-to-br from-purple-600 to-purple-300",
+    bgStyle: "bg-gradient-to-r from-purple-600 to-purple-400",
+    color: "text-purple-600",
   },
   {
     field: "totalSale",
     label: "Total Sale",
     icon: DollarSign,
-    bgStyle: "bg-gradient-to-br from-blue-600 to-blue-500",
+    bgStyle: "bg-gradient-to-r from-blue-600 to-blue-500",
+    color: "text-blue-600",
   },
   {
     field: "totalProducts",
     label: "Total Products",
     icon: ShoppingBag,
-    bgStyle: "bg-gradient-to-br from-blue-600 to-sky-300",
+    bgStyle: "bg-gradient-to-r from-blue-600 to-sky-400",
+    color: "text-blue-600",
   },
   {
     field: "totalReviews",
     label: "Total Reviews",
     icon: Star,
-    bgStyle: "bg-gradient-to-br from-yellow-600 to-yellow-300",
+    bgStyle: "bg-gradient-to-r from-yellow-600 to-yellow-400",
+    color: "text-yellow-600",
   },
 ];
+
+const randomPercentage = () => Math.floor(Math.random() * (30 - 10 + 1)) + 10;
 
 const Cards = () => {
   const { data, isLoading } = useDashboardQuery();
@@ -64,23 +71,39 @@ const Cards = () => {
               card.field === "totalSale",
           })}
         >
-          <div className="relative z-50 flex items-center justify-between">
-            <span className="text-xl">{card.label}</span>
+          <div className="relative z-50 flex items-start justify-between">
+            <div>
+              <span className="text-lg font-medium">{card.label}</span>
+              <div className="mt-0.5 text-4xl font-semibold">
+                {card.field === "totalSale"
+                  ? formatCurrency(dashboardData[card.field])
+                  : dashboardData[card.field]}
+              </div>
+            </div>
 
-            <span className="rounded-lg bg-gradient-to-t from-black/20 to-black/5 p-3">
+            <span className="rounded-lg bg-gradient-to-tl from-black/20 to-black/5 p-3">
               <card.icon />
             </span>
           </div>
-          <div className="relative z-50 mt-5 text-4xl font-semibold">
-            {card.field === "totalSale"
-              ? formatCurrency(dashboardData[card.field])
-              : dashboardData[card.field]}
+
+          <div
+            className={cn(
+              "relative z-50 mt-10 flex items-center gap-2 text-sm",
+              {
+                "mt-2": card.field === "totalSale",
+              },
+            )}
+          >
+            <span className="rounded bg-black/30 p-1 text-xs">
+              +{randomPercentage()}%
+            </span>
+            <span>Last Month</span>
           </div>
 
-          <div className="absolute bottom-0 left-0 z-10">
+          <div className="absolute bottom-2 left-0 z-10">
             <TrendingUp
-              className={cn("size-28 text-black/10", {
-                "size-48": card.field === "totalSale",
+              className={cn("size-28", card.color, {
+                "size-48 text-black opacity-10": card.field === "totalSale",
               })}
             />
           </div>
