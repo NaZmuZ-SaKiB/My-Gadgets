@@ -31,7 +31,7 @@ const Navbar = async () => {
   });
 
   return (
-    <div className="sticky top-0 z-50 bg-white drop-shadow max-xl:hidden">
+    <div className="sticky top-0 z-40 bg-white drop-shadow max-xl:hidden">
       <div className="mg-container flex gap-3">
         <div className="py-0.5">
           <DropdownMenu>
