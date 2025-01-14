@@ -7,7 +7,7 @@ import { z } from "zod";
 import { ReviewValidation } from "../validations/review.validation";
 
 export const reviewCreateAction = async (
-  payload: z.infer<typeof ReviewValidation.create>
+  payload: z.infer<typeof ReviewValidation.create>,
 ) => {
   const response = await fetch(`${backendUrl}/api/review`, {
     method: "POST",
@@ -77,7 +77,7 @@ export const reviewGetAllByProductIdAction = async (productId: string) => {
         "Content-Type": "application/json",
       },
       cache: "no-store",
-    }
+    },
   );
 
   const result = await response.json();
@@ -106,14 +106,13 @@ export const reviewGetByIdAction = async (id: string) => {
   return result;
 };
 
-export const reviewRemoveAction = async (ids: string[]) => {
-  const response = await fetch(`${backendUrl}/api/review`, {
+export const reviewRemoveAction = async (id: string) => {
+  const response = await fetch(`${backendUrl}/api/review/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: (await cookies()).get(authKey)?.value || "",
     },
-    body: JSON.stringify({ ids }),
     cache: "no-store",
   });
 
