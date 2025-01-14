@@ -97,36 +97,38 @@ const AddProductPage = () => {
         className="gap-4"
         reset={false}
       >
-        <APageHeading title="Add Product">
-          <MGButton
-            type="submit"
-            className="rounded-none self-start px-5 py-2 h-auto"
-            disabled={isPending}
-          >
-            Save Changes
-          </MGButton>
-        </APageHeading>
+        <div className="relative">
+          <APageHeading title="Add Product">
+            <MGButton
+              type="submit"
+              className="h-auto self-start rounded-none px-5 py-2"
+              disabled={isPending}
+            >
+              Save Changes
+            </MGButton>
+          </APageHeading>
 
-        <AGrid reverse small>
-          {/* Left Side */}
-          <div className="space-y-4">
-            <ProductBasicInfoForm />
+          <AGrid reverse small>
+            {/* Left Side */}
+            <div className="space-y-4">
+              <ProductBasicInfoForm />
 
-            <ProductSpecsForm />
+              <ProductSpecsForm />
 
-            <ProductFiltersForm />
-          </div>
+              <ProductFiltersForm />
+            </div>
 
-          {/* Right Side */}
-          <div className="space-y-4">
-            <SelectCategories
-              selectedCategories={selectedCategories}
-              setSelectedCategories={setSelectedCategories}
-            />
+            {/* Right Side */}
+            <div className="space-y-4">
+              <SelectCategories
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories}
+              />
 
-            <ProductImagesForm />
-          </div>
-        </AGrid>
+              <ProductImagesForm />
+            </div>
+          </AGrid>
+        </div>
       </MGForm>
     </APageContainer>
   );
