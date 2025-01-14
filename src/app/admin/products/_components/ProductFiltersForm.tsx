@@ -15,7 +15,7 @@ import {
 const ProductFiltersForm = () => {
   return (
     <AFloatingBox className="">
-      <div className="max-w-md flex flex-col gap-3">
+      <div className="flex max-w-md flex-col gap-3">
         <MGAMultiSelect
           name="compatibility"
           label="Compatibility"

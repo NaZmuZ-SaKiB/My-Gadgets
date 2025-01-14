@@ -45,13 +45,13 @@ const MGASelect = ({
       name={name}
       render={({ field }) => (
         <FormItem
-          className={cn("flex flex-col gap-1 w-full", {
-            "grid grid-cols-[1fr_2fr] gap-2 items-center": vertical,
+          className={cn("flex w-full flex-col gap-1", {
+            "grid grid-cols-[1fr_2fr] items-center gap-2": vertical,
             "grid-cols-1": vertical && !label,
           })}
         >
           {label && (
-            <FormLabel className={"font-medium text-nowrap text-xs"}>
+            <FormLabel className={"text-nowrap text-xs font-medium"}>
               {label}
             </FormLabel>
           )}
@@ -65,11 +65,11 @@ const MGASelect = ({
             <FormControl>
               <SelectTrigger
                 className={cn(
-                  "rounded-none bg-slate-50 focus:ring-0 focus:ring-offset-0 focus:border-primary",
+                  "rounded-none bg-slate-50 focus:border-primary focus:ring-0 focus:ring-offset-0",
                   {
                     "!mt-0": vertical,
                   },
-                  className
+                  className,
                 )}
               >
                 <SelectValue
@@ -91,7 +91,7 @@ const MGASelect = ({
               ))}
             </SelectContent>
           </Select>
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />
