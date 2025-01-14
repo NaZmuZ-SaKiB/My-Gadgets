@@ -29,13 +29,13 @@ const BrandsFilter = ({ brands }: TProps) => {
   };
 
   return (
-    <div className="mt-3 flex justify-start gap-2 overflow-y-auto">
+    <div className="no-scrollbar mt-3 flex justify-start gap-2 overflow-y-auto">
       <div
         className={cn(
-          "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center shrink-0",
+          "grid shrink-0 cursor-pointer place-items-center rounded-md border px-4 py-1.5",
           {
             "border-primary": !searchParams.get("brand"),
-          }
+          },
         )}
         onClick={() => handleChange("all")}
       >
@@ -46,10 +46,10 @@ const BrandsFilter = ({ brands }: TProps) => {
         <div
           key={`${brand._id}`}
           className={cn(
-            "px-4 py-1.5 border cursor-pointer rounded-md grid place-items-center shrink-0",
+            "grid shrink-0 cursor-pointer place-items-center rounded-md border px-4 py-1.5",
             {
               "border-primary": searchParams.get("brand") === brand.name,
-            }
+            },
           )}
           onClick={() => handleChange(brand.name)}
         >
