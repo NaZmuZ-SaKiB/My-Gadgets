@@ -101,14 +101,6 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
 
               <td>
                 <div className="flex justify-end gap-1">
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="no-focus group h-8 border-slate-300 bg-transparent hover:border-slate-600 hover:bg-slate-600"
-                  >
-                    <Eye className="size-4 text-slate-700 group-hover:text-white" />
-                  </Button>
-
                   <Link href={`/admin/brands/${item._id}`} className="no-focus">
                     <Button
                       size="icon"
