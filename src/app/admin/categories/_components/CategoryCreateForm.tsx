@@ -51,10 +51,13 @@ const CategoryCreateForm = () => {
 
       if (result?.success) {
         toast.success(result?.message);
+
         queryClient.invalidateQueries({
           queryKey: [AQTags.CATEGORY, AQTags.ALL],
           exact: false,
         });
+
+        window.location.reload();
       } else {
         toast.error(result?.message || "A server error occurred.");
       }

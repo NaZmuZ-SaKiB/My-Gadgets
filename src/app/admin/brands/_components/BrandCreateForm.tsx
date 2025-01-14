@@ -35,6 +35,8 @@ const BrandCreateForm = () => {
           queryKey: [AQTags.BRAND, AQTags.ALL],
           exact: false,
         });
+
+        window.location.reload();
       } else {
         toast.error(result?.message || "A server error occurred.");
       }
@@ -45,7 +47,7 @@ const BrandCreateForm = () => {
 
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-slate-700 text-lg mb-5">Add Brand</h2>
+      <h2 className="mb-5 text-lg font-medium text-slate-700">Add Brand</h2>
 
       <MGForm
         onSubmit={handleBrandCreate}
@@ -57,7 +59,7 @@ const BrandCreateForm = () => {
         <MGAImageInput name="image" label="Image" />
 
         <MGButton
-          className="rounded-none self-start px-5 py-2 h-auto"
+          className="h-auto self-start rounded-none px-5 py-2"
           disabled={isPending}
         >
           {isPending ? "Creating..." : "Create Brand"}
