@@ -94,10 +94,9 @@ const AddProductPage = () => {
         onSubmit={handleSubmit}
         resolver={zodResolver(ProductValidation.create)}
         defaultValues={defaultValues}
-        className="gap-4"
         reset={false}
       >
-        <div className="relative">
+        <div className="relative flex flex-col gap-4">
           <APageHeading title="Add Product">
             <MGButton
               type="submit"
