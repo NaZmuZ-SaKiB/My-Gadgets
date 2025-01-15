@@ -37,7 +37,7 @@ const MGPagination = ({ limit, page, total, admin = false }: TProps) => {
 
   return (
     <Pagination className="sm:justify-end">
-      <PaginationContent className="gap-2">
+      <PaginationContent className="flex-wrap gap-2">
         <PaginationItem
           className={cn(
             "group cursor-pointer rounded-md bg-slate-100 hover:bg-primary",
