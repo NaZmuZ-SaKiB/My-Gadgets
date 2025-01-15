@@ -8,7 +8,11 @@ import {
 } from "@/components/ui/select";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const DataLimitSelect = () => {
+type TProps = {
+  defaultValue?: string;
+};
+
+const DataLimitSelect = ({ defaultValue = "10" }: TProps) => {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
@@ -26,10 +30,10 @@ const DataLimitSelect = () => {
 
   return (
     <Select
-      defaultValue={params.get("limit") || "10"}
+      defaultValue={params.get("limit") || defaultValue}
       onValueChange={(value) => handleChange(value)}
     >
-      <SelectTrigger className="no-focus gap-2 border-slate-200 w-[80px]">
+      <SelectTrigger className="no-focus w-[80px] gap-2 border-slate-200">
         <SelectValue placeholder="Limit" />
       </SelectTrigger>
 
