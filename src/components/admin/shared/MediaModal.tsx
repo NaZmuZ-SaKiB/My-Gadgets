@@ -15,6 +15,9 @@ import { cn } from "@/lib/utils";
 import { TMedia } from "@/types/media.type";
 import { Check, Loader2 } from "lucide-react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import DataLimitSelect from "./filters/DataLimitSelect";
+import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   selectedImages: TMedia[];
@@ -29,16 +32,17 @@ const MediaModal = ({
   multiple = false,
   title = "Select Image",
 }: TProps) => {
-  const params = new URLSearchParams();
-  params.append("limit", "30");
+  const searchParams = useSearchParams();
 
-  const { data, isLoading } = useMediaGetAllQuery(params.toString());
+  const { data, isLoading } = useMediaGetAllQuery(
+    `${searchParams.toString()}&limit=35&page=1`,
+  );
 
   const handleClick = (image: TMedia) => {
     if (multiple) {
       if (!!selectedImages.find((img) => img._id === image._id)) {
         setSelectedImages(
-          selectedImages.filter((img) => img._id !== image._id)
+          selectedImages.filter((img) => img._id !== image._id),
         );
       } else {
         setSelectedImages([...selectedImages, image]);
@@ -49,16 +53,16 @@ const MediaModal = ({
   };
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger asChild className="no-focus">
         <MGButton
-          className="rounded-none self-start px-5 py-2 h-auto"
+          className="h-auto self-start rounded-none px-5 py-2"
           variant="outline"
         >
           {title}
         </MGButton>
       </DialogTrigger>
 
-      <DialogContent className="max-w-[95vw] h-[95svh] flex flex-col">
+      <DialogContent className="no-focus flex max-h-[95svh] max-w-[95vw] flex-col overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-semibold">
             Insert File{multiple ? "s" : ""}
@@ -67,15 +71,15 @@ const MediaModal = ({
 
         <div className="h-full">
           {isLoading && (
-            <div className="grid place-items-center h-[400px]">
-              <Loader2 className="animate-spin mx-auto size-[50px] text-primary" />
+            <div className="grid h-[400px] place-items-center">
+              <Loader2 className="mx-auto size-[50px] animate-spin text-primary" />
             </div>
           )}
 
-          <div className="flex max-sm:justify-center gap-3 flex-wrap">
+          <div className="flex flex-wrap gap-3 max-sm:justify-center">
             {data?.data?.map((image: TMedia) => {
               const isActive = !!selectedImages.find(
-                (img) => img._id === image._id
+                (img) => img._id === image._id,
               );
               return (
                 <div
@@ -85,7 +89,7 @@ const MediaModal = ({
                   })}
                   onClick={() => handleClick(image)}
                 >
-                  <div className="aspect-square border border-slate-300 bg-slate-100 overflow-hidden cursor-pointer size-32">
+                  <div className="aspect-square size-32 cursor-pointer overflow-hidden border border-slate-300 bg-slate-100">
                     <Image
                       src={image.secureUrl}
                       width={128}
@@ -96,13 +100,13 @@ const MediaModal = ({
                   </div>
                   <div
                     className={cn(
-                      "absolute -top-2 -right-3 bg-white p-[1px] border border-primary",
+                      "absolute -right-3 -top-2 border border-primary bg-white p-[1px]",
                       {
                         hidden: !isActive,
-                      }
+                      },
                     )}
                   >
-                    <div className="p-1 bg-primary text-white">
+                    <div className="bg-primary p-1 text-white">
                       <Check strokeWidth="4px" className="size-4" />
                     </div>
                   </div>
@@ -112,9 +116,20 @@ const MediaModal = ({
           </div>
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="flex w-full !items-center !justify-between max-lg:!flex-col-reverse">
+          <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
+            <div className="max-sm:hidden">
+              <DataLimitSelect defaultValue="35" />
+            </div>
+            <MGPagination
+              admin
+              limit={data?.meta?.limit as number}
+              page={data?.meta?.page as number}
+              total={data?.meta?.total as number}
+            />
+          </div>
           <DialogClose asChild>
-            <MGButton className="rounded-none self-start px-3 py-2 h-auto">
+            <MGButton className="h-auto rounded-none px-3 py-2 lg:self-end">
               Use Image{multiple ? "s" : ""}
             </MGButton>
           </DialogClose>
