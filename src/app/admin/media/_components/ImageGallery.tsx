@@ -9,8 +9,14 @@ import UploadImageButton from "./UploadImageButton";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import MGPagination from "@/components/global/shared/MGPagination";
 import { useSearchParams } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-const ImageGallery = () => {
+type TProps = {
+  selectedImage: TMedia | null;
+  setSelectedImage: React.Dispatch<React.SetStateAction<TMedia | null>>;
+};
+
+const ImageGallery = ({ selectedImage, setSelectedImage }: TProps) => {
   const searchParams = useSearchParams();
 
   const { data, isLoading } = useMediaGetAllQuery(
@@ -31,7 +37,13 @@ const ImageGallery = () => {
         {data?.data?.map((image: TMedia) => (
           <div
             key={image._id}
-            className="aspect-square size-[128px] cursor-pointer overflow-hidden rounded-lg border border-slate-300 bg-slate-100"
+            className={cn(
+              "aspect-square size-[128px] cursor-pointer overflow-hidden rounded-lg border border-slate-300 bg-slate-100",
+              {
+                "border-2 border-primary": selectedImage?._id === image._id,
+              },
+            )}
+            onClick={() => setSelectedImage(image)}
           >
             <Image
               src={image.secureUrl}
