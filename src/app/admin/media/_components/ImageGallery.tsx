@@ -6,28 +6,32 @@ import { TMedia } from "@/types/media.type";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import UploadImageButton from "./UploadImageButton";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+import MGPagination from "@/components/global/shared/MGPagination";
+import { useSearchParams } from "next/navigation";
 
 const ImageGallery = () => {
-  const params = new URLSearchParams();
-  params.append("limit", "30");
+  const searchParams = useSearchParams();
 
-  const { data, isLoading } = useMediaGetAllQuery(params.toString());
+  const { data, isLoading } = useMediaGetAllQuery(
+    `${searchParams.toString()}&limit=35`,
+  );
 
   if (isLoading) {
     return (
-      <AFloatingBox className="grid place-items-center h-[400px]">
-        <Loader2 className="animate-spin mx-auto size-[50px] text-primary" />
+      <AFloatingBox className="grid h-[400px] place-items-center">
+        <Loader2 className="mx-auto size-[50px] animate-spin text-primary" />
       </AFloatingBox>
     );
   }
   return (
     <AFloatingBox>
-      <div className="flex max-sm:justify-center gap-3 flex-wrap">
+      <div className="flex flex-wrap gap-3 max-sm:justify-center">
         <UploadImageButton />
         {data?.data?.map((image: TMedia) => (
           <div
             key={image._id}
-            className="aspect-square border border-slate-300 bg-slate-100 rounded-lg overflow-hidden cursor-pointer size-[128px]"
+            className="aspect-square size-[128px] cursor-pointer overflow-hidden rounded-lg border border-slate-300 bg-slate-100"
           >
             <Image
               src={image.secureUrl}
@@ -38,6 +42,18 @@ const ImageGallery = () => {
             />
           </div>
         ))}
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
+        <div className="max-sm:hidden">
+          <DataLimitSelect defaultValue="35" />
+        </div>
+        <MGPagination
+          admin
+          limit={data?.meta?.limit as number}
+          page={data?.meta?.page as number}
+          total={data?.meta?.total as number}
+        />
       </div>
     </AFloatingBox>
   );
