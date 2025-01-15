@@ -7,6 +7,7 @@ import { useState } from "react";
 import { TMedia } from "@/types/media.type";
 import Image from "next/image";
 import ImageEditForm from "./ImageEditForm";
+import { X } from "lucide-react";
 
 const MediaData = () => {
   const [selectedImage, setSelectedImage] = useState<TMedia | null>(null);
@@ -24,7 +25,13 @@ const MediaData = () => {
       </div>
 
       {selectedImage && (
-        <AFloatingBox className="flex min-w-[300px] flex-col gap-3">
+        <AFloatingBox className="relative flex min-w-[300px] flex-col gap-3">
+          <div
+            className="absolute right-0 top-0 cursor-pointer p-2"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="size-5" />
+          </div>
           <div className="mx-auto">
             <Image
               src={selectedImage.secureUrl}
