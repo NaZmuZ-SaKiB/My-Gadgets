@@ -8,6 +8,8 @@ import { TMedia } from "@/types/media.type";
 import Image from "next/image";
 import ImageEditForm from "./ImageEditForm";
 import { X } from "lucide-react";
+import Link from "next/link";
+import { useMediaGetByIdQuery } from "@/lib/queries/media.query";
 
 const MediaData = () => {
   const [selectedImage, setSelectedImage] = useState<TMedia | null>(null);
@@ -41,6 +43,47 @@ const MediaData = () => {
               className="object-contain"
             />
           </div>
+
+          <div>
+            <div className="flex gap-1 text-sm">
+              <span className="font-semibold">Name:</span>
+              <span>{selectedImage.name}</span>
+            </div>
+
+            <div className="flex gap-1 text-sm">
+              <span className="font-semibold">Size:</span>
+              <span>
+                {selectedImage.height} x {selectedImage.width}
+              </span>
+            </div>
+
+            <div className="flex gap-1 text-sm">
+              <span className="font-semibold">Format:</span>
+              <span>{selectedImage.format}</span>
+            </div>
+
+            <div className="flex gap-1 text-sm">
+              <span className="font-semibold">URL:</span>
+              <span>
+                <Link className="text-sky-500" href={selectedImage.secureUrl}>
+                  Click to view
+                </Link>
+              </span>
+            </div>
+
+            <div className="flex gap-1 text-sm">
+              <span className="font-semibold">Thumbnail:</span>
+              <span>
+                <Link
+                  className="text-sky-500"
+                  href={selectedImage.thumbnailUrl}
+                >
+                  Click to view
+                </Link>
+              </span>
+            </div>
+          </div>
+
           <ImageEditForm selectedImage={selectedImage} />
         </AFloatingBox>
       )}
