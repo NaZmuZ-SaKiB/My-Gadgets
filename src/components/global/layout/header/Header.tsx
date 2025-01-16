@@ -9,6 +9,7 @@ import Navbar from "./Navbar";
 import MobileMenu from "./MobileMenu";
 import Cart from "./Cart";
 import Account from "./Account";
+import Compare from "./Compare";
 
 const font = Permanent_Marker({
   weight: "400",
@@ -50,17 +51,7 @@ const Header = () => {
 
             {/* links */}
             <div className="flex items-center gap-6">
-              <Link
-                href="/compare"
-                className="hidden cursor-pointer text-slate-600 hover:text-slate-800 xl:block"
-              >
-                <Image
-                  src={icons.compare}
-                  alt="compare"
-                  className="mx-auto size-6"
-                />
-                <span className="text-sm">Compare</span>
-              </Link>
+              <Compare />
 
               <Link
                 href="/wishlist"
