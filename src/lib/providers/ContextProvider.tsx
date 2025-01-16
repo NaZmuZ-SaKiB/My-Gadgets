@@ -160,6 +160,44 @@ export const useCart = () => {
   };
 };
 
+export const useCompare = () => {
+  const { compare, setGlobalContext } = useContext(GlobalContext);
+
+  const addToCompare = (product: TProduct) => {
+    const isAdded = compare.findIndex((item) => item._id === product._id);
+
+    if (isAdded === -1) {
+      setGlobalContext((prev: TGlobalContext) => ({
+        ...prev,
+        compare: [...prev.compare, product],
+      }));
+    }
+  };
+
+  const removeFromCompare = (productId: string) => {
+    const newCompare = compare.filter((item) => item._id !== productId);
+
+    setGlobalContext((prev: TGlobalContext) => ({
+      ...prev,
+      compare: newCompare,
+    }));
+  };
+
+  const clearCompare = () => {
+    setGlobalContext((prev: TGlobalContext) => ({
+      ...prev,
+      compare: [],
+    }));
+  };
+
+  return {
+    compare,
+    addToCompare,
+    removeFromCompare,
+    clearCompare,
+  };
+};
+
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [globalContext, setGlobalContext] = useState<TGlobalContext>(() => {
     if (typeof window !== "undefined") {
