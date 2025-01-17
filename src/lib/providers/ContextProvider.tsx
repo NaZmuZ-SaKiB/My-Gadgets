@@ -167,10 +167,19 @@ export const useCompare = () => {
     const isAdded = compare.findIndex((item) => item._id === product._id);
 
     if (isAdded === -1) {
-      setGlobalContext((prev: TGlobalContext) => ({
-        ...prev,
-        compare: [...prev.compare, product],
-      }));
+      if (compare.length === 4) {
+        const newCompare = compare.slice(1);
+
+        setGlobalContext((prev: TGlobalContext) => ({
+          ...prev,
+          compare: [...newCompare, product],
+        }));
+      } else {
+        setGlobalContext((prev: TGlobalContext) => ({
+          ...prev,
+          compare: [...prev.compare, product],
+        }));
+      }
     }
   };
 
