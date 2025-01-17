@@ -7,6 +7,49 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const compareFields = [
+  {
+    label: "Model",
+    key: "model",
+  },
+  {
+    label: "Brand",
+    key: "brand.name",
+  },
+  {
+    label: "Operating System",
+    key: "operatingSystem",
+  },
+  {
+    label: "Connectivity",
+    key: "connectivity",
+  },
+  {
+    label: "Charging Port",
+    key: "chargingPort",
+  },
+  {
+    label: "Weight",
+    key: "weight",
+  },
+  {
+    label: "Power Source",
+    key: "powerSource",
+  },
+  {
+    label: "Camera",
+    key: "camera",
+  },
+  {
+    label: "Display Size",
+    key: "displaySize",
+  },
+  {
+    label: "Compatibility",
+    key: "compatibility",
+  },
+];
+
 const ComparePage = () => {
   const [mounted, setMounted] = useState(false);
 
@@ -69,6 +112,20 @@ const ComparePage = () => {
               ))}
             </tr>
           </thead>
+          <tbody>
+            {compareFields.map((field) => (
+              <tr key={`compare-table-tr-${field.key}`}>
+                <td>{field.label}</td>
+                {compare.map((product) => (
+                  <td key={`compare-table-td-${product._id}-${field.key}`}>
+                    {field.label !== "Brand"
+                      ? (product as any)[field.key]?.toString()
+                      : product.brand.name}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
