@@ -13,4 +13,5 @@ export const AQTags = {
   SHIPPING_ADDRESS: "shipping-address",
   ORDER: "order",
   DASHBOARD: "dashboard",
+  WISHLIST: "wishlist",
 };
