@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import AddToCartButton from "../shared/ProductCardAddToCart";
-import { Heart } from "lucide-react";
+import { Heart, Shuffle } from "lucide-react";
 import CompareButton from "../shared/CompareButton";
 
 type TProps = {
@@ -88,7 +88,11 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
         <span className="p-2">
           <Heart />
         </span>
-        <CompareButton product={product} />
+        <CompareButton product={product} className="p-2 hover:text-slate-900">
+          <div>
+            <Shuffle />
+          </div>
+        </CompareButton>
       </div>
     </div>
   );
