@@ -62,7 +62,15 @@ const WishlistButton = ({ productId, className }: TProps) => {
 
   if (isLoading)
     return (
-      <div className={cn("cursor-pointer", className)}>
+      <div
+        className={cn(
+          "cursor-pointer",
+          {
+            "!text-primary hover:!text-primary": isAdded,
+          },
+          className,
+        )}
+      >
         <Heart className="text-slate-300" />
       </div>
     );
