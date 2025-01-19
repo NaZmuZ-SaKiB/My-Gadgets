@@ -9,6 +9,7 @@ import { Trash2 } from "lucide-react";
 import Link from "next/link";
 import MGButton from "@/components/global/shared/MGButton";
 import { useEffect, useState } from "react";
+import CartPageLoading from "./loading";
 
 const CartPage = () => {
   const [mounted, setMounted] = useState(false);
@@ -20,7 +21,7 @@ const CartPage = () => {
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-  if (!mounted) return null;
+  if (!mounted) return <CartPageLoading />;
 
   return (
     <div className="mg-container pt-4">
