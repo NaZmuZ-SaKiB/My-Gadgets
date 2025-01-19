@@ -45,7 +45,11 @@ const AccountForm = ({ defaultValues }: TProps) => {
       <MGInput name="name" label="Name" />
       <MGInput name="email" label="Email" />
 
-      <MGButton type="submit" className="self-start" disabled={isPending}>
+      <MGButton
+        type="submit"
+        className="self-start rounded-lg"
+        disabled={isPending}
+      >
         {isPending ? "Saving..." : "Save Changes"}
       </MGButton>
     </MGForm>
