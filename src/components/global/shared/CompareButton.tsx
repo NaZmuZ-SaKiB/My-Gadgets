@@ -4,15 +4,15 @@ import { useCompare } from "@/lib/providers/ContextProvider";
 import { cn } from "@/lib/utils";
 import { TProduct } from "@/types/product.type";
 import { ClassValue } from "clsx";
+import { Shuffle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type TProps = {
   product: TProduct;
-  children: React.ReactNode;
   className?: ClassValue;
 };
 
-const CompareButton = ({ product, children, className }: TProps) => {
+const CompareButton = ({ product, className }: TProps) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -33,17 +33,13 @@ const CompareButton = ({ product, children, className }: TProps) => {
   return (
     <div
       onClick={handleClick}
-      className={cn(
-        "cursor-pointer",
-        className,
-        {
-          "cursor-default !text-slate-300 hover:!text-slate-300 [&>*]:cursor-default":
-            isAdded,
-        },
-        className,
-      )}
+      className={cn("cursor-pointer", className, {
+        "cursor-default !text-slate-300 hover:!text-slate-300": isAdded,
+      })}
     >
-      {children}
+      <div>
+        <Shuffle />
+      </div>
     </div>
   );
 };
