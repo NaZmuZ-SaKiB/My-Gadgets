@@ -1,3 +1,5 @@
+"use server";
+
 import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
 
