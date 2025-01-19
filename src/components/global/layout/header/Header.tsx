@@ -10,6 +10,7 @@ import MobileMenu from "./MobileMenu";
 import Cart from "./Cart";
 import Account from "./Account";
 import Compare from "./Compare";
+import Wishlist from "./Wishlist";
 
 const font = Permanent_Marker({
   weight: "400",
@@ -53,17 +54,7 @@ const Header = () => {
             <div className="flex items-center gap-6">
               <Compare />
 
-              <Link
-                href="/wishlist"
-                className="hidden cursor-pointer text-slate-600 hover:text-slate-800 xl:block"
-              >
-                <Image
-                  src={icons.heart}
-                  alt="wishlist"
-                  className="mx-auto size-6"
-                />
-                <span className="text-sm">Wishlist</span>
-              </Link>
+              <Wishlist />
 
               <div className="shrink-0 xl:hidden">
                 <label htmlFor="search-toggle">
