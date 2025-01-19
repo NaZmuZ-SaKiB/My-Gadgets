@@ -7,11 +7,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { icons } from "@/constants";
+import { AQTags, icons } from "@/constants";
 import {
   useCurrentUserQuery,
   useSignOutMutation,
 } from "@/lib/queries/auth.query";
+import { useQueryClient } from "@tanstack/react-query";
 import { LogIn, LogOut, ShoppingBag, User, UserCircle } from "lucide-react";
 
 import Image from "next/image";
@@ -22,16 +23,18 @@ import { useState } from "react";
 const Account = () => {
   const [open, setOpen] = useState(false);
 
-  const { data: user, refetch } = useCurrentUserQuery();
+  const { data: user } = useCurrentUserQuery();
 
   const { mutateAsync: logoutFn } = useSignOutMutation();
 
   const router = useRouter();
 
+  const queryClient = useQueryClient();
+
   const logout = async () => {
     await logoutFn();
 
-    refetch();
+    queryClient.clear();
 
     router.push("/");
   };
