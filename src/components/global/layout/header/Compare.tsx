@@ -15,10 +15,10 @@ const Compare = () => {
 
   const { compare } = useCompare();
   return (
-    <div className="relative">
+    <div className="relative hidden xl:block">
       <Link
         href="/compare"
-        className="hidden cursor-pointer text-slate-600 hover:text-slate-800 xl:block"
+        className="cursor-pointer text-slate-600 hover:text-slate-800"
       >
         <Image src={icons.compare} alt="compare" className="mx-auto size-6" />
         <span className="text-sm">Compare</span>
