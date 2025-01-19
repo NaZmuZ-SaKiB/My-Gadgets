@@ -7,6 +7,7 @@ import QuantityInput from "./QuantityInput";
 import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
 import { TReview } from "@/types/review.type";
 import CompareButton from "@/components/global/shared/CompareButton";
+import WishlistButton from "@/components/global/shared/WishlistButton";
 
 type TProps = {
   product: TProduct;
@@ -79,23 +80,17 @@ const ProductShortSpec = ({ product, reviews }: TProps) => {
 
         <div className="flex gap-2">
           <div>
-            <Button
-              variant="outline"
-              className="focus-visible:ring-primary-1 hover:bg-primary-1 hover:text-primary-3 h-full border-slate-300 px-3 text-slate-500"
-            >
-              <Heart />
-            </Button>
+            <WishlistButton
+              productId={`${product._id}`}
+              className="flex h-full items-center justify-center rounded-md border border-slate-300 px-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+            />
           </div>
 
           <div>
-            <CompareButton product={product} className="h-full text-slate-500">
-              <Button
-                variant="outline"
-                className="focus-visible:ring-primary-1 hover:bg-primary-1 hover:text-primary-3 h-full border-slate-300 px-3"
-              >
-                <Shuffle />
-              </Button>
-            </CompareButton>
+            <CompareButton
+              product={product}
+              className="flex h-full items-center justify-center rounded-md border border-slate-300 px-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+            />
           </div>
         </div>
       </div>
