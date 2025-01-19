@@ -27,6 +27,7 @@ import { toast } from "sonner";
 import { AQTags } from "@/constants";
 import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const ProductQuickEditModal = () => {
   const [open, setOpen] = useState(false);
@@ -73,9 +74,13 @@ const ProductQuickEditModal = () => {
 
   if (productLoading) {
     return (
-      <div className="grid flex-1 place-items-center">
-        <Loader2 className="mx-auto size-[50px] animate-spin text-primary-hover" />
-      </div>
+      <Button
+        disabled
+        className="no-focus flex h-auto cursor-pointer items-center gap-2 px-3 py-1.5 text-slate-50 hover:bg-slate-500"
+      >
+        <Edit className="size-4" />
+        <span>Edit Product</span>
+      </Button>
     );
   }
 
