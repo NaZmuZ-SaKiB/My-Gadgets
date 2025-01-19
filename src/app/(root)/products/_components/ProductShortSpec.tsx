@@ -76,7 +76,7 @@ const ProductShortSpec = ({ product, reviews }: TProps) => {
 
       {/* Add to Cart Button  */}
       <div className="mt-5 flex flex-wrap gap-2">
-        <QuantityInput max={product.quantity} />
+        <QuantityInput product={product} />
 
         <div className="flex gap-2">
           <div>
