@@ -1,16 +1,31 @@
 "use client";
 
 import MGButton from "@/components/global/shared/MGButton";
+import { useCart } from "@/lib/providers/ContextProvider";
+import { TProduct } from "@/types/product.type";
 import { ShoppingCart } from "lucide-react";
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 type TProps = {
-  max: number;
+  product: TProduct;
 };
 
-const QuantityInput = ({ max }: TProps) => {
+const QuantityInput = ({ product }: TProps) => {
   const [quantity, setQuantity] = useState(1);
+
+  const max = product.quantity;
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+
+    setQuantity(1);
+
+    toast.success("Product added to cart");
+  };
 
   const handleIncrement = () => {
     if (quantity > max || quantity > 4) return;
@@ -24,8 +39,8 @@ const QuantityInput = ({ max }: TProps) => {
   };
 
   return (
-    <div className="flex gap-2 flex-wrap">
-      <div className="cursor-pointer border border-primary rounded-lg inline-flex items-center">
+    <div className="flex flex-wrap gap-2">
+      <div className="inline-flex cursor-pointer items-center rounded-lg border border-primary">
         <button
           type="button"
           className="p-2 outline-none focus-visible:bg-slate-100"
@@ -33,7 +48,7 @@ const QuantityInput = ({ max }: TProps) => {
         >
           <Minus className="size-5 text-primary" />
         </button>
-        <div className="w-12 text-xl text-center p-2">{quantity}</div>
+        <div className="w-12 p-2 text-center text-xl">{quantity}</div>
 
         <button
           type="button"
@@ -44,7 +59,7 @@ const QuantityInput = ({ max }: TProps) => {
         </button>
       </div>
 
-      <MGButton className="h-full rounded-lg gap-2">
+      <MGButton className="h-full gap-2 rounded-lg" onClick={handleAddToCart}>
         <ShoppingCart className="max-xs:hidden" />
         <span>Add to Cart</span>
       </MGButton>
