@@ -85,16 +85,12 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
         {product.badgeText || "- " + discount + "%"}
       </span>
 
-      <div className="absolute -right-full top-0 flex flex-col items-center bg-white text-gray-500 transition-all group-hover:right-0">
+      <div className="absolute -right-full top-0 flex flex-col items-center rounded-bl-md bg-white text-gray-500 shadow-xl transition-all group-hover:right-0">
         <WishlistButton
           productId={`${product._id}`}
           className="p-2 hover:text-slate-900"
         />
-        <CompareButton product={product} className="p-2 hover:text-slate-900">
-          <div>
-            <Shuffle />
-          </div>
-        </CompareButton>
+        <CompareButton product={product} className="p-2 hover:text-slate-900" />
       </div>
     </div>
   );
