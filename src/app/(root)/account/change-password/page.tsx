@@ -73,7 +73,11 @@ const ChangePasswordPage = () => {
           {showPassword ? "Hide" : "Show"} Password
         </span>
 
-        <MGButton type="submit" className="self-start" disabled={isPending}>
+        <MGButton
+          type="submit"
+          className="self-start rounded-lg"
+          disabled={isPending}
+        >
           {isPending ? "Saving..." : "Save Changes"}
         </MGButton>
       </MGForm>
