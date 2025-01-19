@@ -89,21 +89,21 @@ const FloatingCompareButton = () => {
         </div>
 
         <div className="flex items-center justify-end px-3 py-1.5">
+          <MGButton
+            size="sm"
+            variant="ghost"
+            className="rounded-md text-slate-500"
+            onClick={() => {
+              setOpen(false);
+              clearCompare();
+            }}
+          >
+            Clear
+          </MGButton>
           <Link
             href="/compare"
             className="block text-center text-xs font-semibold text-primary"
           >
-            <MGButton
-              size="sm"
-              variant="ghost"
-              className="rounded-md text-slate-500"
-              onClick={() => {
-                setOpen(false);
-                clearCompare();
-              }}
-            >
-              Clear
-            </MGButton>
             <MGButton
               size="sm"
               className="rounded-md"
