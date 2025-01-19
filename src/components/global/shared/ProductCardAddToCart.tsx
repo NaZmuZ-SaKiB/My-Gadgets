@@ -11,10 +11,16 @@ import { useEffect, useState } from "react";
 type TProps = {
   product: TProduct;
   quantity?: number;
+  size?: "sm" | "default";
   className?: ClassValue;
 };
 
-const ProductCardAddToCart = ({ product, quantity = 1, className }: TProps) => {
+const ProductCardAddToCart = ({
+  product,
+  size = "default",
+  quantity = 1,
+  className,
+}: TProps) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,6 +44,7 @@ const ProductCardAddToCart = ({ product, quantity = 1, className }: TProps) => {
         className={cn("gap-2 rounded-lg", {
           "cursor-not-allowed opacity-50": isAdded,
         })}
+        size={size}
       >
         {mounted && !isAdded ? (
           <ShoppingCart className="size-3 xs:size-4" />
