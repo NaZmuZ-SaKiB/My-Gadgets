@@ -6,6 +6,7 @@ import AddShippingAddressModal from "@/components/global/shared/AddShippingAddre
 import { RefreshCcw } from "lucide-react";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
+import ShippingAddressLoading from "./ShippingAddressLoading";
 
 type TProps = {
   userId: string;
@@ -32,7 +33,7 @@ const ShippingAddressSection = ({
     }
   }, [data, setSelectedAddress]);
 
-  if (isLoading) return <div className="row-span-2">Loading...</div>;
+  if (isLoading) return <ShippingAddressLoading />;
   return (
     <div className="max-lg:col-span-2 max-lg:border-b max-lg:pb-4 sm:rounded-xl sm:border sm:border-slate-200 sm:p-4 lg:row-span-2">
       <div className="mb-3 flex items-center justify-between gap-3">
