@@ -4,6 +4,7 @@ import { useCart } from "@/lib/providers/ContextProvider";
 import { TDeliveryOption } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import { useEffect, useState } from "react";
+import CheckoutOverviewLoading from "./CheckoutOverviewLoading";
 
 type TProps = {
   deliveryOption: TDeliveryOption;
@@ -20,7 +21,7 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
 
   const subTotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
 
   const shippingCharge =
@@ -30,21 +31,23 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
 
   const total = subTotal + shippingCharge;
 
+  if (!mounted) return <CheckoutOverviewLoading />;
+
   return (
-    <div className="sm:rounded-xl max-sm:border-t max-sm:pt-3 sm:border border-slate-200 sm:p-4 col-span-2">
+    <div className="col-span-2 border-slate-200 max-sm:border-t max-sm:pt-3 sm:rounded-xl sm:border sm:p-4">
       <h2 className="text-lg font-semibold text-slate-700">Overview</h2>
 
       {mounted && (
-        <table className="table-auto admin-table mt-3">
+        <table className="admin-table mt-3 table-auto">
           <thead className="text-left">
             <tr>
-              <th className="!bg-slate-100 !border-slate-200 !text-slate-700">
+              <th className="!border-slate-200 !bg-slate-100 !text-slate-700">
                 Name
               </th>
-              <th className="!bg-slate-100 !border-slate-200 !text-slate-700">
+              <th className="!border-slate-200 !bg-slate-100 !text-slate-700">
                 Price
               </th>
-              <th className="!bg-slate-100 !border-slate-200 !text-slate-700">
+              <th className="!border-slate-200 !bg-slate-100 !text-slate-700">
                 Total
               </th>
             </tr>
@@ -62,19 +65,19 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
               </tr>
             ))}
             <tr>
-              <td colSpan={2} className="text-right font-semibold text-base">
+              <td colSpan={2} className="text-right text-base font-semibold">
                 Sub Total
               </td>
               <td>{formatCurrency(subTotal)}</td>
             </tr>
             <tr>
-              <td colSpan={2} className="text-right font-semibold text-base">
+              <td colSpan={2} className="text-right text-base font-semibold">
                 Shipping Charge
               </td>
               <td>{formatCurrency(shippingCharge)}</td>
             </tr>
             <tr>
-              <td colSpan={2} className="text-right font-semibold text-base">
+              <td colSpan={2} className="text-right text-base font-semibold">
                 Total
               </td>
               <td>{formatCurrency(total)}</td>
