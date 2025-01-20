@@ -20,6 +20,8 @@ import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { AQTags } from "@/constants";
 import { useRouter } from "next/navigation";
+import ShippingAddressLoading from "./_components/ShippingAddressLoading";
+import CheckoutPageLoading from "./loading";
 
 const CheckoutPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
@@ -138,7 +140,7 @@ const CheckoutPage = () => {
 
       <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
         {isLoading ? (
-          <div className="row-span-2">Loading...</div>
+          <ShippingAddressLoading />
         ) : (
           <ShippingAddressSection
             userId={`${data?._id}`}
@@ -167,7 +169,7 @@ const CheckoutPage = () => {
             type="checkbox"
             onChange={(e) => setTermsAccepted(e.target.checked)}
             className="cursor-pointer"
-          />{" "}
+          />
           &nbsp; I have read and accepted the{" "}
           <Link
             className="font-medium text-primary-hover"
