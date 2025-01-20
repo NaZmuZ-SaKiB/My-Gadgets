@@ -6,6 +6,7 @@ import { formatCurrency } from "@/utils/currencyFormat";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ComparePageLoading from "./loading";
 
 const compareFields = [
   {
@@ -59,7 +60,7 @@ const ComparePage = () => {
 
   const { compare, removeFromCompare } = useCompare();
 
-  if (!mounted) return null;
+  if (!mounted) return <ComparePageLoading />;
   return (
     <div className="mg-container pt-4">
       <BreadcrumbBar items={[{ label: "Compare" }]} />
