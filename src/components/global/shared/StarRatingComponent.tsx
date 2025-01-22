@@ -1,3 +1,5 @@
+"use client";
+
 import { images } from "@/constants";
 import { Star } from "lucide-react";
 import Image from "next/image";
@@ -17,7 +19,7 @@ const StarRatingComponent = ({
 }: TProps) => {
   if (!readonly) {
     return (
-      <div className="flex gap-1 items-center">
+      <div className="flex items-center gap-1">
         {Array(maxStars)
           .fill(0)
           .map((_, i) => (
@@ -32,7 +34,7 @@ const StarRatingComponent = ({
               />
             </span>
           ))}
-        <span className="text-lg pl-1">({value})</span>
+        <span className="pl-1 text-lg">({value})</span>
       </div>
     );
   } else {
