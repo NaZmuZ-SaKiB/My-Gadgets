@@ -3,7 +3,7 @@
 import MGButton from "@/components/global/shared/MGButton";
 import { useCart } from "@/lib/providers/ContextProvider";
 import { runFireWorks } from "@/utils/runFireworks";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,21 +24,26 @@ const PaymentSuccessPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted)
+    return (
+      <div className="grid min-h-[90svh] place-items-center">
+        <Loader2 className="size-14 animate-spin text-primary" />
+      </div>
+    );
 
   return (
-    <div className="max-sm:min-h-[90svh] min-h-[70svh] md:min-h-[60svh] grid place-items-center p-4">
-      <div className="w-full max-w-screen-lg mx-auto bg-slate-50 px-4 py-12 sm:p-12 rounded-xl flex flex-col justify-center items-center">
+    <div className="grid min-h-[70svh] place-items-center p-4 max-sm:min-h-[90svh] md:min-h-[60svh]">
+      <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-center rounded-xl bg-slate-50 px-4 py-12 sm:p-12">
         <p>
           <Check className="size-10 text-primary" />
         </p>
-        <h2 className="capitalize mt-4 font-semibold text-2xl sm:text-3xl text-slate-700 text-center">
+        <h2 className="mt-4 text-center text-2xl font-semibold capitalize text-slate-700 sm:text-3xl">
           Thank You For Your Order!
         </h2>
-        <p className="text-center mt-1 text-slate-700 font-semibold">
+        <p className="mt-1 text-center font-semibold text-slate-700">
           Check Your Email Inbox for the recept.
         </p>
-        <p className="font-semibold text-slate-700 text-center mt-6">
+        <p className="mt-6 text-center font-semibold text-slate-700">
           If you have any questions, please email{" "}
           <span className="text-primary-hover">order@my.gadgets.com</span>
         </p>
