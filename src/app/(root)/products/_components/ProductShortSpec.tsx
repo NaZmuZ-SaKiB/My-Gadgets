@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { TProduct } from "@/types/product.type";
 import { formatCurrency } from "@/utils/currencyFormat";
-import { Heart, Shuffle } from "lucide-react";
 import QuantityInput from "./QuantityInput";
 import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
 import { TReview } from "@/types/review.type";
