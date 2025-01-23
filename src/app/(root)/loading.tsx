@@ -2,12 +2,12 @@ const MainLoading = () => {
   return (
     <div className="mg-container">
       <div className="pb-2 pt-4 sm:pb-4 md:pt-8">
-        <div className="aspect-[16/5] w-full animate-pulse overflow-hidden rounded-lg bg-slate-200 sm:rounded-2xl"></div>
+        <div className="aspect-[16/5] w-full animate-pulse overflow-hidden rounded-lg bg-slate-100 sm:rounded-2xl"></div>
       </div>
       <div className="flex gap-3">
-        <div className="aspect-[16/8] w-full animate-pulse overflow-hidden rounded-lg bg-slate-200 sm:rounded-2xl"></div>
-        <div className="aspect-[16/8] w-full animate-pulse overflow-hidden rounded-lg bg-slate-200 sm:rounded-2xl"></div>
-        <div className="aspect-[16/8] w-full animate-pulse overflow-hidden rounded-lg bg-slate-200 max-md:hidden sm:rounded-2xl"></div>
+        <div className="aspect-[16/8] w-full animate-pulse overflow-hidden rounded-lg bg-slate-100 sm:rounded-2xl"></div>
+        <div className="aspect-[16/8] w-full animate-pulse overflow-hidden rounded-lg bg-slate-100 sm:rounded-2xl"></div>
+        <div className="aspect-[16/8] w-full animate-pulse overflow-hidden rounded-lg bg-slate-100 max-md:hidden sm:rounded-2xl"></div>
       </div>
 
       <div className="pb-4 pt-4 md:pt-6">
@@ -21,7 +21,7 @@ const MainLoading = () => {
             .map((_, i) => (
               <div
                 key={`featured-cats-loading-${i}`}
-                className="aspect-square max-h-[130px] flex-1 basis-32 animate-pulse rounded-xl bg-slate-200 sm:basis-48"
+                className="aspect-square max-h-[130px] flex-1 basis-32 animate-pulse rounded-xl bg-slate-100 sm:basis-48"
               ></div>
             ))}
         </div>

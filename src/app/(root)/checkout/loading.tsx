@@ -16,7 +16,7 @@ const CheckoutPageLoading = () => {
 
       <div className="mt-5 sm:mt-8">
         <h1 className="text-3xl font-semibold text-slate-700">Checkout</h1>
-        <p className="mt-3 h-5 w-[230px] animate-pulse rounded-full bg-slate-200"></p>
+        <p className="mt-3 h-5 w-[230px] animate-pulse rounded-full bg-slate-100"></p>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">

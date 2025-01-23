@@ -10,7 +10,7 @@ const CartPageLoading = () => {
         <div className="flex items-end justify-between gap-3">
           <div>
             <h1 className="text-3xl font-semibold text-slate-700">Your Cart</h1>
-            <div className="mt-3 h-5 w-[230px] animate-pulse rounded-full bg-slate-200"></div>
+            <div className="mt-3 h-5 w-[230px] animate-pulse rounded-full bg-slate-100"></div>
           </div>
 
           <div className="flex shrink-0 cursor-pointer items-center gap-1 rounded-lg border border-slate-500 px-2 py-1 text-sm text-slate-500">
@@ -25,7 +25,7 @@ const CartPageLoading = () => {
             .map((_, i) => (
               <div
                 key={`my-order-table-loading-${i}`}
-                className="mb-1 h-10 w-full animate-pulse bg-slate-200"
+                className="mb-1 h-10 w-full animate-pulse bg-slate-100"
               ></div>
             ))}
         </div>

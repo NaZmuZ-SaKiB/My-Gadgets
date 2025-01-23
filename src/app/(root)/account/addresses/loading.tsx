@@ -11,7 +11,7 @@ const AddressesLoading = () => {
           .map((_, i) => (
             <div
               key={`my-addresses-loading-${i}`}
-              className="h-[160px] w-full animate-pulse rounded-lg bg-slate-200"
+              className="h-[160px] w-full animate-pulse rounded-lg bg-slate-100"
             ></div>
           ))}
       </div>

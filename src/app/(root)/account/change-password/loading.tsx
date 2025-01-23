@@ -5,10 +5,10 @@ const ChangePasswordLoading = () => {
         Change Password
       </h1>
 
-      <div className="mb-9 h-14 w-full animate-pulse rounded-xl bg-slate-200" />
-      <div className="mb-9 h-14 w-full animate-pulse rounded-xl bg-slate-200" />
-      <div className="mb-9 h-14 w-full animate-pulse rounded-xl bg-slate-200" />
-      <div className="h-11 w-[130px] animate-pulse rounded-lg bg-slate-200" />
+      <div className="mb-9 h-14 w-full animate-pulse rounded-xl bg-slate-100" />
+      <div className="mb-9 h-14 w-full animate-pulse rounded-xl bg-slate-100" />
+      <div className="mb-9 h-14 w-full animate-pulse rounded-xl bg-slate-100" />
+      <div className="h-11 w-[130px] animate-pulse rounded-lg bg-slate-100" />
     </div>
   );
 };

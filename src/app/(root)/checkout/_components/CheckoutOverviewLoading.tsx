@@ -8,7 +8,7 @@ const CheckoutOverviewLoading = () => {
         .map((_, i) => (
           <div
             key={`my-order-table-loading-${i}`}
-            className="mb-1 h-10 w-full animate-pulse bg-slate-200"
+            className="mb-1 h-10 w-full animate-pulse bg-slate-100"
           ></div>
         ))}
     </div>
