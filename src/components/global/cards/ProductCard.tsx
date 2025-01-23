@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import AddToCartButton from "../shared/ProductCardAddToCart";
-import { Shuffle } from "lucide-react";
 import CompareButton from "../shared/CompareButton";
 import WishlistButton from "../shared/WishlistButton";
 
