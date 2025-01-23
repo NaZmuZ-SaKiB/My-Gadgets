@@ -14,6 +14,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Loader2, X } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
+import WishlistPageLoading from "./loading";
 
 const WishlistPage = () => {
   const { data: wishlistData, isLoading } = useWishlistGetQuery();
@@ -69,7 +70,7 @@ const WishlistPage = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <WishlistPageLoading />;
 
   return (
     <div className="mg-container pt-4">
