@@ -50,7 +50,6 @@ const WishlistButton = ({ productId, className }: TProps) => {
 
         queryClient.invalidateQueries({
           queryKey: [AQTags.WISHLIST],
-          exact: false,
         });
       } else {
         toast.error(result?.message || "A server error occurred.");
