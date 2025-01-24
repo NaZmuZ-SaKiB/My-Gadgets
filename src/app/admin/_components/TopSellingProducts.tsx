@@ -3,6 +3,7 @@
 import { useProductTopSellingQuery } from "@/lib/queries/product.query";
 import { TProduct } from "@/types/product.type";
 import ProductsTable from "../products/_components/ProductsTable";
+import TopSellingLoading from "./TopSellingLoading";
 
 const TopSellingProducts = () => {
   const { data, isLoading } = useProductTopSellingQuery();
@@ -10,7 +11,7 @@ const TopSellingProducts = () => {
 
   console.log(data);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <TopSellingLoading />;
   return (
     <div>
       <ProductsTable
