@@ -66,7 +66,10 @@ const CategoryCreateForm = () => {
     }
   };
 
-  if (isLoading) return null;
+  if (isLoading)
+    return (
+      <div className="h-[500px] w-full animate-pulse rounded-xl bg-slate-200"></div>
+    );
 
   const catSort = (a: TCategory, b: TCategory) => {
     if (a?.name < b?.name) return -1;
