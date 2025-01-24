@@ -12,6 +12,7 @@ import {
   TrendingUp,
   User,
 } from "lucide-react";
+import CardsLoader from "./CardsLoader";
 
 const dashboardCardsData = [
   {
@@ -58,7 +59,7 @@ const Cards = () => {
   const dashboardData: TDashboard = data?.data;
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <CardsLoader />;
   }
 
   return (
