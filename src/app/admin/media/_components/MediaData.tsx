@@ -9,14 +9,13 @@ import Image from "next/image";
 import ImageEditForm from "./ImageEditForm";
 import { X } from "lucide-react";
 import Link from "next/link";
-import { useMediaGetByIdQuery } from "@/lib/queries/media.query";
 
 const MediaData = () => {
   const [selectedImage, setSelectedImage] = useState<TMedia | null>(null);
 
   return (
     <div className="flex items-start gap-4">
-      <div>
+      <div className="w-full">
         <AFloatingBox className="mb-5">
           <DataSearchBox />
         </AFloatingBox>
