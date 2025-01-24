@@ -1,7 +1,5 @@
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import ShippingAddressLoading from "./_components/ShippingAddressLoading";
-import PaymentMethodSection from "./_components/PaymentMethodSection";
-import DeliveryMethodSection from "./_components/DeliveryMethodSection";
 import CheckoutOverviewLoading from "./_components/CheckoutOverviewLoading";
 import Link from "next/link";
 import MGButton from "@/components/global/shared/MGButton";
@@ -22,16 +20,8 @@ const CheckoutPageLoading = () => {
       <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
         <ShippingAddressLoading />
 
-        <PaymentMethodSection
-          selectedPaymentMethod={"cash-on-delivery"}
-          setSelectedPaymentMethod={() => {}}
-          setTransactionId={() => {}}
-        />
-
-        <DeliveryMethodSection
-          selectedDeliveryMethod={"pickup"}
-          setSelectedDeliveryMethod={() => {}}
-        />
+        <div className="h-full w-full animate-pulse rounded-xl bg-slate-100"></div>
+        <div className="h-full w-full animate-pulse rounded-xl bg-slate-100"></div>
 
         <CheckoutOverviewLoading />
       </div>
