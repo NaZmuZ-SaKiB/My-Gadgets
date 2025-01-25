@@ -12,7 +12,7 @@ const FeaturedBrands = ({ brands }: TProps) => {
         Featured Brands
       </h2>
       {/* @ts-ignore */}
-      <marquee>
+      <marquee scrollamount="10">
         <div className="flex items-center gap-10 sm:gap-20">
           {brands.map((brand) => (
             <Image
