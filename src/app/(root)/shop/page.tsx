@@ -17,7 +17,6 @@ type TProps = {
 
 const ShopPage = async (props: TProps) => {
   const searchParams = await props.searchParams;
-  const params = await props.params;
   const limit = searchParams?.limit ?? 35;
   if (searchParams?.limit) delete searchParams.limit;
 
