@@ -1,6 +1,6 @@
 import { categoryGetAllWithSubCatsAction } from "@/lib/actions/category.action";
 import { TCategory } from "@/types/category.type";
-import { AlignJustify, ChevronDown } from "lucide-react";
+import { AlignJustify, ChevronDown, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -90,6 +90,16 @@ const Navbar = async () => {
         </div>
 
         <div className="flex items-center justify-start">
+          <Link
+            href={`/shop`}
+            className="peer block cursor-pointer rounded px-3 py-2 hover:bg-primary-hover hover:text-white"
+          >
+            <span className="flex items-center gap-1 text-sm">
+              <ShoppingCart className="size-4" />
+              <span>Shop</span>
+            </span>
+          </Link>
+
           {showOnTopCategories.map((cat) => {
             const hasSubCat = cat.subCategories.length > 0;
             return (
