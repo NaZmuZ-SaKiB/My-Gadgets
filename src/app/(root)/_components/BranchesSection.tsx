@@ -7,23 +7,23 @@ const BranchesSection = async () => {
   const branches: TBranch[] = branchesData.data || [];
 
   return (
-    <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-3xl text-slate-700">Outlets</h2>
+    <section className="pb-4 pt-4 md:pt-6">
+      <h2 className="text-3xl font-bold text-slate-700">Outlets</h2>
 
-      <div className="mt-6 flex justify-between gap-4 flex-wrap">
+      <div className="mt-6 flex flex-wrap justify-between gap-4">
         {branches.map((branch) => (
           <div
             key={`${branch._id}`}
-            className="flex-1 basis-[250px] bg-slate-100 px-5 py-3 rounded-xl"
+            className="flex-1 basis-[250px] rounded-xl bg-slate-100 px-5 py-3"
           >
-            <h3 className="font-semibold text-xl mb-2 text-slate-700">
+            <h3 className="mb-2 text-xl font-semibold text-slate-700">
               {branch.name}
             </h3>
-            <p className="text-slate-500 sm:text-sm flex gap-1 items-center max-sm:justify-center">
+            <p className="flex items-center gap-1 text-slate-500 sm:text-sm">
               <MapPin className="size-4" />
               <span>{branch.address}</span>
             </p>
-            <p className="text-slate-500 sm:text-sm flex gap-1 items-center mt-2 max-sm:justify-center">
+            <p className="mt-2 flex items-center gap-1 text-slate-500 sm:text-sm">
               <Phone className="size-4" />
               <span>{branch.phone}</span>
             </p>
