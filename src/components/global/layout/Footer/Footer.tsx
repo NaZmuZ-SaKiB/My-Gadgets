@@ -3,6 +3,7 @@ import { settingsGetAction } from "@/lib/actions/settings.action";
 import { TFooterSettings } from "@/types/settings.type";
 import { Clock, Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = async () => {
   const settings = await settingsGetAction("footer");
@@ -42,8 +43,12 @@ const Footer = async () => {
           <div className="w-full max-md:text-center md:ml-10">
             <h3 className="text-xl font-bold text-slate-700">Quick Links</h3>
             <ul className="mt-3 space-y-2 text-slate-500 md:mt-6">
-              <li>Shop</li>
-              <li>Contact</li>
+              <li>
+                <Link href="/shop">Shop</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
               <li>About Us</li>
               <li>Privacy Policy</li>
               <li>Emi Terms</li>
