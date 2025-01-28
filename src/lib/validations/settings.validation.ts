@@ -31,7 +31,11 @@ const update = z.object({
 
       topSellingProducts: z.array(z.string()).optional(),
       trendingProducts: z.array(z.string()).optional(),
-      description: z.string().optional(),
+      description: z
+        .string()
+        .trim()
+        .transform((value) => value.replace("<p><br></p>", ""))
+        .optional(),
     })
     .optional(),
 
