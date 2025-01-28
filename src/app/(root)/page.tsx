@@ -9,6 +9,7 @@ import ProductListsSection from "./_components/ProductListsSection";
 import Services from "./_components/Services";
 import { THomepageSettings } from "@/types/settings.type";
 import FeaturedBrands from "./_components/FeaturedBrands";
+import SeoContent from "./_components/SeoContent";
 
 const HomePage = async () => {
   const settingsData = await settingsGetAction("homepage");
@@ -28,11 +29,12 @@ const HomePage = async () => {
       <PopularProducts popularProducts={homePageSettings.popularProducts} />
       <FeaturedProducts featuredProducts={homePageSettings.featuredProducts} />
       <FlashSaleSection flashSales={homePageSettings.flashSale || []} />
-      <FeaturedBrands brands={homePageSettings.featuredBrands} />
+      <SeoContent description={homePageSettings.description} />
       <ProductListsSection
         topSelling={homePageSettings.topSellingProducts}
         trendingProducts={homePageSettings.trendingProducts}
       />
+      <FeaturedBrands brands={homePageSettings.featuredBrands} />
       <Services />
       <BranchesSection />
     </div>
