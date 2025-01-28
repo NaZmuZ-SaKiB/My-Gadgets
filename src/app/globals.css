@@ -31,6 +31,19 @@
     @apply grid grid-cols-2 justify-between gap-2 overflow-hidden sm:gap-4 md:auto-rows-[0] md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 xl:grid-cols-5;
   }
 
+  .home-seo-content h1 {
+    @apply my-4 text-2xl font-semibold text-slate-800 md:text-3xl;
+  }
+
+  .home-seo-content h2 {
+    @apply my-3 text-xl font-semibold text-slate-800 md:text-2xl;
+  }
+
+  .home-seo-content p,
+  .home-seo-content ul {
+    @apply text-sm leading-6 text-slate-700;
+  }
+
   /* -------------------------------------------- */
 
   /* --------- Navbar --------- */
