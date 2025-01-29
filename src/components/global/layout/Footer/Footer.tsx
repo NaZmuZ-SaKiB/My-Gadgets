@@ -52,7 +52,9 @@ const Footer = async () => {
               <li>
                 <Link href="/about-us">About Us</Link>
               </li>
-              <li>Privacy Policy</li>
+              <li>
+                <Link href="privacy-policy">Privacy Policy</Link>
+              </li>
               <li>Emi Terms</li>
               <li>Refund & Return Policy</li>
             </ul>
