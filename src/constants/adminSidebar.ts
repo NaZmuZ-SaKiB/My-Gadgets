@@ -110,6 +110,10 @@ export const adminSideBar: TAdminSideBar[] = [
         name: "Footer",
         link: "/admin/settings/footer",
       },
+      {
+        name: "Footer",
+        link: "/admin/settings/social",
+      },
     ],
   },
 ];
