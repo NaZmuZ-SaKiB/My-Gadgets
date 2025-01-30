@@ -7,7 +7,7 @@ type TProps = {
 
 const FeaturedBrands = ({ brands }: TProps) => {
   return (
-    <section>
+    <section className="mt-5">
       <h2 className="text-2xl font-bold text-slate-700 md:text-3xl">
         Featured Brands
       </h2>
