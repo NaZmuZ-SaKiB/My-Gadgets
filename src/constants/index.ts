@@ -43,3 +43,11 @@ export const ORDER_STATUS = {
   COMPLETED: "completed",
   CANCELLED: "cancelled",
 } as const;
+
+export const socialItems = [
+  "facebook",
+  "twitter",
+  "instagram",
+  "linkedin",
+  "youtube",
+];
