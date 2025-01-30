@@ -24,7 +24,7 @@ const FloatingCompareButton = () => {
   return (
     <div
       className={cn(
-        "fixed bottom-24 right-5 z-50 hidden rounded-md border border-slate-600 bg-slate-50 p-1 text-slate-50 transition-all",
+        "fixed bottom-36 right-5 z-50 hidden rounded-md border border-slate-600 bg-slate-50 p-1 text-slate-50 transition-all",
         {
           "block !h-auto max-w-[350px] overflow-hidden p-0": open,
           "size-16 flex-col items-center justify-center gap-1 xl:flex": !open,
