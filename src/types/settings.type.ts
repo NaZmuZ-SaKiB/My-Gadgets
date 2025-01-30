@@ -36,9 +36,18 @@ export type TFooterSettings = {
   copyright: string;
 };
 
+export type TSocialSettings = {
+  facebook: string;
+  twitter: string;
+  instagram: string;
+  linkedin: string;
+  youtube: string;
+};
+
 export type TSettings = {
   _id: string;
   homepage: THomepageSettings;
   category: TCategorySettings;
   footer: TFooterSettings;
+  social: TSocialSettings;
 };
