@@ -4,14 +4,15 @@ import { TFooterSettings } from "@/types/settings.type";
 import { Clock, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import SocialLinks from "./SocialLinks";
 
 const Footer = async () => {
   const settings = await settingsGetAction("footer");
   const footerData: TFooterSettings = settings?.data?.footer;
 
   return (
-    <div className="mt-4 border-t border-slate-300 pt-8">
-      <footer className="container">
+    <div className="mt-4 border-t border-slate-300 pt-8 max-xl:mb-16">
+      <footer className="mg-container">
         <div className="flex flex-col gap-x-4 gap-y-6 md:flex-row">
           {/* Column 1 */}
           <div className="w-full">
@@ -76,9 +77,12 @@ const Footer = async () => {
       </footer>
       <div>
         <hr className="mt-8 border-slate-300" />
-        <p className="px-2 py-4 text-center text-sm text-slate-500">
-          © 2024 My Gadgets. All Rights Reserved.
-        </p>
+        <div className="mg-container flex items-center justify-between gap-4 py-4 max-md:flex-col">
+          <p className="text-sm text-slate-500">
+            © 2024 My Gadgets. All Rights Reserved.
+          </p>
+          <SocialLinks />
+        </div>
       </div>
     </div>
   );
