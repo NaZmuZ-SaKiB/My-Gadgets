@@ -19,9 +19,8 @@ import { OrderValidation } from "@/lib/validations/order.validation";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { AQTags } from "@/constants";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ShippingAddressLoading from "./_components/ShippingAddressLoading";
-import CheckoutPageLoading from "./loading";
 
 const CheckoutPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
@@ -127,6 +126,12 @@ const CheckoutPage = () => {
       }
     }
   };
+
+  const pathname = usePathname();
+
+  if (!isLoading && !data) {
+    router.push(`/sign-in?from=${pathname}`);
+  }
 
   return (
     <div className="mg-container pt-4">
