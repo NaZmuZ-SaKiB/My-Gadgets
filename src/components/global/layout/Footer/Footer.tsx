@@ -58,7 +58,9 @@ const Footer = async () => {
               <li>
                 <Link href="emi-terms">Emi Terms</Link>
               </li>
-              <li>Refund & Return Policy</li>
+              <li>
+                <Link href="/refund-return-policy">Refund & Return Policy</Link>
+              </li>
             </ul>
           </div>
 
