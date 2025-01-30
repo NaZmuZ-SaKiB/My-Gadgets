@@ -9,7 +9,7 @@ import { AuthValidation } from "@/lib/validations/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
@@ -23,6 +23,9 @@ const defaultValues = {
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
+
   const router = useRouter();
 
   const { mutateAsync: signInFn, isPending } = useSignInMutation();
@@ -34,7 +37,9 @@ const SignInForm = () => {
       const result = await signInFn(values);
 
       if (result?.success) {
-        if (result?.data?.user?.role === USER_ROLE.USER) {
+        if (from) {
+          router.push(from);
+        } else if (result?.data?.user?.role === USER_ROLE.USER) {
           router.push("/");
         } else {
           router.push("/admin");
@@ -65,7 +70,7 @@ const SignInForm = () => {
           showLabel={false}
         />
         <span
-          className="absolute px-3 cursor-pointer h-full grid place-items-center bg-slate-100 right-0 top-0 rounded-xl text-slate-500 hover:text-primary-hover"
+          className="absolute right-0 top-0 grid h-full cursor-pointer place-items-center rounded-xl bg-slate-100 px-3 text-slate-500 hover:text-primary-hover"
           onClick={() => setShowPassword((prev) => !prev)}
         >
           {showPassword ? (
@@ -77,20 +82,20 @@ const SignInForm = () => {
       </div>
       <Link
         href={`/sign-in`}
-        className="mb-3 text-xs hover:underline self-end text-slate-500 no-focus focus:underline hover:text-primary-hover focus:text-primary-hover"
+        className="no-focus mb-3 self-end text-xs text-slate-500 hover:text-primary-hover hover:underline focus:text-primary-hover focus:underline"
       >
         Forgot Password?
       </Link>
 
-      <MGButton className="h-auto p-4 mb-5" disabled={isPending}>
+      <MGButton className="mb-5 h-auto p-4" disabled={isPending}>
         {!isPending ? "Login" : "Logging in..."}
       </MGButton>
 
-      <p className="text-xs text-center">
+      <p className="text-center text-xs">
         {"Don't"} have an account?{" "}
         <Link
           href={`/sign-up`}
-          className="text-primary-hover hover:underline self-end no-focus focus:underline"
+          className="no-focus self-end text-primary-hover hover:underline focus:underline"
         >
           SignUp
         </Link>
