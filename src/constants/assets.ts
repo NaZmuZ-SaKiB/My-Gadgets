@@ -19,6 +19,12 @@ import ServiceImg1 from "@/assets/icons/service-1.svg";
 import ServiceImg2 from "@/assets/icons/service-2.svg";
 import ServiceImg3 from "@/assets/icons/service-3.svg";
 import ServiceImg4 from "@/assets/icons/service-4.svg";
+import Facebook from "@/assets/icons/facebook.webp";
+import Twitter from "@/assets/icons/twitter.webp";
+import Instagram from "@/assets/icons/instagram.webp";
+import Linkedin from "@/assets/icons/linkedin.webp";
+import Youtube from "@/assets/icons/youtube.webp";
+import { StaticImageData } from "next/image";
 
 export const images = {
   defaultImage: DefaultImage,
@@ -35,7 +41,9 @@ export const images = {
   fullStar: FullStar,
 };
 
-export const icons = {
+export const icons: {
+  [key: string]: StaticImageData;
+} = {
   cart: CartIcon,
   heart: HeartIcon,
   compare: CompareIcon,
@@ -44,4 +52,9 @@ export const icons = {
   serviceImg2: ServiceImg2,
   serviceImg3: ServiceImg3,
   serviceImg4: ServiceImg4,
+  facebook: Facebook,
+  twitter: Twitter,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  youtube: Youtube,
 };
