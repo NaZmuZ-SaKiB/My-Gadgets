@@ -45,7 +45,7 @@ const Cart = () => {
             </span>
           )}
         </div>
-        <div className="fixed bottom-5 right-5 z-50 hidden size-16 flex-col items-center justify-center gap-1 rounded-md border border-slate-600 bg-slate-50 p-1 text-slate-50 xl:flex">
+        <div className="fixed bottom-14 right-5 z-50 hidden size-16 flex-col items-center justify-center gap-1 rounded-md border border-slate-600 bg-slate-50 p-1 text-slate-50 xl:flex">
           <Image
             src={icons.cart}
             alt="cart"
