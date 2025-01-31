@@ -1,8 +1,10 @@
+import { icons } from "@/constants";
 import { branchGetAllAction } from "@/lib/actions/branch.action";
 import { settingsGetAction } from "@/lib/actions/settings.action";
 import { TBranch } from "@/types/branch.type";
-import { TFooterSettings } from "@/types/settings.type";
+import { TFooterSettings, TSocialSettings } from "@/types/settings.type";
 import { MapPin, MapPinned, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const ContactPage = async () => {
@@ -11,6 +13,9 @@ const ContactPage = async () => {
 
   const settings = await settingsGetAction("footer");
   const footerData: TFooterSettings = settings?.data?.footer;
+
+  const settings2 = await settingsGetAction("social");
+  const social: TSocialSettings = settings2?.data?.social;
 
   return (
     <div className="mg-container">
@@ -58,6 +63,31 @@ const ContactPage = async () => {
           dangerouslySetInnerHTML={{ __html: footerData?.contact }}
           className="flex flex-col gap-2 leading-6 text-slate-700"
         />
+      </div>
+
+      <h2 className="text-center text-3xl font-bold text-slate-700">
+        Social Media
+      </h2>
+
+      <div className="my-10 flex flex-wrap items-center justify-center gap-10">
+        {(Object.keys(social) as (keyof TSocialSettings)[]).map(
+          (item) =>
+            social[item] && (
+              <Link
+                href={social[item]}
+                key={`footer-social-icon-${item}`}
+                className=""
+              >
+                <Image
+                  src={icons[item].src}
+                  alt={item}
+                  width={100}
+                  height={100}
+                  className=""
+                />
+              </Link>
+            ),
+        )}
       </div>
     </div>
   );
