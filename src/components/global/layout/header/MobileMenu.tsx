@@ -6,7 +6,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useCategoryGetAllWithSubCatQuery } from "@/lib/queries/category.query";
 import { TCategory } from "@/types/category.type";
 import { useState } from "react";
@@ -35,6 +40,7 @@ const MobileMenu = () => {
         side={"left"}
         className="top-[53px] w-[min(300px,100%)] overflow-y-auto p-0 pb-20"
       >
+        <SheetTitle className="hidden">menu</SheetTitle>
         <Accordion type="single" collapsible className="w-full">
           {categories.map((category: TCategory) => (
             <AccordionItem
