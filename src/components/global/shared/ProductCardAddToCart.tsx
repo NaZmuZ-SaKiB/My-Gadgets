@@ -41,15 +41,15 @@ const ProductCardAddToCart = ({
   return (
     <div className={cn(className)} onClick={handleClick}>
       <MGButton
-        className={cn("gap-2 rounded-lg", {
+        className={cn("gap-2 rounded-lg max-xs:h-8", {
           "cursor-not-allowed opacity-50": isAdded,
         })}
         size={size}
       >
         {mounted && !isAdded ? (
-          <ShoppingCart className="size-3 xs:size-4" />
+          <ShoppingCart className="size-3.5 xs:size-4" />
         ) : (
-          <Check className="size-3 xs:size-4" />
+          <Check className="size-3.5 xs:size-4" />
         )}
         <span>{mounted && isAdded ? "Added" : "Add"}</span>
       </MGButton>
