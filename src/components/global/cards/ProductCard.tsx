@@ -30,7 +30,7 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
 
   return (
     <div className="hover:border-primary-2 group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200">
-      <div className="relative aspect-square w-full">
+      <div className="relative aspect-square w-full max-xs:h-[150px]">
         <Image
           src={product?.images?.[0].secureUrl}
           alt={product?.model}
@@ -60,11 +60,11 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
               dangerouslySetInnerHTML={{
                 __html: product.shortDescription,
               }}
-              className="mb-3 ml-3 mt-3 text-xs leading-5 text-gray-700 max-sm:px-3 [&>ul]:list-disc"
+              className="mb-3 ml-3 mt-3 text-[10px] leading-5 text-gray-700 max-sm:px-3 sm:text-xs [&>ul]:list-disc"
             />
           )}
 
-          <div className="flex items-end justify-between gap-4 max-xs:flex-col max-xs:items-center">
+          <div className="flex items-end justify-between gap-4 max-md:flex-col max-md:items-center">
             <div className="flex flex-wrap items-center gap-x-3">
               <span className="text-xl font-bold text-primary">
                 {formatCurrency(product.salePrice)}
@@ -73,7 +73,17 @@ const ProductCard = ({ product, showDescription = true }: TProps) => {
                 {formatCurrency(product.regularPrice)}
               </span>
             </div>
-            <AddToCartButton product={product} quantity={1} />
+            <div className="flex items-center gap-2">
+              <AddToCartButton product={product} quantity={1} />
+              <CompareButton
+                product={product}
+                className="p-2 hover:text-slate-900 md:hidden"
+              />
+              <WishlistButton
+                productId={`${product._id}`}
+                className="p-2 hover:text-slate-900 md:hidden"
+              />
+            </div>
           </div>
         </div>
       </div>
