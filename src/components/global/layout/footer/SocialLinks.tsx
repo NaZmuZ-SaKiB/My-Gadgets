@@ -1,16 +1,16 @@
-import { icons, socialItems } from "@/constants";
+import { icons } from "@/constants";
 import { settingsGetAction } from "@/lib/actions/settings.action";
-import { TFooterSettings } from "@/types/settings.type";
-import Image, { StaticImageData } from "next/image";
+import { TSocialSettings } from "@/types/settings.type";
+import Image from "next/image";
 import Link from "next/link";
 
 const SocialLinks = async () => {
   const settings = await settingsGetAction("social");
-  const socialSettings: TFooterSettings = settings?.data?.social;
+  const socialSettings: TSocialSettings = settings?.data?.social;
 
   return (
     <div className="flex items-center gap-2">
-      {(socialItems as (keyof TFooterSettings)[]).map(
+      {(Object.keys(socialSettings) as (keyof TSocialSettings)[]).map(
         (item) =>
           socialSettings[item] && (
             <Link
