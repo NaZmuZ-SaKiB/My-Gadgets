@@ -11,7 +11,7 @@ const APageContainer = ({ children, className }: TProps) => {
   return (
     <div
       className={cn(
-        "flex h-[calc(100svh-60px)] flex-col gap-3 overflow-auto p-2 xs:gap-5 xs:p-4",
+        "flex h-[calc(100svh-60px)] flex-col gap-3 overflow-auto overflow-x-hidden p-2 xs:gap-5 xs:p-4",
         className,
       )}
     >
