@@ -63,7 +63,7 @@ const WishlistButton = ({ productId, className }: TProps) => {
     return (
       <div className={cn("cursor-pointer", className)}>
         <div>
-          <Heart />
+          <Heart className="text-slate-300" />
         </div>
       </div>
     );
@@ -80,7 +80,13 @@ const WishlistButton = ({ productId, className }: TProps) => {
       )}
     >
       {!isPending ? (
-        <div>{isAdded ? <Heart fill="#3AB77D" /> : <Heart />}</div>
+        <div>
+          {isAdded ? (
+            <Heart fill="#3AB77D" />
+          ) : (
+            <Heart suppressHydrationWarning />
+          )}
+        </div>
       ) : (
         <Loader2
           className={"animate-spin text-slate-300 hover:text-slate-300"}
