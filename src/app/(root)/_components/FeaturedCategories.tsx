@@ -46,7 +46,7 @@ const FeaturedCategories = ({ featuredCategories }: TProps) => {
           <Link
             href={`/shop/${category.name}`}
             key={`featured-category-${category._id}`}
-            className={`flex flex-1 basis-32 cursor-pointer flex-col items-center justify-center gap-4 rounded-xl p-4 transition-shadow duration-500 hover:shadow-lg sm:basis-48`}
+            className={`flex flex-1 basis-32 cursor-pointer flex-col items-center justify-center gap-4 rounded-xl p-4 transition-shadow duration-500 hover:shadow-lg sm:basis-56`}
             style={{ backgroundColor: colors[i] }}
           >
             <Image
