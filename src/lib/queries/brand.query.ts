@@ -4,7 +4,6 @@ import {
   brandGetAllAction,
   brandGetByIdAction,
   brandRemoveAction,
-  brandToggleFeaturedAction,
   brandUpdateAction,
 } from "../actions/brand.action";
 import { AQTags } from "@/constants";
@@ -29,11 +28,6 @@ export const useBrandGetByIdQuery = (id: string) =>
   useQuery({
     queryKey: [AQTags.BRAND, id],
     queryFn: () => brandGetByIdAction(id),
-  });
-
-export const useBrandToggleFeaturedMutation = () =>
-  useMutation({
-    mutationFn: brandToggleFeaturedAction,
   });
 
 export const useBrandDeleteMutation = () =>
