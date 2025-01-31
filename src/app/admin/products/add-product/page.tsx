@@ -118,7 +118,7 @@ const AddProductPage = () => {
             </div>
 
             {/* Right Side */}
-            <div className="space-y-4">
+            <div className="space-y-4 max-xl:mt-4">
               <SelectCategories
                 selectedCategories={selectedCategories}
                 setSelectedCategories={setSelectedCategories}
