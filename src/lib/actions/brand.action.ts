@@ -81,21 +81,6 @@ export const brandGetByIdAction = async (id: string) => {
   return result;
 };
 
-export const brandToggleFeaturedAction = async (id: string) => {
-  const response = await fetch(`${backendUrl}/api/brand/${id}/featured`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: (await cookies()).get(authKey)?.value || "",
-    },
-    cache: "no-store",
-  });
-
-  const result = await response.json();
-
-  return result;
-};
-
 export const brandRemoveAction = async (ids: string[]) => {
   const response = await fetch(`${backendUrl}/api/brand`, {
     method: "DELETE",
