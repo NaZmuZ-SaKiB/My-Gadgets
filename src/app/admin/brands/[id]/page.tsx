@@ -21,7 +21,6 @@ import { useParams } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import FeaturedSwitch from "../_components/FeaturedSwitch";
 import MGAImageInput from "@/components/admin/forms/MGAImageInput";
 
 const SingleBrandPage = () => {
@@ -105,13 +104,6 @@ const SingleBrandPage = () => {
             >
               {isPending ? "Updating..." : "Update Brand"}
             </MGButton>
-
-            <FeaturedSwitch
-              id={id as string}
-              label="Featured"
-              defaultValue={brand?.featured}
-              className="max-w-52 justify-between"
-            />
           </MGForm>
         </AFloatingBox>
       </AGrid>
