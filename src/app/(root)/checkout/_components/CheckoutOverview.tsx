@@ -5,6 +5,8 @@ import { TDeliveryOption } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
 import { useEffect, useState } from "react";
 import CheckoutOverviewLoading from "./CheckoutOverviewLoading";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type TProps = {
   deliveryOption: TDeliveryOption;
@@ -12,6 +14,8 @@ type TProps = {
 
 const CheckoutOverview = ({ deliveryOption }: TProps) => {
   const [mounted, setMounted] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -32,6 +36,11 @@ const CheckoutOverview = ({ deliveryOption }: TProps) => {
   const total = subTotal + shippingCharge;
 
   if (!mounted) return <CheckoutOverviewLoading />;
+
+  if (cart.length === 0) {
+    toast.info("Your cart is empty. Please add some items to proceed.");
+    router.back();
+  }
 
   return (
     <div className="col-span-2 border-slate-200 max-sm:border-t max-sm:pt-3 sm:rounded-xl sm:border sm:p-4">
