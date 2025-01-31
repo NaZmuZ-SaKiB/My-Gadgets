@@ -7,6 +7,7 @@ import FilterTopBar from "./_components/FilterTopBar";
 import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 import ProductCard from "@/components/global/cards/ProductCard";
+import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   params: Promise<{
@@ -60,6 +61,16 @@ const ShopPage = async (props: TProps) => {
           </div>
         </div>
       </div>
+
+      {productsData?.meta?.limit <= productsData?.meta?.total && (
+        <div className="mt-5">
+          <MGPagination
+            limit={productsData?.meta?.limit as number}
+            page={productsData?.meta?.page as number}
+            total={productsData?.meta?.total as number}
+          />
+        </div>
+      )}
     </div>
   );
 };
