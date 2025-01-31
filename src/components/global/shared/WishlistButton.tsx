@@ -70,6 +70,7 @@ const WishlistButton = ({ productId, className }: TProps) => {
 
   return (
     <div
+      suppressHydrationWarning
       onClick={handleClick}
       className={cn(
         "cursor-pointer",
@@ -80,15 +81,16 @@ const WishlistButton = ({ productId, className }: TProps) => {
       )}
     >
       {!isPending ? (
-        <div>
+        <div suppressHydrationWarning>
           {isAdded ? (
-            <Heart fill="#3AB77D" />
+            <Heart fill="#3AB77D" suppressHydrationWarning />
           ) : (
             <Heart suppressHydrationWarning />
           )}
         </div>
       ) : (
         <Loader2
+          suppressHydrationWarning
           className={"animate-spin text-slate-300 hover:text-slate-300"}
         />
       )}
