@@ -92,7 +92,7 @@ const OrdersPieChart = () => {
   ];
 
   return (
-    <AFloatingBox>
+    <AFloatingBox className="max-xl:mt-4">
       <h2 className="text-lg font-medium text-slate-700">Orders Overview</h2>
 
       <ChartContainer
