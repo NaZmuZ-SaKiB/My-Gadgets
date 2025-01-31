@@ -13,7 +13,7 @@ const UserLayout = ({
     <>
       <AdminTopbar />
       <Header />
-      {children}
+      <div className="min-h-[50svh]">{children}</div>
       <FloatingCompareButton />
       <Footer />
       <MobileBottombar />
