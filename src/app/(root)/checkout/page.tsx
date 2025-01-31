@@ -100,17 +100,17 @@ const CheckoutPage = () => {
 
   const handlePlaceOrder = async () => {
     if (!selectedAddress) {
-      toast.message("Please select a shipping address.");
+      toast.info("Please select a shipping address.");
       return;
     }
 
     if (!termsAccepted) {
-      toast.message("Please accept the terms and conditions.");
+      toast.info("Please accept the terms and conditions.");
       return;
     }
 
     if (selectedPaymentMethod === "bank-transfer" && !transactionId) {
-      toast.message("Transaction ID is required.");
+      toast.info("Transaction ID is required.");
       return;
     }
 
