@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "EMI Terms",
+  description: "Read the terms and conditions for EMI payments at My Gadgets.",
+};
+
 const EMITermsPage = () => {
   return (
     <div className="mg-container py-5 md:py-10">
