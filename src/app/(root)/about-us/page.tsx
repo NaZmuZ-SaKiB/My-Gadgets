@@ -1,5 +1,6 @@
-import { Suspense } from "react";
+import Link from "next/link";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import Outlets from "./Outlets";
 
@@ -29,7 +30,7 @@ const AboutUsPage = () => {
         <p className="mb-4 text-slate-700">
           At <span className="font-semibold">My-Gadgets</span>, we are
           passionate about bringing you the most innovative and cutting-edge
-          gadgets on the market. Whether you're a tech enthusiast, a casual
+          gadgets on the market. Whether you{`'`}re a tech enthusiast, a casual
           shopper, or searching for the perfect gift, our carefully curated
           collection has something for everyone.
         </p>
@@ -83,9 +84,9 @@ const AboutUsPage = () => {
           Explore Our Categories
         </h2>
         <p className="mb-6 text-slate-700">
-          Discover a world of innovation with our extensive catalog. Whether
-          you're looking for the latest smartphones, smartwatches, or gaming
-          accessories, we've got you covered.
+          Discover a world of innovation with our extensive catalog. Whether you
+          {`'`}re looking for the latest smartphones, smartwatches, or gaming
+          accessories, we{`'`}ve got you covered.
         </p>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {[
@@ -145,12 +146,12 @@ const AboutUsPage = () => {
           Elevate your tech game today! Browse our collection and discover the
           gadgets that will transform your lifestyle.
         </p>
-        <a
+        <Link
           href="/shop"
           className="rounded-lg bg-primary px-8 py-3 text-white transition duration-300 hover:bg-primary-hover"
         >
           Shop Now
-        </a>
+        </Link>
       </div>
     </div>
   );
