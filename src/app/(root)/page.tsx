@@ -10,6 +10,13 @@ import Services from "./_components/Services";
 import { THomepageSettings } from "@/types/settings.type";
 import FeaturedBrands from "./_components/FeaturedBrands";
 import SeoContent from "./_components/SeoContent";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Discover the latest gadgets at My-Gadgets! From smartphones and smartwatches to home automation and gaming accessories, we offer cutting-edge tech at competitive prices.",
+};
 
 const HomePage = async () => {
   const settingsData = await settingsGetAction("homepage");
