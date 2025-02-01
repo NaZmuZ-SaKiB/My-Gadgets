@@ -3,10 +3,16 @@ import { currentUser } from "@/lib/actions/auth.action";
 import { orderGetAllAction } from "@/lib/actions/order.action";
 import { TOrder } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
+import { Metadata } from "next";
 import Link from "next/link";
 
 type TProps = {
   searchParams: any;
+};
+
+export const metadata: Metadata = {
+  title: "My Orders",
+  description: "View your orders.",
 };
 
 const MyOrdersPage = async (props: TProps) => {
