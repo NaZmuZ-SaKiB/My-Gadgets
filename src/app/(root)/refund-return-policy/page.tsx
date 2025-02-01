@@ -122,8 +122,8 @@ const RefundReturnPolicyPage = () => {
             </li>
             <li>Gift cards or downloadable software products.</li>
             <li>
-              Items marked as "final sale" or "non-returnable" at the time of
-              purchase.
+              Items marked as {`"`}final sale{`"`} or {`"`}non-returnable{`"`}{" "}
+              at the time of purchase.
             </li>
           </ul>
         </section>
