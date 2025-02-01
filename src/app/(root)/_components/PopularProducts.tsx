@@ -1,5 +1,4 @@
 import ProductCard from "@/components/global/cards/ProductCard";
-import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 
 type TProps = {
@@ -11,10 +10,10 @@ const PopularProducts = ({ popularProducts }: TProps) => {
   // const products: TProduct[] = productsData?.data || [];
 
   return (
-    <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-3xl text-slate-700">Popular Products</h2>
+    <section className="pb-4 pt-4 md:pt-6">
+      <h2 className="text-3xl font-bold text-slate-700">Popular Products</h2>
 
-      <div className={`mt-8 ten-products-grid`}>
+      <div className={`ten-products-grid mt-8`}>
         {popularProducts.map((product) => (
           <ProductCard
             key={`popular-product-${product._id}`}

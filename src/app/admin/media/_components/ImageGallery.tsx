@@ -1,14 +1,16 @@
 "use client";
 
+import Image from "next/image";
+import { Loader2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+
+import UploadImageButton from "./UploadImageButton";
+import MGPagination from "@/components/global/shared/MGPagination";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+
 import { useMediaGetAllQuery } from "@/lib/queries/media.query";
 import { TMedia } from "@/types/media.type";
-import { Loader2 } from "lucide-react";
-import Image from "next/image";
-import UploadImageButton from "./UploadImageButton";
-import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
-import MGPagination from "@/components/global/shared/MGPagination";
-import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 type TProps = {

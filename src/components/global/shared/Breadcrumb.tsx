@@ -1,3 +1,7 @@
+import Link from "next/link";
+import { Home } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -5,9 +9,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
-import { Home } from "lucide-react";
-import Link from "next/link";
-import { Fragment } from "react/jsx-runtime";
 
 type TProps = {
   items: {
@@ -18,7 +19,7 @@ type TProps = {
 
 const BreadcrumbBar = ({ items }: TProps) => {
   return (
-    <Breadcrumb className="sm:p-3 sm:border sm:border-slate-200 sm:rounded-xl overflow-hidden">
+    <Breadcrumb className="overflow-hidden sm:rounded-xl sm:border sm:border-slate-200 sm:p-3">
       <BreadcrumbList className="flex-nowrap">
         <BreadcrumbItem className="text-primary">
           <Link href="/">
@@ -33,7 +34,7 @@ const BreadcrumbBar = ({ items }: TProps) => {
           return (
             <Fragment key={`breadcrumb-item-${item.label}-${i}`}>
               <BreadcrumbItem
-                className={cn("text-primary font-semibold overflow-hidden", {
+                className={cn("overflow-hidden font-semibold text-primary", {
                   "text-slate-500": !item.link,
                   "shrink-0": i < items.length - 1,
                 })}
@@ -41,7 +42,7 @@ const BreadcrumbBar = ({ items }: TProps) => {
                 <DinamicTag
                   href={item.link as string}
                   className={cn({
-                    "whitespace-nowrap overflow-hidden text-ellipsis md:max-w-[300px]":
+                    "overflow-hidden text-ellipsis whitespace-nowrap md:max-w-[300px]":
                       i === items.length - 1,
                   })}
                 >

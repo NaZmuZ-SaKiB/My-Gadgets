@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
-import { ClassValue } from "clsx";
 import { ReactNode } from "react";
+import { ClassValue } from "clsx";
+
+import { cn } from "@/lib/utils";
 
 type TProps = {
   children?: ReactNode;

@@ -1,8 +1,9 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
-import { TMedia } from "@/types/media.type";
 import { cookies } from "next/headers";
+
+import { TMedia } from "@/types/media.type";
+import { authKey, backendUrl } from "@/constants";
 
 export const mediaCreateAction = async (payload: Partial<TMedia>) => {
   const response = await fetch(`${backendUrl}/api/media`, {

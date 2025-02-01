@@ -1,16 +1,18 @@
-import { settingsGetAction } from "@/lib/actions/settings.action";
+import { Metadata } from "next";
+
+import Services from "./_components/Services";
+import SeoContent from "./_components/SeoContent";
 import BannerSection from "./_components/BannerSection";
+import FeaturedBrands from "./_components/FeaturedBrands";
+import PopularProducts from "./_components/PopularProducts";
 import BranchesSection from "./_components/BranchesSection";
-import FeaturedCategories from "./_components/FeaturedCategories";
 import FeaturedProducts from "./_components/FeaturedProducts";
 import FlashSaleSection from "./_components/FlashSaleSection";
-import PopularProducts from "./_components/PopularProducts";
+import FeaturedCategories from "./_components/FeaturedCategories";
 import ProductListsSection from "./_components/ProductListsSection";
-import Services from "./_components/Services";
+
 import { THomepageSettings } from "@/types/settings.type";
-import FeaturedBrands from "./_components/FeaturedBrands";
-import SeoContent from "./_components/SeoContent";
-import { Metadata } from "next";
+import { settingsGetAction } from "@/lib/actions/settings.action";
 
 export const metadata: Metadata = {
   title: "Home",

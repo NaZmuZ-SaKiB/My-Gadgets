@@ -1,7 +1,8 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
+
+import { authKey, backendUrl } from "@/constants";
 
 export const wishlistGetAction = async () => {
   const response = await fetch(`${backendUrl}/api/wishlist`, {

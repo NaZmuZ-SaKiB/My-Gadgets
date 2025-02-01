@@ -1,5 +1,6 @@
-import { mobileBottombar } from "@/constants/mobileBottombar";
 import Link from "next/link";
+
+import { mobileBottombar } from "@/constants/mobileBottombar";
 
 const MobileBottombar = () => {
   return (

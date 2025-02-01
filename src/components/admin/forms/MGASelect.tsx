@@ -1,5 +1,7 @@
 "use client";
 
+import { useFormContext } from "react-hook-form";
+
 import {
   FormControl,
   FormField,
@@ -14,8 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { cn } from "@/lib/utils";
-import { useFormContext } from "react-hook-form";
 
 export type TSelectOption = {
   label: string;

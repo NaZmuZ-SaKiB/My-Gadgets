@@ -1,4 +1,4 @@
-import { Heart, Home, Shuffle, User, Wallet } from "lucide-react";
+import { Heart, Home, ShoppingCart, Shuffle, User } from "lucide-react";
 
 export type TMobileBottombar = {
   name: string;
@@ -8,9 +8,9 @@ export type TMobileBottombar = {
 
 export const mobileBottombar: TMobileBottombar[] = [
   {
-    name: "Checkout",
-    icon: Wallet,
-    link: "/checkout",
+    name: "Shop",
+    icon: ShoppingCart,
+    link: "/shop",
   },
   { name: "Wishlist", icon: Heart, link: "/wishlist" },
   { name: "Home", icon: Home, link: "/" },

@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import {
   Select,
   SelectContent,
@@ -7,12 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import {
   chargingPortOptions,
   operatingSystemOptions,
   powerSourceOptions,
 } from "@/constants";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const DropDownFilterCard = () => {
   const pathName = usePathname();
@@ -35,7 +37,7 @@ const DropDownFilterCard = () => {
 
   return (
     <div className="rounded-xl border border-slate-200 p-3">
-      <p className="text-sm mb-2 font-semibold text-slate-700">
+      <p className="mb-2 text-sm font-semibold text-slate-700">
         Operating System
       </p>
       <Select
@@ -56,7 +58,7 @@ const DropDownFilterCard = () => {
         </SelectContent>
       </Select>
 
-      <p className="text-sm mt-3 mb-2 font-semibold text-slate-700">
+      <p className="mb-2 mt-3 text-sm font-semibold text-slate-700">
         Power Source
       </p>
       <Select
@@ -77,7 +79,7 @@ const DropDownFilterCard = () => {
         </SelectContent>
       </Select>
 
-      <p className="text-sm mt-3 mb-2 font-semibold text-slate-700">
+      <p className="mb-2 mt-3 text-sm font-semibold text-slate-700">
         Charging Port
       </p>
       <Select

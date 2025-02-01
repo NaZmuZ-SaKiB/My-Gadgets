@@ -1,7 +1,8 @@
 "use client";
 
-import MGButton from "@/components/global/shared/MGButton";
-import CreateShippingAddressForm from "@/components/global/shared/CreateShippingAddressForm";
+import { useState } from "react";
+import { Plus } from "lucide-react";
+
 import {
   Dialog,
   DialogContent,
@@ -9,8 +10,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus } from "lucide-react";
-import { useState } from "react";
+import MGButton from "@/components/global/shared/MGButton";
+import CreateShippingAddressForm from "@/components/global/shared/CreateShippingAddressForm";
 
 const AddShippingAddressModal = () => {
   const [open, setOpen] = useState(false);

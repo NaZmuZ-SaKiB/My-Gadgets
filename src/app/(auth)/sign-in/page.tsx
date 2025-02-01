@@ -1,13 +1,14 @@
-import { images } from "@/constants";
 import Image from "next/image";
+
 import SignInForm from "./SignInForm";
+import { images } from "@/constants";
 
 const SignInPage = () => {
   return (
-    <main className="bg-white xs:bg-slate-50 min-h-svh grid place-items-center">
-      <div className="w-full bg-white xs:rounded-2xl px-4 py-10 xs:shadow-2xl shadow-slate-300 max-w-[400px] mx-auto flex flex-col gap-4">
-        <div className="flex gap-3 items-center justify-center">
-          <div className="p-2 rounded-full border border-primary">
+    <main className="grid min-h-svh place-items-center bg-white xs:bg-slate-50">
+      <div className="mx-auto flex w-full max-w-[400px] flex-col gap-4 bg-white px-4 py-10 shadow-slate-300 xs:rounded-2xl xs:shadow-2xl">
+        <div className="flex items-center justify-center gap-3">
+          <div className="rounded-full border border-primary p-2">
             <Image src={images.logo} width={40} height={40} alt="My Gadgets" />
           </div>
 
@@ -15,10 +16,10 @@ const SignInPage = () => {
         </div>
 
         <div className="mb-5">
-          <h2 className="text-3xl font-semibold text-slate-800 text-center mb-1">
+          <h2 className="mb-1 text-center text-3xl font-semibold text-slate-800">
             Welcome Back
           </h2>
-          <p className="text-slate-500 text-xs text-center">
+          <p className="text-center text-xs text-slate-500">
             Login to your account
           </p>
         </div>

@@ -1,24 +1,27 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import MGAImageInput from "@/components/admin/forms/MGAImageInput";
-import MGAInput from "@/components/admin/forms/MGAInput";
-import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
+import { z } from "zod";
+import { toast } from "sonner";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
 import MGForm from "@/components/global/forms/MGForm";
+import MGAInput from "@/components/admin/forms/MGAInput";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
+
 import {
   useCategoryCreateMutation,
   useCategoryGetAllQuery,
 } from "@/lib/queries/category.query";
 import { CategoryValidation } from "@/lib/validations/category.validation";
-import { TCategory } from "@/types/category.type";
+
+import { AQTags } from "@/constants";
 import generateSlug from "@/utils/generateSlug";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import { TCategory } from "@/types/category.type";
 
 const defaultValues = {
   name: "",

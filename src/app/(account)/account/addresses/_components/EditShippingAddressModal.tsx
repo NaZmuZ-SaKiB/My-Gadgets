@@ -1,5 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { Edit } from "lucide-react";
+
+import UpdateShippingAddressForm from "./UpdateShippingAddressForm";
 import MGButton from "@/components/global/shared/MGButton";
 import {
   Dialog,
@@ -8,10 +12,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
 import { TShippingAddress } from "@/types/shippingAddress.type";
-import { Edit } from "lucide-react";
-import { useState } from "react";
-import UpdateShippingAddressForm from "./UpdateShippingAddressForm";
 
 type TProps = {
   currentAddress: TShippingAddress;

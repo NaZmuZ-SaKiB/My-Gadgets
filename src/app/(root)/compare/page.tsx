@@ -1,12 +1,14 @@
 "use client";
 
-import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
-import { useCompare } from "@/lib/providers/ContextProvider";
-import { formatCurrency } from "@/utils/currencyFormat";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+
 import ComparePageLoading from "./loading";
+import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
+
+import { formatCurrency } from "@/utils/currencyFormat";
+import { useCompare } from "@/lib/providers/ContextProvider";
 
 const compareFields = [
   {

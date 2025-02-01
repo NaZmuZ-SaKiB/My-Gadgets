@@ -1,11 +1,13 @@
 "use client";
 
-import MGButton from "@/components/global/shared/MGButton";
-import { useCart } from "@/lib/providers/ContextProvider";
-import { runFireWorks } from "@/utils/runFireworks";
-import { Check, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Check, Loader2 } from "lucide-react";
+
+import MGButton from "@/components/global/shared/MGButton";
+
+import { useCart } from "@/lib/providers/ContextProvider";
+import { runFireWorks } from "@/utils/runFireworks";
 
 const PaymentSuccessPage = () => {
   const [mounted, setMounted] = useState(false);

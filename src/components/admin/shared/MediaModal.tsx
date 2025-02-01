@@ -1,5 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import { Check, Loader2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+
 import MGButton from "@/components/global/shared/MGButton";
 import {
   Dialog,
@@ -10,14 +14,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useMediaGetAllQuery } from "@/lib/queries/media.query";
-import { cn } from "@/lib/utils";
-import { TMedia } from "@/types/media.type";
-import { Check, Loader2 } from "lucide-react";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import DataLimitSelect from "./filters/DataLimitSelect";
 import MGPagination from "@/components/global/shared/MGPagination";
+
+import { cn } from "@/lib/utils";
+import { TMedia } from "@/types/media.type";
+import { useMediaGetAllQuery } from "@/lib/queries/media.query";
 
 type TProps = {
   selectedImages: TMedia[];

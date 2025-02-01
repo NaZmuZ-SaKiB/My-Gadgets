@@ -1,9 +1,10 @@
 "use client";
 
+import TopSellingLoading from "./TopSellingLoading";
+import ProductsTable from "../products/_components/ProductsTable";
+
 import { useProductTopSellingQuery } from "@/lib/queries/product.query";
 import { TProduct } from "@/types/product.type";
-import ProductsTable from "../products/_components/ProductsTable";
-import TopSellingLoading from "./TopSellingLoading";
 
 const TopSellingProducts = () => {
   const { data, isLoading } = useProductTopSellingQuery();

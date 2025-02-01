@@ -1,10 +1,11 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
+import { z } from "zod";
+import { cookies } from "next/headers";
+
 import { TUser } from "@/types/user.type";
 import { jwtHelpers } from "@/utils/jwtHelpers";
-import { cookies } from "next/headers";
-import { z } from "zod";
+import { authKey, backendUrl } from "@/constants";
 import { AuthValidation } from "../validations/auth.validation";
 
 export const signUp = async (payload: {

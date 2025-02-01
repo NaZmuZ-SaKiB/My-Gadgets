@@ -1,9 +1,10 @@
 "use client";
 
+import { ChangeEvent, useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useEffect, useState } from "react";
 
 type TProps = {
   items: string[];
@@ -17,7 +18,7 @@ const CheckBoxFilterCard = ({ items, field }: TProps) => {
   const selected = searchParams.get(field);
 
   const [selectedItems, setSelectedItems] = useState<string[]>(
-    selected ? selected.split(",") : []
+    selected ? selected.split(",") : [],
   );
 
   const router = useRouter();
@@ -47,13 +48,13 @@ const CheckBoxFilterCard = ({ items, field }: TProps) => {
   }, [selectedItems]);
   return (
     <div className="rounded-xl border border-slate-200 p-3">
-      <p className="text-sm mb-2 font-semibold text-slate-700 capitalize">
+      <p className="mb-2 text-sm font-semibold capitalize text-slate-700">
         {field}
       </p>
 
       {items.map((item) => (
         <div
-          className="flex gap-3 items-center my-2"
+          className="my-2 flex items-center gap-3"
           key={`${field}-filter-${item}`}
         >
           <Input
@@ -64,7 +65,7 @@ const CheckBoxFilterCard = ({ items, field }: TProps) => {
             className="size-3"
             onChange={handleCompatibility}
           />
-          <Label htmlFor={item} className="font-normal cursor-pointer">
+          <Label htmlFor={item} className="cursor-pointer font-normal">
             {item.toLowerCase()}
           </Label>
         </div>

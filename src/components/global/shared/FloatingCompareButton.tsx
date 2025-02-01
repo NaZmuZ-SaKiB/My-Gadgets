@@ -1,13 +1,16 @@
 "use client";
 
-import { icons } from "@/constants";
-import { useCompare } from "@/lib/providers/ContextProvider";
-import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+
 import MGButton from "./MGButton";
+
+import { cn } from "@/lib/utils";
+import { useCompare } from "@/lib/providers/ContextProvider";
+
+import { icons } from "@/constants";
 
 const FloatingCompareButton = () => {
   const [mounted, setMounted] = useState(false);

@@ -1,8 +1,9 @@
-import { icons } from "@/constants";
+import Link from "next/link";
+import Image from "next/image";
+
 import { settingsGetAction } from "@/lib/actions/settings.action";
 import { TSocialSettings } from "@/types/settings.type";
-import Image from "next/image";
-import Link from "next/link";
+import { icons } from "@/constants";
 
 const SocialLinks = async () => {
   const settings = await settingsGetAction("social");

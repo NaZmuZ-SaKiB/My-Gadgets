@@ -1,11 +1,12 @@
-import { cn } from "@/lib/utils";
-import { TProduct } from "@/types/product.type";
-import { formatCurrency } from "@/utils/currencyFormat";
 import QuantityInput from "./QuantityInput";
-import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
-import { TReview } from "@/types/review.type";
 import CompareButton from "@/components/global/shared/CompareButton";
 import WishlistButton from "@/components/global/shared/WishlistButton";
+import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
+
+import { formatCurrency } from "@/utils/currencyFormat";
+import { TProduct } from "@/types/product.type";
+import { TReview } from "@/types/review.type";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   product: TProduct;

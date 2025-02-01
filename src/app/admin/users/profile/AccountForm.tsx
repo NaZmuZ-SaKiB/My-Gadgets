@@ -1,11 +1,13 @@
 "use client";
 
-import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
-import { useMyProfileUpdateMutation } from "@/lib/queries/user.query";
+import { SubmitHandler } from "react-hook-form";
+
 import MGForm from "@/components/global/forms/MGForm";
-import MGButton from "@/components/global/shared/MGButton";
 import MGAInput from "@/components/admin/forms/MGAInput";
+import MGButton from "@/components/global/shared/MGButton";
+
+import { useMyProfileUpdateMutation } from "@/lib/queries/user.query";
 
 type TProps = {
   defaultValues: {

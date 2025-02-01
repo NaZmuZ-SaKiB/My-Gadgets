@@ -1,8 +1,9 @@
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import { cn } from "@/lib/utils";
 import CardsLoader from "./_components/CardsLoader";
 import TopSellingLoading from "./_components/TopSellingLoading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
+import { cn } from "@/lib/utils";
 
 const AdminDashboardLoading = () => {
   return (

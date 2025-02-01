@@ -1,12 +1,13 @@
-import { icons } from "@/constants";
-import { branchGetAllAction } from "@/lib/actions/branch.action";
-import { settingsGetAction } from "@/lib/actions/settings.action";
-import { TBranch } from "@/types/branch.type";
-import { TFooterSettings, TSocialSettings } from "@/types/settings.type";
-import { MapPin, MapPinned, Phone } from "lucide-react";
-import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { Metadata } from "next";
+import { MapPin, MapPinned, Phone } from "lucide-react";
+
+import { TFooterSettings, TSocialSettings } from "@/types/settings.type";
+import { settingsGetAction } from "@/lib/actions/settings.action";
+import { branchGetAllAction } from "@/lib/actions/branch.action";
+import { TBranch } from "@/types/branch.type";
+import { icons } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us",

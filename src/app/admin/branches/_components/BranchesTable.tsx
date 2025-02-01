@@ -1,16 +1,18 @@
 "use client";
 
+import Link from "next/link";
+import { ChangeEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
+
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import { Button } from "@/components/ui/button";
-import { useBranchGetAllQuery } from "@/lib/queries/branch.query";
-import { TBranch } from "@/types/branch.type";
-import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { ChangeEvent } from "react";
 import BranchDeleteDialog from "./BranchDeleteDialog";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import MGPagination from "@/components/global/shared/MGPagination";
+
+import { TBranch } from "@/types/branch.type";
+import { useBranchGetAllQuery } from "@/lib/queries/branch.query";
 
 type TProps = {
   selectedBranches: string[];

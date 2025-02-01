@@ -1,9 +1,9 @@
-import ProductSlider from "@/components/global/shared/ProductSlider";
-import { images } from "@/constants";
-import { productGetAllAction } from "@/lib/actions/product.action";
+import Image from "next/image";
+
 import { TMedia } from "@/types/media.type";
 import { TProduct } from "@/types/product.type";
-import Image from "next/image";
+
+import ProductSlider from "@/components/global/shared/ProductSlider";
 
 type TProps = {
   featuredProducts: { banner?: TMedia; products: TProduct[] }[];
@@ -17,17 +17,17 @@ const FeaturedProducts = ({ featuredProducts }: TProps) => {
   // const products: TProduct[] = productsData.data || [];
 
   return (
-    <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-3xl text-slate-700">Featured Products</h2>
+    <section className="pb-4 pt-4 md:pt-6">
+      <h2 className="text-3xl font-bold text-slate-700">Featured Products</h2>
 
       {featuredProducts.map((item, index) => (
-        <div className="flex gap-4 mt-8" key={`featured-products-${index}`}>
+        <div className="mt-8 flex gap-4" key={`featured-products-${index}`}>
           {item.banner && (
-            <div className="shrink-0 max-md:hidden relative basis-[280px]">
+            <div className="relative shrink-0 basis-[280px] max-md:hidden">
               <Image
                 src={item.banner.secureUrl}
                 alt="banner"
-                className="object-cover object-center w-72 h-full rounded-2xl"
+                className="h-full w-72 rounded-2xl object-cover object-center"
                 fill
               />
             </div>

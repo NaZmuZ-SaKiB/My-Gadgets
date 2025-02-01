@@ -1,8 +1,9 @@
 "use client";
 
-import { useCategoryGetAllWithSubCatQuery } from "@/lib/queries/category.query";
-import { TCategory } from "@/types/category.type";
 import { toast } from "sonner";
+
+import { TCategory } from "@/types/category.type";
+import { useCategoryGetAllWithSubCatQuery } from "@/lib/queries/category.query";
 
 type TProps = {
   selectedCategories: string[];

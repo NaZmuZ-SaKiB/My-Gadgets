@@ -1,7 +1,8 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
 import { cookies } from "next/headers";
+
+import { authKey, backendUrl } from "@/constants";
 
 export const categoryCreateAction = async (payload: {
   name: string;
@@ -133,7 +134,7 @@ export const categoryToggleShowOnTopMenuAction = async (id: string) => {
         Authorization: (await cookies()).get(authKey)?.value || "",
       },
       cache: "no-store",
-    }
+    },
   );
 
   const result = await response.json();

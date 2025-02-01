@@ -1,10 +1,12 @@
-import { images } from "@/constants";
+import Link from "next/link";
+import Image from "next/image";
+import { Clock, Mail } from "lucide-react";
+
+import SocialLinks from "./SocialLinks";
+
 import { settingsGetAction } from "@/lib/actions/settings.action";
 import { TFooterSettings } from "@/types/settings.type";
-import { Clock, Mail } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import SocialLinks from "./SocialLinks";
+import { images } from "@/constants";
 
 const Footer = async () => {
   const settings = await settingsGetAction("footer");

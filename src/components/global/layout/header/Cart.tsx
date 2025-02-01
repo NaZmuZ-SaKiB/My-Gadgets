@@ -1,5 +1,10 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { Trash2, X } from "lucide-react";
+import { useEffect, useState } from "react";
+
 import {
   Sheet,
   SheetClose,
@@ -9,14 +14,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { icons } from "@/constants";
+import MGButton from "../../shared/MGButton";
+
 import { useCart } from "@/lib/providers/ContextProvider";
 import { formatCurrency } from "@/utils/currencyFormat";
-import { Trash2, X } from "lucide-react";
-import Image from "next/image";
-import MGButton from "../../shared/MGButton";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { icons } from "@/constants";
 
 const Cart = () => {
   const [open, setOpen] = useState(false);

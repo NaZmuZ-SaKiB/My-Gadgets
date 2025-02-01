@@ -1,14 +1,14 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import MGARichInput from "@/components/admin/forms/MGARichInput";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ProductSpecsForm = () => {
   return (
     <AFloatingBox>
       <Tabs defaultValue="shortSpecification" className="w-full">
-        <TabsList className="w-full flex mb-3">
+        <TabsList className="mb-3 flex w-full">
           <TabsTrigger className="flex-1" value="shortSpecification">
             Short Specification
           </TabsTrigger>

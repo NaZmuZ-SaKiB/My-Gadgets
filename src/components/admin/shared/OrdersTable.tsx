@@ -1,15 +1,17 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import { Button } from "@/components/ui/button";
-import { TOrder } from "@/types/order.type";
-import { formatCurrency } from "@/utils/currencyFormat";
-import { Eye, Loader2 } from "lucide-react";
-import OrderStatusSelect from "@/components/admin/shared/OrderStatusSelect";
-import OrderIsPaidSelect from "./OrderIsPaidSelect";
 import Link from "next/link";
+import { Eye, Loader2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import OrderIsPaidSelect from "./OrderIsPaidSelect";
 import DataLimitSelect from "./filters/DataLimitSelect";
 import MGPagination from "@/components/global/shared/MGPagination";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import OrderStatusSelect from "@/components/admin/shared/OrderStatusSelect";
+
+import { TOrder } from "@/types/order.type";
+import { formatCurrency } from "@/utils/currencyFormat";
 
 type TProps = {
   orders: TOrder[];

@@ -1,12 +1,14 @@
 "use client";
 
-import { useShippingAddressGetAllQuery } from "@/lib/queries/shippingAddress.query";
-import { TShippingAddress } from "@/types/shippingAddress.type";
-import AddShippingAddressModal from "@/components/global/shared/AddShippingAddressModal";
-import { RefreshCcw } from "lucide-react";
 import { useEffect } from "react";
-import { cn } from "@/lib/utils";
+import { RefreshCcw } from "lucide-react";
+
+import AddShippingAddressModal from "@/components/global/shared/AddShippingAddressModal";
 import ShippingAddressLoading from "./ShippingAddressLoading";
+
+import { cn } from "@/lib/utils";
+import { TShippingAddress } from "@/types/shippingAddress.type";
+import { useShippingAddressGetAllQuery } from "@/lib/queries/shippingAddress.query";
 
 type TProps = {
   userId: string;

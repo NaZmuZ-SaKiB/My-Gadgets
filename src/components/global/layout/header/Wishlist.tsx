@@ -1,9 +1,10 @@
 "use client";
 
-import { icons } from "@/constants";
-import { useWishlistGetQuery } from "@/lib/queries/wishlist.query";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
+import { useWishlistGetQuery } from "@/lib/queries/wishlist.query";
+import { icons } from "@/constants";
 
 const Wishlist = () => {
   const { data, isLoading } = useWishlistGetQuery();

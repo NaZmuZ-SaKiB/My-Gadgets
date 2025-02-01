@@ -1,7 +1,8 @@
 "use client";
 
-import { TProduct } from "@/types/product.type";
 import { createContext, useContext, useEffect, useState } from "react";
+
+import { TProduct } from "@/types/product.type";
 
 export type TCartItem = {
   _id: string;

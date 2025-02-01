@@ -1,8 +1,9 @@
 "use client";
 
+import { toast } from "sonner";
+
 import MGButton from "@/components/global/shared/MGButton";
 import { useShippingAddressUpdateMutation } from "@/lib/queries/shippingAddress.query";
-import { toast } from "sonner";
 
 type TProps = {
   id: string;

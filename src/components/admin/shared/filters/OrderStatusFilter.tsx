@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import {
   Select,
   SelectContent,
@@ -7,9 +9,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { orderStatuses } from "@/constants";
+
 import { TOrderStatus } from "@/types/order.type";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { orderStatuses } from "@/constants";
 
 const OrderStatusFilter = () => {
   const router = useRouter();

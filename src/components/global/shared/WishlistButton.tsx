@@ -1,17 +1,19 @@
 "use client";
 
-import { AQTags } from "@/constants";
+import { toast } from "sonner";
+import { ClassValue } from "clsx";
+import { Heart, Loader2 } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   useWishlistAddMutation,
   useWishlistGetQuery,
   useWishlistRemoveMutation,
 } from "@/lib/queries/wishlist.query";
+import { AQTags } from "@/constants";
 import { cn } from "@/lib/utils";
+
 import { TProduct } from "@/types/product.type";
-import { useQueryClient } from "@tanstack/react-query";
-import { ClassValue } from "clsx";
-import { Heart, Loader2 } from "lucide-react";
-import { toast } from "sonner";
 
 type TProps = {
   productId: string;

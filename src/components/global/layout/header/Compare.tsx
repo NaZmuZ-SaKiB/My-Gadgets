@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
 import { icons } from "@/constants";
 import { useCompare } from "@/lib/providers/ContextProvider";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const Compare = () => {
   const [mounted, setMounted] = useState(false);

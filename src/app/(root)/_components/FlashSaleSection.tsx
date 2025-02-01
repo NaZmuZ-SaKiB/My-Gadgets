@@ -1,3 +1,5 @@
+import { Zap } from "lucide-react";
+
 import FlashSaleCard from "@/components/global/cards/FlashSaleCard";
 import {
   Carousel,
@@ -6,8 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
 import { TProduct } from "@/types/product.type";
-import { Zap } from "lucide-react";
 
 type TProps = {
   flashSales: { endDate: string | Date; product: TProduct }[];
@@ -18,8 +20,8 @@ const FlashSaleSection = ({ flashSales }: TProps) => {
   // const products: TProduct[] = productsData?.data || [];
 
   return (
-    <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-3xl text-slate-700 flex items-center gap-1">
+    <section className="pb-4 pt-4 md:pt-6">
+      <h2 className="flex items-center gap-1 text-3xl font-bold text-slate-700">
         <span>Flash Sale</span>
         <Zap className="text-orange-500" />
       </h2>
@@ -29,7 +31,7 @@ const FlashSaleSection = ({ flashSales }: TProps) => {
           loop: true,
           align: "start",
         }}
-        className="overflow-hidden mt-8"
+        className="mt-8 overflow-hidden"
       >
         <CarouselContent className="pb-7">
           {flashSales.map((item) => (
@@ -41,8 +43,8 @@ const FlashSaleSection = ({ flashSales }: TProps) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-3 bg-opacity-60 border-slate-300 top-[30%] backdrop-blur-sm" />
-        <CarouselNext className="right-3 bg-opacity-60 border-slate-300 top-[30%] backdrop-blur-sm" />
+        <CarouselPrevious className="left-3 top-[30%] border-slate-300 bg-opacity-60 backdrop-blur-sm" />
+        <CarouselNext className="right-3 top-[30%] border-slate-300 bg-opacity-60 backdrop-blur-sm" />
       </Carousel>
     </section>
   );

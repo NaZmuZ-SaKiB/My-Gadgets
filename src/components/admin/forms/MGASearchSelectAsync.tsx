@@ -1,5 +1,11 @@
 "use client";
 
+import { toast } from "sonner";
+import { Check, X } from "lucide-react";
+import { useFormContext } from "react-hook-form";
+import { UseQueryResult } from "@tanstack/react-query";
+import { ChangeEvent, useEffect, useState } from "react";
+
 import {
   FormControl,
   FormDescription,
@@ -10,12 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { cn } from "@/lib/utils";
-import { UseQueryResult } from "@tanstack/react-query";
-import { Check, X } from "lucide-react";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
-import { toast } from "sonner";
 
 type TProps = {
   name: string;

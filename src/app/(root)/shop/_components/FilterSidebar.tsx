@@ -1,5 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { Filter, X } from "lucide-react";
+
+import Filters from "./Filters";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -7,9 +11,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Filter, X } from "lucide-react";
-import { useState } from "react";
-import Filters from "./Filters";
 
 const FilterSidebar = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ const FilterSidebar = () => {
         <Button
           variant="secondary"
           size="sm"
-          className="px-1.5 text-gray-500 no-focus"
+          className="no-focus px-1.5 text-gray-500"
         >
           <Filter className="size-4" />
           &nbsp;Filters
@@ -29,13 +30,13 @@ const FilterSidebar = () => {
 
       <SheetContent
         side={"right"}
-        className="p-0 pb-5 w-[min(300px,100%)] overflow-y-auto z-[110]"
+        className="z-[110] w-[min(300px,100%)] overflow-y-auto p-0 pb-5"
       >
-        <div className="p-3 flex items-center justify-between sticky top-0 bg-white z-[120]">
-          <SheetClose className="no-focus border border-gray-500 rounded-full p-1">
+        <div className="sticky top-0 z-[120] flex items-center justify-between bg-white p-3">
+          <SheetClose className="no-focus rounded-full border border-gray-500 p-1">
             <X className="size-5" />
           </SheetClose>
-          <div className="font-bold text-xl">Filters</div>
+          <div className="text-xl font-bold">Filters</div>
         </div>
         <div className="px-3">
           <Filters />

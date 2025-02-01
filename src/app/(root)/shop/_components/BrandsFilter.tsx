@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { TBrand } from "@/types/brand.type";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { cn } from "@/lib/utils";
+import { TBrand } from "@/types/brand.type";
 
 type TProps = {
   brands: TBrand[];

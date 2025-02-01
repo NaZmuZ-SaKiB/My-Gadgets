@@ -1,8 +1,9 @@
 "use client";
 
-import { useCart } from "@/lib/providers/ContextProvider";
-import { Minus, Plus, X } from "lucide-react";
 import { useState } from "react";
+import { Minus, Plus, X } from "lucide-react";
+
+import { useCart } from "@/lib/providers/ContextProvider";
 
 type TProps = {
   defaultValue: number;
@@ -17,7 +18,7 @@ const Quantity = ({ defaultValue, productId, maxQuantity }: TProps) => {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="cursor-pointer border border-slate-500 rounded-md inline-flex items-center">
+      <div className="inline-flex cursor-pointer items-center rounded-md border border-slate-500">
         <button
           type="button"
           className="p-1 outline-none focus-visible:bg-slate-100"
@@ -29,7 +30,7 @@ const Quantity = ({ defaultValue, productId, maxQuantity }: TProps) => {
           <Minus className="size-5 text-slate-500" />
         </button>
 
-        <div className="text-lg text-center text-primary p-1">{quantity}</div>
+        <div className="p-1 text-center text-lg text-primary">{quantity}</div>
 
         <button
           type="button"
@@ -44,7 +45,7 @@ const Quantity = ({ defaultValue, productId, maxQuantity }: TProps) => {
       </div>
 
       <X
-        className="cursor-pointer text-slate-500 size-5"
+        className="size-5 cursor-pointer text-slate-500"
         onClick={() => removeFromCart(productId)}
       />
     </div>

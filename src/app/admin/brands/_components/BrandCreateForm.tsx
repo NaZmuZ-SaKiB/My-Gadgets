@@ -1,18 +1,20 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import MGAImageInput from "@/components/admin/forms/MGAImageInput";
-import MGAInput from "@/components/admin/forms/MGAInput";
-import MGForm from "@/components/global/forms/MGForm";
-import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
-import { useBrandCreateMutation } from "@/lib/queries/brand.query";
-import { BrandValidation } from "@/lib/validations/brand.validation";
+import { z } from "zod";
+import { toast } from "sonner";
+import { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import MGButton from "@/components/global/shared/MGButton";
+import MGAInput from "@/components/admin/forms/MGAInput";
+import MGForm from "@/components/global/forms/MGForm";
+
+import { BrandValidation } from "@/lib/validations/brand.validation";
+import { useBrandCreateMutation } from "@/lib/queries/brand.query";
+import { AQTags } from "@/constants";
 
 const defaultValues = {
   name: "",

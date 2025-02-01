@@ -1,18 +1,20 @@
-import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
-import { productGetByIdAction } from "@/lib/actions/product.action";
-import { TProduct } from "@/types/product.type";
-import ProductImages from "../../_components/ProductImages";
-import ProductShortSpec from "../../_components/ProductShortSpec";
-import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
-import ProductSpecification from "../../_components/ProductSpecification";
-import ProductDescription from "../../_components/ProductDescription";
-import RelatedProducts from "../../_components/RelatedProducts";
-import ReviewCreateForm from "../../_components/ReviewCreateForm";
-import ProductReviews from "../../_components/ProductReviews";
-import { reviewGetAllByProductIdAction } from "@/lib/actions/review.action";
-import { TReview } from "@/types/review.type";
-import { isUserLoggedIn } from "@/lib/actions/auth.action";
 import { Metadata, ResolvingMetadata } from "next";
+
+import ProductImages from "../../_components/ProductImages";
+import ProductReviews from "../../_components/ProductReviews";
+import RelatedProducts from "../../_components/RelatedProducts";
+import ProductShortSpec from "../../_components/ProductShortSpec";
+import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
+import ReviewCreateForm from "../../_components/ReviewCreateForm";
+import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
+import ProductDescription from "../../_components/ProductDescription";
+import ProductSpecification from "../../_components/ProductSpecification";
+
+import { reviewGetAllByProductIdAction } from "@/lib/actions/review.action";
+import { productGetByIdAction } from "@/lib/actions/product.action";
+import { isUserLoggedIn } from "@/lib/actions/auth.action";
+import { TProduct } from "@/types/product.type";
+import { TReview } from "@/types/review.type";
 
 type TProps = {
   params: Promise<{ id: string }>;

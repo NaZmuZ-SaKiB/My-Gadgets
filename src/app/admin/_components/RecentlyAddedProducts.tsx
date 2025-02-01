@@ -1,8 +1,9 @@
 "use client";
 
-import { useProductGetAllQuery } from "@/lib/queries/product.query";
-import { TProduct } from "@/types/product.type";
 import ProductsTable from "../products/_components/ProductsTable";
+
+import { TProduct } from "@/types/product.type";
+import { useProductGetAllQuery } from "@/lib/queries/product.query";
 
 const RecentlyAddedProducts = () => {
   const { data: productsData, isLoading } = useProductGetAllQuery(`limit=5`);

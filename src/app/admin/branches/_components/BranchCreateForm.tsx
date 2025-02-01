@@ -1,18 +1,19 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import MGAImageInput from "@/components/admin/forms/MGAImageInput";
-import MGAInput from "@/components/admin/forms/MGAInput";
-import MGForm from "@/components/global/forms/MGForm";
-import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
-import { useBranchCreateMutation } from "@/lib/queries/branch.query";
-import { BranchValidation } from "@/lib/validations/branch.validation";
+import { z } from "zod";
+import { toast } from "sonner";
+import { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { map, z } from "zod";
+
+import MGForm from "@/components/global/forms/MGForm";
+import MGAInput from "@/components/admin/forms/MGAInput";
+import MGButton from "@/components/global/shared/MGButton";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
+import { useBranchCreateMutation } from "@/lib/queries/branch.query";
+import { BranchValidation } from "@/lib/validations/branch.validation";
+import { AQTags } from "@/constants";
 
 const defaultValues = {
   name: "",
@@ -50,7 +51,7 @@ const BranchCreateForm = () => {
 
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-slate-700 text-lg mb-5">Add Branch</h2>
+      <h2 className="mb-5 text-lg font-medium text-slate-700">Add Branch</h2>
 
       <MGForm
         onSubmit={handleBranchCreate}
@@ -63,7 +64,7 @@ const BranchCreateForm = () => {
         <MGAInput name="mapLink" label="Google Map Link" />
 
         <MGButton
-          className="rounded-none self-start px-5 py-2 h-auto"
+          className="h-auto self-start rounded-none px-5 py-2"
           disabled={isPending}
         >
           {isPending ? "Creating..." : "Create Branch"}

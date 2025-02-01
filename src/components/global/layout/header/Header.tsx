@@ -1,16 +1,18 @@
-import { icons, images } from "@/constants";
-import Image from "next/image";
 import Link from "next/link";
-import { Permanent_Marker } from "next/font/google";
-import { cn } from "@/lib/utils";
-import SearchBox from "./SearchBox";
+import Image from "next/image";
 import { Search } from "lucide-react";
-import Navbar from "./Navbar";
-import MobileMenu from "./MobileMenu";
+import { Permanent_Marker } from "next/font/google";
+
 import Cart from "./Cart";
+import Navbar from "./Navbar";
 import Account from "./Account";
 import Compare from "./Compare";
 import Wishlist from "./Wishlist";
+import SearchBox from "./SearchBox";
+import MobileMenu from "./MobileMenu";
+
+import { cn } from "@/lib/utils";
+import { images } from "@/constants";
 
 const font = Permanent_Marker({
   weight: "400",

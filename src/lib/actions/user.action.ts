@@ -1,8 +1,9 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
-import { TUser } from "@/types/user.type";
 import { cookies } from "next/headers";
+
+import { TUser } from "@/types/user.type";
+import { authKey, backendUrl } from "@/constants";
 
 export const createAdminAction = async (payload: {
   email: string;

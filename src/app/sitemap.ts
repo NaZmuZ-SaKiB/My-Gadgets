@@ -1,7 +1,7 @@
-import { categoryGetAllAction } from "@/lib/actions/category.action";
-import { productGetAllAction } from "@/lib/actions/product.action";
-import { TCategory } from "@/types/category.type";
 import { TProduct } from "@/types/product.type";
+import { TCategory } from "@/types/category.type";
+import { productGetAllAction } from "@/lib/actions/product.action";
+import { categoryGetAllAction } from "@/lib/actions/category.action";
 
 export default async function sitemap() {
   const baseURL = process.env.NEXT_PUBLIC_FRONTEND_URL;

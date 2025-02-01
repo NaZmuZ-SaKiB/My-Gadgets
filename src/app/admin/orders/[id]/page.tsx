@@ -1,17 +1,19 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import Image from "next/image";
+import { Loader2 } from "lucide-react";
+import { useParams } from "next/navigation";
+
 import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
 import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
 import OrderIsPaidSelect from "@/components/admin/shared/OrderIsPaidSelect";
 import OrderStatusSelect from "@/components/admin/shared/OrderStatusSelect";
-import { useOrderGetByIdQuery } from "@/lib/queries/order.query";
+
 import { TOrder } from "@/types/order.type";
 import { formatCurrency } from "@/utils/currencyFormat";
-import { Loader2 } from "lucide-react";
-import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useOrderGetByIdQuery } from "@/lib/queries/order.query";
 
 const SingleOrderPage = () => {
   const params = useParams();

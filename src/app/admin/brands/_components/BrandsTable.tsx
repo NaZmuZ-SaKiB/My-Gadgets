@@ -1,19 +1,20 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import { Button } from "@/components/ui/button";
-import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
-import { TBrand } from "@/types/brand.type";
-import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { ChangeEvent } from "react";
-import FeaturedSwitch from "./FeaturedSwitch";
-import BrandDeleteDialog from "./BrandDeleteDialog";
-import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import Image from "next/image";
-import { images } from "@/constants";
+import { ChangeEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { Edit, Loader2, Trash2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import BrandDeleteDialog from "./BrandDeleteDialog";
 import MGPagination from "@/components/global/shared/MGPagination";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+
+import { images } from "@/constants";
+import { TBrand } from "@/types/brand.type";
+import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
 
 type TProps = {
   selectedBrands: string[];
@@ -66,7 +67,6 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
             </th>
             <th>Img</th>
             <th>Name</th>
-            <th>Featured</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -92,12 +92,6 @@ const BrandsTable = ({ selectedBrands, setSelectedBrands }: TProps) => {
                 />
               </td>
               <td>{item.name}</td>
-              <td>
-                <FeaturedSwitch
-                  id={`${item._id}`}
-                  defaultValue={item.featured}
-                />
-              </td>
 
               <td>
                 <div className="flex justify-end gap-1">

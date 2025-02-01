@@ -1,25 +1,27 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import MGAInput from "@/components/admin/forms/MGAInput";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
 import MGForm from "@/components/global/forms/MGForm";
+import AGrid from "@/components/admin/admin-ui/AGrid";
+import MGAInput from "@/components/admin/forms/MGAInput";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
 import {
   useSettingsGetQuery,
   useSettingsUpdateMutation,
 } from "@/lib/queries/settings.query";
 import { SettingsValidation } from "@/lib/validations/settings.validation";
 import { TSocialSettings } from "@/types/settings.type";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import { AQTags } from "@/constants";
 
 const SocialSettingsPage = () => {
   const { data, isLoading } = useSettingsGetQuery();

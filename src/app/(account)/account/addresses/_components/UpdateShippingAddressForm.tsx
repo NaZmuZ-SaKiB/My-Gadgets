@@ -1,20 +1,19 @@
 "use client";
 
-import { ShippingAddressValidation } from "@/lib/validations/shippingAddress.validation";
-import { SubmitHandler } from "react-hook-form";
 import { z } from "zod";
-import MGForm from "@/components/global/forms/MGForm";
+import { toast } from "sonner";
+import { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
+import { ShippingAddressValidation } from "@/lib/validations/shippingAddress.validation";
+import MGForm from "@/components/global/forms/MGForm";
 import MGInput from "@/components/global/forms/MGInput";
 import MGButton from "@/components/global/shared/MGButton";
-import {
-  useShippingAddressCreateMutation,
-  useShippingAddressUpdateMutation,
-} from "@/lib/queries/shippingAddress.query";
-import { toast } from "sonner";
-import { useQueryClient } from "@tanstack/react-query";
-import { AQTags } from "@/constants";
+
+import { useShippingAddressUpdateMutation } from "@/lib/queries/shippingAddress.query";
 import { TShippingAddress } from "@/types/shippingAddress.type";
+import { AQTags } from "@/constants";
 
 type TProps = {
   currentAddress: TShippingAddress;

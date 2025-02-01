@@ -1,11 +1,13 @@
 "use client";
 
-import { AQTags } from "@/constants";
-import { useMediaCreateMutation } from "@/lib/queries/media.query";
-import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { Plus } from "lucide-react";
 import { CldUploadWidget } from "next-cloudinary";
-import { toast } from "sonner";
+
+import { useQueryClient } from "@tanstack/react-query";
+import { useMediaCreateMutation } from "@/lib/queries/media.query";
+
+import { AQTags } from "@/constants";
 
 type TProps = {
   children?: React.ReactNode;
@@ -60,7 +62,7 @@ const UploadImageButton = ({ children }: TProps) => {
           {children ? (
             children
           ) : (
-            <div className="size-[128px] border border-slate-300 text-slate-300 rounded-lg hover:border-primary hover:text-primary cursor-pointer">
+            <div className="size-[128px] cursor-pointer rounded-lg border border-slate-300 text-slate-300 hover:border-primary hover:text-primary">
               <Plus className="size-full" />
             </div>
           )}

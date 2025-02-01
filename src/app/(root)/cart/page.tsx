@@ -1,15 +1,17 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import CartPageLoading from "./loading";
+import Quantity from "./_components/Quantity";
+import MGButton from "@/components/global/shared/MGButton";
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
+
 import { useCart } from "@/lib/providers/ContextProvider";
 import { formatCurrency } from "@/utils/currencyFormat";
-import Image from "next/image";
-import Quantity from "./_components/Quantity";
-import { Trash2 } from "lucide-react";
-import Link from "next/link";
-import MGButton from "@/components/global/shared/MGButton";
-import { useEffect, useState } from "react";
-import CartPageLoading from "./loading";
 
 const CartPage = () => {
   const [mounted, setMounted] = useState(false);

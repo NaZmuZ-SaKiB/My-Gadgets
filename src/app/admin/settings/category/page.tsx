@@ -1,21 +1,23 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+
 import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import CategorySelect from "./_components/CategorySelect";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
 import {
   useSettingsGetQuery,
   useSettingsUpdateMutation,
 } from "@/lib/queries/settings.query";
 import { TCategorySettings } from "@/types/settings.type";
-import { useQueryClient } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import CategorySelect from "./_components/CategorySelect";
+import { AQTags } from "@/constants";
 
 const CategorySettingsPage = () => {
   const [topMenuCats, setTopMenuCats] = useState<string[]>([]);

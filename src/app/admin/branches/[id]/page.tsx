@@ -1,26 +1,28 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import { z } from "zod";
+import { Loader2 } from "lucide-react";
+import { useParams } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+
 import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import MGAInput from "@/components/admin/forms/MGAInput";
 import MGForm from "@/components/global/forms/MGForm";
+import MGAInput from "@/components/admin/forms/MGAInput";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
 import {
   useBranchGetByIdQuery,
   useBranchUpdateMutation,
 } from "@/lib/queries/branch.query";
-import { BranchValidation } from "@/lib/validations/branch.validation";
+import { AQTags } from "@/constants";
 import { TBranch } from "@/types/branch.type";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { useParams } from "next/navigation";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import { BranchValidation } from "@/lib/validations/branch.validation";
 
 const SingleBranchPage = () => {
   const { id } = useParams();

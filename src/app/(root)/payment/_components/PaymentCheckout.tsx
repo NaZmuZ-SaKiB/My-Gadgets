@@ -1,17 +1,18 @@
 "use client";
 
-import { frontendUrl } from "@/constants";
-import { useOrderUpdateMutation } from "@/lib/queries/order.query";
-import { formatCurrency } from "@/utils/currencyFormat";
+import { toast } from "sonner";
+import { LoaderCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   PaymentElement,
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { LoaderCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+
+import { useOrderUpdateMutation } from "@/lib/queries/order.query";
+import { formatCurrency } from "@/utils/currencyFormat";
+import { frontendUrl } from "@/constants";
 
 const PaymentCheckout = ({
   amount,
@@ -93,18 +94,18 @@ const PaymentCheckout = ({
   if (!clientSecret || !stripe || !elements) {
     return (
       <div className="grid place-items-center">
-        <LoaderCircle className="size-10 text-primary animate-spin" />
+        <LoaderCircle className="size-10 animate-spin text-primary" />
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
+    <form onSubmit={handleSubmit} className="rounded-md bg-white p-2">
       {clientSecret && <PaymentElement />}
 
       <button
         disabled={!stripe || loading}
-        className="text-white w-full px-5 py-4 bg-slate-800 hover:bg-slate-700 mt-2 rounded-md disabled:opacity-50 disabled:animate-pulse"
+        className="mt-2 w-full rounded-md bg-slate-800 px-5 py-4 text-white hover:bg-slate-700 disabled:animate-pulse disabled:opacity-50"
       >
         {!loading ? `Pay ${formatCurrency(amount)}` : "Processing..."}
       </button>

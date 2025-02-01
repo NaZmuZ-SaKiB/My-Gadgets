@@ -1,14 +1,16 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { X } from "lucide-react";
+
+import ImageGallery from "./ImageGallery";
+import ImageEditForm from "./ImageEditForm";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
-import ImageGallery from "./ImageGallery";
-import { useState } from "react";
+
 import { TMedia } from "@/types/media.type";
-import Image from "next/image";
-import ImageEditForm from "./ImageEditForm";
-import { X } from "lucide-react";
-import Link from "next/link";
 
 const MediaData = () => {
   const [selectedImage, setSelectedImage] = useState<TMedia | null>(null);

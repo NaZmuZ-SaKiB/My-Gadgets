@@ -1,5 +1,10 @@
 "use client";
 
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+
 import {
   FormControl,
   FormField,
@@ -12,15 +17,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { convertTimeTo12HourFormat } from "@/utils/time";
 import MGButton from "@/components/global/shared/MGButton";
+
+import { convertTimeTo12HourFormat } from "@/utils/time";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   name: string;
@@ -63,7 +65,7 @@ const MGADateTimePicker = ({
       setTime(
         `${hours.toString().padStart(2, "0")}:${minutes
           .toString()
-          .padStart(2, "0")}`
+          .padStart(2, "0")}`,
       );
     }
   }, [defaultValue]);
@@ -74,11 +76,11 @@ const MGADateTimePicker = ({
       name={name}
       render={({ field }) => (
         <FormItem
-          className={cn("flex flex-col gap-1 w-full", {
-            "grid grid-cols-[1fr_2fr] gap-2 items-center": vertical,
+          className={cn("flex w-full flex-col gap-1", {
+            "grid grid-cols-[1fr_2fr] items-center gap-2": vertical,
           })}
         >
-          <FormLabel className={"font-medium text-nowrap"}>{label}</FormLabel>
+          <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
           <FormControl>
             <Popover>
               <PopoverTrigger asChild>
@@ -90,7 +92,7 @@ const MGADateTimePicker = ({
                     "border-slate-200 bg-slate-50 hover:border-primary hover:bg-slate-50 hover:text-primary",
                     {
                       "!mt-0": vertical,
-                    }
+                    },
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
@@ -99,7 +101,7 @@ const MGADateTimePicker = ({
                   {time && convertTimeTo12HourFormat(time)}
                 </MGButton>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 flex">
+              <PopoverContent className="flex w-auto p-0">
                 <Calendar
                   mode="single"
                   captionLayout="dropdown"
@@ -118,8 +120,8 @@ const MGADateTimePicker = ({
                   }
                 />
 
-                <div className="p-4 flex flex-col items-center gap-4">
-                  <div className="px-4 py-2 text-sm rounded-md border">
+                <div className="flex flex-col items-center gap-4 p-4">
+                  <div className="rounded-md border px-4 py-2 text-sm">
                     {convertTimeTo12HourFormat(time)}
                   </div>
                   <ScrollArea className="h-[15rem]">
@@ -132,11 +134,11 @@ const MGADateTimePicker = ({
                       return (
                         <div
                           className={cn(
-                            "px-4 py-1.5 text-sm my-1 rounded-md hover:bg-slate-100 cursor-pointer",
+                            "my-1 cursor-pointer rounded-md px-4 py-1.5 text-sm hover:bg-slate-100",
                             {
                               "bg-slate-900 text-slate-50 hover:bg-slate-900":
                                 timeSelected,
-                            }
+                            },
                           )}
                           key={i}
                           onClick={() =>
@@ -153,7 +155,7 @@ const MGADateTimePicker = ({
             </Popover>
           </FormControl>
 
-          <FormMessage className="font-normal col-span-2 !mt-0" />
+          <FormMessage className="col-span-2 !mt-0 font-normal" />
         </FormItem>
       )}
     />

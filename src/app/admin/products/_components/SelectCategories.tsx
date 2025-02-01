@@ -1,9 +1,11 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import { useCategoryGetAllWithSubCatQuery } from "@/lib/queries/category.query";
-import { TCategory } from "@/types/category.type";
 import { Loader2 } from "lucide-react";
+
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
+import { TCategory } from "@/types/category.type";
+import { useCategoryGetAllWithSubCatQuery } from "@/lib/queries/category.query";
 
 type TProps = {
   selectedCategories: string[];
@@ -27,7 +29,7 @@ const SelectCategories = ({
         // Function to recursively remove subcategory IDs
         const removeSubCategories = (
           subCategories: TCategory[],
-          state: string[]
+          state: string[],
         ): string[] => {
           subCategories.forEach((subCategory) => {
             state = state.filter((id) => id !== subCategory._id);
@@ -39,7 +41,7 @@ const SelectCategories = ({
         if (cat.subCategories && cat.subCategories.length > 0) {
           updatedState = removeSubCategories(
             cat.subCategories as TCategory[],
-            updatedState
+            updatedState,
           );
         }
 
@@ -51,14 +53,14 @@ const SelectCategories = ({
   if (loadingCategories) {
     return (
       <AFloatingBox className="grid place-items-center">
-        <Loader2 className="animate-spin mx-auto size-[50px] text-blue-500" />
+        <Loader2 className="mx-auto size-[50px] animate-spin text-blue-500" />
       </AFloatingBox>
     );
   }
   return (
     <AFloatingBox>
       <h2 className="font-medium text-slate-700">Select Categories*</h2>
-      <p className="mb-5 text-slate-500 text-sm">
+      <p className="mb-5 text-sm text-slate-500">
         This Product will be available in the selected categories pages.
       </p>
 
@@ -66,7 +68,7 @@ const SelectCategories = ({
         {categories.map((category: TCategory) => (
           <div key={category._id}>
             <div
-              className="flex items-center gap-2 capitalize text-slate-600 hover:text-primary cursor-pointer"
+              className="flex cursor-pointer items-center gap-2 capitalize text-slate-600 hover:text-primary"
               onClick={() => handleCategoryChange(category)}
             >
               <input
@@ -112,11 +114,11 @@ const RenderSubCategories = ({
   handleCategoryChange,
 }: TRenderProps) => {
   return (
-    <div className="pl-8 pt-2 ml-1.5 border-l border-slate-300 flex flex-col gap-1">
+    <div className="ml-1.5 flex flex-col gap-1 border-l border-slate-300 pl-8 pt-2">
       {subCategories.map((subCategory: TCategory) => (
         <div key={subCategory._id}>
           <div
-            className="flex items-center gap-2 capitalize text-slate-600 hover:text-primary cursor-pointer"
+            className="flex cursor-pointer items-center gap-2 capitalize text-slate-600 hover:text-primary"
             onClick={() => handleCategoryChange(subCategory)}
           >
             <input

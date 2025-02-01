@@ -1,7 +1,6 @@
 "use client";
 
 import { useFormContext } from "react-hook-form";
-import { TSelectOption } from "./MGASelect";
 
 import {
   FormControl,
@@ -10,8 +9,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { cn } from "@/lib/utils";
+import { TSelectOption } from "./MGASelect";
 import MultipleSelector from "@/components/ui/multi-select";
+
+import { cn } from "@/lib/utils";
 
 type TProps = {
   options: TSelectOption[];
@@ -36,13 +37,13 @@ const MGAMultiSelect = ({
       name={name}
       render={({ field }) => (
         <FormItem
-          className={cn("flex flex-col gap-1 w-full", {
-            "grid grid-cols-[1fr_2fr] gap-2 items-center": vertical,
+          className={cn("flex w-full flex-col gap-1", {
+            "grid grid-cols-[1fr_2fr] items-center gap-2": vertical,
             "grid-cols-1": vertical && !label,
           })}
         >
           {label && (
-            <FormLabel className={"font-medium text-nowrap text-xs"}>
+            <FormLabel className={"text-nowrap text-xs font-medium"}>
               {label}
             </FormLabel>
           )}
@@ -61,7 +62,7 @@ const MGAMultiSelect = ({
             />
           </FormControl>
 
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />

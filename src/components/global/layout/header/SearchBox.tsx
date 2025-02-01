@@ -1,15 +1,18 @@
 "use client";
 
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { images } from "@/constants";
-import { useProductGetAllQuery } from "@/lib/queries/product.query";
-import { cn } from "@/lib/utils";
-import { TProduct } from "@/types/product.type";
-import { formatCurrency } from "@/utils/currencyFormat";
-import { Loader2, Search } from "lucide-react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Loader2, Search } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+import { cn } from "@/lib/utils";
+import { useProductGetAllQuery } from "@/lib/queries/product.query";
+
+import { formatCurrency } from "@/utils/currencyFormat";
+import { TProduct } from "@/types/product.type";
+import { images } from "@/constants";
 
 const SearchBox = () => {
   const searchParams = useSearchParams();

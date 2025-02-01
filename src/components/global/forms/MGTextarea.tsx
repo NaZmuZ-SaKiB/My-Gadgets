@@ -1,5 +1,7 @@
 "use client";
 
+import { useFormContext } from "react-hook-form";
+
 import {
   FormControl,
   FormDescription,
@@ -9,8 +11,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+
 import { cn } from "@/lib/utils";
-import { useFormContext } from "react-hook-form";
 
 type TProps = {
   name: string;
@@ -39,22 +41,22 @@ const MGTextarea = ({
       name={name}
       render={({ field }) => (
         <FormItem
-          className={cn("flex flex-col gap-1 w-full", {
-            "grid grid-cols-[1fr_2fr] gap-x-2 items-center": vertical,
+          className={cn("flex w-full flex-col gap-1", {
+            "grid grid-cols-[1fr_2fr] items-center gap-x-2": vertical,
           })}
         >
           {showLabel && (
-            <FormLabel className={"font-medium text-nowrap"}>{label}</FormLabel>
+            <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
           )}
           <FormControl>
             <Textarea
               placeholder={placeholder || label.replace("*", "")}
               className={cn(
-                "bg-slate-100 rounded-xl h-auto p-4 border-none focus-visible:ring-offset-0 focus-visible:ring-primary max-h-40",
+                "h-auto max-h-40 rounded-xl border-none bg-slate-100 p-4 focus-visible:ring-primary focus-visible:ring-offset-0",
                 {
                   "!mt-0": vertical,
                 },
-                className
+                className,
               )}
               {...field}
             />
@@ -64,7 +66,7 @@ const MGTextarea = ({
               {description}
             </FormDescription>
           )}
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />

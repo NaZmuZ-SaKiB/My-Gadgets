@@ -1,5 +1,9 @@
 "use client";
 
+import { toast } from "sonner";
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -12,11 +16,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { AQTags } from "@/constants";
+
 import { useProductDeleteMutation } from "@/lib/queries/product.query";
-import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
-import { toast } from "sonner";
+import { AQTags } from "@/constants";
 
 type TProps = {
   products: string[];

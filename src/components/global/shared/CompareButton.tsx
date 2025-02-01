@@ -1,11 +1,12 @@
 "use client";
 
-import { useCompare } from "@/lib/providers/ContextProvider";
-import { cn } from "@/lib/utils";
-import { TProduct } from "@/types/product.type";
 import { ClassValue } from "clsx";
 import { Shuffle } from "lucide-react";
 import { useEffect, useState } from "react";
+
+import { useCompare } from "@/lib/providers/ContextProvider";
+import { TProduct } from "@/types/product.type";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   product: TProduct;

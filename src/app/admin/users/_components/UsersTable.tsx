@@ -1,16 +1,18 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
-import { Button } from "@/components/ui/button";
-import { useUserGetAllQuery } from "@/lib/queries/user.query";
-import { TUser } from "@/types/user.type";
-import { Loader2, ReceiptText } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Loader2, ReceiptText } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import UserRoleToggleButton from "./UserRoleToggleButton";
-import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
 import MGPagination from "@/components/global/shared/MGPagination";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+
+import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
+import { useUserGetAllQuery } from "@/lib/queries/user.query";
+import { TUser } from "@/types/user.type";
 
 const UsersTable = () => {
   const searchParams = useSearchParams();

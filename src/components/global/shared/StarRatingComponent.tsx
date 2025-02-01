@@ -1,8 +1,9 @@
 "use client";
 
-import { images } from "@/constants";
-import { Star } from "lucide-react";
 import Image from "next/image";
+import { Star } from "lucide-react";
+
+import { images } from "@/constants";
 
 type TProps = {
   readonly?: boolean;

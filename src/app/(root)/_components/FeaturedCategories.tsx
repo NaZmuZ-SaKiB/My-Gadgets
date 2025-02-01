@@ -1,6 +1,7 @@
-import { TCategory } from "@/types/category.type";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
+import { TCategory } from "@/types/category.type";
 
 type TProps = {
   featuredCategories: TCategory[];

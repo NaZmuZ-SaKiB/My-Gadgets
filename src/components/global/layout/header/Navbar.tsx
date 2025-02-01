@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MGButton from "../../shared/MGButton";
+
 import { settingsGetAction } from "@/lib/actions/settings.action";
 
 const Navbar = async () => {

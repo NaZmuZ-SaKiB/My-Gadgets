@@ -1,12 +1,12 @@
 "use client";
 
+import { toast } from "sonner";
+import { useState } from "react";
+import { Plus, Minus, ShoppingCart } from "lucide-react";
 import MGButton from "@/components/global/shared/MGButton";
+
 import { useCart } from "@/lib/providers/ContextProvider";
 import { TProduct } from "@/types/product.type";
-import { ShoppingCart } from "lucide-react";
-import { Plus, Minus } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
 
 type TProps = {
   product: TProduct;

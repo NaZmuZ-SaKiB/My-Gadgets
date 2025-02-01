@@ -1,16 +1,18 @@
 "use client";
 
-import MGAInput from "@/components/admin/forms/MGAInput";
-import MGForm from "@/components/global/forms/MGForm";
-import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
-import { useMediaUpdateMutation } from "@/lib/queries/media.query";
-import { TMedia } from "@/types/media.type";
+import { z } from "zod";
+import { toast } from "sonner";
+import { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+
+import MGForm from "@/components/global/forms/MGForm";
+import MGAInput from "@/components/admin/forms/MGAInput";
+import MGButton from "@/components/global/shared/MGButton";
+
+import { useMediaUpdateMutation } from "@/lib/queries/media.query";
+import { TMedia } from "@/types/media.type";
+import { AQTags } from "@/constants";
 
 type TProps = {
   selectedImage: TMedia | null;

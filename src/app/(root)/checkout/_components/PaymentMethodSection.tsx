@@ -1,6 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+
 import { paymentMethods } from "@/constants";
 import { TPaymentMethod } from "@/types/order.type";
 
@@ -19,11 +20,11 @@ const PaymentMethodSection = ({
     <div className="sm:rounded-xl sm:border sm:border-slate-200 sm:p-4">
       <h2 className="text-lg font-semibold text-slate-700">Payment Method</h2>
 
-      <div className="space-y-1.5 mt-5">
+      <div className="mt-5 space-y-1.5">
         {paymentMethods.map((method) => (
           <div
             key={method}
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex cursor-pointer items-center gap-3"
             onClick={() => setSelectedPaymentMethod(method)}
           >
             <input
@@ -35,7 +36,7 @@ const PaymentMethodSection = ({
             />
             <label
               htmlFor={method}
-              className="text-sm text-slate-700 capitalize cursor-pointer hover:text-primary"
+              className="cursor-pointer text-sm capitalize text-slate-700 hover:text-primary"
             >
               {method.split("-").join(" ")}
             </label>
@@ -44,7 +45,7 @@ const PaymentMethodSection = ({
 
         {selectedPaymentMethod === "bank-transfer" && (
           <div>
-            <p className="text-sm font-medium mb-1">Transaction ID</p>
+            <p className="mb-1 text-sm font-medium">Transaction ID</p>
             <Input
               onChange={(e) => setTransactionId(e.target.value)}
               className="no-focus"

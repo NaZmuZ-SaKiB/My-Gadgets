@@ -1,20 +1,21 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import MGAInput from "@/components/admin/forms/MGAInput";
-import MGForm from "@/components/global/forms/MGForm";
-import MGInput from "@/components/global/forms/MGInput";
-import MGButton from "@/components/global/shared/MGButton";
-import { useCreateAdminMutation } from "@/lib/queries/user.query";
-import { AuthValidation } from "@/lib/validations/auth.validation";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import AGrid from "@/components/admin/admin-ui/AGrid";
+import MGForm from "@/components/global/forms/MGForm";
+import MGAInput from "@/components/admin/forms/MGAInput";
+import MGButton from "@/components/global/shared/MGButton";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
+import { useCreateAdminMutation } from "@/lib/queries/user.query";
+import { AuthValidation } from "@/lib/validations/auth.validation";
 
 const defaultValues = {
   name: "",

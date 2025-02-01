@@ -1,16 +1,7 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
@@ -18,6 +9,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
 const chartData = [
   { month: "January", sales: 15438923, profit: 8894753, expense: 1834092 },
   { month: "February", sales: 24321045, profit: 10721093, expense: 2291854 },

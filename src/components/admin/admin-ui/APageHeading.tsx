@@ -1,10 +1,12 @@
 "use client";
 
 import { ClassValue } from "clsx";
-import AFloatingBox from "./AFloatingBox";
-import { cn } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+
+import AFloatingBox from "./AFloatingBox";
+
+import { cn } from "@/lib/utils";
 
 type TProps = {
   title: string;
@@ -24,11 +26,11 @@ const APageHeading = ({
     <AFloatingBox className="flex justify-between">
       <div className="flex items-center">
         {backButton && (
-          <span className="pr-2 cursor-pointer" onClick={() => router.back()}>
+          <span className="cursor-pointer pr-2" onClick={() => router.back()}>
             <ChevronLeft className="size-7" />
           </span>
         )}
-        <h1 className={cn("text-slate-700 font-bold text-xl", className)}>
+        <h1 className={cn("text-xl font-bold text-slate-700", className)}>
           {title}
         </h1>
       </div>

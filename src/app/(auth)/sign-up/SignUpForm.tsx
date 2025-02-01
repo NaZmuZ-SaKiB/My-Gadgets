@@ -1,19 +1,20 @@
 "use client";
 
+import { z } from "zod";
+import Link from "next/link";
+import { toast } from "sonner";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import MGForm from "@/components/global/forms/MGForm";
 import MGInput from "@/components/global/forms/MGInput";
 import MGButton from "@/components/global/shared/MGButton";
-import { USER_ROLE } from "@/constants";
+
 import { useSignUpMutation } from "@/lib/queries/auth.query";
 import { AuthValidation } from "@/lib/validations/auth.validation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
 
 const defaultValues = {
   name: "",

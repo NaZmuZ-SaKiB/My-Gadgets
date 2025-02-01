@@ -1,29 +1,32 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { useParams } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
 import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import MGAInput from "@/components/admin/forms/MGAInput";
-import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
 import MGForm from "@/components/global/forms/MGForm";
+import MGAInput from "@/components/admin/forms/MGAInput";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+import MGASelect, { TSelectOption } from "@/components/admin/forms/MGASelect";
+
 import {
   useCategoryGetAllQuery,
   useCategoryGetByIdQuery,
   useCategoryUpdateMutation,
 } from "@/lib/queries/category.query";
 import { CategoryValidation } from "@/lib/validations/category.validation";
+
 import { TCategory } from "@/types/category.type";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { useParams } from "next/navigation";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import { AQTags } from "@/constants";
 
 const SingleCategoryPage = () => {
   const { id } = useParams();

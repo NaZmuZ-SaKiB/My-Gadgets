@@ -1,16 +1,18 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+
+import OrdersTable from "@/components/admin/shared/OrdersTable";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import DataSortBySelect from "@/components/admin/shared/filters/DataSortBySelect";
-import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
-import { orderSortOptions } from "@/constants";
-import OrdersTable from "@/components/admin/shared/OrdersTable";
-import { useSearchParams } from "next/navigation";
-import { useOrderGetAllQuery } from "@/lib/queries/order.query";
 import OrderStatusFilter from "@/components/admin/shared/filters/OrderStatusFilter";
 import OrderIsPaidFilter from "@/components/admin/shared/filters/OrderIsPaidFilter";
-import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
+import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
+
+import { useOrderGetAllQuery } from "@/lib/queries/order.query";
+import { orderSortOptions } from "@/constants";
 
 const OrdersData = () => {
   const searchParams = useSearchParams();

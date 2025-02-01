@@ -1,11 +1,12 @@
 "use client";
 
-import MGButton from "@/components/global/shared/MGButton";
-import { ORDER_STATUS } from "@/constants";
-import { useOrderUpdateMutation } from "@/lib/queries/order.query";
-import { TOrderStatus } from "@/types/order.type";
-import { useState } from "react";
 import { toast } from "sonner";
+import { useState } from "react";
+
+import { useOrderUpdateMutation } from "@/lib/queries/order.query";
+import MGButton from "@/components/global/shared/MGButton";
+import { TOrderStatus } from "@/types/order.type";
+import { ORDER_STATUS } from "@/constants";
 
 type TProps = {
   orderId: string;

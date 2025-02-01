@@ -1,7 +1,8 @@
-import MGButton from "@/components/global/shared/MGButton";
 import { Plus } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
+
 import ProductSelect from "./ProductSelect";
+import MGButton from "@/components/global/shared/MGButton";
 import MGADateTimePicker from "@/components/admin/forms/MGADateTimePicker";
 
 type TProps = {
@@ -22,7 +23,7 @@ const FlashSaleInput = ({ defaultValue }: TProps) => {
       {fields.map((field, i) => (
         <div
           key={field.id}
-          className="flex flex-col gap-3 bg-slate-50 rounded-md p-3 relative"
+          className="relative flex flex-col gap-3 rounded-md bg-slate-50 p-3"
         >
           <div className="max-w-md">
             <MGADateTimePicker
@@ -40,7 +41,7 @@ const FlashSaleInput = ({ defaultValue }: TProps) => {
           />
 
           <span
-            className="bg-red-500 text-white px-3 py-1 text-sm rounded-md absolute right-2 top-2 cursor-pointer hover:bg-red-600"
+            className="absolute right-2 top-2 cursor-pointer rounded-md bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600"
             onClick={() => remove(i)}
           >
             remove
@@ -49,7 +50,7 @@ const FlashSaleInput = ({ defaultValue }: TProps) => {
       ))}
       <MGButton
         type="button"
-        className="rounded-none self-start gap-2"
+        className="gap-2 self-start rounded-none"
         onClick={append}
       >
         <Plus className="size-5" /> Add new Flash Sale

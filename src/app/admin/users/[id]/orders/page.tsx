@@ -1,13 +1,16 @@
 "use client";
 
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import { useParams } from "next/navigation";
+
 import OrdersTable from "@/components/admin/shared/OrdersTable";
-import { useOrderGetAllQuery } from "@/lib/queries/order.query";
-import { useUserGetByIdQuery } from "@/lib/queries/user.query";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
 import { TOrder } from "@/types/order.type";
 import { TUser } from "@/types/user.type";
-import { useParams } from "next/navigation";
+
+import { useOrderGetAllQuery } from "@/lib/queries/order.query";
+import { useUserGetByIdQuery } from "@/lib/queries/user.query";
 
 const UserOrdersPage = () => {
   const params = useParams();

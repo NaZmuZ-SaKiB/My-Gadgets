@@ -1,13 +1,15 @@
 "use client";
 
-import { AQTags, images } from "@/constants";
-import Image from "next/image";
-import ASidebarDrawer from "./ASidebarDrawer";
 import Link from "next/link";
-import { LogOut, User } from "lucide-react";
-import { useSignOutMutation } from "@/lib/queries/auth.query";
-import { useQueryClient } from "@tanstack/react-query";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { LogOut, User } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+
+import ASidebarDrawer from "./ASidebarDrawer";
+
+import { useSignOutMutation } from "@/lib/queries/auth.query";
+import { AQTags, images } from "@/constants";
 
 const ATopbar = () => {
   const { mutateAsync: logoutFn } = useSignOutMutation();

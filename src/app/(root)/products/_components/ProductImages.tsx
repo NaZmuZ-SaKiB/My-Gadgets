@@ -1,6 +1,8 @@
-import { TMedia } from "@/types/media.type";
 import Image from "next/image";
+
 import ImageGalleryModal from "./ImageGalleryModal";
+
+import { TMedia } from "@/types/media.type";
 
 type TProps = {
   images: TMedia[];
@@ -11,11 +13,11 @@ type TProps = {
 const ProductImages = ({ alt, images, name }: TProps) => {
   return (
     <div>
-      <div className="border border-slate-200 rounded-2xl overflow-hidden">
+      <div className="overflow-hidden rounded-2xl border border-slate-200">
         <Image
           src={images[0].secureUrl}
           alt={alt}
-          className="object-contain w-full"
+          className="w-full object-contain"
           width={500}
           height={500}
         />

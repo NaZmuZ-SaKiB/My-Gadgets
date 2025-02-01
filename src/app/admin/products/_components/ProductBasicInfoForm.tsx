@@ -1,8 +1,9 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import MGAInput from "@/components/admin/forms/MGAInput";
 import MGASelect from "@/components/admin/forms/MGASelect";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
 import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
 import { TBrand } from "@/types/brand.type";
 

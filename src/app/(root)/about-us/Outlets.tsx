@@ -1,7 +1,8 @@
-import { branchGetAllAction } from "@/lib/actions/branch.action";
-import { TBranch } from "@/types/branch.type";
-import { MapPin, MapPinned, Phone } from "lucide-react";
 import Link from "next/link";
+import { MapPin, MapPinned, Phone } from "lucide-react";
+
+import { TBranch } from "@/types/branch.type";
+import { branchGetAllAction } from "@/lib/actions/branch.action";
 
 const Outlets = async () => {
   const branchesData = await branchGetAllAction("limit=999&sortOrder=asc");

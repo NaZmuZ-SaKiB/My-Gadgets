@@ -1,16 +1,18 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import { Button } from "@/components/ui/button";
-import { useCategoryGetAllQuery } from "@/lib/queries/category.query";
-import { TCategory } from "@/types/category.type";
-import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import CategoryDeleteDialog from "./CategoryDeleteDialog";
-import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
 import MGPagination from "@/components/global/shared/MGPagination";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+
+import { TCategory } from "@/types/category.type";
+import { useCategoryGetAllQuery } from "@/lib/queries/category.query";
 
 type TProps = {
   selectedCategories: string[];

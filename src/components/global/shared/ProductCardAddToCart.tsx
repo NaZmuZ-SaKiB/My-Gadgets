@@ -1,12 +1,15 @@
 "use client";
 
-import { useCart } from "@/lib/providers/ContextProvider";
-import { cn } from "@/lib/utils";
-import { TProduct } from "@/types/product.type";
 import { ClassValue } from "clsx";
-import MGButton from "../shared/MGButton";
-import { Check, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Check, ShoppingCart } from "lucide-react";
+
+import MGButton from "../shared/MGButton";
+
+import { cn } from "@/lib/utils";
+import { useCart } from "@/lib/providers/ContextProvider";
+
+import { TProduct } from "@/types/product.type";
 
 type TProps = {
   product: TProduct;

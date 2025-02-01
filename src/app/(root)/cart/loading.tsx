@@ -1,5 +1,6 @@
-import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import { Trash2 } from "lucide-react";
+
+import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 
 const CartPageLoading = () => {
   return (

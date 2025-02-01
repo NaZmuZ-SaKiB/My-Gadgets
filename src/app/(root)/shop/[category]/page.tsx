@@ -1,14 +1,16 @@
-import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
-import { productGetAllAction } from "@/lib/actions/product.action";
+import { Metadata, ResolvingMetadata } from "next";
+
 import Filters from "../_components/Filters";
-import FilterTopBar from "../_components/FilterTopBar";
-import ProductCard from "@/components/global/cards/ProductCard";
 import { TProduct } from "@/types/product.type";
 import BrandsFilter from "../_components/BrandsFilter";
-import { brandGetAllAction } from "@/lib/actions/brand.action";
-import { TBrand } from "@/types/brand.type";
+import FilterTopBar from "../_components/FilterTopBar";
+import ProductCard from "@/components/global/cards/ProductCard";
+import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import MGPagination from "@/components/global/shared/MGPagination";
-import { Metadata, ResolvingMetadata } from "next";
+
+import { TBrand } from "@/types/brand.type";
+import { brandGetAllAction } from "@/lib/actions/brand.action";
+import { productGetAllAction } from "@/lib/actions/product.action";
 
 type TProps = {
   params: Promise<{

@@ -1,13 +1,14 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
+import PaymentCheckout from "./_components/PaymentCheckout";
+
 import { formatCurrency } from "@/utils/currencyFormat";
 import { useCart } from "@/lib/providers/ContextProvider";
-import PaymentCheckout from "./_components/PaymentCheckout";
-import { Loader2 } from "lucide-react";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string,

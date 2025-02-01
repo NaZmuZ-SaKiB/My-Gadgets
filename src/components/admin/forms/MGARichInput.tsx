@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import "suneditor/dist/css/suneditor.min.css";
+import { useFormContext } from "react-hook-form";
 
 import {
   FormControl,
@@ -8,7 +9,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useFormContext } from "react-hook-form";
 
 type TProps = {
   name: string;
@@ -32,8 +32,8 @@ const MGARichInput = ({
       control={control}
       name={name}
       render={({ field, field: { ref } }) => (
-        <FormItem className="flex flex-col gap-1 w-full">
-          <FormLabel className="font-medium text-xs">{label}</FormLabel>
+        <FormItem className="flex w-full flex-col gap-1">
+          <FormLabel className="text-xs font-medium">{label}</FormLabel>
           <FormControl>
             <SunEditor
               {...field}
@@ -63,7 +63,7 @@ const MGARichInput = ({
               }}
             />
           </FormControl>
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />

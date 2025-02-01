@@ -1,26 +1,28 @@
 "use client";
 
-import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
-import ShippingAddressSection from "./_components/ShippingAddressSection";
-import Heading from "./_components/Heading";
-import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
+import { z } from "zod";
+import Link from "next/link";
+import { toast } from "sonner";
 import { useState } from "react";
+import { ShoppingBag } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+import { usePathname, useRouter } from "next/navigation";
+
+import Heading from "./_components/Heading";
+import MGButton from "@/components/global/shared/MGButton";
+import CheckoutOverview from "./_components/CheckoutOverview";
+import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
+import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
 import { TDeliveryOption, TPaymentMethod } from "@/types/order.type";
 import PaymentMethodSection from "./_components/PaymentMethodSection";
 import DeliveryMethodSection from "./_components/DeliveryMethodSection";
-import CheckoutOverview from "./_components/CheckoutOverview";
-import Link from "next/link";
-import MGButton from "@/components/global/shared/MGButton";
-import { ShoppingBag } from "lucide-react";
+import ShippingAddressSection from "./_components/ShippingAddressSection";
+import ShippingAddressLoading from "./_components/ShippingAddressLoading";
+
+import { OrderValidation } from "@/lib/validations/order.validation";
 import { useOrderCreateMutation } from "@/lib/queries/order.query";
 import { useCart } from "@/lib/providers/ContextProvider";
-import { z } from "zod";
-import { OrderValidation } from "@/lib/validations/order.validation";
-import { toast } from "sonner";
-import { useQueryClient } from "@tanstack/react-query";
 import { AQTags } from "@/constants";
-import { usePathname, useRouter } from "next/navigation";
-import ShippingAddressLoading from "./_components/ShippingAddressLoading";
 
 const CheckoutPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] =

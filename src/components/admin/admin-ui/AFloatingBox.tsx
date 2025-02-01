@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import { ReactNode } from "react";
+
+import { cn } from "@/lib/utils";
 
 type TProps = {
   children?: ReactNode;
@@ -11,8 +12,8 @@ const AFloatingBox = ({ children, className }: TProps) => {
   return (
     <div
       className={cn(
-        "p-2 xs:p-4 rounded-xl bg-white hover:shadow-xl hover:shadow-slate-200 transition-shadow duration-300",
-        className
+        "rounded-xl bg-white p-2 transition-shadow duration-300 hover:shadow-xl hover:shadow-slate-200 xs:p-4",
+        className,
       )}
     >
       {children}

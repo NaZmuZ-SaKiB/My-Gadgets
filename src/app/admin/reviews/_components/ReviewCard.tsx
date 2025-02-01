@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
+import { Trash2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import ReviewStatusSelect from "./ReviewStatusSelect";
+import ReviewDeleteDialog from "./ReviewDeleteDialog";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
+
 import { TReview } from "@/types/review.type";
-import Link from "next/link";
-import { ChangeEvent } from "react";
-import ReviewStatusSelect from "./ReviewStatusSelect";
-import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
-import ReviewDeleteDialog from "./ReviewDeleteDialog";
 
 type TProps = {
   review: TReview;

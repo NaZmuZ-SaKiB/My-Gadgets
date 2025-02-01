@@ -1,10 +1,12 @@
-import AddShippingAddressModal from "@/components/global/shared/AddShippingAddressModal";
-import { isUserLoggedIn } from "@/lib/actions/auth.action";
-import { shippingAddressGetAllAction } from "@/lib/actions/shippingAddress.action";
-import { TShippingAddress } from "@/types/shippingAddress.type";
-import EditShippingAddressModal from "./_components/EditShippingAddressModal";
-import ShippingAddressSetDefaultButton from "./_components/ShippingAddressSetDefaultButton";
 import { Metadata } from "next";
+
+import ShippingAddressSetDefaultButton from "./_components/ShippingAddressSetDefaultButton";
+import AddShippingAddressModal from "@/components/global/shared/AddShippingAddressModal";
+import EditShippingAddressModal from "./_components/EditShippingAddressModal";
+
+import { shippingAddressGetAllAction } from "@/lib/actions/shippingAddress.action";
+import { isUserLoggedIn } from "@/lib/actions/auth.action";
+import { TShippingAddress } from "@/types/shippingAddress.type";
 
 export const metadata: Metadata = {
   title: "Addresses",

@@ -1,16 +1,14 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
-import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
-import DataSortBySelect from "@/components/admin/shared/filters/DataSortBySelect";
-import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
-import SelectedItemsCount from "@/components/admin/shared/SelectedItemsCount";
-import { Button } from "@/components/ui/button";
-import { userSortOptions } from "@/constants";
-import { useState } from "react";
 import UsersTable from "./UsersTable";
 import UserRoleFilter from "./UserRoleFilter";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import DataSearchBox from "@/components/admin/shared/filters/DataSearchBox";
+import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
+import DataSortBySelect from "@/components/admin/shared/filters/DataSortBySelect";
+import DataSortOrderSelect from "@/components/admin/shared/filters/DataSortOrderSelect";
+
+import { userSortOptions } from "@/constants";
 
 const UsersData = () => {
   return (

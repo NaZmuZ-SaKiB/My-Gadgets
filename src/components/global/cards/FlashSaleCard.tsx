@@ -1,10 +1,12 @@
-import { TProduct } from "@/types/product.type";
-import { ShoppingCart } from "lucide-react";
-import Image from "next/image";
-import CountDownTimer from "../shared/CountDownTimer";
 import Link from "next/link";
-import { formatCurrency } from "@/utils/currencyFormat";
+import Image from "next/image";
+import { ShoppingCart } from "lucide-react";
+
 import MGButton from "../shared/MGButton";
+import CountDownTimer from "../shared/CountDownTimer";
+
+import { TProduct } from "@/types/product.type";
+import { formatCurrency } from "@/utils/currencyFormat";
 
 const FlashSaleCard = ({
   product,
@@ -15,41 +17,41 @@ const FlashSaleCard = ({
 }) => {
   return (
     <div className="group">
-      <div className="border border-slate-300 rounded-2xl overflow-hidden relative cursor-pointer">
-        <div className="relative w-[90%] mx-auto aspect-square">
+      <div className="relative cursor-pointer overflow-hidden rounded-2xl border border-slate-300">
+        <div className="relative mx-auto aspect-square w-[90%]">
           <Image
             src={product.images[0].secureUrl}
             alt={product.model}
             fill
-            className="p-5 object-contain object-center"
+            className="object-contain object-center p-5"
           />
         </div>
-        <div className="absolute left-0 top-0 right-0 bottom-0 bg-slate-900 bg-opacity-10"></div>
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-slate-900 bg-opacity-10"></div>
       </div>
 
-      <div className="w-[90%] mx-auto -mt-[8rem] relative group-hover:-mt-[8.5rem] transition-all duration-300 ease-in-out">
-        <div className="relative z-10 px-4 mb-4">
+      <div className="relative mx-auto -mt-[8rem] w-[90%] transition-all duration-300 ease-in-out group-hover:-mt-[8.5rem]">
+        <div className="relative z-10 mb-4 px-4">
           <CountDownTimer endTime={endDate} />
         </div>
 
-        <div className="bg-white p-3 sm:p-5 flex h-[11rem] sm:h-[10rem] flex-col justify-between border border-slate-50 shadow-lg rounded-xl">
+        <div className="flex h-[11rem] flex-col justify-between rounded-xl border border-slate-50 bg-white p-3 shadow-lg sm:h-[10rem] sm:p-5">
           <Link href={`/products/${product.slug}/${product._id}`}>
-            <h3 className="font-bold text-slate-700 mb-3 max-xs:text-center hover:underline underline-offset-2 cursor-pointer">
+            <h3 className="mb-3 cursor-pointer font-bold text-slate-700 underline-offset-2 hover:underline max-xs:text-center">
               {product.name.slice(0, 100)}
               {product.name.length > 100 && "..."}
             </h3>
           </Link>
 
-          <div className="flex max-xs:flex-col max-xs:items-center justify-between gap-4 items-end">
-            <div className="flex items-center gap-y-1 gap-x-3 flex-wrap">
-              <span className="font-bold text-primary text-xl">
+          <div className="flex items-end justify-between gap-4 max-xs:flex-col max-xs:items-center">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="text-xl font-bold text-primary">
                 {formatCurrency(product.salePrice)}
               </span>
-              <span className="text-slate-500 line-through decoration-2 font-semibold text-sm">
+              <span className="text-sm font-semibold text-slate-500 line-through decoration-2">
                 {formatCurrency(product.regularPrice)}
               </span>
             </div>
-            <MGButton className="rounded-md gap-2">
+            <MGButton className="gap-2 rounded-md">
               <ShoppingCart className="size-3 xs:size-4" />
               <span>Add</span>
             </MGButton>

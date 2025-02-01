@@ -1,9 +1,10 @@
+import Link from "next/link";
+import { ShoppingBag } from "lucide-react";
+
+import MGButton from "@/components/global/shared/MGButton";
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import ShippingAddressLoading from "./_components/ShippingAddressLoading";
 import CheckoutOverviewLoading from "./_components/CheckoutOverviewLoading";
-import Link from "next/link";
-import MGButton from "@/components/global/shared/MGButton";
-import { ShoppingBag } from "lucide-react";
 
 const CheckoutPageLoading = () => {
   return (

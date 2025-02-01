@@ -1,5 +1,9 @@
 "use client";
 
+import { toast } from "sonner";
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -10,13 +14,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 import { AQTags } from "@/constants";
 import { useCategoryDeleteMutation } from "@/lib/queries/category.query";
-import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
-import { toast } from "sonner";
 
 type TProps = {
   categories: string[];

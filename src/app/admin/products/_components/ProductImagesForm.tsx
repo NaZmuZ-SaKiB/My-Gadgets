@@ -1,12 +1,12 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 
 const ProductImagesForm = ({ defaultValues }: { defaultValues?: any }) => {
   return (
     <AFloatingBox>
-      <h2 className="font-medium text-slate-700 text-lg mb-5">Images</h2>
+      <h2 className="mb-5 text-lg font-medium text-slate-700">Images</h2>
 
       <div className="space-y-3">
         <MGAImageInput

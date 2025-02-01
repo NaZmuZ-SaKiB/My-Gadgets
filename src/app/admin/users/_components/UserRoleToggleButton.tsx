@@ -1,11 +1,13 @@
 "use client";
 
-import MGButton from "@/components/global/shared/MGButton";
-import { AQTags, USER_ROLE } from "@/constants";
-import { useUserRoleToggleMutation } from "@/lib/queries/user.query";
-import { TUser } from "@/types/user.type";
-import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+
+import MGButton from "@/components/global/shared/MGButton";
+
+import { useUserRoleToggleMutation } from "@/lib/queries/user.query";
+import { AQTags, USER_ROLE } from "@/constants";
+import { TUser } from "@/types/user.type";
 
 type TProps = {
   user: TUser;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { useCart } from "@/lib/providers/ContextProvider";
 
 const Heading = () => {

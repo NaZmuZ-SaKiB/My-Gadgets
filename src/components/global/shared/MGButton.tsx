@@ -1,7 +1,9 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { VariantProps } from "class-variance-authority";
 import React from "react";
+import { VariantProps } from "class-variance-authority";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+
+import { cn } from "@/lib/utils";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -14,18 +16,18 @@ const MGButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Button
         className={cn(
-          "rounded-xl no-focus",
+          "no-focus rounded-xl",
           {
-            "bg-transparent border-primary text-primbg-primary hover:bg-primary hover:text-white":
+            "text-primbg-primary border-primary bg-transparent hover:bg-primary hover:text-white":
               props.variant === "outline",
           },
           {
-            "bg-primary focus-visible:bg-primary-hover focus-visible:text-white hover:bg-primary-hover":
+            "bg-primary hover:bg-primary-hover focus-visible:bg-primary-hover focus-visible:text-white":
               props.variant === undefined ||
               props.variant === null ||
               props.variant === "default",
           },
-          className
+          className,
         )}
         {...props}
         ref={ref}
@@ -33,7 +35,7 @@ const MGButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </Button>
     );
-  }
+  },
 );
 
 MGButton.displayName = "MGButton";

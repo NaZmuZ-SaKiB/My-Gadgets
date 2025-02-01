@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import {
   Select,
   SelectContent,
@@ -7,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import FilterSidebar from "./FilterSidebar";
 
 const FilterTopBar = () => {
@@ -62,16 +63,16 @@ const FilterTopBar = () => {
     router.replace(`${pathName}?${params}`);
   };
   return (
-    <div className="flex justify-center md:justify-end flex-wrap gap-2 border border-slate-200 rounded-xl px-3 py-1.5">
+    <div className="flex flex-wrap justify-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 md:justify-end">
       <FilterSidebar />
 
-      <div className="max-xs:hidden inline-flex items-center py-1.5 text-slate-500">
-        <span className="font-semibold text-sm">Show:</span>
+      <div className="inline-flex items-center py-1.5 text-slate-500 max-xs:hidden">
+        <span className="text-sm font-semibold">Show:</span>
         <Select
           defaultValue={searchParams.get("limit") || "35"}
           onValueChange={handleLimit}
         >
-          <SelectTrigger className="h-auto border-none p-0 px-1 no-focus bg-slate-100">
+          <SelectTrigger className="no-focus h-auto border-none bg-slate-100 p-0 px-1">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -84,9 +85,9 @@ const FilterTopBar = () => {
       </div>
 
       <div className="inline-flex items-center py-1.5 text-slate-500">
-        <span className="font-semibold text-sm">Sort By:</span>
+        <span className="text-sm font-semibold">Sort By:</span>
         <Select defaultValue="L" onValueChange={handleSort}>
-          <SelectTrigger className="h-auto w-[90px] border-none p-0 px-1 no-focus bg-slate-100">
+          <SelectTrigger className="no-focus h-auto w-[90px] border-none bg-slate-100 p-0 px-1">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

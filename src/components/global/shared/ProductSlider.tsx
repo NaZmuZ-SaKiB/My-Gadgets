@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+
 import {
   Carousel,
   CarouselContent,
@@ -8,9 +10,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { TProduct } from "@/types/product.type";
 import ProductCard from "../cards/ProductCard";
+
+import { TProduct } from "@/types/product.type";
 
 const ProductSlider = ({
   products,
@@ -26,7 +28,7 @@ const ProductSlider = ({
       stopOnFocusIn: false,
       stopOnMouseEnter: false,
       stopOnLastSnap: false,
-    })
+    }),
   );
   return (
     <Carousel
@@ -44,14 +46,14 @@ const ProductSlider = ({
             key={`sider-${product._id}`}
             className={`basis-1/2 sm:basis-1/3 ${
               withBanner ? "md:basis-1/2" : ""
-            } lg:basis-1/3 xl:basis-1/4 pl-2`}
+            } pl-2 lg:basis-1/3 xl:basis-1/4`}
           >
             <ProductCard product={product} showDescription={false} />
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-3 top-[40%] bg-opacity-60 border-slate-300 backdrop-blur-sm" />
-      <CarouselNext className="right-3 top-[40%] bg-opacity-60 border-slate-300 backdrop-blur-sm" />
+      <CarouselPrevious className="left-3 top-[40%] border-slate-300 bg-opacity-60 backdrop-blur-sm" />
+      <CarouselNext className="right-3 top-[40%] border-slate-300 bg-opacity-60 backdrop-blur-sm" />
     </Carousel>
   );
 };

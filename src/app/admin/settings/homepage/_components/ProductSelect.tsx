@@ -1,5 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import { Check, X } from "lucide-react";
+import { useFormContext } from "react-hook-form";
+import { ChangeEvent, useEffect, useState } from "react";
+
 import {
   FormControl,
   FormDescription,
@@ -10,13 +15,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { useProductGetAllQuery } from "@/lib/queries/product.query";
-import { cn } from "@/lib/utils";
 import { TProduct } from "@/types/product.type";
-import { Check, X } from "lucide-react";
-import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   name: string;
@@ -40,10 +42,10 @@ const ProductSelect = ({
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const [multipleValues, setMultipleValues] = useState<TProduct[]>(
-    multiple ? defaultValue : []
+    multiple ? defaultValue : [],
   );
   const [selectedValue, setSelectedValue] = useState<TProduct | null>(
-    !multiple ? defaultValue[0] : null
+    !multiple ? defaultValue[0] : null,
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,12 +57,12 @@ const ProductSelect = ({
   const selectValue = (product: TProduct) => {
     if (multiple) {
       const isActive = !!multipleValues.find(
-        (item) => item._id === product._id
+        (item) => item._id === product._id,
       );
 
       if (isActive) {
         setMultipleValues((prev) =>
-          prev.filter((item) => item._id !== product._id)
+          prev.filter((item) => item._id !== product._id),
         );
       } else {
         setMultipleValues((prev) => [...prev, product]);
@@ -85,7 +87,7 @@ const ProductSelect = ({
     if (multiple) {
       setValue(
         name,
-        multipleValues.map((item) => item._id)
+        multipleValues.map((item) => item._id),
       );
     } else {
       setValue(name, selectedValue?._id);
@@ -93,7 +95,7 @@ const ProductSelect = ({
   }, [multipleValues, selectedValue, name, multiple, setValue]);
 
   const { data, isLoading, isFetching } = useProductGetAllQuery(
-    `limit=5&searchTerm=${debouncedSearch}`
+    `limit=5&searchTerm=${debouncedSearch}`,
   );
 
   const options = data?.data || [];
@@ -103,18 +105,18 @@ const ProductSelect = ({
       control={control}
       name={name}
       render={() => (
-        <FormItem className="flex flex-col gap-1 w-full">
-          <FormLabel className={"font-medium text-nowrap"}>{label}</FormLabel>
+        <FormItem className="flex w-full flex-col gap-1">
+          <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
 
           <FormControl>
             <>
               {(multipleValues.length > 0 || !!selectedValue) && (
-                <div className="flex flex-col gap-1 border border-slate-300 p-1 max-h-[300px] overflow-y-auto">
+                <div className="flex max-h-[300px] flex-col gap-1 overflow-y-auto border border-slate-300 p-1">
                   {multipleValues.length > 0 &&
                     multipleValues.map((item) => (
                       <div
                         key={`${item?._id}`}
-                        className="bg-slate-100 p-2 flex gap-2 items-center"
+                        className="flex items-center gap-2 bg-slate-100 p-2"
                       >
                         <Image
                           src={item.images[0].secureUrl}
@@ -129,7 +131,7 @@ const ProductSelect = ({
                       </div>
                     ))}
                   {!!selectedValue && (
-                    <div className="bg-slate-100 p-2 flex gap-2 items-center">
+                    <div className="flex items-center gap-2 bg-slate-100 p-2">
                       <Image
                         src={selectedValue.images[0].secureUrl}
                         alt={selectedValue.model}
@@ -148,7 +150,7 @@ const ProductSelect = ({
                 <Input
                   type="text"
                   placeholder={label.replace("*", "")}
-                  className="rounded-none bg-slate-50 focus-visible:bg-white focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary"
+                  className="rounded-none bg-slate-50 focus-visible:border-primary focus-visible:bg-white focus-visible:ring-0 focus-visible:ring-offset-0"
                   value={search}
                   onFocus={() => setOpen(true)}
                   onBlur={() => setOpen(false)}
@@ -156,10 +158,10 @@ const ProductSelect = ({
                 />
                 <div
                   className={cn(
-                    "absolute z-50 top-[100%] bg-white border border-t-0 border-slate-200 w-full",
+                    "absolute top-[100%] z-50 w-full border border-t-0 border-slate-200 bg-white",
                     {
                       hidden: !open,
-                    }
+                    },
                   )}
                 >
                   <ScrollArea className="max-h-[160px] w-full overflow-y-auto">
@@ -169,7 +171,7 @@ const ProductSelect = ({
                       options.map((option: any) => {
                         const active = multiple
                           ? !!multipleValues.find(
-                              (item) => item?._id === option?._id
+                              (item) => item?._id === option?._id,
                             )
                           : !!selectedValue?._id === option._id;
 
@@ -177,11 +179,11 @@ const ProductSelect = ({
                           <div
                             key={`${name}-${option?._id}`}
                             className={cn(
-                              "px-3 py-1.5 text-slate-900 hover:bg-primary hover:text-slate-50 cursor-pointer flex items-center gap-2 text-sm",
+                              "flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm text-slate-900 hover:bg-primary hover:text-slate-50",
                               {
                                 "bg-slate-100 hover:bg-slate-100 hover:text-slate-900":
                                   active,
-                              }
+                              },
                             )}
                             onMouseDown={() => selectValue(option)}
                           >
@@ -205,7 +207,7 @@ const ProductSelect = ({
               {description}
             </FormDescription>
           )}
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />

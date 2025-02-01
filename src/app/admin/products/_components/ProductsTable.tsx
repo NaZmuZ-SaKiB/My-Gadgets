@@ -1,17 +1,19 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { ChangeEvent } from "react";
+import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import MGPagination from "@/components/global/shared/MGPagination";
 import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import DataLimitSelect from "@/components/admin/shared/filters/DataLimitSelect";
-import { Button } from "@/components/ui/button";
+import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
+
 import { images } from "@/constants";
 import { TProduct } from "@/types/product.type";
 import { formatCurrency } from "@/utils/currencyFormat";
-import { Edit, Eye, Loader2, Trash2 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { ChangeEvent } from "react";
-import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
-import MGPagination from "@/components/global/shared/MGPagination";
 
 type TProps = {
   selectedProducts?: string[];

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import Outlets from "./Outlets";
 import { Metadata } from "next";
+
+import Outlets from "./Outlets";
 
 export const metadata: Metadata = {
   title: "About Us",

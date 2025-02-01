@@ -51,6 +51,9 @@ const update = z.object({
   isPaid: z.boolean().optional(),
   status: z.string().optional(),
   cancelRequested: z.boolean().optional(),
+  transactionId: z.string().optional(),
+  paidAt: z.date().optional(),
+  paymentResult: z.string().optional(),
 });
 
 export const OrderValidation = {

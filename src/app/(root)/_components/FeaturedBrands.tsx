@@ -1,5 +1,6 @@
-import { TBrand } from "@/types/brand.type";
 import Image from "next/image";
+
+import { TBrand } from "@/types/brand.type";
 
 type TProps = {
   brands: TBrand[];

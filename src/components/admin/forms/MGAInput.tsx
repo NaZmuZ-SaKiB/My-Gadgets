@@ -1,3 +1,6 @@
+import { HTMLInputTypeAttribute } from "react";
+import { useFormContext } from "react-hook-form";
+
 import {
   FormControl,
   FormDescription,
@@ -7,9 +10,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+
 import { cn } from "@/lib/utils";
-import { HTMLInputTypeAttribute } from "react";
-import { useFormContext } from "react-hook-form";
 
 type TProps = {
   name: string;
@@ -38,11 +40,11 @@ const MGAInput = ({
       name={name}
       render={({ field }) => (
         <FormItem
-          className={cn("flex flex-col gap-1 w-full", {
-            "grid grid-cols-[1fr_2fr] gap-x-2 items-center": vertical,
+          className={cn("flex w-full flex-col gap-1", {
+            "grid grid-cols-[1fr_2fr] items-center gap-x-2": vertical,
           })}
         >
-          <FormLabel className={"font-medium text-nowrap text-xs"}>
+          <FormLabel className={"text-nowrap text-xs font-medium"}>
             {label}
           </FormLabel>
           <FormControl>
@@ -50,12 +52,12 @@ const MGAInput = ({
               type={type}
               placeholder={placeholder || label.replace("*", "")}
               className={cn(
-                "rounded-none !mt-1 bg-slate-50 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary",
+                "!mt-1 rounded-none bg-slate-50 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0",
                 {
                   "!mt-0": vertical,
                   "size-5 cursor-pointer": type === "checkbox",
                 },
-                className
+                className,
               )}
               {...field}
             />
@@ -65,7 +67,7 @@ const MGAInput = ({
               {description}
             </FormDescription>
           )}
-          <FormMessage className="font-normal !mt-0 col-span-2" />
+          <FormMessage className="col-span-2 !mt-0 font-normal" />
         </FormItem>
       )}
     />

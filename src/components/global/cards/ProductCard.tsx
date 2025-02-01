@@ -1,11 +1,13 @@
-import { TProduct } from "@/types/product.type";
-import { formatCurrency } from "@/utils/currencyFormat";
-import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
+
 import AddToCartButton from "../shared/ProductCardAddToCart";
 import CompareButton from "../shared/CompareButton";
 import WishlistButton from "../shared/WishlistButton";
+
+import { formatCurrency } from "@/utils/currencyFormat";
+import { TProduct } from "@/types/product.type";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   product: TProduct;

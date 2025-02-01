@@ -1,6 +1,6 @@
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
 import OrdersData from "./_components/OrdersData";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
 
 const OrdersPage = () => {
   return (

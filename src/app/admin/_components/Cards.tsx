@@ -1,9 +1,5 @@
 "use client";
 
-import { useDashboardQuery } from "@/lib/queries/user.query";
-import { cn } from "@/lib/utils";
-import { TDashboard } from "@/types/user.type";
-import { formatCurrency } from "@/utils/currencyFormat";
 import {
   DollarSign,
   ShoppingBag,
@@ -12,7 +8,12 @@ import {
   TrendingUp,
   User,
 } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 import CardsLoader from "./CardsLoader";
+import { TDashboard } from "@/types/user.type";
+import { formatCurrency } from "@/utils/currencyFormat";
+import { useDashboardQuery } from "@/lib/queries/user.query";
 
 const dashboardCardsData = [
   {

@@ -1,7 +1,8 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import OrdersTable from "@/components/admin/shared/OrdersTable";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
 import { useOrderGetAllQuery } from "@/lib/queries/order.query";
 import { TOrder } from "@/types/order.type";
 

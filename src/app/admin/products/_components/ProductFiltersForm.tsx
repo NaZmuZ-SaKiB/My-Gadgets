@@ -1,9 +1,10 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 import MGAInput from "@/components/admin/forms/MGAInput";
-import MGAMultiSelect from "@/components/admin/forms/MGAMultiSelect";
 import MGASelect from "@/components/admin/forms/MGASelect";
+import MGAMultiSelect from "@/components/admin/forms/MGAMultiSelect";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
 import {
   chargingPortOptions,
   compatibilityOptions,

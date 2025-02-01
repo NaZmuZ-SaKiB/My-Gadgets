@@ -1,5 +1,15 @@
 "use client";
 
+import { z } from "zod";
+import Link from "next/link";
+import { toast } from "sonner";
+import { useState } from "react";
+import { Edit } from "lucide-react";
+import { useParams } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   Dialog,
   DialogContent,
@@ -7,27 +17,20 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
+import MGForm from "../../forms/MGForm";
+import MGButton from "../../shared/MGButton";
+import { Button } from "@/components/ui/button";
+import MGAInput from "@/components/admin/forms/MGAInput";
+
 import {
   useProductGetByIdQuery,
   useProductUpdateMutation,
 } from "@/lib/queries/product.query";
-import { TProduct } from "@/types/product.type";
-import { Divide, Edit, Loader2 } from "lucide-react";
-import { useParams } from "next/navigation";
-import { useState } from "react";
-import MGForm from "../../forms/MGForm";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ProductValidation } from "@/lib/validations/product.validation";
-import MGAInput from "@/components/admin/forms/MGAInput";
-import { SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import MGButton from "../../shared/MGButton";
-import generateSlug from "@/utils/generateSlug";
-import { toast } from "sonner";
 import { AQTags } from "@/constants";
-import { useQueryClient } from "@tanstack/react-query";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { TProduct } from "@/types/product.type";
+import generateSlug from "@/utils/generateSlug";
+import { ProductValidation } from "@/lib/validations/product.validation";
 
 const ProductQuickEditModal = () => {
   const [open, setOpen] = useState(false);

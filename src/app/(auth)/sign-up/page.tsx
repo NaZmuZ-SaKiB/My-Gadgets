@@ -1,6 +1,7 @@
-import { images } from "@/constants";
 import Image from "next/image";
+
 import SignUpForm from "./SignUpForm";
+import { images } from "@/constants";
 
 const SignUpPage = () => {
   return (

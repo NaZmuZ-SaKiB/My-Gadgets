@@ -1,25 +1,27 @@
 "use client";
 
-import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import MGForm from "@/components/global/forms/MGForm";
-import MGButton from "@/components/global/shared/MGButton";
-import { useProductCreateMutation } from "@/lib/queries/product.query";
-import { ProductValidation } from "@/lib/validations/product.validation";
-import generateSlug from "@/utils/generateSlug";
+import { z } from "zod";
+import { toast } from "sonner";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import ProductBasicInfoForm from "../_components/ProductBasicInfoForm";
+
+import MGForm from "@/components/global/forms/MGForm";
+import AGrid from "@/components/admin/admin-ui/AGrid";
+import MGButton from "@/components/global/shared/MGButton";
 import ProductSpecsForm from "../_components/ProductSpecsForm";
-import ProductFiltersForm from "../_components/ProductFiltersForm";
 import SelectCategories from "../_components/SelectCategories";
 import ProductImagesForm from "../_components/ProductImagesForm";
-import { toast } from "sonner";
+import ProductFiltersForm from "../_components/ProductFiltersForm";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import ProductBasicInfoForm from "../_components/ProductBasicInfoForm";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
+import { ProductValidation } from "@/lib/validations/product.validation";
+import { useProductCreateMutation } from "@/lib/queries/product.query";
+import generateSlug from "@/utils/generateSlug";
 import { AQTags } from "@/constants";
 
 const defaultValues = {

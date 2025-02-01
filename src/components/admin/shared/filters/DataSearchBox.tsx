@@ -1,9 +1,10 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { X } from "lucide-react";
+
+import { Input } from "@/components/ui/input";
 import MGButton from "@/components/global/shared/MGButton";
 
 const DataSearchBox = () => {
@@ -54,12 +55,12 @@ const DataSearchBox = () => {
   }, []);
 
   return (
-    <div className="w-full flex gap-2 flex-wrap">
-      <div className="shrink-0 flex-1 basis-60 relative">
+    <div className="flex w-full flex-wrap gap-2">
+      <div className="relative flex-1 shrink-0 basis-60">
         <Input
           value={search}
           placeholder="Search..."
-          className=" w-full pr-8 focus-visible:border-primary no-focus"
+          className="no-focus w-full pr-8 focus-visible:border-primary"
           onChange={handleChange}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -69,7 +70,7 @@ const DataSearchBox = () => {
         />
 
         <X
-          className="size-5 absolute right-2 top-2.5 text-slate-500 cursor-pointer"
+          className="absolute right-2 top-2.5 size-5 cursor-pointer text-slate-500"
           onClick={handleClearSearch}
         />
       </div>

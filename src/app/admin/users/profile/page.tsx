@@ -1,13 +1,15 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import { useCurrentUserQuery } from "@/lib/queries/auth.query";
 import { Loader2 } from "lucide-react";
+
 import AccountForm from "./AccountForm";
 import ChangePasswordForm from "./ChangePasswordForm";
+import AGrid from "@/components/admin/admin-ui/AGrid";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+
+import { useCurrentUserQuery } from "@/lib/queries/auth.query";
 
 const AdminProfilePage = () => {
   const { data: user, isLoading: userLoading } = useCurrentUserQuery();

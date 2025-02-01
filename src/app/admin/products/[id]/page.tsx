@@ -1,31 +1,35 @@
 "use client";
 
-import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
 import MGForm from "@/components/global/forms/MGForm";
+import AGrid from "@/components/admin/admin-ui/AGrid";
 import MGButton from "@/components/global/shared/MGButton";
-import { AQTags } from "@/constants";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+import ProductBasicInfoForm from "../_components/ProductBasicInfoForm";
+import ProductFiltersForm from "../_components/ProductFiltersForm";
+import ProductImagesForm from "../_components/ProductImagesForm";
+import ProductSpecsForm from "../_components/ProductSpecsForm";
+import SelectCategories from "../_components/SelectCategories";
+
 import {
   useProductGetByIdQuery,
   useProductUpdateMutation,
 } from "@/lib/queries/product.query";
 import { ProductValidation } from "@/lib/validations/product.validation";
+
 import { TProduct } from "@/types/product.type";
 import generateSlug from "@/utils/generateSlug";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-import ProductBasicInfoForm from "../_components/ProductBasicInfoForm";
-import ProductSpecsForm from "../_components/ProductSpecsForm";
-import ProductFiltersForm from "../_components/ProductFiltersForm";
-import SelectCategories from "../_components/SelectCategories";
-import ProductImagesForm from "../_components/ProductImagesForm";
+
+import { AQTags } from "@/constants";
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -33,7 +37,7 @@ const SingleProductPage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const { data, isLoading: productLoading } = useProductGetByIdQuery(
-    id as string
+    id as string,
   );
   const product: TProduct = data?.data;
 
@@ -86,8 +90,8 @@ const SingleProductPage = () => {
 
   if (productLoading) {
     return (
-      <div className="h-full grid place-items-center">
-        <Loader2 className="animate-spin mx-auto size-[100px] text-primary" />
+      <div className="grid h-full place-items-center">
+        <Loader2 className="mx-auto size-[100px] animate-spin text-primary" />
       </div>
     );
   }
@@ -141,7 +145,7 @@ const SingleProductPage = () => {
         <APageHeading title="Product" backButton>
           <MGButton
             type="submit"
-            className="rounded-none self-start px-5 py-2 h-auto"
+            className="h-auto self-start rounded-none px-5 py-2"
             disabled={isPending}
           >
             Save Changes

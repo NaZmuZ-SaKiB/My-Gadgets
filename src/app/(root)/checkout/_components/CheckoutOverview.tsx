@@ -1,12 +1,14 @@
 "use client";
 
-import { useCart } from "@/lib/providers/ContextProvider";
-import { TDeliveryOption } from "@/types/order.type";
-import { formatCurrency } from "@/utils/currencyFormat";
-import { useEffect, useState } from "react";
-import CheckoutOverviewLoading from "./CheckoutOverviewLoading";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+import CheckoutOverviewLoading from "./CheckoutOverviewLoading";
+
+import { TDeliveryOption } from "@/types/order.type";
+import { formatCurrency } from "@/utils/currencyFormat";
+import { useCart } from "@/lib/providers/ContextProvider";
 
 type TProps = {
   deliveryOption: TDeliveryOption;

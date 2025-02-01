@@ -1,14 +1,16 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
-import { Button } from "@/components/ui/button";
-import { useReviewGetAllQuery } from "@/lib/queries/review.query";
-import { TReview } from "@/types/review.type";
-import { Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import { Loader2, Trash2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
 import ReviewStatusSelect from "./ReviewStatusSelect";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+
+import { TReview } from "@/types/review.type";
+import { useReviewGetAllQuery } from "@/lib/queries/review.query";
 
 type TProps = {
   selectedReviews: string[];

@@ -1,5 +1,8 @@
 "use client";
 
+import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   Select,
   SelectContent,
@@ -7,10 +10,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { AQTags, orderStatuses } from "@/constants";
 import { useOrderUpdateMutation } from "@/lib/queries/order.query";
-import { useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
 
 type TProps = {
   orderId: string;

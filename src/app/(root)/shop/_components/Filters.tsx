@@ -1,7 +1,8 @@
-import { compatibilities, connectivities } from "@/constants";
+import RangeFilter from "./RangeFilter";
 import CheckBoxFilterCard from "./CheckBoxFilterCard";
 import DropDownFilterCard from "./DropDownFilterCard";
-import RangeFilter from "./RangeFilter";
+
+import { compatibilities, connectivities } from "@/constants";
 
 const Filters = () => {
   return (

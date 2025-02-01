@@ -1,10 +1,11 @@
 "use server";
 
-import { authKey, backendUrl } from "@/constants";
 import { z } from "zod";
-import { SettingsValidation } from "../validations/settings.validation";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+
+import { authKey, backendUrl } from "@/constants";
+import { SettingsValidation } from "../validations/settings.validation";
 
 export const settingsGetAction = async (type?: string) => {
   const response = await fetch(

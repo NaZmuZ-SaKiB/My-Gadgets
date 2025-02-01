@@ -1,7 +1,8 @@
 "use client";
 
-import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+
 import MGButton from "@/components/global/shared/MGButton";
 
 const InvoiceDownloadButton = () => {

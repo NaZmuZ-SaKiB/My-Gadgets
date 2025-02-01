@@ -1,7 +1,8 @@
-import { currentUser } from "@/lib/actions/auth.action";
-import AccountForm from "./_components/AccountForm";
-import { redirect } from "next/navigation";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
+
+import AccountForm from "./_components/AccountForm";
+import { currentUser } from "@/lib/actions/auth.action";
 
 export const metadata: Metadata = {
   title: "Account",

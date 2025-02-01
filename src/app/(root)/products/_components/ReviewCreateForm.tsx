@@ -1,18 +1,19 @@
 "use client";
 
-import MGForm from "@/components/global/forms/MGForm";
-import MGInput from "@/components/global/forms/MGInput";
-import MGTextarea from "@/components/global/forms/MGTextarea";
-import MGButton from "@/components/global/shared/MGButton";
-import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
-import { useReviewCreateMutation } from "@/lib/queries/review.query";
-import { ReviewValidation } from "@/lib/validations/review.validation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
+import { z } from "zod";
+import { toast } from "sonner";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import MGForm from "@/components/global/forms/MGForm";
+import MGInput from "@/components/global/forms/MGInput";
+import MGButton from "@/components/global/shared/MGButton";
+import MGTextarea from "@/components/global/forms/MGTextarea";
+import StarRatingComponent from "@/components/global/shared/StarRatingComponent";
+
+import { ReviewValidation } from "@/lib/validations/review.validation";
+import { useReviewCreateMutation } from "@/lib/queries/review.query";
 
 type TProps = {
   product: string;
@@ -53,7 +54,7 @@ const ReviewCreateForm = ({ product }: TProps) => {
       <div className="hidden">
         <MGInput name="product" label="Product" />
       </div>
-      <MGButton disabled={isPending} className="rounded-lg self-start">
+      <MGButton disabled={isPending} className="self-start rounded-lg">
         Submit
       </MGButton>
     </MGForm>

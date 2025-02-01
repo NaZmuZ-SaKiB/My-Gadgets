@@ -1,15 +1,17 @@
 "use client";
 
+import { z } from "zod";
+import { toast } from "sonner";
+import { useState } from "react";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import MGAInput from "@/components/admin/forms/MGAInput";
 import MGForm from "@/components/global/forms/MGForm";
 import MGButton from "@/components/global/shared/MGButton";
+
 import { useChangePasswordMutation } from "@/lib/queries/auth.query";
 import { AuthValidation } from "@/lib/validations/auth.validation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
 
 const defaultValues = {
   oldPassword: "",

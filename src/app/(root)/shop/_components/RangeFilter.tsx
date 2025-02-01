@@ -1,8 +1,9 @@
 "use client";
 
-import { RangeSlider } from "@/components/ui/range-slider";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { RangeSlider } from "@/components/ui/range-slider";
 
 type TProps = {
   field: string;
@@ -40,16 +41,16 @@ const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
 
   return (
     <div className="rounded-xl border border-slate-200">
-      <h3 className="font-semibold text-slate-700 text-lg px-3 py-2 border-b border-slate-200 capitalize">
+      <h3 className="border-b border-slate-200 px-3 py-2 text-lg font-semibold capitalize text-slate-700">
         {field}
       </h3>
 
-      <div className="flex justify-between gap-3 text-sm px-3 pt-3">
-        <span className="flex-1 p-2 border border-slate-200">{values[0]}</span>
-        <span className="flex-1 p-2 border border-slate-200">{values[1]}</span>
+      <div className="flex justify-between gap-3 px-3 pt-3 text-sm">
+        <span className="flex-1 border border-slate-200 p-2">{values[0]}</span>
+        <span className="flex-1 border border-slate-200 p-2">{values[1]}</span>
       </div>
 
-      <div className="pt-5 pb-5 px-3 w-full">
+      <div className="w-full px-3 pb-5 pt-5">
         <RangeSlider
           value={values}
           onValueChange={handleChange}

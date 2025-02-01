@@ -1,6 +1,7 @@
+import { MapPin, Phone } from "lucide-react";
+
 import { branchGetAllAction } from "@/lib/actions/branch.action";
 import { TBranch } from "@/types/branch.type";
-import { MapPin, Phone } from "lucide-react";
 
 const BranchesSection = async () => {
   const branchesData = await branchGetAllAction("limit=999&sortOrder=asc");

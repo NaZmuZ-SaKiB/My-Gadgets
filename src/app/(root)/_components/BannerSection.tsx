@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 
 import {
   Carousel,
@@ -9,9 +11,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+
 import { images } from "@/constants";
-import Image from "next/image";
 import { TMedia } from "@/types/media.type";
 
 type TProps = {
@@ -34,7 +35,7 @@ const BannerSection = ({
       stopOnFocusIn: false,
       stopOnMouseEnter: false,
       stopOnLastSnap: false,
-    })
+    }),
   );
 
   const defaultSliderImages = [
@@ -43,13 +44,13 @@ const BannerSection = ({
   ];
 
   return (
-    <section className="pt-4 md:pt-8 pb-2 sm:pb-4">
+    <section className="pb-2 pt-4 sm:pb-4 md:pt-8">
       <Carousel
         opts={{
           loop: true,
         }}
         plugins={[plugin.current]}
-        className="rounded-lg sm:rounded-2xl overflow-hidden mb-4"
+        className="mb-4 overflow-hidden rounded-lg sm:rounded-2xl"
       >
         {/* -ml-0 because used pl-0 in item */}
         <CarouselContent className="-ml-0">
@@ -57,7 +58,7 @@ const BannerSection = ({
             ? sliderImages.map((image, index) => (
                 <CarouselItem
                   key={image._id}
-                  className="pl-0 relative w-full aspect-[100/35]"
+                  className="relative aspect-[100/35] w-full pl-0"
                 >
                   <Image
                     src={image.secureUrl}
@@ -70,7 +71,7 @@ const BannerSection = ({
             : defaultSliderImages.map((image, index) => (
                 <CarouselItem
                   key={`slider-image-${index}`}
-                  className="pl-0 relative w-full aspect-[100/35]"
+                  className="relative aspect-[100/35] w-full pl-0"
                 >
                   <Image
                     src={image}
@@ -81,34 +82,34 @@ const BannerSection = ({
                 </CarouselItem>
               ))}
         </CarouselContent>
-        <CarouselPrevious className="left-3 bg-opacity-70 border-slate-300 backdrop-blur-sm" />
-        <CarouselNext className="right-3 bg-opacity-70 border-slate-300 backdrop-blur-sm" />
+        <CarouselPrevious className="left-3 border-slate-300 bg-opacity-70 backdrop-blur-sm" />
+        <CarouselNext className="right-3 border-slate-300 bg-opacity-70 backdrop-blur-sm" />
       </Carousel>
 
       <div className="flex gap-3">
-        <div className="flex-1 relative aspect-video">
+        <div className="relative aspect-video flex-1">
           <Image
             fill
             src={bannerImage1?.secureUrl || images.defaultBanner1}
             alt="banner 1"
-            className="rounded-lg sm:rounded-2xl w-full"
+            className="w-full rounded-lg sm:rounded-2xl"
           />
         </div>
-        <div className="flex-1 relative">
+        <div className="relative flex-1">
           <Image
             fill
             src={bannerImage2?.secureUrl || images.defaultBanner2}
             alt="banner 2"
-            className="rounded-lg sm:rounded-2xl w-full"
+            className="w-full rounded-lg sm:rounded-2xl"
           />
         </div>
         {bannerImage3 && (
-          <div className="flex-1 relative max-md:hidden">
+          <div className="relative flex-1 max-md:hidden">
             <Image
               fill
               src={bannerImage3?.secureUrl || images.defaultBanner3}
               alt="banner 3"
-              className="rounded-lg sm:rounded-2xl w-full"
+              className="w-full rounded-lg sm:rounded-2xl"
             />
           </div>
         )}

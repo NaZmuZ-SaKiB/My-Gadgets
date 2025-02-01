@@ -1,20 +1,22 @@
 "use client";
 
+import Image from "next/image";
+import { toast } from "sonner";
+import { Loader2, X } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+
+import WishlistPageLoading from "./loading";
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import ProductCardAddToCart from "@/components/global/shared/ProductCardAddToCart";
-import { AQTags } from "@/constants";
+
 import {
   useWishlistClearMutation,
   useWishlistGetQuery,
   useWishlistRemoveMutation,
 } from "@/lib/queries/wishlist.query";
+import { AQTags } from "@/constants";
 import { TProduct } from "@/types/product.type";
 import { formatCurrency } from "@/utils/currencyFormat";
-import { useQueryClient } from "@tanstack/react-query";
-import { Loader2, X } from "lucide-react";
-import Image from "next/image";
-import { toast } from "sonner";
-import WishlistPageLoading from "./loading";
 
 const WishlistPage = () => {
   const { data: wishlistData, isLoading } = useWishlistGetQuery();

@@ -1,5 +1,6 @@
-import { icons } from "@/constants";
 import Image from "next/image";
+
+import { icons } from "@/constants";
 
 const servicesData = [
   {
@@ -26,14 +27,14 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section className="pt-4 md:pt-6 pb-4">
-      <h2 className="font-bold text-3xl text-slate-700">Our Specialities</h2>
+    <section className="pb-4 pt-4 md:pt-6">
+      <h2 className="text-3xl font-bold text-slate-700">Our Specialities</h2>
 
-      <div className="grid xs:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+      <div className="mt-6 grid gap-3 xs:grid-cols-2 lg:grid-cols-4">
         {servicesData.map((service) => (
           <div
             key={service.title}
-            className="bg-slate-100 p-4 rounded-xl flex-1 gap-5 flex max-md:flex-col h-full items-center"
+            className="flex h-full flex-1 items-center gap-5 rounded-xl bg-slate-100 p-4 max-md:flex-col"
           >
             <div className="relative size-16">
               <Image
@@ -44,10 +45,10 @@ const Services = () => {
               />
             </div>
             <div className="flex flex-col gap-3 max-md:items-center max-md:text-center">
-              <h3 className="max-lg:text-2xl text-xl font-bold">
+              <h3 className="text-xl font-bold max-lg:text-2xl">
                 {service.title}
               </h3>
-              <p className="text-slate-500 font-semibold">{service.subTitle}</p>
+              <p className="font-semibold text-slate-500">{service.subTitle}</p>
             </div>
           </div>
         ))}

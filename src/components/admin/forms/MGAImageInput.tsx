@@ -1,5 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import { Plus, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+
 import {
   FormControl,
   FormDescription,
@@ -8,15 +13,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { TMedia } from "@/types/media.type";
-
-import { Plus, X } from "lucide-react";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
 import MediaModal from "../shared/MediaModal";
-import UploadImageButton from "@/app/admin/media/_components/UploadImageButton";
 import MGButton from "@/components/global/shared/MGButton";
+import UploadImageButton from "@/app/admin/media/_components/UploadImageButton";
+
+import { TMedia } from "@/types/media.type";
 
 type TProps = {
   name: string;
@@ -39,10 +40,10 @@ const MGAImageInput = ({
 
   const [images, setImages] = useState<TMedia[]>(defaultValue);
   const [imageIds, setImageIds] = useState<string[]>(
-    multiple ? defaultValue.map((img) => img?._id) : []
+    multiple ? defaultValue.map((img) => img?._id) : [],
   );
   const [singleImageId, setSingleImageId] = useState<string | null>(
-    multiple ? null : defaultValue[0]?._id
+    multiple ? null : defaultValue[0]?._id,
   );
 
   useEffect(() => {
@@ -83,16 +84,16 @@ const MGAImageInput = ({
       control={control}
       name={name}
       render={() => (
-        <FormItem className="flex flex-col gap-1 w-full">
+        <FormItem className="flex w-full flex-col gap-1">
           <FormLabel className="font-medium">{label}</FormLabel>
           <FormControl>
-            <div className="flex flex-col gap-4 items-start">
+            <div className="flex flex-col items-start gap-4">
               {images.length > 0 && (
-                <div className="flex gap-3 flex-wrap">
+                <div className="flex flex-wrap gap-3">
                   {images.map((img: TMedia) => (
                     <div
                       key={img._id}
-                      className="aspect-square border flex justify-center items-center relative"
+                      className="relative flex aspect-square items-center justify-center border"
                     >
                       <Image
                         src={img.secureUrl}
@@ -103,7 +104,7 @@ const MGAImageInput = ({
                       />
 
                       <div
-                        className="absolute bg-white -top-1.5 -right-1.5 border cursor-pointer"
+                        className="absolute -right-1.5 -top-1.5 cursor-pointer border bg-white"
                         onClick={() => handleRemoveImage(img._id)}
                       >
                         <X className="size-4" />
@@ -123,7 +124,7 @@ const MGAImageInput = ({
                   <MGButton
                     type="button"
                     variant="outline"
-                    className="rounded-none self-start px-1 text-primary py-1 h-full aspect-square"
+                    className="aspect-square h-full self-start rounded-none px-1 py-1 text-primary"
                   >
                     <Plus className="size-6" />
                   </MGButton>
@@ -132,7 +133,7 @@ const MGAImageInput = ({
             </div>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
-          <FormMessage className="font-normal !mt-0" />
+          <FormMessage className="!mt-0 font-normal" />
         </FormItem>
       )}
     />

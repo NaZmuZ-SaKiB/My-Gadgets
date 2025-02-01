@@ -1,12 +1,14 @@
 "use client";
 
-import { USER_ROLE } from "@/constants";
-import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
-import { LayoutDashboard, Plus, Settings, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { LayoutDashboard, Plus, Settings, Trash2 } from "lucide-react";
+
 import ProductDeleteDialog from "@/components/global/shared/ProductDeleteDialog";
 import ProductQuickEditModal from "./ProductQuickEditModal";
+
+import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
+import { USER_ROLE } from "@/constants";
 
 const AdminTopbar = () => {
   const pathName = usePathname();

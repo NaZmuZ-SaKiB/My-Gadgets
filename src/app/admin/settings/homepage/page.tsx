@@ -1,31 +1,34 @@
 "use client";
 
-import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
+
 import AGrid from "@/components/admin/admin-ui/AGrid";
-import APageContainer from "@/components/admin/admin-ui/APageContainer";
-import APageHeading from "@/components/admin/admin-ui/APageHeading";
-import MGAImageInput from "@/components/admin/forms/MGAImageInput";
-import MGARichInput from "@/components/admin/forms/MGARichInput";
-import MGASearchSelectAsync from "@/components/admin/forms/MGASearchSelectAsync";
 import MGForm from "@/components/global/forms/MGForm";
-import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
-import { useCategoryGetAllQuery } from "@/lib/queries/category.query";
+import ProductSelect from "./_components/ProductSelect";
+import FlashSaleInput from "./_components/FlashSaleInput";
+import MGButton from "@/components/global/shared/MGButton";
+import MGARichInput from "@/components/admin/forms/MGARichInput";
+import MGAImageInput from "@/components/admin/forms/MGAImageInput";
+import APageHeading from "@/components/admin/admin-ui/APageHeading";
+import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
+import APageContainer from "@/components/admin/admin-ui/APageContainer";
+import FeaturedProductsSelect from "./_components/FeaturedProductsSelect";
+import MGASearchSelectAsync from "@/components/admin/forms/MGASearchSelectAsync";
+
 import {
   useSettingsGetQuery,
   useSettingsUpdateMutation,
 } from "@/lib/queries/settings.query";
+import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
+import { useCategoryGetAllQuery } from "@/lib/queries/category.query";
 import { SettingsValidation } from "@/lib/validations/settings.validation";
+
 import { THomepageSettings } from "@/types/settings.type";
-import { Loader2 } from "lucide-react";
-import { SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import ProductSelect from "./_components/ProductSelect";
-import FeaturedProductsSelect from "./_components/FeaturedProductsSelect";
-import MGButton from "@/components/global/shared/MGButton";
-import FlashSaleInput from "./_components/FlashSaleInput";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
-import { useQueryClient } from "@tanstack/react-query";
 import { AQTags } from "@/constants";
 
 const HomepageSettingsPage = () => {

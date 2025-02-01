@@ -1,5 +1,12 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
+import { LogIn, LogOut, ShoppingBag, User, UserCircle } from "lucide-react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,18 +14,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { AQTags, icons } from "@/constants";
+
 import {
   useCurrentUserQuery,
   useSignOutMutation,
 } from "@/lib/queries/auth.query";
-import { useQueryClient } from "@tanstack/react-query";
-import { LogIn, LogOut, ShoppingBag, User, UserCircle } from "lucide-react";
-
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { icons } from "@/constants";
 
 const Account = () => {
   const [open, setOpen] = useState(false);
