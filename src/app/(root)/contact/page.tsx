@@ -4,8 +4,15 @@ import { settingsGetAction } from "@/lib/actions/settings.action";
 import { TBranch } from "@/types/branch.type";
 import { TFooterSettings, TSocialSettings } from "@/types/settings.type";
 import { MapPin, MapPinned, Phone } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with My-Gadgets via phone, email, or social media.",
+};
 
 const ContactPage = async () => {
   const branchesData = await branchGetAllAction("limit=999&sortOrder=asc");
