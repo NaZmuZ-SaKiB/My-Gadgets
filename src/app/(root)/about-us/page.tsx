@@ -1,5 +1,11 @@
 import { Suspense } from "react";
 import Outlets from "./Outlets";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn more about My-Gadgets and our commitment to innovation.",
+};
 
 const AboutUsPage = () => {
   return (
