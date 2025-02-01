@@ -4,7 +4,7 @@ import FloatingCompareButton from "@/components/global/shared/FloatingCompareBut
 import AdminTopbar from "@/components/global/layout/admin-topbar/AdminTopbar";
 import MobileBottombar from "@/components/global/layout/MobileBottombar";
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
-import Footer from "../../../components/global/layout/footer/Footer";
+import Footer from "@/components/global/layout/footer/Footer";
 import Header from "@/components/global/layout/header/Header";
 import AccountSidebar from "./_components/AccountSidebar";
 
