@@ -4,6 +4,12 @@ import { shippingAddressGetAllAction } from "@/lib/actions/shippingAddress.actio
 import { TShippingAddress } from "@/types/shippingAddress.type";
 import EditShippingAddressModal from "./_components/EditShippingAddressModal";
 import ShippingAddressSetDefaultButton from "./_components/ShippingAddressSetDefaultButton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Addresses",
+  description: "Manage your shipping addresses",
+};
 
 const MyAddressesPage = async () => {
   const user = await isUserLoggedIn();
