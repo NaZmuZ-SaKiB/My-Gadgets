@@ -1,6 +1,12 @@
 import { currentUser } from "@/lib/actions/auth.action";
 import AccountForm from "./_components/AccountForm";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Account",
+  description: "Update your account details.",
+};
 
 const AccountPage = async () => {
   const user = await currentUser();
