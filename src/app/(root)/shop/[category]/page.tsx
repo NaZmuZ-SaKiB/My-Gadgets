@@ -8,6 +8,7 @@ import BrandsFilter from "../_components/BrandsFilter";
 import { brandGetAllAction } from "@/lib/actions/brand.action";
 import { TBrand } from "@/types/brand.type";
 import MGPagination from "@/components/global/shared/MGPagination";
+import { Metadata, ResolvingMetadata } from "next";
 
 type TProps = {
   params: Promise<{
@@ -15,6 +16,22 @@ type TProps = {
   }>;
   searchParams: any;
 };
+
+export async function generateMetadata(
+  { params }: TProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { category } = await params;
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `Shop - ${category}`,
+    openGraph: {
+      images: [...previousImages],
+    },
+  };
+}
 
 const ShopPage = async (props: TProps) => {
   const searchParams = await props.searchParams;

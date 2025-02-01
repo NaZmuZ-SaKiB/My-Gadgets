@@ -1,3 +1,11 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read our Privacy Policy to learn how we protect your personal information.",
+};
+
 const PrivacyPolicyPage = () => {
   return (
     <div className="mg-container py-5 md:py-10">

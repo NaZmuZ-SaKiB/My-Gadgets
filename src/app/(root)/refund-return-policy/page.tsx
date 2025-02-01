@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Refund & Return Policy",
+  description: "Learn about our refund and return policy at My Gadgets.",
+};
+
 const RefundReturnPolicyPage = () => {
   return (
     <div className="mg-container py-5 md:py-10">

@@ -8,12 +8,18 @@ import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 import ProductCard from "@/components/global/cards/ProductCard";
 import MGPagination from "@/components/global/shared/MGPagination";
+import { Metadata } from "next";
 
 type TProps = {
   params: Promise<{
     category: string;
   }>;
   searchParams: any;
+};
+
+export const metadata: Metadata = {
+  title: "Shop",
+  description: "Shop for the latest gadgets and accessories at My Gadgets.",
 };
 
 const ShopPage = async (props: TProps) => {

@@ -12,10 +12,34 @@ import ProductReviews from "../../_components/ProductReviews";
 import { reviewGetAllByProductIdAction } from "@/lib/actions/review.action";
 import { TReview } from "@/types/review.type";
 import { isUserLoggedIn } from "@/lib/actions/auth.action";
+import { Metadata, ResolvingMetadata } from "next";
 
 type TProps = {
   params: Promise<{ id: string }>;
 };
+
+export async function generateMetadata(
+  { params }: TProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { id } = await params;
+
+  const productData = await productGetByIdAction(id);
+  const product: TProduct = productData.data;
+
+  const previousImages = (await parent).openGraph?.images || [];
+  const newImages = product.images.map((image) => ({
+    url: image.secureUrl,
+    alt: product.name,
+  }));
+
+  return {
+    title: product.name,
+    openGraph: {
+      images: [...newImages, ...previousImages],
+    },
+  };
+}
 
 const SingleProductPage = async (props: TProps) => {
   const params = await props.params;

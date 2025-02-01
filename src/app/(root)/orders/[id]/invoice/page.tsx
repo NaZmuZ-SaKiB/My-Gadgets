@@ -7,11 +7,18 @@ import { formatCurrency } from "@/utils/currencyFormat";
 import numberToWord from "@/utils/numberToWord";
 import Image from "next/image";
 import InvoiceDownloadButton from "../../_components/InvoiceDownloadButton";
+import { Metadata } from "next";
 
 type TProps = {
   params: Promise<{
     id: string;
   }>;
+};
+
+export const metadata: Metadata = {
+  title: "Invoice",
+  description:
+    "View the details of your order, including the products you have ordered, payment status, and delivery information.",
 };
 
 const InvoicePage = async (props: TProps) => {
