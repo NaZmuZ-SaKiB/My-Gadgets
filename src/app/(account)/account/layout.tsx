@@ -5,6 +5,12 @@ import FloatingCompareButton from "@/components/global/shared/FloatingCompareBut
 import MobileBottombar from "@/components/global/layout/MobileBottombar";
 import Footer from "@/components/global/layout/footer/Footer";
 import Header from "@/components/global/layout/header/Header";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Account",
+  description: "View and update your account details.",
+};
 
 const AccountLayout = ({ children }: { children: React.ReactNode }) => {
   return (
