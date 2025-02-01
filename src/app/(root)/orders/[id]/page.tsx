@@ -7,11 +7,18 @@ import { formatCurrency } from "@/utils/currencyFormat";
 import Image from "next/image";
 import Link from "next/link";
 import CancelRequestButton from "../_components/CancelRequestButton";
+import { Metadata } from "next";
 
 type TProps = {
   params: Promise<{
     id: string;
   }>;
+};
+
+export const metadata: Metadata = {
+  title: "Order",
+  description:
+    "View the details of your order, including the products you have ordered, payment status, and delivery information.",
 };
 
 const breadcrumbItems = [
