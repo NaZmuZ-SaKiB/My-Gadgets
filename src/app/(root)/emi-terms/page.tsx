@@ -63,7 +63,7 @@ const EMITermsPage = () => {
             </li>
             <li>
               Interest rates and processing fees will be applied as per your
-              bank's terms.
+              bank{`'`}s terms.
             </li>
             <li>
               The first installment will be charged at the time of purchase.
