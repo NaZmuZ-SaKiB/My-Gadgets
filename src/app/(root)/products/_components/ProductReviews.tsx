@@ -13,6 +13,7 @@ const ProductReviews = ({ reviews }: { reviews: TReview[] }) => {
       className={cn("mt-4 rounded-2xl bg-slate-50 p-2 xs:p-6", {
         hidden: !approvedReviews.length,
       })}
+      id="reviews"
     >
       <h2 className="text-xl font-semibold text-slate-700">Reviews</h2>
 

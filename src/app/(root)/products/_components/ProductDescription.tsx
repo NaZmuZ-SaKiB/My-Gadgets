@@ -4,11 +4,14 @@ type TProps = {
 
 const ProductDescription = ({ description }: TProps) => {
   return (
-    <section className="mt-4 p-2 xs:p-6 bg-slate-50 rounded-2xl">
-      <h2 className="text-xl text-slate-700 font-semibold">Description</h2>
+    <section
+      className="mt-4 rounded-2xl bg-slate-50 p-2 xs:p-6"
+      id="description"
+    >
+      <h2 className="text-xl font-semibold text-slate-700">Description</h2>
 
       <div
-        className="mt-4 product-description"
+        className="product-description mt-4"
         dangerouslySetInnerHTML={{
           __html: description,
         }}

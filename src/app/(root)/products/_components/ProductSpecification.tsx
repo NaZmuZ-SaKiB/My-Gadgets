@@ -6,11 +6,14 @@ type TProps = {
 
 const ProductSpecification = ({ product }: TProps) => {
   return (
-    <section className="mt-4 p-2 xs:p-6 bg-slate-50 rounded-2xl">
-      <h2 className="text-xl text-slate-700 font-semibold">Specification</h2>
+    <section
+      className="mt-4 rounded-2xl bg-slate-50 p-2 xs:p-6"
+      id="specification"
+    >
+      <h2 className="text-xl font-semibold text-slate-700">Specification</h2>
 
       <div
-        className="mt-4 specification-table"
+        className="specification-table mt-4"
         dangerouslySetInnerHTML={{
           __html: product.specifications,
         }}
