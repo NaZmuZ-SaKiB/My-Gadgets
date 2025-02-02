@@ -4,7 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import { cn } from "@/lib/utils";
 import { TMedia } from "@/types/media.type";
@@ -60,6 +65,7 @@ const ImageGalleryModal = ({ images, alt, name }: TProps) => {
       </DialogTrigger>
 
       <DialogContent className="[&>button]:no-focus w-full max-w-full gap-0 overflow-hidden border-0 p-0 sm:max-w-[500px] [&>button]:bg-white">
+        <DialogTitle className="hidden">Gallery</DialogTitle>
         <div className="relative">
           <div
             className={cn(
