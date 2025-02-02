@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import { Clock, Mail } from "lucide-react";
 
 import SocialLinks from "./SocialLinks";
