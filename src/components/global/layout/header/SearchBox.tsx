@@ -103,7 +103,7 @@ const SearchBox = () => {
                 <div
                   className="cursor-pointer p-2 text-center text-sm font-semibold text-primary hover:bg-slate-100 hover:text-primary-hover"
                   onMouseDown={() =>
-                    router.replace(`/search?searchTerm=${debouncedSearch}`)
+                    router.replace(`/shop/search?searchTerm=${debouncedSearch}`)
                   }
                 >
                   Show all results
