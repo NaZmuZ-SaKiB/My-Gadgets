@@ -1,5 +1,4 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { unstable_cache as cache } from "next/cache";
 
 import ProductImages from "../../_components/ProductImages";
 import ProductReviews from "../../_components/ProductReviews";
@@ -21,31 +20,13 @@ type TProps = {
   params: Promise<{ id: string }>;
 };
 
-const getCachedProduct = (id: string) =>
-  cache(
-    async () => {
-      return productGetByIdAction(id);
-    },
-    [`product-${id}`], // Base cache key
-    { tags: [`product-${id}`] }, // Revalidation tag
-  );
-
-const getCachedReviews = (productId: string) =>
-  cache(
-    async () => {
-      return reviewGetAllByProductIdAction(productId);
-    },
-    [`reviews-${productId}`], // Base cache key
-    { tags: [`reviews-${productId}`] }, // Revalidation tag
-  );
-
 export async function generateMetadata(
   { params }: TProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { id } = await params;
 
-  const productData = await getCachedProduct(id)();
+  const productData = await productGetByIdAction(id);
   const product: TProduct = productData.data;
 
   const previousImages = (await parent).openGraph?.images || [];
@@ -68,10 +49,10 @@ const SingleProductPage = async (props: TProps) => {
 
   const user = await isUserLoggedIn();
 
-  const productData = await getCachedProduct(id)();
+  const productData = await productGetByIdAction(id);
   const product: TProduct = productData.data;
 
-  const reviewsData = await getCachedReviews(id)();
+  const reviewsData = await reviewGetAllByProductIdAction(id);
   const reviews: TReview[] = reviewsData.data;
 
   const breadcrumbItems = [
