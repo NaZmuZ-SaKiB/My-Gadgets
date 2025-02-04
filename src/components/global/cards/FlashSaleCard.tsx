@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingCart } from "lucide-react";
 
-import MGButton from "../shared/MGButton";
+import AddToCartButton from "../shared/ProductCardAddToCart";
 import CountDownTimer from "../shared/CountDownTimer";
 
 import { TProduct } from "@/types/product.type";
@@ -51,10 +50,7 @@ const FlashSaleCard = ({
                 {formatCurrency(product.regularPrice)}
               </span>
             </div>
-            <MGButton className="gap-2 rounded-md">
-              <ShoppingCart className="size-3 xs:size-4" />
-              <span>Add</span>
-            </MGButton>
+            <AddToCartButton product={product} quantity={1} />
           </div>
         </div>
       </div>
