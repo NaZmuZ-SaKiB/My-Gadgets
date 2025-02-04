@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 import { authKey, backendUrl } from "@/constants";
 import { SettingsValidation } from "../validations/settings.validation";
@@ -39,7 +39,7 @@ export const settingsUpdateAction = async (
 
   const result = await response.json();
 
-  revalidatePath("/");
+  revalidateTag("homepage-settings");
 
   return result;
 };
