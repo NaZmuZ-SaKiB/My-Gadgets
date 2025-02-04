@@ -13,9 +13,6 @@ import { TProduct } from "@/types/product.type";
 import { TBrand } from "@/types/brand.type";
 
 type TProps = {
-  params: Promise<{
-    category: string;
-  }>;
   searchParams: any;
 };
 
