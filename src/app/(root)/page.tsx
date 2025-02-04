@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { unstable_cache as cache } from "next/cache";
 
 import Services from "./_components/Services";
 import SeoContent from "./_components/SeoContent";
@@ -20,8 +21,16 @@ export const metadata: Metadata = {
     "Discover the latest gadgets at My-Gadgets! From smartphones and smartwatches to home automation and gaming accessories, we offer cutting-edge tech at competitive prices.",
 };
 
+const getCachedHomepageSettings = cache(
+  async () => {
+    return settingsGetAction("homepage");
+  },
+  ["homepage-settings"],
+  { tags: ["homepage-settings"] },
+);
+
 const HomePage = async () => {
-  const settingsData = await settingsGetAction("homepage");
+  const settingsData = await getCachedHomepageSettings();
   const homePageSettings: THomepageSettings = settingsData?.data?.homepage;
 
   return (
