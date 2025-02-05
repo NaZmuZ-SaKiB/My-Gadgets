@@ -24,7 +24,7 @@ import { icons } from "@/constants";
 const Account = () => {
   const [open, setOpen] = useState(false);
 
-  const { data: user } = useCurrentUserQuery();
+  const { data: user, isLoading } = useCurrentUserQuery();
 
   const { mutateAsync: logoutFn } = useSignOutMutation();
 
@@ -48,7 +48,9 @@ const Account = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
-        {user ? (
+        {isLoading ? (
+          "Loading..."
+        ) : user ? (
           <>
             <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
             <DropdownMenuItem className="gap-2">
