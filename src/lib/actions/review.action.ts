@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { TReview } from "@/types/review.type";
 import { authKey, backendUrl } from "@/constants";
 import { ReviewValidation } from "../validations/review.validation";
+import { revalidateTag } from "next/cache";
 
 export const reviewCreateAction = async (
   payload: z.infer<typeof ReviewValidation.create>,
@@ -21,6 +22,7 @@ export const reviewCreateAction = async (
   });
 
   const result = await response.json();
+  revalidateTag(`reviews-${payload.product}`);
 
   return result;
 };
@@ -43,6 +45,7 @@ export const reviewUpdateAction = async ({
   });
 
   const result = await response.json();
+  revalidateTag(`reviews-${payload.product}`);
 
   return result;
 };
