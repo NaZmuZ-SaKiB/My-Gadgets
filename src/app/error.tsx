@@ -40,12 +40,21 @@ export default function Error({
         </details>
 
         {/* Try Again Button */}
-        <button
-          onClick={() => reset()}
-          className="rounded-lg bg-primary px-6 py-2 text-white transition duration-300 hover:bg-primary-hover"
-        >
-          Try Again
-        </button>
+        <div className="flex items-center justify-center gap-2">
+          <button
+            onClick={() => reset()}
+            className="rounded-lg border bg-slate-50 px-6 py-2 text-slate-700 transition duration-300 hover:bg-primary-hover hover:text-white"
+          >
+            Try Again
+          </button>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="rounded-lg bg-primary px-6 py-2 text-white transition duration-300 hover:bg-primary-hover"
+          >
+            Reload
+          </button>
+        </div>
 
         {/* Contact Support Link */}
         <p className="mt-4 text-slate-600">
