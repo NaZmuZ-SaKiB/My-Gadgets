@@ -44,8 +44,7 @@ export const productUpdateAction = async ({
   });
 
   const result = await response.json();
-  revalidateTag(AQTags.PRODUCT + id);
-  revalidateTag(AQTags.PRODUCT + AQTags.ALL);
+  revalidateTag(`product-${id}`);
 
   return result;
 };
@@ -57,9 +56,6 @@ export const productGetAllAction = async (params: string) => {
       "Content-Type": "application/json",
     },
     cache: "no-store",
-    next: {
-      tags: [AQTags.PRODUCT + AQTags.ALL + params, AQTags.PRODUCT + AQTags.ALL],
-    },
   });
 
   const result = await response.json();
@@ -81,9 +77,6 @@ export const productGetByIdAction = async (id: string) => {
       "Content-Type": "application/json",
     },
     cache: "no-store",
-    next: {
-      tags: [AQTags.PRODUCT + id],
-    },
   });
 
   const result = await response.json();
