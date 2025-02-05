@@ -21,7 +21,7 @@ const MainLoading = () => {
             .map((_, i) => (
               <div
                 key={`featured-cats-loading-${i}`}
-                className="aspect-square max-h-[130px] flex-1 basis-32 animate-pulse rounded-xl bg-slate-100 sm:basis-48"
+                className="aspect-square max-h-[130px] flex-1 basis-32 animate-pulse rounded-xl bg-slate-100 sm:basis-56"
               ></div>
             ))}
         </div>
