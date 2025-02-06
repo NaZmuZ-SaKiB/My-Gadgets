@@ -12,7 +12,10 @@ import ProductDescription from "../../_components/ProductDescription";
 import ProductSpecification from "../../_components/ProductSpecification";
 
 import { reviewGetAllByProductIdAction } from "@/lib/actions/review.action";
-import { productGetByIdAction } from "@/lib/actions/product.action";
+import {
+  productGetAllAction,
+  productGetByIdAction,
+} from "@/lib/actions/product.action";
 import { isUserLoggedIn } from "@/lib/actions/auth.action";
 import { TProduct } from "@/types/product.type";
 import { TReview } from "@/types/review.type";
@@ -28,6 +31,16 @@ const getCachedReviews = (productId: string) =>
     [`reviews-${productId}`],
     { tags: [`reviews-${productId}`] },
   )();
+
+export async function generateStaticParams() {
+  const productsData = await productGetAllAction("limit=10");
+  const products: TProduct[] = productsData.data || [];
+
+  return products.map((product) => ({
+    slug: product.slug,
+    id: product._id.toString(),
+  }));
+}
 
 type TProps = {
   params: Promise<{ id: string }>;
