@@ -35,7 +35,7 @@ const getCachedReviews = (productId: string) =>
   )();
 
 export async function generateStaticParams() {
-  const productsData = await productGetAllAction("limit=10");
+  const productsData = await productGetAllAction("limit=1");
   const products: TProduct[] = productsData.data || [];
 
   return products.map((product) => ({
