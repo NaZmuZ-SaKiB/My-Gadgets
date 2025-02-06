@@ -1,7 +1,7 @@
 import MGButton from "@/components/global/shared/MGButton";
 import Link from "next/link";
 
-const ProductDetailsMunu = () => {
+const ProductDetailsMenu = () => {
   return (
     <div className="space-x-3">
       <Link href="#specification">
@@ -25,4 +25,4 @@ const ProductDetailsMunu = () => {
   );
 };
 
-export default ProductDetailsMunu;
+export default ProductDetailsMenu;
