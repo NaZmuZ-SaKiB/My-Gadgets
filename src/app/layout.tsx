@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import Providers from "@/lib/providers/Providers";
-import { images } from "@/constants";
+import { frontendUrl, images } from "@/constants";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(frontendUrl as string),
   title: {
     default: "My Gadgets | Best Gadget Shop in Bangladesh",
     template: `%s | My Gadgets`,
