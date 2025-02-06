@@ -7,7 +7,7 @@ import RelatedProducts from "../../_components/RelatedProducts";
 import ProductShortSpec from "../../_components/ProductShortSpec";
 import BreadcrumbBar from "@/components/global/shared/Breadcrumb";
 import ReviewCreateForm from "../../_components/ReviewCreateForm";
-import ProductDetailsMunu from "../../_components/ProductDetailsMunu";
+import ProductDetailsMenu from "../../_components/ProductDetailsMenu";
 import ProductDescription from "../../_components/ProductDescription";
 import ProductSpecification from "../../_components/ProductSpecification";
 
@@ -19,6 +19,8 @@ import {
 import { isUserLoggedIn } from "@/lib/actions/auth.action";
 import { TProduct } from "@/types/product.type";
 import { TReview } from "@/types/review.type";
+import { Suspense } from "react";
+import RelatedProductsLoading from "../../_components/RelatedProductsLoading";
 
 const getCachedProduct = (id: string) =>
   cache(async () => productGetByIdAction(id), [`product-${id}`], {
@@ -116,7 +118,7 @@ const SingleProductPage = async (props: TProps) => {
       {/* Product Details */}
       <div className="mt-8 grid grid-cols-3 gap-3">
         <div className="col-span-3 lg:col-span-2">
-          <ProductDetailsMunu />
+          <ProductDetailsMenu />
           <ProductSpecification product={product} />
           <ProductDescription description={product.description} />
 
@@ -129,7 +131,9 @@ const SingleProductPage = async (props: TProps) => {
             </div>
           )}
         </div>
-        <RelatedProducts category={product.categories[0].name} />
+        <Suspense fallback={<RelatedProductsLoading />}>
+          <RelatedProducts category={product.categories[0].name} />
+        </Suspense>
       </div>
     </div>
   );

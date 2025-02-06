@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { cookies } from "next/headers";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 import { AQTags, authKey, backendUrl } from "@/constants";
 import { ProductValidation } from "../validations/product.validation";
@@ -45,6 +45,8 @@ export const productUpdateAction = async ({
 
   const result = await response.json();
   revalidateTag(`product-${id}`);
+  revalidateTag("homepage-settings");
+  revalidatePath(`/products/${payload.slug}/${id}`);
 
   return result;
 };
