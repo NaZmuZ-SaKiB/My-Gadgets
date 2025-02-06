@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description:
       "Discover the latest gadgets at My-Gadgets! From smartphones and smartwatches to home automation and gaming accessories, we offer cutting-edge tech at competitive prices.",
     images: [images.logo.src],
+    type: "website",
   },
   keywords: [
     "latest gadgets",
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
     "secure checkout",
     "tech community",
   ],
+  category: "Technology",
 };
 
 export default function RootLayout({
