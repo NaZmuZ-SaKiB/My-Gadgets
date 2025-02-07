@@ -1,4 +1,5 @@
 import ProductCardLoader from "@/components/global/shared/ProductCardLoader";
+import ProductsLoading from "./_components/ProductsLoading";
 
 const ShopPageLoading = () => {
   return (
@@ -19,13 +20,7 @@ const ShopPageLoading = () => {
         <div>
           <div className="h-12 animate-pulse rounded-xl bg-slate-100"></div>
 
-          <div className="mg-shop-grid mt-3">
-            {Array(8)
-              .fill(0)
-              .map((_, i) => (
-                <ProductCardLoader size="lg" key={`product-card-loader-${i}`} />
-              ))}
-          </div>
+          <ProductsLoading />
         </div>
       </div>
     </div>
