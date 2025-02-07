@@ -5,14 +5,16 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { TBrand } from "@/types/brand.type";
+import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
 
-type TProps = {
-  brands: TBrand[];
-};
-
-const BrandsFilter = ({ brands }: TProps) => {
+const BrandsFilter = () => {
   const pathName = usePathname();
   const searchParams = useSearchParams();
+
+  const { data: brandsData, isLoading } = useBrandGetAllQuery(
+    "limit=100&sortBy=name&sortOrder=asc",
+  );
+  const brands: TBrand[] = brandsData?.data || [];
 
   const router = useRouter();
 
@@ -28,6 +30,12 @@ const BrandsFilter = ({ brands }: TProps) => {
 
     router.replace(`${pathName}?${params}`);
   };
+
+  if (isLoading) {
+    return (
+      <div className="mt-3 h-14 animate-pulse rounded-xl bg-slate-100"></div>
+    );
+  }
 
   return (
     <div className="no-scrollbar mt-3 flex justify-start gap-2 overflow-y-auto">
