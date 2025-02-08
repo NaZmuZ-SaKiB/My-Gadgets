@@ -48,7 +48,13 @@ const ShopPage = async (props: TProps) => {
     <div className="mg-container py-4">
       <BreadcrumbBar items={breadcrumbItems} />
 
-      <BrandsFilter />
+      <Suspense
+        fallback={
+          <div className="mt-3 h-14 animate-pulse rounded-xl bg-slate-100"></div>
+        }
+      >
+        <BrandsFilter />
+      </Suspense>
 
       <div className="mt-3 grid-cols-[250px_1fr] gap-3 lg:grid">
         <div className="bg-white max-lg:hidden">
