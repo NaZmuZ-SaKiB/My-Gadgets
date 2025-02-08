@@ -40,7 +40,10 @@ const SearchResultPage = async (props: TProps) => {
         <div>
           <FilterTopBar />
 
-          <Suspense key={`${params.toString()}`} fallback={<ProductsLoading />}>
+          <Suspense
+            key={`search-page-${params.toString()}`}
+            fallback={<ProductsLoading />}
+          >
             <ProductsGrid searchParams={searchParams} />
           </Suspense>
         </div>

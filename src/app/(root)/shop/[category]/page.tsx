@@ -57,7 +57,10 @@ const ShopPage = async (props: TProps) => {
         <div>
           <FilterTopBar />
 
-          <Suspense key={`${params.toString()}`} fallback={<ProductsLoading />}>
+          <Suspense
+            key={`category-shop-page-${params.toString()}`}
+            fallback={<ProductsLoading />}
+          >
             <ProductsGrid searchParams={searchParams} category={category} />
           </Suspense>
         </div>
