@@ -43,10 +43,7 @@ const ShopPage = async (props: TProps) => {
         <div>
           <FilterTopBar />
 
-          <Suspense
-            key={`${params.toString()}-${Math.random()}`}
-            fallback={<ProductsLoading />}
-          >
+          <Suspense key={`${params.toString()}`} fallback={<ProductsLoading />}>
             <ProductsGrid searchParams={searchParams} />
           </Suspense>
         </div>
