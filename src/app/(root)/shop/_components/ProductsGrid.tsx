@@ -5,14 +5,18 @@ import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
 
 type TProps = {
-  searchParams: URLSearchParams;
+  searchParams: any;
+  category?: string;
 };
 
 const ProductsGrid = async (props: TProps) => {
   const searchParams = props.searchParams;
-  const limit = searchParams.get("limit") ?? 35;
+  const limit = searchParams?.limit ?? 35;
+  if (searchParams?.limit) delete searchParams.limit;
 
   const queries = new URLSearchParams(searchParams);
+
+  if (props.category) queries.append("category", props.category);
 
   const productsData = await productGetAllAction(
     `limit=${limit}&${queries.toString()}`,
