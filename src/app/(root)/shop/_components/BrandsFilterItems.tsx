@@ -59,7 +59,7 @@ const BrandsFilterItems = ({ brands }: TProps) => {
               alt={brand.name}
               width={40}
               height={40}
-              className="object-contain"
+              className="object-contain max-sm:size-8"
             />
           ) : (
             <span className="text-xs font-semibold text-slate-700">
