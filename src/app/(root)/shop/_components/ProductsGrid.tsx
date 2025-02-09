@@ -3,6 +3,7 @@ import MGPagination from "@/components/global/shared/MGPagination";
 
 import { productGetAllAction } from "@/lib/actions/product.action";
 import { TProduct } from "@/types/product.type";
+import NoProducts from "./NoProducts";
 
 type TProps = {
   searchParams: any;
@@ -31,6 +32,7 @@ const ProductsGrid = async (props: TProps) => {
           </div>
         ))}
       </div>
+      {products.length === 0 && <NoProducts />}
       {productsData?.meta?.limit <= productsData?.meta?.total && (
         <div className="mt-5">
           <MGPagination
