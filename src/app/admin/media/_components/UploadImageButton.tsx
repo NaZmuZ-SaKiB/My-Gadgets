@@ -7,13 +7,15 @@ import { CldUploadWidget } from "next-cloudinary";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMediaCreateMutation } from "@/lib/queries/media.query";
 
-import { AQTags } from "@/constants";
+import { AQTags, USER_ROLE } from "@/constants";
+import { useIsUserLoggedInQuery } from "@/lib/queries/auth.query";
 
 type TProps = {
   children?: React.ReactNode;
 };
 
 const UploadImageButton = ({ children }: TProps) => {
+  const { data, isLoading } = useIsUserLoggedInQuery();
   const queryClient = useQueryClient();
 
   const { mutateAsync: createImageFn } = useMediaCreateMutation();
@@ -43,6 +45,11 @@ const UploadImageButton = ({ children }: TProps) => {
       exact: false,
     });
   };
+
+  if (isLoading) return null;
+
+  if (data?.role !== USER_ROLE.ADMIN && data?.role !== USER_ROLE.SUPER_ADMIN)
+    return null;
 
   return (
     <CldUploadWidget
