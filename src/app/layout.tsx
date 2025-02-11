@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     "tech community",
   ],
   category: "Technology",
+  verification: {
+    google: "vFna1JQ2mjNSe0A7YDfZKXWOiAdW6oYB0Ds-N2kIKm4",
+  },
 };
 
 export default function RootLayout({
