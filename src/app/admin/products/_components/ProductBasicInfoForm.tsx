@@ -6,12 +6,12 @@ import AFloatingBox from "@/components/admin/admin-ui/AFloatingBox";
 
 import { useBrandGetAllQuery } from "@/lib/queries/brand.query";
 import { TBrand } from "@/types/brand.type";
+import { useParams } from "next/navigation";
 
 const ProductBasicInfoForm = () => {
-  const params = new URLSearchParams();
-  params.append("limit", "9999");
+  const params = useParams();
 
-  const { data, isLoading } = useBrandGetAllQuery(params.toString());
+  const { data, isLoading } = useBrandGetAllQuery("limit=1000");
   const brands: TBrand[] = data?.data || [];
 
   const brandOptions =
@@ -25,6 +25,8 @@ const ProductBasicInfoForm = () => {
   return (
     <AFloatingBox className="flex flex-col gap-3">
       <MGAInput name="name" label="Product Name*" />
+
+      {params?.id && <MGAInput name="slug" label="Slug" />}
 
       <div className="mt-3 max-w-md space-y-3">
         <MGAInput name="model" label="Model Name*" vertical />
