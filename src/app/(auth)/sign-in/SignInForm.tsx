@@ -96,7 +96,7 @@ const SignInForm = () => {
       <p className="text-center text-xs">
         {"Don't"} have an account?{" "}
         <Link
-          href={`/sign-up`}
+          href={`/sign-up?${searchParams.toString()}`}
           className="no-focus self-end text-primary-hover hover:underline focus:underline"
         >
           SignUp
