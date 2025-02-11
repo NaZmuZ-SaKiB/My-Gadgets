@@ -49,7 +49,10 @@ const Account = () => {
 
       <DropdownMenuContent>
         {isLoading ? (
-          "Loading..."
+          <div className="space-y-1">
+            <DropdownMenuItem className="h-9 w-full animate-pulse bg-slate-100"></DropdownMenuItem>
+            <DropdownMenuItem className="h-9 w-full animate-pulse bg-slate-100"></DropdownMenuItem>
+          </div>
         ) : user ? (
           <>
             <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
