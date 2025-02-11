@@ -18,6 +18,7 @@ export const USER_ROLE = {
   SUPER_ADMIN: "super_admin",
   ADMIN: "admin",
   USER: "user",
+  TEST_ADMIN: "test_admin",
 } as const;
 
 export const paymentMethods: TPaymentMethod[] = [
