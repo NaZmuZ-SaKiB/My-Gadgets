@@ -23,7 +23,9 @@ export async function middleware(request: NextRequest) {
 
     if (
       pathName.includes("admin") &&
-      ![USER_ROLE.ADMIN, USER_ROLE.SUPER_ADMIN].includes(decoded?.payload?.role)
+      ![USER_ROLE.ADMIN, USER_ROLE.SUPER_ADMIN, USER_ROLE.TEST_ADMIN].includes(
+        decoded?.payload?.role,
+      )
     ) {
       return NextResponse.redirect(
         new URL(`/sign-in?from=${pathName}`, request.url),
