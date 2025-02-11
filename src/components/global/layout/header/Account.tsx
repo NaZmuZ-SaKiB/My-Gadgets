@@ -20,6 +20,7 @@ import {
   useSignOutMutation,
 } from "@/lib/queries/auth.query";
 import { icons } from "@/constants";
+import { toast } from "sonner";
 
 const Account = () => {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,12 @@ const Account = () => {
   const queryClient = useQueryClient();
 
   const logout = async () => {
+    setOpen(false);
+    const logoutToast = toast.loading("Logging out...");
+
     await logoutFn();
+
+    toast.success("Logged out...", { id: logoutToast, duration: 2000 });
 
     queryClient.clear();
 
