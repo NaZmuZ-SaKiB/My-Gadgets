@@ -5,9 +5,9 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import MGForm from "@/components/global/forms/MGForm";
 import MGInput from "@/components/global/forms/MGInput";
@@ -25,6 +25,9 @@ const defaultValues = {
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
+
   const router = useRouter();
 
   const { mutateAsync: signUpFn, isPending } = useSignUpMutation();
@@ -36,7 +39,11 @@ const SignUpForm = () => {
       const result = await signUpFn(values);
 
       if (result?.success) {
-        router.push("/");
+        if (from) {
+          router.push(from);
+        } else {
+          router.push("/");
+        }
 
         toast.success(result.message);
       } else {
@@ -89,7 +96,7 @@ const SignUpForm = () => {
       <p className="text-center text-xs">
         Already have an account?{" "}
         <Link
-          href={`/sign-in`}
+          href={`/sign-in?${searchParams.toString()}`}
           className="no-focus self-end text-primary-hover hover:underline focus:underline"
         >
           SignIn
