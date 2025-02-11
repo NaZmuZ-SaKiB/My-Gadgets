@@ -10,6 +10,10 @@ This is the frontend of my full-stack ecommerce project. User can browse product
 `email:` spider@man.com
 `password:` 11111111
 
+`Test Admin:` (Admin can access the admin dashboard, can not modify the database)
+`email:` test@admin.com
+`password:` test1234
+
 ## Technology
 
 1.  NextJs
