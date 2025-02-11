@@ -10,7 +10,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
           <ASidebar />
         </div>
 
-        <main className="h-[calc(100svh-59px)] bg-slate-100 @container lg:rounded-tl-xl">
+        <main className="no-focus h-[calc(100svh-59px)] bg-slate-100 @container lg:rounded-tl-xl">
           {children}
         </main>
       </div>
