@@ -64,8 +64,8 @@ const SingleProductPage = () => {
     if (!values.operatingSystem) delete values.operatingSystem;
 
     // Generate slug
-    if (values.name) {
-      values.slug = generateSlug(values.name);
+    if (values.slug) {
+      values.slug = generateSlug(values.slug);
     }
 
     try {
