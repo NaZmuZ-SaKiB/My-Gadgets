@@ -41,9 +41,11 @@ const BrandCreateForm = () => {
         window.location.reload();
       } else {
         toast.error(result?.message || "A server error occurred.");
+        window.location.reload();
       }
     } catch (error: any) {
       toast.error(error?.message || "A client error occurred.");
+      window.location.reload();
     }
   };
 
