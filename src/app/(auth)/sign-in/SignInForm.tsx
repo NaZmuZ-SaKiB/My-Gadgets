@@ -56,6 +56,18 @@ const SignInForm = () => {
     }
   };
 
+  const quickUserLogin = () =>
+    handleSignIn({
+      email: process.env.NEXT_PUBLIC_TEST_USER_EMAIL as string,
+      password: process.env.NEXT_PUBLIC_TEST_USER_PASSWORD as string,
+    });
+
+  const quickAdminLogin = () =>
+    handleSignIn({
+      email: process.env.NEXT_PUBLIC_TEST_ADMIN_EMAIL as string,
+      password: process.env.NEXT_PUBLIC_TEST_ADMIN_PASSWORD as string,
+    });
+
   return (
     <MGForm
       onSubmit={handleSignIn}
@@ -102,6 +114,26 @@ const SignInForm = () => {
           SignUp
         </Link>
       </p>
+      <hr />
+      <p className="text-center text-sm font-semibold text-slate-500">
+        Quick Login as
+      </p>
+      <div className="flex items-center justify-center gap-4">
+        <button
+          onClick={quickUserLogin}
+          type="button"
+          className="no-focus cursor-pointer rounded-md border border-primary-hover px-3 py-1 text-sm text-primary-hover transition-colors hover:bg-primary-hover hover:text-white"
+        >
+          User
+        </button>
+        <button
+          onClick={quickAdminLogin}
+          type="button"
+          className="no-focus cursor-pointer rounded-md border border-slate-500 px-3 py-1 text-sm text-slate-700 transition-colors hover:bg-slate-500 hover:text-white"
+        >
+          Test Admin
+        </button>
+      </div>
     </MGForm>
   );
 };
