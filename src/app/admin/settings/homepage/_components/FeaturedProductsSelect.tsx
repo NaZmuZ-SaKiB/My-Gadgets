@@ -24,10 +24,17 @@ const FeaturedProductsSelect = ({ defaultValue }: TProps) => {
     if (defaultValue?.length) {
       setValue(
         "homepage.featuredProducts",
-        defaultValue.map((item) => ({
-          banner: item.banner?._id,
-          products: item.products.map((product: any) => product?._id),
-        })),
+        defaultValue.map((item) => {
+          const returnObj: any = {
+            products: item.products.map((product: any) => product?._id),
+          };
+
+          if (item.banner) {
+            returnObj.banner = item.banner?._id;
+          }
+
+          return returnObj;
+        }),
       );
     }
   }, [defaultValue, setValue]);
@@ -43,7 +50,9 @@ const FeaturedProductsSelect = ({ defaultValue }: TProps) => {
           <MGAImageInput
             name={`homepage.featuredProducts.${i}.banner`}
             label="Banner"
-            defaultValue={[defaultValue?.[i]?.banner]}
+            defaultValue={
+              !!defaultValue?.[i]?.banner ? [defaultValue?.[i]?.banner] : []
+            }
             reset={false}
           />
 
