@@ -10,7 +10,7 @@ const font = Permanent_Marker({
 
 const MainLoading = () => {
   return (
-    <div className="grid min-h-[95svh] place-items-center">
+    <div className="grid min-h-[85svh] place-items-center">
       <div className="flex items-center gap-2">
         <Image
           src={images.logo}
