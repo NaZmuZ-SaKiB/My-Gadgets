@@ -123,7 +123,7 @@ const MGASearchSelectAsync = ({
           <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
 
           <FormControl>
-            <>
+            <div>
               {(multipleValues.length > 0 || !!selectedValue) && (
                 <div className="flex max-h-[200px] flex-wrap gap-1 overflow-y-auto border border-slate-300 p-1 text-sm">
                   {multipleValues.length > 0 &&
@@ -226,7 +226,7 @@ const MGASearchSelectAsync = ({
                   </ScrollArea>
                 </div>
               </div>
-            </>
+            </div>
           </FormControl>
           {description && (
             <FormDescription className="col-span-2">
