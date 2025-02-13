@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { RangeSlider } from "@/components/ui/range-slider";
@@ -21,11 +21,22 @@ const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
     Number(searchParams.get(`max${field}`)) || max,
   ]);
 
-  const router = useRouter();
+  const [debouncedValues, setDebouncedValues] = useState<number[]>([
+    Number(searchParams.get(`min${field}`)) || min,
+    Number(searchParams.get(`max${field}`)) || max,
+  ]);
 
-  const handleChange = (values: number[]) => {
-    setValues(values);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValues(values);
+    }, 500);
 
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [values]);
+
+  useEffect(() => {
     const params = new URLSearchParams(searchParams);
     params.delete("page");
     params.delete(`min${field}`);
@@ -34,9 +45,14 @@ const RangeFilter = ({ field, min, max, step = 1 }: TProps) => {
     params.append("page", "1");
     params.append(`min${field}`, values[0].toString());
     params.append(`max${field}`, values[1].toString());
-    setTimeout(() => {
-      router.replace(`${pathName}?${params}`);
-    }, 500);
+
+    router.replace(`${pathName}?${params}`);
+  }, [debouncedValues]);
+
+  const router = useRouter();
+
+  const handleChange = (values: number[]) => {
+    setValues(values);
   };
 
   return (
