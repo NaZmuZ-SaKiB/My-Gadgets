@@ -4,6 +4,7 @@ import { TMedia } from "@/types/media.type";
 import { TProduct } from "@/types/product.type";
 
 import ProductSlider from "@/components/global/shared/ProductSlider";
+import { cn } from "@/lib/utils";
 
 type TProps = {
   featuredProducts: { banner?: TMedia; products: TProduct[] }[];
@@ -23,7 +24,11 @@ const FeaturedProducts = ({ featuredProducts }: TProps) => {
       {featuredProducts.map((item, index) => (
         <div className="mt-8 flex gap-4" key={`featured-products-${index}`}>
           {item.banner && (
-            <div className="relative shrink-0 basis-[280px] max-md:hidden">
+            <div
+              className={cn("relative shrink-0 basis-[280px] max-md:hidden", {
+                "order-2": index % 2 === 1,
+              })}
+            >
               <Image
                 src={item.banner.secureUrl}
                 alt="banner"
