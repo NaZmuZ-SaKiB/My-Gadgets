@@ -115,7 +115,7 @@ const ProductSelect = ({
                   {multipleValues.length > 0 &&
                     multipleValues.map((item) => (
                       <div
-                        key={`${item?._id}`}
+                        key={`${name}-${item?._id}`}
                         className="flex items-center gap-2 bg-slate-100 p-2"
                       >
                         <Image
