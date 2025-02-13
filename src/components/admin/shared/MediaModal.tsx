@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { Check, Loader2 } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 
 import MGButton from "@/components/global/shared/MGButton";
 import {
@@ -20,6 +19,7 @@ import MGPagination from "@/components/global/shared/MGPagination";
 import { cn } from "@/lib/utils";
 import { TMedia } from "@/types/media.type";
 import { useMediaGetAllQuery } from "@/lib/queries/media.query";
+import { useState } from "react";
 
 type TProps = {
   selectedImages: TMedia[];
@@ -28,16 +28,32 @@ type TProps = {
   title?: string;
 };
 
+type TFilters = {
+  limit: number;
+  page: number;
+};
+
 const MediaModal = ({
   selectedImages,
   setSelectedImages,
   multiple = false,
   title = "Select Image",
 }: TProps) => {
-  const searchParams = useSearchParams();
+  const [filters, setFilters] = useState<TFilters>({
+    limit: 35,
+    page: 1,
+  });
+
+  const onPageChange = (page: number) => {
+    setFilters({ ...filters, page });
+  };
+
+  const onLimitChange = (limit: string) => {
+    setFilters({ ...filters, limit: parseInt(limit) });
+  };
 
   const { data, isLoading } = useMediaGetAllQuery(
-    `${searchParams.toString()}&limit=35&page=1`,
+    `limit=${filters.limit}&page=${filters.page}`,
   );
 
   const handleClick = (image: TMedia) => {
@@ -121,13 +137,18 @@ const MediaModal = ({
         <DialogFooter className="flex w-full !items-center !justify-between max-lg:!flex-col-reverse">
           <div className="mt-5 flex items-center justify-center gap-3 sm:justify-between">
             <div className="max-sm:hidden">
-              <DataLimitSelect defaultValue="35" />
+              <DataLimitSelect
+                defaultValue="35"
+                customFunction={onLimitChange}
+                currentLimit={filters.limit.toString()}
+              />
             </div>
             <MGPagination
               admin
               limit={data?.meta?.limit as number}
               page={data?.meta?.page as number}
               total={data?.meta?.total as number}
+              customFunction={onPageChange}
             />
           </div>
           <DialogClose asChild>
