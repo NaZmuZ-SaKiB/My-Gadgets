@@ -109,7 +109,7 @@ const ProductSelect = ({
           <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
 
           <FormControl>
-            <>
+            <div>
               {(multipleValues.length > 0 || !!selectedValue) && (
                 <div className="flex max-h-[300px] flex-col gap-1 overflow-y-auto border border-slate-300 p-1">
                   {multipleValues.length > 0 &&
@@ -200,7 +200,7 @@ const ProductSelect = ({
                   </ScrollArea>
                 </div>
               </div>
-            </>
+            </div>
           </FormControl>
           {description && (
             <FormDescription className="col-span-2">
