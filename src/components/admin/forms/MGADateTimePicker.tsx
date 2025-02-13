@@ -82,7 +82,7 @@ const MGADateTimePicker = ({
         >
           <FormLabel className={"text-nowrap font-medium"}>{label}</FormLabel>
           <FormControl>
-            <Popover>
+            <Popover open={isOpen} onOpenChange={setIsOpen}>
               <PopoverTrigger asChild>
                 <MGButton
                   variant={"outline"}
@@ -106,6 +106,7 @@ const MGADateTimePicker = ({
                   mode="single"
                   captionLayout="dropdown"
                   selected={date || field.value}
+                  defaultMonth={date || field.value || new Date()}
                   onSelect={(selectedDate) => {
                     const [hours, minutes] = time?.split(":")!;
                     selectedDate?.setHours(parseInt(hours), parseInt(minutes));
@@ -113,8 +114,8 @@ const MGADateTimePicker = ({
                     field.onChange(selectedDate);
                   }}
                   onDayClick={() => setIsOpen(false)}
-                  fromYear={new Date().getFullYear() - 10}
-                  toYear={new Date().getFullYear() + 5}
+                  startMonth={new Date(new Date().getFullYear() - 10, 0)}
+                  endMonth={new Date(new Date().getFullYear() + 5, 11)}
                   disabled={(date) =>
                     Number(date) < Date.now() - 1000 * 60 * 60 * 24
                   }
