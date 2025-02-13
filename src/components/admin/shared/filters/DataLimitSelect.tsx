@@ -12,9 +12,15 @@ import {
 
 type TProps = {
   defaultValue?: string;
+  customFunction?: (value: string) => void;
+  currentLimit?: string;
 };
 
-const DataLimitSelect = ({ defaultValue = "10" }: TProps) => {
+const DataLimitSelect = ({
+  defaultValue = "10",
+  customFunction,
+  currentLimit,
+}: TProps) => {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
@@ -32,8 +38,10 @@ const DataLimitSelect = ({ defaultValue = "10" }: TProps) => {
 
   return (
     <Select
-      defaultValue={params.get("limit") || defaultValue}
-      onValueChange={(value) => handleChange(value)}
+      defaultValue={currentLimit || params.get("limit") || defaultValue}
+      onValueChange={(value) =>
+        !!customFunction ? customFunction(value) : handleChange(value)
+      }
     >
       <SelectTrigger className="no-focus w-[80px] gap-2 border-slate-200">
         <SelectValue placeholder="Limit" />
