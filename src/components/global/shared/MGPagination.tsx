@@ -19,9 +19,16 @@ type TProps = {
   page: number;
   total: number;
   admin?: boolean;
+  customFunction?: (page: number) => void;
 };
 
-const MGPagination = ({ limit, page, total, admin = false }: TProps) => {
+const MGPagination = ({
+  limit,
+  page,
+  total,
+  admin = false,
+  customFunction,
+}: TProps) => {
   const totalPages = Math.ceil(total / limit);
 
   const router = useRouter();
@@ -53,13 +60,21 @@ const MGPagination = ({ limit, page, total, admin = false }: TProps) => {
             className="duration-0 group-hover:bg-transparent group-hover:text-white"
             onClick={(e) => {
               e.preventDefault();
-              if (page > 1) handlePageChange(page - 1);
+              if (page > 1) {
+                if (!!customFunction) {
+                  customFunction(page - 1);
+                } else {
+                  handlePageChange(page - 1);
+                }
+              }
             }}
           />
         </PaginationItem>
 
         <RenderPaginationItems
-          handlePageChange={handlePageChange}
+          handlePageChange={
+            !!customFunction ? customFunction : handlePageChange
+          }
           totalPages={totalPages}
           currentPage={page}
         />
@@ -77,7 +92,13 @@ const MGPagination = ({ limit, page, total, admin = false }: TProps) => {
             className="duration-0 group-hover:bg-transparent group-hover:text-white"
             onClick={(e) => {
               e.preventDefault();
-              if (page < totalPages) handlePageChange(page + 1);
+              if (page < totalPages) {
+                if (!!customFunction) {
+                  customFunction(page + 1);
+                } else {
+                  handlePageChange(page + 1);
+                }
+              }
             }}
           />
         </PaginationItem>
