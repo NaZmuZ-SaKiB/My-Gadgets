@@ -142,36 +142,38 @@ const SingleProductPage = () => {
         className="gap-4"
         reset={false}
       >
-        <APageHeading title="Product" backButton>
-          <MGButton
-            type="submit"
-            className="h-auto self-start rounded-none px-5 py-2"
-            disabled={isPending}
-          >
-            Save Changes
-          </MGButton>
-        </APageHeading>
+        <div className="relative flex flex-col gap-4">
+          <APageHeading title="Product" backButton>
+            <MGButton
+              type="submit"
+              className="h-auto self-start rounded-none px-5 py-2"
+              disabled={isPending}
+            >
+              Save Changes
+            </MGButton>
+          </APageHeading>
 
-        <AGrid reverse small>
-          {/* Left Side */}
-          <div className="space-y-4">
-            <ProductBasicInfoForm />
+          <AGrid reverse small>
+            {/* Left Side */}
+            <div className="space-y-4">
+              <ProductBasicInfoForm />
 
-            <ProductSpecsForm />
+              <ProductSpecsForm />
 
-            <ProductFiltersForm />
-          </div>
+              <ProductFiltersForm />
+            </div>
 
-          {/* Right Side */}
-          <div className="space-y-4">
-            <SelectCategories
-              selectedCategories={selectedCategories}
-              setSelectedCategories={setSelectedCategories}
-            />
+            {/* Right Side */}
+            <div className="space-y-4">
+              <SelectCategories
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories}
+              />
 
-            <ProductImagesForm defaultValues={defaultValues} />
-          </div>
-        </AGrid>
+              <ProductImagesForm defaultValues={defaultValues} />
+            </div>
+          </AGrid>
+        </div>
       </MGForm>
     </APageContainer>
   );
