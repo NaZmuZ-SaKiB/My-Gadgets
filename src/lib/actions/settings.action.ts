@@ -39,7 +39,7 @@ export const settingsUpdateAction = async (
 
   const result = await response.json();
 
-  revalidateTag("homepage-settings");
+  revalidateTag("homepage-settings", "max");
 
   return result;
 };

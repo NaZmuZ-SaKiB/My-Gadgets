@@ -21,7 +21,7 @@ export const productCreateAction = async (
   });
 
   const result = await response.json();
-  revalidateTag(AQTags.PRODUCT + AQTags.ALL);
+  revalidateTag(AQTags.PRODUCT + AQTags.ALL, "max");
 
   return result;
 };
@@ -44,8 +44,8 @@ export const productUpdateAction = async ({
   });
 
   const result = await response.json();
-  revalidateTag(`product-${id}`);
-  revalidateTag("homepage-settings");
+  revalidateTag(`product-${id}`, "max");
+  revalidateTag("homepage-settings", "max");
   revalidatePath(`/products/${payload.slug}/${id}`);
 
   return result;
@@ -99,7 +99,7 @@ export const productRemoveAction = async (ids: string[]) => {
 
   const result = await response.json();
 
-  revalidateTag(AQTags.PRODUCT + AQTags.ALL);
+  revalidateTag(AQTags.PRODUCT + AQTags.ALL, "max");
 
   return result;
 };

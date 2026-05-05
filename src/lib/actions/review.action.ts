@@ -22,7 +22,7 @@ export const reviewCreateAction = async (
   });
 
   const result = await response.json();
-  revalidateTag(`reviews-${payload.product}`);
+  revalidateTag(`reviews-${payload.product}`, "max");
 
   return result;
 };
@@ -45,7 +45,7 @@ export const reviewUpdateAction = async ({
   });
 
   const result = await response.json();
-  revalidateTag(`reviews-${payload.product}`);
+  revalidateTag(`reviews-${payload.product}`, "max");
 
   return result;
 };
